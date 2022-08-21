@@ -1,0 +1,29 @@
+---
+import BackgroundImage from './BackgroundImage.astro'
+import CallToAction from './CallToAction.astro';
+---
+<div class="container">
+  <h1>Get More</h1>
+  <CallToAction />
+  <BackgroundImage />
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    font-size: 6rem;
+    color: #f8f8f8;
+    text-transform: uppercase;
+    transform: translate(20px, 80px);
+    z-index: 1;
+  }
+</style>

@@ -1,0 +1,21 @@
+{
+  "name": "@example/basics",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "@astrojs/solid-js": "^1.0.0",
+    "astro": "^1.0.6",
+    "solid-js": "^1.4.8"
+  },
+  "dependencies": {
+    "solid-styled-components": "^0.28.4",
+    "solid-transition-group": "^0.0.10"
+  }
+}
