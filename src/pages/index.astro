@@ -1,8 +1,17 @@
 ---
 import BaseLayout from '../layouts/Layout.astro'
 import Header from '../sections/home/Header/index.astro'
+
+import InternalButton from '../components/buttons/InternalNavButton.astro'
 ---
 <BaseLayout title="Page title">
-	<Header />
+	<div style="padding: 80px;">
+		<InternalButton 
+			type="teal"
+			slug="/"
+			width={300}
+			title="Learn More"
+		>Learn More</InternalButton>
+	</div>
 </BaseLayout>
 
