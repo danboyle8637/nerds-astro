@@ -36,10 +36,17 @@ const buttonStyles = {
     font-weight: 700;
     color: var(--button-label-color);
     text-decoration: none;
+    border-radius: 12px;
     outline: none;
     width: var(--button-width);
     height: 60px;
   }
+
+  a:focus {
+    outline-offset: 6px;
+    outline: 4px solid var(--accent-purple);
+  }
+
 
   .button {
     grid-column: 1 / -1;
@@ -59,10 +66,6 @@ const buttonStyles = {
   .button:hover {
     box-shadow: 1px 1px 12px 1px var(--accent-purple);
     transform: translate(-10px, -10px);
-  }
-
-  .button:focus {
-
   }
 
   .shadow {
