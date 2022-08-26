@@ -4,13 +4,14 @@ import Header from '../sections/home/Header/index.astro'
 
 import PerspectiveGradient from '../components/typography/PerspectiveGradient.astro';
 import TerminalHeader from '../components/typography/TerminalHeader.astro';
-import Month from '../components/calendar/NormalMonth.astro'
+// import Month from '../components/calendar/NormalMonth.astro'
 
 import { AppIcon } from '../components/spline/AppIcon/index'
 ---
 <BaseLayout title="Page title">
 	<div class="view-container">
-		<AppIcon client:load />
+			<AppIcon client:load />
+
 	</div>
 </BaseLayout>
 
@@ -32,12 +33,12 @@ import { AppIcon } from '../components/spline/AppIcon/index'
 		gap: 4px;
 		justify-items: end;
 		width: 100%;
-		/* perspective: 400px; */
+		/* perspective: 1000px; */
 	}
 
 	/* @media (min-width: 600px) {
 		.month-container {
-			width: 600px;
+			width: 400px;
 			perspective: 600px;
 		}
 	} */
