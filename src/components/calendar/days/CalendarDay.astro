@@ -1,0 +1,55 @@
+---
+import type { CalendarDayType, ActiveMonth, CalendarDayStatus } from '../../../types/calendar'
+
+export interface Props {
+  type: CalendarDayType;
+  id: number;
+  label: number;
+  isToday: boolean;
+  dayOfWeek: number;
+  activeDay: number;
+  status: CalendarDayStatus;
+  activeMonth: number;
+  currentMonth: number;
+  year: number;
+  isInThePast: boolean;
+}
+
+const { type, id, label, isToday, dayOfWeek, activeDay, status, activeMonth, currentMonth, year, isInThePast } = Astro.props as Props
+---
+
+<div>
+  <p>{label}</p>
+</div>
+
+<style>
+  div {
+    position: relative;
+    padding: 6px;
+    padding-top: 100%;
+    background-color: var(--day-background, hsla(218, 32%, 10%, 0.4));
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    opacity: var(--day-opacity, 1);
+    box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.4), 0 0 0 2px var(--dark-3),
+      var(--day-shadow);
+    transform: var(--day-transform, none);
+    transition: box-shadow, background-color, 300ms ease-in-out;
+    z-index: var(--day-z-index, unset);
+  }
+
+  div:hover {
+    box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.4), 0 0 0 2px var(--dark-3),
+      var(--day-shadow);
+  }
+
+  p {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--label-color, hsla(216, 27%, 13%));
+  }
+</style>

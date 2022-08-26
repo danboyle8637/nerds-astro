@@ -1,0 +1,38 @@
+---
+import CalendarDay from './CalendarDay.astro'
+import type { CalendarDayType } from '../../../types/calendar'
+
+export interface Props {
+  type: CalendarDayType;
+  daysArray: number[];
+  today: number;
+  activeMonth: number;
+  currentMonth: number;
+  year: number;
+}
+
+const { type, daysArray, today, activeMonth, currentMonth, year } = Astro.props as Props
+---
+
+<>
+  {daysArray.map((_, i) => {
+    const isToday = today === i + 1
+
+    return (
+      <CalendarDay 
+        type={type}
+        id={i}
+        label={i + 1}
+        isToday={isToday}
+        dayOfWeek={i + 1}
+        activeDay={today}
+        status="blank"
+        activeMonth={activeMonth}
+        currentMonth={currentMonth}
+        year={year}
+        isInThePast={false}
+      />
+    )
+  })}
+</>
+
