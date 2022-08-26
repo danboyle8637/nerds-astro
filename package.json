@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^1.0.0",
-    "astro": "^1.0.6",
-    "solid-js": "^1.4.8"
+    "astro": "^1.0.6"
   },
   "dependencies": {
-    "solid-styled-components": "^0.28.4",
-    "solid-transition-group": "^0.0.10"
+    "@astrojs/solid-js": "^1.1.0",
+    "@splinetool/runtime": "^0.9.103",
+    "react-dom": "^18.2.0",
+    "solid-js": "^1.5.1"
   }
 }

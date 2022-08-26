@@ -12,13 +12,20 @@ export interface Props {
   activeMonth: number;
   currentMonth: number;
   year: number;
-  isInThePast: boolean;
+  isBuildDay: boolean
 }
 
-const { type, id, label, isToday, dayOfWeek, activeDay, status, activeMonth, currentMonth, year, isInThePast } = Astro.props as Props
+const { type, id, label, isToday, dayOfWeek, activeDay, status, activeMonth, currentMonth, year, isBuildDay } = Astro.props as Props
+
+const styles = {
+  "--day-background": isToday && isBuildDay ? "var(--accent-teal)" : isBuildDay ? "var(--accent-pink)" : "hsla(218, 32%, 16%, 0.4)",
+  "--day-blur": isToday ? "blur(0)": "blur(2px)",
+  "--day-transform": isToday ? "translate(12px, -8px) scale(1.2)" : "none",
+  "--day-z-index": isToday ? 1 : "unset",
+}
 ---
 
-<div>
+<div style={styles}>
   <p>{label}</p>
 </div>
 
@@ -27,13 +34,14 @@ const { type, id, label, isToday, dayOfWeek, activeDay, status, activeMonth, cur
     position: relative;
     padding: 6px;
     padding-top: 100%;
-    background-color: var(--day-background, hsla(218, 32%, 10%, 0.4));
+    background-color: var(--day-background);
     border-radius: 10px;
     border: none;
     width: 100%;
     opacity: var(--day-opacity, 1);
     box-shadow: 0 4px 2px 0px rgba(0, 0, 0, 0.4), 0 0 0 2px var(--dark-3),
       var(--day-shadow);
+    filter: var(--day-blur);
     transform: var(--day-transform, none);
     transition: box-shadow, background-color, 300ms ease-in-out;
     z-index: var(--day-z-index, unset);
@@ -47,9 +55,10 @@ const { type, id, label, isToday, dayOfWeek, activeDay, status, activeMonth, cur
   p {
     position: absolute;
     top: 4px;
-    left: 6px;
+    left: 16px;
     font-size: 1.4rem;
     font-weight: 500;
     color: var(--label-color, hsla(216, 27%, 13%));
+    text-shadow: -8px 3px 2px hsla(0, 0%, 0%, 0.2);
   }
 </style>

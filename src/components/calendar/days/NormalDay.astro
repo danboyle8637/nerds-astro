@@ -9,14 +9,51 @@ export interface Props {
   activeMonth: number;
   currentMonth: number;
   year: number;
+  timelineInDays: number
 }
 
-const { type, daysArray, today, activeMonth, currentMonth, year } = Astro.props as Props
+const { type, daysArray, today, activeMonth, currentMonth, year, timelineInDays, } = Astro.props as Props
+
+
+const buildDaysBuildArray = (): number[] => {
+  let buildDaysArray: number[] = []
+
+  for (let i = 0; i < daysArray.length; i++) {
+    for (let j = today; j < today + timelineInDays; j++) {
+      if (daysArray[i] + 1 === j) {
+        buildDaysArray.push(j)
+      }
+    }
+  }
+
+  return buildDaysArray
+}
+
+const buildDaysArray = buildDaysBuildArray()
+
+const isBuildDayArray = daysArray.reduce((acc, cv): boolean[] => {
+  let isBuildDay = false
+
+  for (let i = 0; i < buildDaysArray.length; i++) {
+    if (cv + 1 === buildDaysArray[i]) {
+      isBuildDay = true
+    }
+  }
+
+  if (isBuildDay) {
+    acc.push(true)
+  } else {
+    acc.push(false)
+  }
+
+  return acc
+}, [] as boolean[])
 ---
 
 <>
   {daysArray.map((_, i) => {
     const isToday = today === i + 1
+    let isBuildDay = isBuildDayArray[i]
 
     return (
       <CalendarDay 
@@ -30,7 +67,7 @@ const { type, daysArray, today, activeMonth, currentMonth, year } = Astro.props 
         activeMonth={activeMonth}
         currentMonth={currentMonth}
         year={year}
-        isInThePast={false}
+        isBuildDay={isBuildDay}
       />
     )
   })}
