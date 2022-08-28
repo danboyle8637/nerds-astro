@@ -1,0 +1,17 @@
+---
+export interface Props {
+  imageUrl: string
+  altTag: string
+  titleTag: string
+}
+
+const { imageUrl, altTag, titleTag } = Astro.props as Props
+---
+
+<img src={imageUrl} alt={altTag} title={titleTag}>
+
+<style>
+  img {
+    width: 100%;
+  }
+</style>

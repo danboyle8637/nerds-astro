@@ -1,5 +1,4 @@
 import { Component, createEffect, onMount } from "solid-js";
-import { createSignal } from "solid-js";
 import { Application } from "@splinetool/runtime";
 
 import { shouldShow, setBreakPoint } from "../../../solid/matchMedisStore";
