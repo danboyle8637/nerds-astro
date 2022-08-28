@@ -13,6 +13,7 @@ import CallToAction from './CallToAction.astro';
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    background-color: #161E2D;
     width: 100%;
     overflow: hidden;
   }
@@ -20,10 +21,11 @@ import CallToAction from './CallToAction.astro';
   h1 {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    font-size: 6rem;
-    color: #f8f8f8;
+    font-size: 5rem;
+    color: var(--font-color-light);
     text-transform: uppercase;
-    transform: translate(20px, 80px);
+    width: fit-content;
+    transform: translate(20px, 120px);
     z-index: 1;
   }
 </style>

@@ -1,0 +1,40 @@
+---
+import PerspectiveGradient from '../../../components/typography/PerspectiveGradient.astro';
+import Month from '../../../components/calendar/NormalMonth.astro'
+---
+
+	<div class="view-container">
+		<div class="month-container">
+			
+			<Month />
+		</div>
+	</div>
+
+<style>
+	.view-container {
+		padding: 0 12px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #111721;
+		width: 100vw;
+		height: 100vh;
+	}
+
+	.month-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: min-content; 
+		gap: 4px;
+		justify-items: end;
+		width: 100%;
+		perspective: 1000px;
+	}
+
+	@media (min-width: 600px) {
+		.month-container {
+			width: 400px;
+			perspective: 600px;
+		}
+	}
+</style>
