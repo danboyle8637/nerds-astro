@@ -1,0 +1,82 @@
+---
+import ServiceCard from '../../../components/cards/ServiceCard/index.astro'
+
+interface Service {
+  id: number
+  order: 0 | 1
+  imageUrl: string
+  altTag: string
+  titleTag: string
+  headline: string
+  description: string
+  buttonLabel: string
+  buttonSlug: string
+}
+
+const services: Service[] = [
+  {
+    id: 0,
+    order: 0,
+    imageUrl: "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/web-design-card-icon_OiALA1zuU.png?ik-sdk-version=javascript-1.4.3",
+    altTag: "Web Design and Developement",
+    titleTag: "Web Design and Developement",
+    headline: "Web Design & Dev",
+    description: "Get a lean, mean website that sells like crazy and makes your business money.",
+    buttonLabel: "Let's Build a Site!",
+    buttonSlug: "/services/web-dev",
+  },
+  {
+    id: 1,
+    order: 1,
+    imageUrl: "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/seven-day-site-card-icon_GWU0TqQMq.png?ik-sdk-version=javascript-1.4.3",
+    altTag: "7 Day Site",
+    titleTag: "7 Day Website Build",
+    headline: "7 Day Site",
+    description: "Get online FAST with a site designed to get leads... grow email list... makes sales... in 7 days or less.",
+    buttonLabel: "Let's Get Online!",
+    buttonSlug: "/services/seven-day-site",
+  },
+  {
+    id: 2,
+    order: 0,
+    imageUrl: "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/copy-card-icon_EEu-ion6Z.png?ik-sdk-version=javascript-1.4.3",
+    altTag: "Content and Copywriting",
+    titleTag: "Content and Copywriting",
+    headline: "Content & Copy",
+    description: "Get persuasive words on your website, blog posts, ads, and emails to convert more prospects into customers.",
+    buttonLabel: "Let's Sell!",
+    buttonSlug: "/services/copywriting",
+  },
+]
+---
+
+<div class="card-container">
+  {services.map(service => {
+    const { order, imageUrl, altTag, titleTag, headline, description, buttonLabel, buttonSlug } = service
+
+    return (
+      <ServiceCard 
+        order={order}
+        imageUrl={imageUrl}
+        altTag={altTag}
+        titleTag={titleTag}
+        headline={headline}
+        description={description}
+        buttonLabel={buttonLabel}
+        buttonSlug={buttonSlug}
+      />
+    )
+  })}
+</div>
+ 
+<style lang="scss">
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 140px;
+    justify-items: center;
+    width: 100%;
+  }
+</style>
+

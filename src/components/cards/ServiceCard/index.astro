@@ -14,6 +14,7 @@ export interface Props {
 }
 
 const {  
+  order,
   imageUrl,
   altTag,
   titleTag,
@@ -29,6 +30,7 @@ const {
     imageUrl={imageUrl}
     altTag={altTag}
     titleTag={titleTag}
+    order={order}
   />
   <ContentBlock 
     headline={headline}
@@ -44,5 +46,12 @@ const {
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
     gap: 12px;
+    width: 100%;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 0px;
+      align-items: center;
+    }
   }
 </style>

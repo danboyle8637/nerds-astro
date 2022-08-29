@@ -9,8 +9,7 @@ export const AppIcon: Component = () => {
 
   onMount(() => {
     const canvas = new Application(canvasRef);
-    canvas.load("https://prod.spline.design/Id21dxFEJ9tHbtBb/scene.splinecode");
-    canvas.setSize(800, 700);
+    canvas.load("https://prod.spline.design/7DOBu1QCrNG3sb0o/scene.splinecode");
   });
 
   createEffect(() => {
@@ -23,5 +22,5 @@ export const AppIcon: Component = () => {
     }
   });
 
-  return <canvas class={styles.scene} ref={canvasRef!} height={400}></canvas>;
+  return <canvas class={styles.scene} ref={canvasRef!} height={500}></canvas>;
 };

@@ -34,12 +34,20 @@ const { headline, description, buttonLabel, buttonSlug } = Astro.props as Props
     @media (min-width: 392px) {
       padding: 0 20px;
     }
+
+    @media (min-width: 600px) {
+      padding: 0;
+    }
   }
 
   h3 {
     font-size: 2.6rem;
     font-weight: 800;
     color: var(--font-color-light);
+
+    @media (min-width: 960px) {
+      font-size: 3.4rem;
+    }
   }
 
   .description-container {

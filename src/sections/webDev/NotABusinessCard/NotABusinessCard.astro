@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="content">
+    <p>
+      That get's tossed in the garbage. Forgotten about.
+    </p>
+    <p>
+      Everything happens online first. Your website is your introduction to your perfect future customer.
+    </p>
+  </div>
+  <div class="question-container">
+    <p>Do you want it...</p>
+    <div class="questions">
+      <p>... to look generic, sound boring, blend in?</p>
+      <p>... load slow and look terrible on a phone?</p>
+      <p>... be a “tech” mystery you don't know how to use?</p>
+    </div>
+  </div>
+  <p>
+    Of course not. And your website shouldn't be. It has ONE job.
+  </p>
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 60px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    width: 100%;
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 30px;
+    justify-items: start;
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+  }
+
+  .question-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    width: 100%;
+
+    p {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--font-color-light);
+    }
+  }
+
+  .questions {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 60px;
+    width: 250px;
+  }
+</style>

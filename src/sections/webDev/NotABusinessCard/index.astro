@@ -1,0 +1,35 @@
+---
+import BusinessCard from "./BusinessCard.astro";
+import NotABusinessCard from "./NotABusinessCard.astro";
+import YourSalesTool from "./YourSalesTool.astro";
+---
+
+<div class="container">
+  <div class="galaxy" />
+  <BusinessCard />
+  <NotABusinessCard />
+  <YourSalesTool />
+</div>
+
+<style lang="scss">
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    isolation: isolate;
+    z-index: -1;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    z-index: -1;
+  }
+</style>

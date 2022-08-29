@@ -1,23 +1,23 @@
-<h1>
+<span class="container">
   <span class="perspective-gradient">
     <slot />
   </span>
   <span class="shadow">
     <slot />
   </span>
-</h1>
+</span>
 
 
 
 <style>
 
-  h1 {
+  .container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     line-height: 1;
-    width: fit-content;
-    transform: rotateX(20deg) rotateY(30deg) rotateZ(-20deg);
+    width: max-content;
+    transform: skew(-8deg) rotate(-6deg);
   }
 
   .perspective-gradient {

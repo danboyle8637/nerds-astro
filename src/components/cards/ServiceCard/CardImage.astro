@@ -3,15 +3,24 @@ export interface Props {
   imageUrl: string
   altTag: string
   titleTag: string
+  order: number
 }
 
-const { imageUrl, altTag, titleTag } = Astro.props as Props
+const { imageUrl, altTag, titleTag, order } = Astro.props as Props
+
+const styles = {
+  "--image-order": order,
+}
 ---
 
-<img src={imageUrl} alt={altTag} title={titleTag}>
+<img style={styles} src={imageUrl} alt={altTag} title={titleTag}>
 
-<style>
+<style lang="scss">
   img {
     width: 100%;
+
+    @media (min-width: 600px) {
+      order: var(--image-order);
+    }
   }
 </style>
