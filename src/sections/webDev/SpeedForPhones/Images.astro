@@ -1,0 +1,34 @@
+---
+const fwwSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/fww-google-speed-scores_M_1Fq7x_x.png?ik-sdk-version=javascript-1.4.3"
+
+const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/ttf-google-speed-scores_nXl7pxcC4.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div>
+  <img class="fww-scores" src={fwwSpeedScore} alt="Fit Women's Weekly on an iphone mockup" title="Fit Women's Weekly Google Site Speed Scores">
+  <img class="ttf-scores" src={ttfSpeedScore} alt="This Time Fitness on an iphone mockup" title="This Time Fitness Google Site Speed Scores">
+</div>
+
+<style lang="scss">
+  div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 60px;
+    justify-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  img {
+    width: 110%;
+  }
+
+  .fww-scores {
+    transform: translateX(-40px);
+  }
+
+  .ttf-scores {
+    transform: translateX(40px);
+  }
+</style>

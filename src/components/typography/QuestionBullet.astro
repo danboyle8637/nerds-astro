@@ -1,0 +1,35 @@
+---
+const checkImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/question-bullet_mPB-OZdzy.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div>
+  <img src={checkImage} alt="Check">
+  <p>
+    <slot />
+  </p>
+</div>
+
+<style lang="scss">
+  div {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 12px;
+    justify-items: start;
+    align-items: start;
+    width: 100%;
+
+    @media (min-width: 600px) {
+      align-items: center;
+    }
+  }
+
+  img {
+    width: 60px;
+  }
+
+  p {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+  }
+</style>

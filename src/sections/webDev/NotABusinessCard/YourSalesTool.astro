@@ -2,7 +2,9 @@
 import BestSalesToolHeadline from "./BestSalesToolHeadline.astro";
 import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
 
-const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/mobile-home-header-600x1300_dhkklq6ce.png?ik-sdk-version=javascript-1.4.3"
+const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/traffic-leads-sales-mobile_aU5MQZt4g.png?ik-sdk-version=javascript-1.4.3"
+
+const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/traffic-leads-sales-above-mobile_dXCzmtXfk.png?ik-sdk-version=javascript-1.4.3"
 ---
 
 <div class="container">
@@ -10,32 +12,45 @@ const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-
     <BestSalesToolHeadline />
     <p>Hide The Nerdy Tech Stuff and Give You What You Want...</p>
   </div>
-  <picture>
-    <!-- <source srcset={mobileImageUrl} media="(min-width: 600px)"> -->
-    <img src={mobileImageUrl} alt="Graph boxes for more traffic leads and sales" title="More Traffic Leads And Sales">
-  </picture>
+    <picture>
+      <source srcset={aboveMobileImageUrl} media="(min-width: 600px)">
+      <img src={mobileImageUrl} alt="Graph boxes for more traffic leads and sales" title="More Traffic Leads And Sales">
+    </picture>
   <InternalNavButton type="teal" title="Schedule a Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
+  <div class="galaxy" />
 </div>
 
 <style lang="scss">
   .container {
+    position: relative;
     padding: 80px 0 0 0;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-auto-rows: min-content;
     justify-items: center;
+    gap: 40px;
     width: 100%;
+
+    @media (min-width: 600px) {
+      padding: 120px 0 0 0;
+    }
   }
 
   .content-container {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
     padding: 0 12px;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
     gap: 40px;
     justify-items: start;
+
+    @media (min-width: 600px) {
+      width: 660px;
+    }
+
+    @media (min-width: 960px) {
+      width: 900px;
+    }
   }
 
   p {
@@ -45,31 +60,31 @@ const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-
   }
 
   picture {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
     width: 100%;
-    transform: translate(0, 120px);
 
     @media (min-width: 600px) {
-      transform: translate(-240px, 100px);
+      transform: translate(-140px, 0);
     }
 
     @media (min-width: 960px) {
-      transform: translate(-190px, 120px);
-    }
-
-    @media (min-width: 1100px) {
-      align-self: end;
       width: 900px;
-      transform: translate(0px, 120px);
-    }
-
-    @media (min-width: 1450px) {
-      transform: translate(0px, 100px);
     }
   }
 
   img {
     width: 100%;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(-100px, 0);
+    z-index: -1;
   }
 </style>
