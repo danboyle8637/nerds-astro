@@ -18,17 +18,35 @@ const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-a
     justify-items: center;
     width: 100%;
     overflow: hidden;
+
+    @media (min-width: 600px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: visible;
+    }
+
+    @media (min-width: 960px) {
+      width: 1000px;
+    } 
   }
 
   img {
-    width: 110%;
+    width: 100%;
   }
 
   .fww-scores {
     transform: translateX(-40px);
+
+    @media (min-width: 600px) {
+      transform: translate(40px, -60px);
+    }
   }
 
   .ttf-scores {
     transform: translateX(40px);
+
+    @media (min-width: 600px) {
+      transform: translate(-40px, 60px);
+    }
   }
 </style>

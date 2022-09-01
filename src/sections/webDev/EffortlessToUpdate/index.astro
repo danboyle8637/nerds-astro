@@ -1,13 +1,11 @@
 ---
-import SectionContent from "./SectionContent.astro";
-import Images from "./Images.astro";
-import DisclaimerSection from "./DisclaimerSection.astro";
+import Headline from "./Headline.astro";
+import { WebsiteUpdating } from "../../../components/spline/WebsiteUpdating/index"
 ---
 
 <div class="container">
-  <SectionContent />
-  <Images />
-  <DisclaimerSection />
+  <Headline />
+  <WebsiteUpdating client:idle />
 </div>
 
 <style lang="scss">

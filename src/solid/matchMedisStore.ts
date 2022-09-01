@@ -1,4 +1,4 @@
-import { createSignal, createMemo, onMount, onCleanup } from "solid-js";
+import { createSignal, onMount, onCleanup } from "solid-js";
 
 const [width, setWidth] = createSignal<number>(600);
 export const [shouldShow, setShouldShow] = createSignal<boolean>(false);
