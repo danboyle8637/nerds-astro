@@ -4,7 +4,7 @@ import InternalNavButton from "../../../components/buttons/InternalNavButton.ast
 
 const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/traffic-leads-sales-mobile_aU5MQZt4g.png?ik-sdk-version=javascript-1.4.3"
 
-const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/traffic-leads-sales-above-mobile_dXCzmtXfk.png?ik-sdk-version=javascript-1.4.3"
+const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/website-sales-tool-1320-720_ABJ3GaBFN.png?ik-sdk-version=javascript-1.4.3"
 ---
 
 <div class="container">
@@ -12,12 +12,11 @@ const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/
     <BestSalesToolHeadline />
     <p>Hide The Nerdy Tech Stuff and Give You What You Want...</p>
   </div>
-    <picture>
-      <source srcset={aboveMobileImageUrl} media="(min-width: 600px)">
-      <img src={mobileImageUrl} alt="Graph boxes for more traffic leads and sales" title="More Traffic Leads And Sales">
-    </picture>
+  <picture>
+    <source srcset={aboveMobileImageUrl} media="(min-width: 600px)">
+    <img src={mobileImageUrl} alt="Graph boxes for more traffic leads and sales" title="More Traffic Leads And Sales">
+  </picture>
   <InternalNavButton type="teal" title="Schedule a Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
-  <div class="galaxy" />
 </div>
 
 <style lang="scss">
@@ -30,6 +29,7 @@ const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/
     justify-items: center;
     gap: 40px;
     width: 100%;
+    overflow: hidden;
 
     @media (min-width: 600px) {
       padding: 120px 0 0 0;
@@ -61,30 +61,14 @@ const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/
 
   picture {
     width: 100%;
+    max-width: 1200px;
 
     @media (min-width: 600px) {
-      transform: translate(-140px, 0);
-    }
-
-    @media (min-width: 960px) {
-      width: 900px;
+      transform: translate(-40px, 0);
     }
   }
 
   img {
     width: 100%;
-  }
-
-  .galaxy {
-    position: absolute;
-    top: 60%;
-    left: 0;
-    background-color: #3D00BD;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
-    transform: translate(-100px, 0);
-    z-index: -1;
   }
 </style>

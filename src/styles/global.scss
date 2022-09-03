@@ -75,6 +75,26 @@ p {
   line-height: 1.6;
 }
 
+.code-callout {
+  position: relative;
+  padding: 8px 16px;
+  padding-left: 32px;
+  display: flex;
+  gap: 6px;
+  background-color: hsla(218, 32%, 10%, 0.4);
+  border: 2px solid var(--background-color-dark);
+  border-radius: 8px;
+
+  &::before {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    padding-left: 12px;
+    content: "~";
+    color: var(--accent-teal);
+  }
+}
+
 @media (min-width: 392px) {
   h1,
   h2 {

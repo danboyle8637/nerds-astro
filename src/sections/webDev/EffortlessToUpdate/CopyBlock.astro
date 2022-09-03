@@ -1,0 +1,24 @@
+---
+const paragraphs = [
+  "Do you want to write blog posts and get your site FREE traffic?",
+  "Do you need to create events or add new products every week?",
+  "We can make your website easy to update and manage yourself.",
+  "Or, we can do it all for you so all you have to do is focus on what you care about... your business!",
+]
+---
+
+<div class="container">
+  {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 20px;
+    justify-items: start;
+    width: 100%;
+  }
+</style>

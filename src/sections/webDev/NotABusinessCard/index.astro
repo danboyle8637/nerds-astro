@@ -4,9 +4,10 @@ import YourSalesTool from "./YourSalesTool.astro";
 ---
 
 <div class="container">
-  <div class="galaxy" />
+  <div class="galaxy top-galaxy" />
   <NotABusinessCard />
   <YourSalesTool />
+  <div class="galaxy bottom-galaxy" />
 </div>
 
 <style lang="scss">
@@ -18,19 +19,37 @@ import YourSalesTool from "./YourSalesTool.astro";
     align-items: center;
     width: 100%;
     isolation: isolate;
-    overflow: hidden;
     z-index: -1;
   }
 
   .galaxy {
-    position: absolute;
-    top: 0;
-    right: 0;
     background-color: #3D00BD;
     border-radius: 50%;
     width: 220px;
     height: 220px;
     filter: blur(160px);
     z-index: -1;
+
+    @media (min-width: 960px) {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+     
+    }
   }
+
+  .top-galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(80px, -120px);
+  }
+
+  .bottom-galaxy {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-80px, 120px);
+  }
+
 </style>

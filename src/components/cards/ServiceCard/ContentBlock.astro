@@ -18,7 +18,7 @@ const { headline, description, buttonLabel, buttonSlug } = Astro.props as Props
   </TerminalHeader>
   <div class="description-container">
     <p>{description}</p>
-    <InternalNavButton type="teal" title={headline.toLowerCase()} slug={buttonSlug} width={290}>{buttonLabel}</InternalNavButton>
+    <InternalNavButton type="teal" cta={false} title={headline.toLowerCase()} slug={buttonSlug} width={290}>{buttonLabel}</InternalNavButton>
   </div>
 </div>
 

@@ -1,81 +1,91 @@
 ---
+import NerdChatIcon from '../svgs/NerdChatIcon.astro'
 import type { InternalButtonColor } from '../../types/components'
 
 interface Props {
   type: InternalButtonColor
   slug: string
   title: string
-  width: number
+  width?: number
+  cta?: boolean
 }
 
-const { slug, title, type, width = 290 } = Astro.props as Props
+const { slug, title, type, width = 290, cta = true } = Astro.props as Props
 
 const buttonStyles = {
+  "--button-layout": cta ? "min-content 1fr" : "1fr",
   "--button-label-color": type === "teal" ? "var(--accent-teal-dark)" : type === "pink" ? "#f8f8f8" : "#f8f8f8",
   "--background-color": type === "teal" ? "var(--accent-teal)" : type === "pink" ? "var(--accent-pink)" : "var(--accent-purple)",
   "--shadow-color": type === "teal" ? "var(--accent-purple-dark)" : type === "pink" ? "var(--accent-pink-dark)" : "var(--accent-purple-dark)",
-  "--button-width": `${width}px`,
+  "--button-width": width ? `${width}px` : "100%",
+  "--focus-outline": type === "teal" ? "var(--accent-purple)" : "var(--accent-teal)" 
 }
 ---
 
-<a href={slug} title={title} style={buttonStyles}> 
-  <div class="button">
+<div class="container" style={buttonStyles}>
+  <a href={slug} title={title}> 
+    {cta ? (
+      <div class="chat-icon">
+      <NerdChatIcon />
+    </div>
+    ) : null}
     <slot>Learn More</slot>
-  </div>
+  </a>
   <div class="shadow" />
-</a>
+</div>
 
 <style>
-  a {
+  .container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
-    font-size: 2.4rem;
+  }
+
+  a {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: var(--button-layout);
+    gap: 8px;
+    justify-items: center;
+    align-items: center;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--button-label-color);
     text-decoration: none;
+    background-color: var(--background-color);
+    border: none;
     border-radius: 12px;
     outline: none;
     width: var(--button-width);
     height: 60px;
-  }
-
-  a:focus {
-    outline-offset: 6px;
-    outline: 4px solid var(--accent-purple);
-  }
-
-
-  .button {
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--background-color);
-    border: none;
-    border-radius: 12px;
-    width: 100%;
-    height: 100%;
     z-index: 1;
     transition: box-shadow, transform, 200ms ease-in-out;
   }
 
-  .button:hover {
-    box-shadow: 1px 1px 12px 1px var(--accent-purple);
+  a:focus {
+    outline-offset: 6px;
+    outline: 4px solid var(--focus-outline);
+  }
+
+  a:hover {
+    box-shadow: 1px 2px 4px 1px hsla(0, 0%, 0%, 0.4);
     transform: translate(-10px, -10px);
   }
+
+  .chat-icon {
+    width: 46px;
+  } 
 
   .shadow {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     background-color: var(--shadow-color);
-    border-radius: 12px 12px 18px 12px;
-    width: var(--button-width);
-    height: 100%;
+    border-radius: 12px 8px 16px 8px;
+    width: 98%;
+    height: 90%;
   }
-
-  
 </style>
