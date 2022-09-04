@@ -1,0 +1,22 @@
+---
+import Headline from "./Headline.astro";
+import CopyBlock from "./CopyBlock.astro";
+import { SalesAndLeads } from '../../../components/spline/SalesAndLeads'
+---
+<div class="container">
+  <Headline />
+  <SalesAndLeads client:idle />
+  <CopyBlock />
+</div>
+
+<style lang="scss">
+  .container {
+    padding: 120px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+  }
+</style>

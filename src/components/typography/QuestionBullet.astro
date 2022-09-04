@@ -2,34 +2,43 @@
 const checkImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/question-bullet_mPB-OZdzy.png?ik-sdk-version=javascript-1.4.3"
 ---
 
-<div>
+<li>
   <img src={checkImage} alt="Check">
-  <p>
-    <slot />
-  </p>
-</div>
+  <slot />
+</li>
 
 <style lang="scss">
-  div {
+  li {
     display: grid;
     grid-template-columns: min-content 1fr;
     gap: 12px;
     justify-items: start;
     align-items: start;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--font-color-light);
     width: 100%;
 
     @media (min-width: 600px) {
       align-items: center;
     }
+
+    @media (min-width: 960px) {
+      font-size: 2.6rem;
+    }
   }
 
   img {
     width: 60px;
-  }
+    transform: translate(0, -8px);
 
-  p {
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: var(--font-color-light);
+    @media (min-width: 600px) {
+      transform: translate(0, -16px);
+    }
+
+    @media (min-width: 960px) {
+      transform: translate(0, -24px);
+    }
   }
 </style>

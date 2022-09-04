@@ -1,11 +1,25 @@
 ---
 import Headline from "./Headline.astro";
-import CopyBlock from "./CopyBlock.astro";
+import BulletBlock from "./BulletBlock.astro";
+import EffortlessImage from "./EffortlessImage.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
 ---
 
 <div class="container">
   <Headline />
-  <CopyBlock />
+  <div class="copy-container">
+    <EffortlessImage />
+    <BulletBlock />
+  </div>
+  <div class="paragraph-container">
+    <p>
+      <span class="code-callout">Or, we can do it all for you.</span> 
+    </p>
+    <p>And you can focus on what you care most about... your business!</p>
+  </div>
+  <InternalNavButton type="teal" slug="/" title="Schedule a Nerd Call">
+    Schedule Nerd Call
+  </InternalNavButton>
 </div>
 
 <style lang="scss">
@@ -21,5 +35,35 @@ import CopyBlock from "./CopyBlock.astro";
     @media (min-width: 600px) {
       gap: 120px;
     }
+
+    @media (min-width: 960px) {
+    }
+  }
+
+  .copy-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @media (min-width: 960px) {
+      grid-template-columns: 1fr 400px;
+      align-items: center;
+    }
+
+    @media (min-width: 1100px) {
+      width: 1200px;
+    }
+  }
+
+  .paragraph-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 20px;
+    justify-items: start;
+    width: fit-content;
   }
 </style>

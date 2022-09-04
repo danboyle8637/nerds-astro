@@ -75,6 +75,22 @@ p {
   line-height: 1.6;
 }
 
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
 .code-callout {
   position: relative;
   padding: 8px 16px;

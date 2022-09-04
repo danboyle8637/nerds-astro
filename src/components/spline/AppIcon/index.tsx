@@ -1,7 +1,7 @@
 import { Component, createEffect, onMount } from "solid-js";
 import { Application } from "@splinetool/runtime";
 
-import { shouldShow, setBreakPoint } from "../../../solid/matchMedisStore";
+import { shouldShow, setBreakPoint } from "../../../solid/matchMediaStore";
 import styles from "./AppIcon.module.css";
 
 export const AppIcon: Component = () => {
@@ -14,12 +14,6 @@ export const AppIcon: Component = () => {
 
   createEffect(() => {
     setBreakPoint(960);
-
-    if (shouldShow()) {
-      console.log("You are above tablet");
-    } else {
-      console.log("You are below a tablet");
-    }
   });
 
   return <canvas class={styles.scene} ref={canvasRef!} height={500}></canvas>;
