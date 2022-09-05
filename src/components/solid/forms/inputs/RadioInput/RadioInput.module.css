@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 30px;
+  justify-items: start;
+  width: 100%;
+}
+
+.question_label {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--font-color-light);
+  transform: translateX(24px);
+}
+
+.options_container {
+  padding-left: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 20px;
+  justify-items: start;
+  width: 100%;
+}

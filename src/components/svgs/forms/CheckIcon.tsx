@@ -1,4 +1,5 @@
-import { Component, createMemo, createSignal } from "solid-js";
+import { createMemo } from "solid-js";
+import type { Component } from "solid-js";
 
 import { checkIconOn } from "../../../animations/forms";
 import type { SVGProps } from "../../../types/components";
@@ -14,7 +15,7 @@ export const CheckIcon: Component<CheckIconProps> = (props) => {
 
   createMemo(() => {
     setTimeout(() => {
-      if (props.isActive) {
+      if (props.isActive && checkRef) {
         checkIconOn(checkRef);
       }
     });
@@ -29,13 +30,13 @@ export const CheckIcon: Component<CheckIconProps> = (props) => {
       viewBox="0 0 164.85 127.53"
     >
       <path
+        ref={checkRef!}
         style={{
           stroke: props.isTextInput
             ? "hsla(149, 83%, 48%, 1)"
             : "hsla(237, 100%, 96%, 1)",
           visibility: "hidden",
         }}
-        ref={checkRef!}
         id="check"
         fill="none"
         stroke-linecap="round"
