@@ -6,7 +6,10 @@ const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-a
 
 <div>
   <img class="fww-scores" src={fwwSpeedScore} alt="Fit Women's Weekly on an iphone mockup" title="Fit Women's Weekly Google Site Speed Scores">
-  <img class="ttf-scores" src={ttfSpeedScore} alt="This Time Fitness on an iphone mockup" title="This Time Fitness Google Site Speed Scores">
+  <div class="image-container">
+    <img class="ttf-scores" src={ttfSpeedScore} alt="This Time Fitness on an iphone mockup" title="This Time Fitness Google Site Speed Scores">
+    <div class="galaxy"></div>
+  </div>
 </div>
 
 <style lang="scss">
@@ -17,7 +20,6 @@ const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-a
     gap: 60px;
     justify-items: center;
     width: 100%;
-    overflow: hidden;
 
     @media (min-width: 600px) {
       grid-template-columns: 1fr 1fr;
@@ -28,6 +30,13 @@ const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-a
     @media (min-width: 960px) {
       width: 1000px;
     } 
+  }
+
+  .image-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
   }
 
   img {
@@ -43,10 +52,32 @@ const ttfSpeedScore = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-a
   }
 
   .ttf-scores {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
     transform: translateX(40px);
 
     @media (min-width: 600px) {
       transform: translate(-40px, 60px);
+    }
+  }
+
+  .galaxy {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    justify-self: end;
+    align-self: center;
+    background-color: #14ffff;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    z-index: -1;
+
+    @media (min-width: 960px) {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+     
     }
   }
 </style>

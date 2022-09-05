@@ -7,14 +7,62 @@
   width: 100%;
 }
 
-.sale {
+.sale_notification {
   width: 320px;
   opacity: 0;
   transform: scale(0);
 }
 
-.lead {
+.lead_notification {
   opacity: 0;
   transform: scale(0);
   width: 280px;
+}
+
+@media (min-width: 392px) {
+  .sale_notification {
+    width: 380px;
+  }
+
+  .lead_notification {
+    width: 320px;
+  }
+}
+
+@media (min-width: 600px) {
+  .sale_container {
+    transform: translateX(-80px);
+  }
+
+  .lead_container {
+    transform: translateX(80px);
+  }
+}
+
+@media (min-width: 960px) {
+  .sale_container {
+    transform: translateX(-140px);
+  }
+
+  .lead_container {
+    transform: translateX(140px);
+  }
+}
+
+@media (min-width: 1100px) {
+  .sale_container {
+    transform: translateX(-200px);
+  }
+
+  .lead_container {
+    transform: translateX(200px);
+  }
+
+  .sale_notification {
+    width: 420px;
+  }
+
+  .lead_notification {
+    width: 420px;
+  }
 }

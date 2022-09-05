@@ -1,0 +1,18 @@
+.input_field_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 740px;
+  height: 130px;
+}
+
+.field_container {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}

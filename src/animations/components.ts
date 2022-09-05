@@ -1,4 +1,4 @@
-import { animate, timeline, spring } from "motion";
+import { animate } from "motion";
 
 export const notificationPop = (notification: HTMLImageElement) => {
   animate(

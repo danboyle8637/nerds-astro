@@ -21,6 +21,7 @@ export const SalesAndLeads: Component = () => {
     rootMargin: "0% 0% -20% 0%",
     shouldUnobserve: true,
   });
+
   const pop1 = useVisibilityObserver(() => notification1);
   const pop2 = useVisibilityObserver(() => notification2);
   const pop3 = useVisibilityObserver(() => notification3);
@@ -46,30 +47,38 @@ export const SalesAndLeads: Component = () => {
 
   return (
     <div class={styles.container}>
-      <img
-        ref={notification1!}
-        class={styles.sale}
-        src={salesNotification}
-        alt=""
-      />
-      <img
-        ref={notification2!}
-        class={styles.lead}
-        src={leadNotification}
-        alt=""
-      />
-      <img
-        ref={notification3!}
-        class={styles.sale}
-        src={salesNotification}
-        alt=""
-      />
-      <img
-        ref={notification4!}
-        class={styles.lead}
-        src={leadNotification}
-        alt=""
-      />
+      <div class={styles.sale_container}>
+        <img
+          ref={notification1!}
+          class={styles.sale_notification}
+          src={salesNotification}
+          alt=""
+        />
+      </div>
+      <div class={styles.lead_container}>
+        <img
+          ref={notification2!}
+          class={styles.lead_notification}
+          src={leadNotification}
+          alt=""
+        />
+      </div>
+      <div class={styles.sale_container}>
+        <img
+          ref={notification3!}
+          class={styles.sale_notification}
+          src={salesNotification}
+          alt=""
+        />
+      </div>
+      <div class={styles.lead_container}>
+        <img
+          ref={notification4!}
+          class={styles.lead_notification}
+          src={leadNotification}
+          alt=""
+        />
+      </div>
     </div>
   );
 };
