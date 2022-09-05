@@ -94,6 +94,7 @@ export const updateInputValue = (event: InputEvent) => {
           valid: valid,
         };
       });
+      break;
     }
     case "emailAddress": {
       setInitialLeadForm("emailAddress", () => {
@@ -103,6 +104,7 @@ export const updateInputValue = (event: InputEvent) => {
           valid: valid,
         };
       });
+      break;
     }
     case "phoneNumber": {
       setInitialLeadForm("phoneNumber", () => {
@@ -111,6 +113,7 @@ export const updateInputValue = (event: InputEvent) => {
           valid: true,
         };
       });
+      break;
     }
     case "currentSite": {
       setInitialLeadForm("currentSite", () => {
@@ -124,12 +127,12 @@ export const updateInputValue = (event: InputEvent) => {
       setInitialLeadForm("biggestPriority", (prevValue) => {
         const optionsCopy = [...prevValue.options];
         const updatedOptions = updateOptions(optionsCopy, value);
-        console.log(updatedOptions);
         return {
           value: value,
           options: updatedOptions,
         };
       });
+      break;
     }
     case "whyNow": {
       setInitialLeadForm("whyNow", () => {
@@ -139,9 +142,10 @@ export const updateInputValue = (event: InputEvent) => {
           valid: valid,
         };
       });
+      break;
     }
     default: {
-      return initialLeadForm;
+      return;
     }
   }
 };
@@ -160,24 +164,28 @@ export const updateInputOptions = (event: FocusEvent) => {
           touched: !prevValue.touched,
         };
       });
+      break;
     }
     case "emailAddress": {
       setInitialLeadForm("emailAddressOptions", (prevValue) => ({
         initia: false,
         touched: !prevValue.touched,
       }));
+      break;
     }
     case "phoneNumber": {
       setInitialLeadForm("phoneNumberOptions", (prevValue) => ({
         initial: false,
         touched: !prevValue.touched,
       }));
+      break;
     }
     case "currentSite": {
       setInitialLeadForm("currentSiteOptions", (prevValue) => ({
         initial: false,
         touched: !prevValue.touched,
       }));
+      break;
     }
     case "biggestPriority": {
       break;
@@ -187,9 +195,10 @@ export const updateInputOptions = (event: FocusEvent) => {
         initial: false,
         touched: !prevValue.touched,
       }));
+      break;
     }
     default: {
-      setInitialLeadForm(initialLeadForm);
+      return;
     }
   }
 };
