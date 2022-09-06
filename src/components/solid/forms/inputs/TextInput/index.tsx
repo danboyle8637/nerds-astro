@@ -44,7 +44,7 @@ export const TextInput: Component<TextInputProps> = (props) => {
               : styles.input_label
           }
         >
-          First Name
+          {props.labelName}
         </label>
         <div class={styles.input_container}>
           <input

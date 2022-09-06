@@ -18,10 +18,7 @@
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   align-items: center;
-  background-color: var(
-    --field-container-background-color,
-    var(--background-color-dark)
-  );
+  background-color: var(--field-container-background-color, #422468);
   width: 100%;
   isolation: isolate;
   overflow: hidden;

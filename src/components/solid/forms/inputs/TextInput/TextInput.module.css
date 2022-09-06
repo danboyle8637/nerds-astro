@@ -19,10 +19,7 @@
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   align-items: center;
-  background-color: var(
-    --field-container-background-color,
-    var(--background-color-dark)
-  );
+  background-color: var(--field-container-background-color, #422468);
   width: 100%;
   isolation: isolate;
   overflow: hidden;
@@ -50,7 +47,7 @@
   composes: input_label;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #6a7e9d;
+  opacity: 0.5;
   transform: translate(0, -210%);
 }
 
@@ -74,7 +71,7 @@
   width: 100%;
   height: 48px;
   outline: none;
-  caret-color: var(--form-caret, var(--accent-purple));
+  caret-color: var(--form-caret, var(--accent-teal));
   transition: color, background-color, border-color, 300ms ease-in-out;
 }
 
