@@ -1,0 +1,82 @@
+---
+import { MonthIcon } from "../svgs/MonthIcon"
+import type { FormButtonTheme } from '../../types/components'
+
+interface Props {
+  theme: FormButtonTheme
+  slug: string
+  title: string
+}
+
+const { theme, slug, title } = Astro.props
+
+const styles = 
+  theme === "teal"
+    ? {"--button-background-color": "var(--accent-teal)"}
+    : theme === "purple" 
+    ? {"--button-background-color": "var(--accent-purple)"}
+    : {"--button-background-color": "var(--accent-pink)"}
+---
+
+<div class="form-button-container">
+  
+  <a
+    href={slug}
+    title={title}
+    style={styles}
+  >
+    <div class="button-icon">
+      <MonthIcon client:idle theme="dark" />
+    </div>
+    <slot />
+  </a>
+</div>
+
+<style lang="scss">
+  .form-button-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(17, 17, 17);
+    width: 100%;
+    max-width: 400px;
+    height: 72px;
+  }
+
+  a {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--font-color-dark);
+    background-color: var(--button-background-color);
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform, background-color, 300ms ease-in-out;
+    z-index: 1;
+
+    &:focus {
+      outline: 3px solid var(--accent-teal);
+      outline-offset: 5px;
+      transform: translate(-8px, -8px);
+    }
+
+    &:hover {
+      transform: translate(-8px, -8px);
+    }
+  }
+
+  .button_icon {
+    width: 40px;
+  }
+</style>

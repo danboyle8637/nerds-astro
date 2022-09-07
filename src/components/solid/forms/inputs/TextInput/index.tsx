@@ -1,9 +1,10 @@
-import { createEffect } from "solid-js";
+import { createSignal, createMemo, onMount } from "solid-js";
 import type { Component } from "solid-js";
 
 import { CheckIcon } from "../../../../svgs/forms/CheckIcon";
 import { ErrorIcon } from "../../../../svgs/forms/ErrorIcon";
 import { ActiveIcon } from "../../../../svgs/forms/ActiveIcon";
+import { OptionalTag } from "../../formComponents/OptionalTag";
 import styles from "./TextInput.module.css";
 
 interface TextInputProps {
@@ -22,11 +23,18 @@ interface TextInputProps {
   onFocus: (event: FocusEvent) => void;
   onBlur: (event: FocusEvent) => void;
   isLoading: boolean;
+  optional?: boolean;
 }
 
 export const TextInput: Component<TextInputProps> = (props) => {
-  createEffect(() => {
-    console.log(props.value);
+  const [showOptionalTag, setShowOptionalTag] = createSignal<boolean>(false);
+
+  createMemo(() => {
+    if (props.optional && props.value === "") {
+      setShowOptionalTag(true);
+    } else {
+      setShowOptionalTag(false);
+    }
   });
 
   return (
@@ -39,13 +47,16 @@ export const TextInput: Component<TextInputProps> = (props) => {
         <label
           html-for={props.labelFor}
           class={
-            props.touched || (!props.touched && props.valid)
+            props.touched ||
+            (!props.touched && props.valid && props.value !== "") ||
+            (!props.valid && !props.initial && props.value !== "")
               ? styles.input_label_active
               : styles.input_label
           }
         >
           {props.labelName}
         </label>
+        <OptionalTag showTag={showOptionalTag()} />
         <div class={styles.input_container}>
           <input
             class={styles.the_input}
@@ -59,7 +70,7 @@ export const TextInput: Component<TextInputProps> = (props) => {
             onBlur={props.onBlur}
           />
           <div class={styles.input_status}>
-            {props.valid && !props.touched ? (
+            {props.valid && !props.touched && props.value !== "" ? (
               <CheckIcon
                 isTextInput={true}
                 isTrackingCheck={false}
@@ -67,7 +78,10 @@ export const TextInput: Component<TextInputProps> = (props) => {
               />
             ) : null}
             {props.touched ? <ActiveIcon isActive={props.touched} /> : null}
-            {!props.valid && !props.touched && !props.initial ? (
+            {!props.valid &&
+            !props.touched &&
+            !props.initial &&
+            !props.optional ? (
               <ErrorIcon isActive={!props.valid && !props.touched} />
             ) : null}
           </div>
@@ -76,7 +90,8 @@ export const TextInput: Component<TextInputProps> = (props) => {
           class={
             props.touched
               ? styles.status_indicator_active
-              : !props.touched && !props.valid && !props.initial
+              : (!props.touched && !props.valid && !props.initial) ||
+                (props.optional && !props.initial && !props.valid)
               ? styles.status_indicator_error
               : styles.status_indicator
           }

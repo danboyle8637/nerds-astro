@@ -1,9 +1,10 @@
-import { createEffect } from "solid-js";
+import { createSignal, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
 import { CheckIcon } from "../../../../svgs/forms/CheckIcon";
 import { ErrorIcon } from "../../../../svgs/forms/ErrorIcon";
 import { ActiveIcon } from "../../../../svgs/forms/ActiveIcon";
+import { OptionalTag } from "../../formComponents/OptionalTag";
 import styles from "./TextArea.module.css";
 
 interface TextAreaProps {
@@ -23,11 +24,18 @@ interface TextAreaProps {
   onFocus: (event: FocusEvent) => void;
   onBlur: (event: FocusEvent) => void;
   isLoading: boolean;
+  optional?: boolean;
 }
 
 export const TextArea: Component<TextAreaProps> = (props) => {
-  createEffect(() => {
-    console.log(props.value);
+  const [showOptionalTag, setShowOptionalTag] = createSignal<boolean>(false);
+
+  createMemo(() => {
+    if (props.optional && props.value === "") {
+      setShowOptionalTag(true);
+    } else {
+      setShowOptionalTag(false);
+    }
   });
 
   return (
@@ -40,13 +48,16 @@ export const TextArea: Component<TextAreaProps> = (props) => {
         <label
           html-for={props.labelFor}
           class={
-            props.touched || (!props.touched && props.valid)
+            props.touched ||
+            (!props.touched && props.valid) ||
+            (props.optional && props.value !== "")
               ? styles.input_label_active
               : styles.input_label
           }
         >
           {props.labelName}
         </label>
+        <OptionalTag showTag={showOptionalTag()} isTextArea={true} />
         <div class={styles.input_container}>
           <textarea
             class={styles.the_input}
@@ -70,7 +81,11 @@ export const TextArea: Component<TextAreaProps> = (props) => {
               />
             ) : null}
             {props.touched ? <ActiveIcon isActive={props.touched} /> : null}
-            {!props.valid && !props.touched && !props.initial ? (
+            {!props.valid &&
+            !props.touched &&
+            !props.initial &&
+            props.optional &&
+            props.value !== "" ? (
               <ErrorIcon isActive={!props.valid && !props.touched} />
             ) : null}
           </div>
@@ -79,7 +94,11 @@ export const TextArea: Component<TextAreaProps> = (props) => {
           class={
             props.touched
               ? styles.status_indicator_active
-              : !props.touched && !props.valid && !props.initial
+              : !props.touched &&
+                !props.valid &&
+                !props.initial &&
+                props.optional &&
+                props.value !== ""
               ? styles.status_indicator_error
               : styles.status_indicator
           }

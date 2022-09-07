@@ -8,18 +8,23 @@ interface MonthIconProps extends SVGProps {
 }
 
 export const MonthIcon: Component<MonthIconProps> = (props) => {
-  const styles = createMemo(() => ({
-    "--calendar-body":
-      props.theme === "dark"
-        ? "var(--accent-teal-dark)"
-        : "var(--font-color-light)",
-    "--highlight-day":
-      props.theme === "dark" ? "var(--accent-purple)" : "var(--accent-teal)",
-    "--normal-day":
-      props.theme === "dark"
-        ? "var(--accent-teal-dark)"
-        : "var(--font-color-light)",
-  }));
+  const styles = createMemo(
+    () =>
+      ({
+        "--calendar-body":
+          props.theme === "dark"
+            ? "var(--accent-teal-dark)"
+            : "var(--font-color-light)",
+        "--highlight-day":
+          props.theme === "dark"
+            ? "var(--accent-purple)"
+            : "var(--accent-teal)",
+        "--normal-day":
+          props.theme === "dark"
+            ? "var(--accent-teal-dark)"
+            : "var(--font-color-light)",
+      } as JSX.CSSProperties)
+  );
 
   return (
     <svg
@@ -31,7 +36,7 @@ export const MonthIcon: Component<MonthIconProps> = (props) => {
       clip-rule="evenodd"
       stroke-linejoin="round"
       stroke-miterlimit="2"
-      style={styles() as JSX.CSSProperties}
+      style={styles()}
     >
       <path style="fill:none" d="M0 0h340.411v299.374H0z" />
       <path

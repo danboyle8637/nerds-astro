@@ -1,4 +1,4 @@
-import { createEffect } from "solid-js";
+import { createEffect, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
 import { TextInput } from "../inputs/TextInput";
@@ -37,6 +37,14 @@ export const LeadForm: Component = () => {
     console.log("Save data and then kick to schedule view");
   };
 
+  const formValid = createMemo(() => {
+    return (
+      firstName().valid &&
+      emailAddress().valid &&
+      biggestPriority().value !== ""
+    );
+  });
+
   return (
     <form class={styles.lead_form} onSubmit={handleFormSubmit}>
       <TextInput
@@ -57,7 +65,7 @@ export const LeadForm: Component = () => {
         isLoading={false}
       />
       <TextInput
-        inputType="text"
+        inputType="email"
         name="emailAddress"
         labelFor="emailAddress"
         labelName="Email Address"
@@ -81,6 +89,7 @@ export const LeadForm: Component = () => {
         labelInstructions="Enter your phone number"
         labelError="Must a full number"
         placeholder="Enter your phone number"
+        optional={true}
         value={phoneNumber().value}
         valid={phoneNumber().valid}
         initial={phoneNumberOptions().initial}
@@ -101,10 +110,11 @@ export const LeadForm: Component = () => {
         inputType="text"
         name="currentSite"
         labelFor="currentSite"
-        labelName="Current Site (optional)"
+        labelName="Current Site"
         labelInstructions="Enter your current site url"
         labelError="No error"
         placeholder="Enter your current site url"
+        optional={true}
         value={currentSite().value}
         valid={currentSite().valid}
         initial={currentSiteOptions().initial}
@@ -123,6 +133,7 @@ export const LeadForm: Component = () => {
         placeholder="Tell me why is your project important right now..."
         maxLength={400}
         rows={8}
+        optional={true}
         value={whyNow().value}
         valid={whyNow().valid}
         initial={whyNowOptions().initial}
@@ -132,8 +143,8 @@ export const LeadForm: Component = () => {
         onBlur={updateWhyNowptions}
         isLoading={false}
       />
-      <FormButton theme="teal" disabled={false}>
-        Go to Step 2 - Pick Time
+      <FormButton theme="teal" disabled={!formValid()}>
+        Step 2 - Schecule Time
       </FormButton>
     </form>
   );

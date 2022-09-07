@@ -13,18 +13,31 @@ interface FormButtonProps {
 
 export const FormButton: Component<FormButtonProps> = (props) => {
   const child = children(() => props.children);
-
   let buttonRef: HTMLButtonElement;
 
   const [isHovering, setIsHovering] = createSignal<boolean>(false);
 
   createEffect(() => {
-    if (isHovering()) {
+    const hasActiveClass = buttonRef.classList.contains(
+      styles.form_button_active
+    );
+
+    if (isHovering() && !hasActiveClass) {
       buttonRef.classList.add(styles.form_button_active);
     }
 
-    if (!isHovering()) {
+    if (!isHovering() && hasActiveClass) {
       buttonRef.classList.remove(styles.form_button_active);
+    }
+  });
+
+  createEffect(() => {
+    if (props.disabled) {
+      buttonRef.classList.add(styles.form_button_disabled);
+    }
+
+    if (!props.disabled) {
+      buttonRef.classList.remove(styles.form_button_disabled);
     }
   });
 
@@ -46,6 +59,7 @@ export const FormButton: Component<FormButtonProps> = (props) => {
         }
         onMouseOver={toggleButtonHover}
         onMouseLeave={toggleButtonHover}
+        disabled={props.disabled}
       >
         <div class={styles.button_icon}>
           <MonthIcon theme="dark" />

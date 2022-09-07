@@ -1,0 +1,30 @@
+.tag_container {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  padding: 2px 12px;
+  background-color: hsla(0, 0%, 0%, 0.4);
+  border-radius: 60px;
+  width: fit-content;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-100%, -50%);
+  transition: opacity 300ms ease-in-out;
+  z-index: 1;
+}
+
+.tag_container_textarea {
+  composes: tag_container;
+  top: 20px;
+  transform: translate(-100%, 0);
+}
+
+.show_tag {
+  opacity: 1;
+}
+
+.tag_label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--font-color-light);
+}

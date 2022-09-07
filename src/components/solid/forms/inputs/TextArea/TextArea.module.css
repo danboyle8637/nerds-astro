@@ -46,7 +46,7 @@
   composes: input_label;
   font-size: 1.1rem;
   font-weight: 500;
-  color: #6a7e9d;
+  opacity: 0.5;
   transform: translate(0, -210%);
 }
 
@@ -70,7 +70,7 @@
   width: 100%;
   resize: none;
   outline: none;
-  caret-color: var(--form-caret, var(--accent-purple));
+  caret-color: var(--form-caret, var(--accent-teal));
   transition: color, background-color, border-color, 300ms ease-in-out;
 }
 

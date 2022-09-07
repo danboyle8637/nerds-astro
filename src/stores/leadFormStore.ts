@@ -73,7 +73,7 @@ export const updateFirstNameValue = (event: InputEvent) => {
   const value = inputElement.value;
 
   setFirstName(() => {
-    const valid = value.length > 0;
+    const valid = value.length > 1;
     const name = capitalizeName(value);
 
     return {
