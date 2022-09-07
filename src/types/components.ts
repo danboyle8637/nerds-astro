@@ -7,3 +7,5 @@ export interface SVGProps {
   height?: string;
   gradientId?: string;
 }
+
+export type FormButtonTheme = "teal" | "purple" | "pink";

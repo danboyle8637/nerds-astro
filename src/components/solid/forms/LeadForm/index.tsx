@@ -4,6 +4,7 @@ import type { Component } from "solid-js";
 import { TextInput } from "../inputs/TextInput";
 import { TextArea } from "../inputs/TextArea";
 import { RadioInput } from "../inputs/RadioInput";
+import { FormButton } from "../../../solid/buttons/FormButton";
 import {
   firstName,
   firstNameOptions,
@@ -31,8 +32,13 @@ import {
 import styles from "./LeadForm.module.css";
 
 export const LeadForm: Component = () => {
+  const handleFormSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
+    console.log("Save data and then kick to schedule view");
+  };
+
   return (
-    <form class={styles.lead_form}>
+    <form class={styles.lead_form} onSubmit={handleFormSubmit}>
       <TextInput
         inputType="text"
         name="firstName"
@@ -126,6 +132,9 @@ export const LeadForm: Component = () => {
         onBlur={updateWhyNowptions}
         isLoading={false}
       />
+      <FormButton theme="teal" disabled={false}>
+        Go to Step 2 - Pick Time
+      </FormButton>
     </form>
   );
 };

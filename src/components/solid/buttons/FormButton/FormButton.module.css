@@ -1,0 +1,55 @@
+.form_button_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: rgb(17, 17, 17);
+  width: 100%;
+  max-width: 400px;
+  height: 72px;
+}
+
+.form_button {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--font-color-dark);
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+  z-index: 1;
+}
+
+.form_button_teal {
+  composes: form_button;
+  background-color: var(--accent-teal);
+}
+
+.form_button_purple {
+  composes: form_button;
+  background-color: var(--accent-purple);
+}
+
+.form_button_pink {
+  composes: form_button;
+  background-color: var(--accent-pink);
+}
+
+.form_button_active {
+  componses: form_button;
+  transform: translate(-8px, -8px);
+}
+
+.button_icon {
+  width: 40px;
+}
