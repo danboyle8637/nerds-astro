@@ -9,6 +9,12 @@ import {
   getFirstDayOfWeekOfMonth, 
 } from '../../utils/calendarFunctions'
 
+interface Props {
+  timelineInDays: number
+}
+
+const { timelineInDays } = Astro.props
+
 const [currentMonth, currentDay, currentYear] = getCurrentDateElements()
 const currentMonthString = getActiveMonthString(currentMonth);
 const firstDay = getFirstDayOfWeekOfMonth(currentMonth, currentYear);
@@ -29,7 +35,7 @@ const daysArray = getTotalDaysArrayInGivenMonth(currentMonth);
       activeMonth={currentMonth}
       currentMonth={currentMonth}
       year={currentYear}
-      timelineInDays={5}
+      timelineInDays={timelineInDays}
     />
   </div>
 </div>
