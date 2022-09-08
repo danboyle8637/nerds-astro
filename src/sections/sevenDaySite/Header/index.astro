@@ -25,6 +25,7 @@ import InternalNavButton from '../../../components/buttons/InternalNavButton.ast
 		align-items: center;
 		background-color: var(--background-color-dark);
 		width: 100%;
+		box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
 	}
 
 	.content-container {
@@ -70,7 +71,7 @@ import InternalNavButton from '../../../components/buttons/InternalNavButton.ast
 		width: 100%;
 		perspective: 1000px;
 
-		@include aboveMobile {
+		@include aboveTablet {
 			grid-template-columns: 1fr 1fr;
 		}
 	}

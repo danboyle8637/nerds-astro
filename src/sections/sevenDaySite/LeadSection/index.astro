@@ -1,0 +1,88 @@
+---
+const paragraphs: string[] = [
+  "The decisions you make during step 1 will be with you for years to come. Let's not mess this up.",
+  "And a good website is expensive... maybe out of your budget right now.",
+]
+---
+
+<div class="container">
+  <div class="grabber-container">
+    <div class="solo-grabber">
+      <p>Building a website...</p>
+      <p class="code-callout">is no small decision.</p>
+    </div>
+    <div class="solo-grabber">
+      <p>Small or large...</p>
+      <p class="code-callout">business is done online.</p>
+    </div>
+  </div>
+  <div class="paragraphs">
+    {paragraphs.map(paragraph => <p>{paragraph}</p>)}
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 0 12px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 120px;
+    justify-items: center;
+    isolation: isolate;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+  }
+
+  .grabber-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 60px;
+    justify-items: start;
+    width: fit-content;
+
+    @include aboveMobile {
+      gap: 100px;
+      width: 400px;
+    }
+
+    @include aboveTablet {
+      width: 600px;
+    }
+  }
+
+  .solo-grabber {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 12px;
+    justify-items: start;
+
+    p {
+      font-size: 2.6rem;
+    }
+
+    @include aboveTablet {
+      p {
+        font-size: 3.2rem;
+      }
+    }
+  }
+
+  .paragraphs {
+    @include baseColGrid;
+    gap: 30px;
+    width: 100%;
+  }
+</style>
