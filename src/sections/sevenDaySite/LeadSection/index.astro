@@ -6,14 +6,15 @@ const paragraphs: string[] = [
 ---
 
 <div class="container">
+  <div class="galaxy top-galaxy" />
   <div class="grabber-container">
     <div class="solo-grabber">
       <p>Building a website...</p>
-      <p class="code-callout">is no small decision.</p>
+      <p class="code-callout code-callout-large">is no small decision.</p>
     </div>
     <div class="solo-grabber">
       <p>Small or large...</p>
-      <p class="code-callout">business is done online.</p>
+      <p class="code-callout code-callout-large">business is done online.</p>
     </div>
   </div>
   <div class="paragraphs">
@@ -26,6 +27,7 @@ const paragraphs: string[] = [
   @import "../../../styles/layout.scss";
 
   .container {
+    position: relative;
     padding: 0 12px;
     position: relative;
     display: grid;
@@ -34,6 +36,7 @@ const paragraphs: string[] = [
     gap: 120px;
     justify-items: center;
     isolation: isolate;
+    z-index: -1;
 
     @include aboveMobile {
       width: 660px;
@@ -84,5 +87,28 @@ const paragraphs: string[] = [
     @include baseColGrid;
     gap: 30px;
     width: 100%;
+  }
+
+  .galaxy {
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    z-index: -1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+     
+    }
+  }
+
+  .top-galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(100px, -200px);
   }
 </style>

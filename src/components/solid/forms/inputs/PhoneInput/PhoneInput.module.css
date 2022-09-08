@@ -1,0 +1,110 @@
+.input_field_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  height: 72px;
+  background-color: rgb(17, 17, 17);
+  box-shadow: var(--input-field-container-box-shadow, "none");
+}
+
+.field_container {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  align-items: center;
+  background-color: var(--field-container-background-color, #422468);
+  width: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 300ms ease-in-out;
+}
+
+.field_container_active {
+  composes: field_container;
+  transform: translate(-8px, -8px);
+}
+
+.input_label {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--font-color-light);
+  pointer-events: none;
+  transform: translate(0, -50%);
+  transition: transform, font-size, font-weight, color, 300ms ease-in-out;
+}
+
+.input_label_active {
+  composes: input_label;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.5;
+  transform: translate(0, -210%);
+}
+
+.input_container {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 80px 60px min-content 1fr min-content;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.area_code_container {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  gap: 4px;
+  align-items: center;
+  width: fit-content;
+}
+
+.phone_number_extras {
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--font-color-light);
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.phone_number_extras_hidden {
+  composes: phone_number_extras;
+  opacity: 0;
+}
+
+.input_status {
+  width: 20px;
+  height: 20px;
+}
+
+.status_indicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #ce99ff;
+  width: 100%;
+  height: 6px;
+  transform: translate(-100%, 0);
+  transition: background-color, transform, 400ms ease-in-out;
+}
+
+.status_indicator_active {
+  composes: status_indicator;
+  transform: translate(0, 0);
+  transition: background-color, transform, 400ms ease-in-out;
+}
+
+.status_indicator_error {
+  composes: status_indicator;
+  background-color: #d31313;
+  transform: translate(0, 0);
+}

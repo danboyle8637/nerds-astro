@@ -1,0 +1,46 @@
+<h1>
+  <span class="headline-group">
+    <span>Here Are Ideas</span>
+    <span>For How To Use</span>
+  </span>
+  <span>Your 7 Day Site</span>
+</h1>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  h1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 6px;
+    justify-items: end;
+
+    @include aboveMobile {
+      justify-items: end;
+    }
+  }
+
+  .headline-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    width: 100%;
+
+    @include aboveMobile {
+      flex-direction: row;
+      gap: 12px;
+    }
+  }
+
+  span {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 6rem;
+    }
+  }
+</style>

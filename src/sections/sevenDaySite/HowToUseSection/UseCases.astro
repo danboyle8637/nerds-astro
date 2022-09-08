@@ -1,0 +1,59 @@
+---
+import UseCaseCard from "../../../components/cards/UseCaseCard.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+import { useCases } from '../../../data/sevenDaySite'
+---
+
+<div class="container">
+  <div class="card-container">
+    {useCases.map(use => {
+      const { id, imageUrl, altTag, titleTag, useCase } = use
+  
+      return (
+        <UseCaseCard 
+          id={id}
+          imageUrl={imageUrl}
+          altTag={altTag}
+          titleTag={titleTag}
+          useCase={useCase}
+        />
+      )
+    })}
+  </div>
+  <InternalNavButton type="teal" title="Setup a Nerd Chat" slug="/">Setup a Nerd Chat</InternalNavButton>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 160px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .card-container {
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 12px;
+      row-gap: 120px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+
+    @include aboveIpadPro {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 80px;
+      width: fit-content;
+    }
+  }
+</style>

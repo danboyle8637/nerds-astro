@@ -1,0 +1,37 @@
+---
+import Headline from "./Headline.astro";
+import UseCases from "./UseCases.astro";
+---
+
+<div class="container">
+  <div class="content-container">
+    <Headline />
+    <UseCases />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+  }
+
+  .content-container {
+    padding: 80px 12px;
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      padding: 120px 0;
+    }
+  }
+</style>
+

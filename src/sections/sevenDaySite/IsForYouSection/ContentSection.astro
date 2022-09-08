@@ -1,0 +1,45 @@
+---
+import QuestionList from "./QuestionList.astro";
+
+const paragraphs: string[] = [
+  "The 7 Day Site offer was <strong>created for you</strong>.",
+  "Don't confuse what a 7 Day Site can do... let me show you."
+]
+---
+
+<div class="container">
+  <QuestionList />
+  <div class="paragraphs">
+    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+  }
+
+  .paragraphs {
+    @include baseColGrid;
+    gap: 30px;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 500px;
+    }
+  }
+</style>

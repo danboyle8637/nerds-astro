@@ -4,6 +4,7 @@ import type { Component } from "solid-js";
 import { TextInput } from "../inputs/TextInput";
 import { TextArea } from "../inputs/TextArea";
 import { RadioInput } from "../inputs/RadioInput";
+import { PhoneInput } from "../inputs/PhoneInput";
 import { FormButton } from "../../../solid/buttons/FormButton";
 import {
   firstName,
@@ -16,10 +17,6 @@ import {
   updateBiggestPriority,
   updateEmailAddressValue,
   updateEmailAddressOptions,
-  phoneNumber,
-  phoneNumberOptions,
-  updatePhoneNumberValue,
-  updatePhoneNumberOptions,
   currentSite,
   currentSiteOptions,
   updateCurrentSiteValue,
@@ -81,24 +78,7 @@ export const LeadForm: Component = () => {
         onBlur={updateEmailAddressOptions}
         isLoading={false}
       />
-      <TextInput
-        inputType="tel"
-        name="phoneNumber"
-        labelFor="phoneNumber"
-        labelName="Phone Number"
-        labelInstructions="Enter your phone number"
-        labelError="Must a full number"
-        placeholder="Enter your phone number"
-        optional={true}
-        value={phoneNumber().value}
-        valid={phoneNumber().valid}
-        initial={phoneNumberOptions().initial}
-        touched={phoneNumberOptions().touched}
-        onInput={updatePhoneNumberValue}
-        onFocus={updatePhoneNumberOptions}
-        onBlur={updatePhoneNumberOptions}
-        isLoading={false}
-      />
+      <PhoneInput isLoading={false} optional={true} />
       <RadioInput
         name="biggestPriority"
         questionLabel="What is your biggest priority now?"

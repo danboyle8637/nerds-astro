@@ -45,7 +45,7 @@ export const TextInput: Component<TextInputProps> = (props) => {
         }
       >
         <label
-          html-for={props.labelFor}
+          for={props.labelFor}
           class={
             props.touched ||
             (!props.touched && props.valid && props.value !== "") ||
@@ -90,8 +90,14 @@ export const TextInput: Component<TextInputProps> = (props) => {
           class={
             props.touched
               ? styles.status_indicator_active
-              : (!props.touched && !props.valid && !props.initial) ||
-                (props.optional && !props.initial && !props.valid)
+              : (!props.touched &&
+                  !props.valid &&
+                  !props.initial &&
+                  !props.optional) ||
+                (props.optional &&
+                  !props.initial &&
+                  !props.valid &&
+                  props.value !== "")
               ? styles.status_indicator_error
               : styles.status_indicator
           }

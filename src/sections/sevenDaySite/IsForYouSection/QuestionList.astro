@@ -1,0 +1,25 @@
+---
+import QuestionBullet from "../../../components/typography/QuestionBullet.astro";
+
+const questions: string[] = [
+  "If you have a limited budget but you know you need to get online fast...",
+  "If you have an awesome product or service you want to highlight and start selling like crazy...",
+  "If you need a website dedicated to getting leads and building an email list...",
+  "If you want the perfect starter website, ready to grow with you for years..."
+]
+---
+
+<div class="container">
+  {questions.map(question => <QuestionBullet>{question}</QuestionBullet>)}
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 80px;
+    width: 100%;
+  }
+</style>

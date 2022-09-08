@@ -31,16 +31,40 @@ export const [emailAddressOptions, setEmailAddressOptions] =
     touched: false,
   });
 
-export const [phoneNumber, setPhoneNumber] = createSignal<InputValue>({
+export const [areaCode, setAreaCode] = createSignal<InputValue>({
   value: "",
   valid: false,
 });
 
-export const [phoneNumberOptions, setPhoneNumberOptions] =
+export const [areaCodeOptions, setAreaCodeOptions] = createSignal<InputOptions>(
+  {
+    initial: true,
+    touched: false,
+  }
+);
+
+export const [firstThree, setFirstThree] = createSignal<InputValue>({
+  value: "",
+  valid: false,
+});
+
+export const [firstThreeOptions, setFirstThreeOptions] =
   createSignal<InputOptions>({
     initial: true,
     touched: false,
   });
+
+export const [lastFour, setLastFour] = createSignal<InputValue>({
+  value: "",
+  valid: false,
+});
+
+export const [lastFourOptions, setLastFourOptions] = createSignal<InputOptions>(
+  {
+    initial: true,
+    touched: false,
+  }
+);
 
 export const [currentSite, setCurrentSite] = createSignal<InputValue>({
   value: "",
@@ -116,20 +140,62 @@ export const updateEmailAddressOptions = (event: FocusEvent) => {
   });
 };
 
-export const updatePhoneNumberValue = (event: InputEvent) => {
+export const updateAreaCode = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
-  const value = inputElement.value.slice(0, 10);
+  const value = inputElement.value.slice(0, 3);
 
-  setPhoneNumber(() => {
+  setAreaCode(() => {
     return {
       value: value,
-      valid: true,
+      valid: value.length === 3,
     };
   });
 };
 
-export const updatePhoneNumberOptions = (event: FocusEvent) => {
-  setPhoneNumberOptions((prevValue) => {
+export const updateAreaCodeOptions = () => {
+  setAreaCodeOptions((prevValue) => {
+    return {
+      initial: false,
+      touched: !prevValue.touched,
+    };
+  });
+};
+
+export const updateFirstThree = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value.slice(0, 3);
+
+  setFirstThree(() => {
+    return {
+      value: value,
+      valid: value.length === 3,
+    };
+  });
+};
+
+export const updateFirstThreeOptions = () => {
+  setFirstThreeOptions((prevValue) => {
+    return {
+      initial: false,
+      touched: !prevValue.touched,
+    };
+  });
+};
+
+export const updateLastFour = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value.slice(0, 4);
+
+  setLastFour(() => {
+    return {
+      value: value,
+      valid: value.length === 4,
+    };
+  });
+};
+
+export const updateLastFourOptions = () => {
+  setLastFourOptions((prevValue) => {
     return {
       initial: false,
       touched: !prevValue.touched,

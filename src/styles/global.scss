@@ -80,6 +80,11 @@ p {
   line-height: 1.6;
 }
 
+strong {
+  color: #bfa9ff;
+  font-weight: 800;
+}
+
 ol,
 ul,
 li {
@@ -96,8 +101,7 @@ textarea {
 
 .code-callout {
   position: relative;
-  padding: 8px 16px;
-  padding-left: 32px;
+  padding: 8px 16px 8px 32px;
   display: flex;
   gap: 6px;
   background-color: hsla(218, 32%, 10%, 0.4);
@@ -112,22 +116,13 @@ textarea {
     content: "~";
     color: var(--accent-teal);
   }
+}
 
-  @include aboveMobile {
-    padding-left: 36px;
-
-    &::before {
-      left: -8px;
-      padding-left: 16px;
-    }
-  }
+.code-callout-large {
+  padding-left: 40px;
 
   @include aboveTablet {
-    padding-left: 50px;
-
-    &::before {
-      padding-left: 24px;
-    }
+    padding-left: 46px;
   }
 }
 

@@ -1,0 +1,31 @@
+.the_input {
+  margin: 0;
+  padding: 8px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--form-input-text, var(--font-color-light));
+  text-align: center;
+  background-color: var(--form-input-background);
+  border: none;
+  width: 100%;
+  height: 48px;
+  outline: none;
+  caret-color: var(--form-caret, var(--accent-teal));
+  transition: color, background-color, border-color, 300ms ease-in-out;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.the_input::placeholder {
+  font-size: 1.6rem;
+  color: var(--form-placeholder, hsla(0, 0%, 0%, 0));
+}
+
+.the_input_pull_left {
+  composes: the_input;
+  text-align: left;
+}

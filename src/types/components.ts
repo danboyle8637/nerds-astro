@@ -9,3 +9,11 @@ export interface SVGProps {
 }
 
 export type FormButtonTheme = "teal" | "purple" | "pink";
+
+export interface SevenDaySiteUseCase {
+  id: number;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  useCase: string;
+}

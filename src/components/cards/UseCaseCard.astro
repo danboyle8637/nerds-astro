@@ -1,0 +1,44 @@
+---
+import type { SevenDaySiteUseCase } from '../../types/components'
+
+interface Props extends SevenDaySiteUseCase {}
+
+const {
+  imageUrl,
+  altTag,
+  titleTag,
+  useCase,
+} = Astro.props
+---
+
+<div class="container">
+  <img src={imageUrl} alt={altTag} title={titleTag}>
+  <p set:html={useCase} />
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 20px;
+    justify-items: center;
+    width: 300px;
+
+    @include aboveIpadPro {
+      width: 280px;
+    }
+  }
+
+  img {
+    pointer-events: none;
+    width: 100%;
+  }
+
+  p {
+    font-size: 2.1rem;
+  }
+</style>
