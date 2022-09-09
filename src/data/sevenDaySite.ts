@@ -40,6 +40,15 @@ export const useCases: SevenDaySiteUseCase[] = [
   {
     id: 4,
     imageUrl:
+      "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/perfect-landing-page_IhbaGgzXq.png?ik-sdk-version=javascript-1.4.3",
+    altTag: "A landing page that focus on the conversion.",
+    titleTag: "Landing Page Focuses on Conversion",
+    useCase:
+      "<strong>The perfect landing page</strong>... allowing you to spend money on traffic know you'll make it back 10X.",
+  },
+  {
+    id: 5,
+    imageUrl:
       "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/launch-website-icon_fGOXuAvIK.png?ik-sdk-version=javascript-1.4.3",
     altTag: "A webiste with a big launch button.",
     titleTag: "Launch Your Website The Right Way",
