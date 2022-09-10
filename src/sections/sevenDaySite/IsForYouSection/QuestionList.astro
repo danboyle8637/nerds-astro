@@ -1,5 +1,5 @@
 ---
-import QuestionBullet from "../../../components/typography/QuestionBullet.astro";
+import PuctuationBullet from "../../../components/typography/PuctuationBullet.astro";
 
 const questions: string[] = [
   "If you have a limited budget but you know you need to get online fast...",
@@ -10,7 +10,7 @@ const questions: string[] = [
 ---
 
 <div class="container">
-  {questions.map(question => <QuestionBullet>{question}</QuestionBullet>)}
+  {questions.map(question => <PuctuationBullet type="question">{question}</PuctuationBullet>)}
 </div>
 
 <style lang="scss">

@@ -1,0 +1,59 @@
+---
+import ContentContainer from "./ContentContainer.astro";
+
+const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div class="container">
+  <img src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
+  <div class="content-container">
+    <ContentContainer />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding-top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+
+    @include aboveMobile {
+      padding-top: 240px;
+    }
+
+    @include aboveTablet {
+      padding-top: 280px;
+    }
+  }
+
+  .content-container {
+    padding: 0 12px 80px 12px;
+    @include baseColGrid;
+    gap: 60px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  img {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    width: 320px;
+    transform: translate(-50%, 0);
+
+    @include aboveMobile {
+      width: 400px;
+    }
+
+    @include aboveTablet {
+      width: 480px;
+    }
+  }
+</style>

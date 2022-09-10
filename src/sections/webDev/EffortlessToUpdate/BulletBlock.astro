@@ -1,5 +1,5 @@
 ---
-import QuestionBullet from '../../../components/typography/QuestionBullet.astro'
+import PuctuationBullet from "../../../components/typography/PuctuationBullet.astro";
 
 const bullets = [
   "Do you want to write blog posts and get FREE SEO traffic?",
@@ -10,7 +10,7 @@ const bullets = [
 
 <div class="container">
   <ul>
-    {bullets.map((bullet) => <QuestionBullet>{bullet}</QuestionBullet>)}
+    {bullets.map((bullet) => <PuctuationBullet type="question">{bullet}</PuctuationBullet>)}
   </ul>
   
 </div>

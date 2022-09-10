@@ -29,13 +29,16 @@ const styles = {
   <p>{label}</p>
 </div>
 
-<style>
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   div {
     position: relative;
     padding: 6px;
     padding-top: 100%;
     background-color: var(--day-background);
-    border-radius: 10px;
+    border-radius: var(--day-border-radius, 10px);
     border: none;
     width: 100%;
     opacity: var(--day-opacity, 1);
@@ -45,6 +48,10 @@ const styles = {
     transform: var(--day-transform, none);
     transition: box-shadow, background-color, 300ms ease-in-out;
     z-index: var(--day-z-index, unset);
+
+    @include aboveMobile {
+      border-radius: 14px;
+    }
   }
 
   div:hover {

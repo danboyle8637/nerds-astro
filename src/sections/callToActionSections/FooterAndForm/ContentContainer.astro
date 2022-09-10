@@ -1,5 +1,5 @@
 ---
-import Headline from "./Headline.astro";
+import Headline from "../Headline.astro";
 import BaseBullet from "../../../components/typography/BaseBullet.astro";
 
 
@@ -25,22 +25,22 @@ const bullets: string[] = [
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 80px;
     justify-items: center;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 660px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       width: 860px;
     }
-    
   }
 
   .content-container {
@@ -50,41 +50,37 @@ const bullets: string[] = [
     gap: 60px;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 560px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       gap: 80px;
       width: 800px;
     }
   }
 
   .bullet-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 40px;
     width: 100%;
 
-    @media (min-width: 392px) {
+    @include aboveIphone11 {
       justify-self: center;
       width: 350px;
     }
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 500px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       width: 600px;
     }
   }
 
   .paragraphs {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 20px;
     width: 100%;
   }

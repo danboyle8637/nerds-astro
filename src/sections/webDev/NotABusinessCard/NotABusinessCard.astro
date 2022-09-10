@@ -1,5 +1,5 @@
 ---
-import QuestionBullet from "../../../components/typography/QuestionBullet.astro";
+import PuctuationBullet from "../../../components/typography/PuctuationBullet.astro";
 
 const bullets = [
   "...to look generic, blend in, and sound boring?",
@@ -17,7 +17,7 @@ const bullets = [
   <div class="question-container">
     <p>Do you want your website...</p>
     <div class="questions">
-      {bullets.map(bullet => <QuestionBullet>{bullet}</QuestionBullet>)}
+      {bullets.map(bullet => <PuctuationBullet type="question">{bullet}</PuctuationBullet>)}
     </div>
   </div>
   <div class="content">

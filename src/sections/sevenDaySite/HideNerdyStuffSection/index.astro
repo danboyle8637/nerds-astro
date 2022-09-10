@@ -1,0 +1,65 @@
+---
+import Headline from "./Headline.astro";
+import NerdyBullets from "./NerdyBullets.astro";
+
+const codeImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerdy-stuff_eef2vM9zM.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div class="container">
+  <Headline />
+  <div class="content-container">
+    <img src={codeImage} alt="Picture of backend code hooking up services for the website" title="Hide the Nerdy Stuff">
+    <NerdyBullets />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 0 12px;
+    @include baseColGrid;
+    gap: 60px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveTablet {
+      padding: 0 26px;
+      gap: 120px;
+    }
+
+    @include aboveIpadPro {
+      width: 1100px;
+    }
+   }
+
+  .content-container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 600px;
+    }
+
+    @include aboveTablet {
+      grid-template-columns: 450px 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+  }
+
+  img {
+    width: 100%;
+
+    @include aboveMobile {
+      width: 550px;
+    }
+
+    @include aboveTablet {
+      width: 100%;
+    }
+   }
+</style>

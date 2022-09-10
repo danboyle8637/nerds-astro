@@ -38,3 +38,30 @@ export const leadFormOptions: RadioOption[] = [
     isChecked: false,
   },
 ];
+
+export const sevenDaySiteOptions: RadioOption[] = [
+  {
+    id: 0,
+    value: "new_mini_website",
+    label: "New Mini Website",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    value: "promote_one_service",
+    label: "Promote One Service / Product",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    value: "collect_leads",
+    label: "Collect Leads",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    value: "other",
+    label: "Something Else",
+    isChecked: false,
+  },
+];
