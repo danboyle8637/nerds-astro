@@ -1,0 +1,64 @@
+---
+import CardContent from "./CardContent.astro";
+import type { CopyContentService } from '../../../types/components'
+
+interface Props extends CopyContentService {}
+
+const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonTitle, slug  } = Astro.props
+
+---
+
+<div class="base-container">
+  <div class="card-container">
+    <img src={imageUrl} alt={altTag} title={titleTag}>
+    <CardContent 
+      headline={headline}
+      description={description}
+      buttonLabel={buttonLabel}
+      buttonTitle={buttonTitle}
+      slug={slug}
+    />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .base-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    background-color: var(--accent-purple-dark);
+    border-radius: 30px;
+    width: 100%;
+    max-width: 360px;
+    height: 100%;
+  }
+
+  .card-container {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    position: relative;
+    @include baseColGrid;
+    gap: 0px;
+    justify-items: center;
+    border-radius: 20px;
+    width: 100%;
+    transition: transform, box-shadow, 300ms ease-in-out;
+
+    &:hover {
+      box-shadow: 2px 4px 8px 1px hsla(0, 0%, 0%, 0.4);
+      transform: translate(-8px, -8px);
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+  }
+</style>
+

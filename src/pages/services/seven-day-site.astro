@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+import Header from '../../sections/sevenDaySite/Header/index.astro'
+import LeadSection from '../../sections/sevenDaySite/LeadSection/index.astro'
+import IsForYouSection from '../../sections/sevenDaySite/IsForYouSection/index.astro'
+import HowToUseSection from '../../sections/sevenDaySite/HowToUseSection/index.astro'
+import WhatYouGetSection from '../../sections/sevenDaySite/WhatYouGetSection/index.astro'
+import HideNerdyStuffSection from '../../sections/sevenDaySite/HideNerdyStuffSection/index.astro'
+import SevenDaySiteForm from '../../sections/callToActionSections/SevenDaySiteForm/index.astro'
+---
+
+<BaseLayout title="7 Day Site">
+  <div class="view-container">
+    <Header />
+    <LeadSection />
+    <IsForYouSection />
+    <HowToUseSection />
+    <WhatYouGetSection />
+    <HideNerdyStuffSection />
+    <SevenDaySiteForm />
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .view-container {
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @include aboveMobile {
+      gap: 160px;
+    }
+
+    @include aboveIpadPro {
+      gap: 200px;
+    }
+  }
+</style>

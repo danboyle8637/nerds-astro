@@ -14,11 +14,14 @@ const bullets: string[] = [
   <Headline />
   <div class="content-container">
     {bullets.map(bullet => <BaseBullet><span set:html={bullet} /></BaseBullet>)}
-    <div class="pricing-container">
-      <p>Pricing Starts At:</p>
-      <TerminalHeader cursor={true}>
-        <p>$1800</p>
-      </TerminalHeader>
+    <div class="price-container">
+      <div class="pricing-container">
+        <p>Pricing Starts At:</p>
+        <TerminalHeader cursor={true}>
+          <p>$1800</p>
+        </TerminalHeader>
+      </div>
+      <p class="price-explainer">The goal of this service is to get you a 3 page website in 7 days. The pricing will only go up if you want to add another landing page. Beyond that, I'll quote you normal web design pricing.</p>
     </div>
   </div>
 </div>
@@ -59,6 +62,13 @@ const bullets: string[] = [
     }
   }
 
+  .price-container {
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+  }
+
   .pricing-container {
     justify-self: center;
     display: flex;
@@ -86,5 +96,15 @@ const bullets: string[] = [
         font-size: 6rem;
       }
     }
+  }
+
+  .price-explainer {
+    padding: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.8;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    border-radius: 6px;
+    width: 86%;
   }
 </style>

@@ -13,8 +13,8 @@ import {
   updateFirstNameOptions,
   emailAddress,
   emailAddressOptions,
-  biggestPriority,
-  updateBiggestPriority,
+  sevenDaySiteUseCase,
+  updateSevenDaySiteUseCase,
   updateEmailAddressValue,
   updateEmailAddressOptions,
   currentSite,
@@ -26,9 +26,9 @@ import {
   updateWhyNowValue,
   updateWhyNowptions,
 } from "../../../../stores/leadFormStore";
-import styles from "./LeadForm.module.css";
+import styles from "./SevenDaySiteForm.module.css";
 
-export const LeadForm: Component = () => {
+export const SevenDaySiteForm: Component = () => {
   const handleFormSubmit = (event: SubmitEvent) => {
     event.preventDefault();
     console.log("Save data and then kick to schedule view");
@@ -38,7 +38,7 @@ export const LeadForm: Component = () => {
     return (
       firstName().valid &&
       emailAddress().valid &&
-      biggestPriority().value !== ""
+      sevenDaySiteUseCase().value !== ""
     );
   });
 
@@ -81,10 +81,10 @@ export const LeadForm: Component = () => {
       <PhoneInput isLoading={false} optional={true} />
       <RadioInput
         name="biggestPriority"
-        questionLabel="What is your biggest priority now?"
-        value={biggestPriority().value}
-        options={biggestPriority().options}
-        updateInputValue={updateBiggestPriority}
+        questionLabel="What's your seven day site goal?"
+        value={sevenDaySiteUseCase().value}
+        options={sevenDaySiteUseCase().options}
+        updateInputValue={updateSevenDaySiteUseCase}
       />
       <TextInput
         inputType="text"

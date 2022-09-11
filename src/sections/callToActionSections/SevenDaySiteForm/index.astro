@@ -1,5 +1,6 @@
 ---
 import ContentContainer from "./ContentContainer.astro";
+import {SevenDaySiteForm} from '../../../components/solid/forms/SevenDaySiteForm'
 
 const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3"
 ---
@@ -8,6 +9,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
   <img src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
   <div class="content-container">
     <ContentContainer />
+    <SevenDaySiteForm client:visible />
   </div>
 </div>
 

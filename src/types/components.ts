@@ -17,3 +17,15 @@ export interface SevenDaySiteUseCase {
   titleTag: string;
   useCase: string;
 }
+
+export interface CopyContentService {
+  id: number;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  description: string;
+  buttonLabel: string;
+  buttonTitle: string;
+  slug: string;
+}

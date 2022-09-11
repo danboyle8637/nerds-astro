@@ -1,0 +1,56 @@
+---
+import Headline from "./Headline.astro";
+import InternalNavButton from "../../buttons/InternalNavButton.astro";
+
+interface Props {
+  headline: string
+  description: string
+  buttonLabel: string
+  buttonTitle: string
+  slug: string
+}
+
+const {
+  headline,
+  description,
+  buttonLabel,
+  buttonTitle,
+  slug
+} = Astro.props
+---
+
+<div class="container">
+  <div class="spacer" />
+  <div class="content-container">
+    <Headline>
+      {headline}
+    </Headline>
+    <p set:html={description} />
+  </div>
+  <InternalNavButton cta={false} type="teal" title={buttonTitle} slug={slug}>{buttonLabel}</InternalNavButton>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 20px;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    background-color: var(--background-color-dark);
+    border-radius: 20px;
+    width: 100%;
+  } 
+
+  .spacer {
+    width: 100%;
+    height: 120px;
+  }
+
+  .content-container {
+    @include baseColGrid;
+    gap: 20px;
+  }
+</style>

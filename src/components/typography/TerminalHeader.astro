@@ -15,7 +15,9 @@ const containerStyles = cursor
   {cursor ? <div class="cursor" /> : null}
 </div>
 
-<style>
+<style lang="scss">
+	@import "../../styles/sizes.scss";
+
   .container {
 		display: grid;
 		grid-template-columns: 1fr min-content;
@@ -34,13 +36,13 @@ const containerStyles = cursor
 		animation: cursorBlink 800ms ease-in-out infinite alternate;
 	}
 
-	@media (min-width: 392px) {
+	@include aboveIphone11 {
 		.cursor {
 			height: 40px;
 		}
 	}
 
-	@media (min-width: 600px) {
+	@include aboveMobile {
 		.cursor {
 			height: 50px;
 			width: 8px;
@@ -52,14 +54,14 @@ const containerStyles = cursor
 		}
 	}
 
-	@media (min-width: 960px) {
+	@include aboveTablet {
 		.cursor {
 			height: 70px;
 			width: 10px;
 		}
 	}
 
-	@media (min-width: 1100px) {
+	@include aboveIpadPro {
 		.cursor {
 			height: 80px;
 		}

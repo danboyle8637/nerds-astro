@@ -10,7 +10,7 @@ interface Props {
   cta?: boolean
 }
 
-const { slug, title, type, width = 290, cta = true } = Astro.props as Props
+const { slug, title, type, width, cta = true } = Astro.props as Props
 
 const buttonStyles = {
   "--button-layout": cta ? "min-content 1fr" : "1fr",
@@ -41,6 +41,7 @@ const buttonStyles = {
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
+    width: var(--button-width);
   }
 
   a {

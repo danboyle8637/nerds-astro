@@ -3,7 +3,7 @@ import { createSignal } from "solid-js";
 import { capitalizeName, updateOptions } from "../utils/utilityFunctions";
 import { formValidator } from "../utils/validators/formValidators";
 import { emailValidationRules } from "../utils/validators/rules";
-import { leadFormOptions } from "../data/forms";
+import { leadFormOptions, sevenDaySiteOptions } from "../data/forms";
 import type { InputValue, InputOptions, RadioInput } from "../types/forms";
 
 export const [isInitialLeadFormOverlayOpen, setIsInitialLeadFormOverlayOpen] =
@@ -91,6 +91,12 @@ export const [biggestPriority, setBiggestPriority] = createSignal<RadioInput>({
   value: "",
   options: leadFormOptions,
 });
+
+export const [sevenDaySiteUseCase, setSevenDaySiteUseCase] =
+  createSignal<RadioInput>({
+    value: "",
+    options: sevenDaySiteOptions,
+  });
 
 export const updateFirstNameValue = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
@@ -251,6 +257,21 @@ export const updateBiggestPriority = (event: InputEvent) => {
   const value = inputElement.value;
 
   setBiggestPriority((prevValue) => {
+    const optionsCopy = [...prevValue.options];
+    const updatedOptions = updateOptions(optionsCopy, value);
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const updateSevenDaySiteUseCase = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value;
+
+  setSevenDaySiteUseCase((prevValue) => {
     const optionsCopy = [...prevValue.options];
     const updatedOptions = updateOptions(optionsCopy, value);
 

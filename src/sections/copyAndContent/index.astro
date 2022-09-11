@@ -1,0 +1,67 @@
+---
+import CopywritingCard from '../../components/cards/CopywritingCard/index.astro'
+import { copyAndContentServices } from '../../data/copywriting'
+---
+
+<div class="container">
+  <div class="cards-container">
+    {copyAndContentServices.map(card => {
+      const { id, imageUrl, altTag, titleTag, headline, description, buttonLabel, buttonTitle, slug } = card
+
+      return (
+        <CopywritingCard 
+          id={id}
+          imageUrl={imageUrl}
+          altTag={altTag}
+          titleTag={titleTag}
+          headline={headline}
+          description={description}
+          buttonLabel={buttonLabel}
+          buttonTitle={buttonTitle}
+          slug={slug}
+        />
+      )
+    })}
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    padding: 300px 12px 80px 12px;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveIpadPro {
+      width: fit-content;
+    }
+  }
+
+  .cards-container {
+    @include baseColGrid;
+    gap: 260px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      row-gap: 260px;
+    }
+
+    @include aboveTablet {
+      column-gap: 40px;
+      width: fit-content;
+    }
+
+    @include aboveIpadPro {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 20px;
+      row-gap: 260px;
+    }
+  }
+</style>
