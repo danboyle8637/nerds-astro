@@ -3,7 +3,11 @@ import { createSignal } from "solid-js";
 import { capitalizeName, updateOptions } from "../utils/utilityFunctions";
 import { formValidator } from "../utils/validators/formValidators";
 import { emailValidationRules } from "../utils/validators/rules";
-import { leadFormOptions, sevenDaySiteOptions } from "../data/forms";
+import {
+  leadFormOptions,
+  sevenDaySiteOptions,
+  copywritingTimelineOptions,
+} from "../data/forms";
 import type { InputValue, InputOptions, RadioInput } from "../types/forms";
 
 export const [isInitialLeadFormOverlayOpen, setIsInitialLeadFormOverlayOpen] =
@@ -97,6 +101,11 @@ export const [sevenDaySiteUseCase, setSevenDaySiteUseCase] =
     value: "",
     options: sevenDaySiteOptions,
   });
+
+export const [copyTimeline, setCopyTimeline] = createSignal<RadioInput>({
+  value: "",
+  options: copywritingTimelineOptions,
+});
 
 export const updateFirstNameValue = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
@@ -272,6 +281,21 @@ export const updateSevenDaySiteUseCase = (event: InputEvent) => {
   const value = inputElement.value;
 
   setSevenDaySiteUseCase((prevValue) => {
+    const optionsCopy = [...prevValue.options];
+    const updatedOptions = updateOptions(optionsCopy, value);
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const updateCopyTimeline = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value;
+
+  setCopyTimeline((prevValue) => {
     const optionsCopy = [...prevValue.options];
     const updatedOptions = updateOptions(optionsCopy, value);
 

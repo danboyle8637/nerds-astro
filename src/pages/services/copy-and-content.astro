@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
 import CopyAndContent from '../../sections/copyAndContent/index.astro'
+
+const data = await Astro.glob("../../data/copy-services/*.mdx")
 ---
 
 <BaseLayout title="Copywriting and Content for Your Business">
+  {data.map(d => <p>{d.frontmatter.title}</p>)}
   <CopyAndContent />
 </BaseLayout>

@@ -65,3 +65,30 @@ export const sevenDaySiteOptions: RadioOption[] = [
     isChecked: false,
   },
 ];
+
+export const copywritingTimelineOptions: RadioOption[] = [
+  {
+    id: 0,
+    value: "one_week",
+    label: "One Week",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    value: "two_weeks",
+    label: "Two Weeks",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    value: "urgent",
+    label: "Urgent",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    value: "other",
+    label: "Other",
+    isChecked: false,
+  },
+];

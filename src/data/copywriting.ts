@@ -80,3 +80,5 @@ export const copyAndContentServices: CopyContentService[] = [
     slug: "/services/nerd-copy-chat",
   },
 ];
+
+export const copyServiceRoutes = [];

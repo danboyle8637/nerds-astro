@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+
+interface Route {
+  params: {
+    service: string
+  },
+  props: any
+}
+
+export async function getStaticPaths() {
+  const services = await Astro.glob('../../data/copy-services/*.mdx')
+
+  const routes: Route[] = services.map(service => ({
+    params: { service: service.frontmatter.slug },
+    props: {
+      id: service.frontmatter.id,
+      title: service.frontmatter.title,
+      service: service,
+    }
+  }))
+
+  return routes
+}
+
+const { id, title } = Astro.props
+const { Content } = Astro.props.service
+---
+
+<BaseLayout title={`${title} Service Page`}>
+  <h1>This is for the {title} page!</h1>
+  <Content />
+</BaseLayout>
