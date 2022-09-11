@@ -1,11 +1,17 @@
 ---
 import CopywritingCard from '../../components/cards/CopywritingCard/index.astro'
-import { copyAndContentServices } from '../../data/copywriting'
+import type { CopyContentService } from '../../types/components'
+
+interface Props {
+  data: CopyContentService[]
+}
+
+const { data } = Astro.props
 ---
 
 <div class="container">
   <div class="cards-container">
-    {copyAndContentServices.map(card => {
+    {data.map(card => {
       const { id, imageUrl, altTag, titleTag, headline, description, buttonLabel, buttonTitle, slug } = card
 
       return (
