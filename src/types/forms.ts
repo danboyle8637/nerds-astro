@@ -27,6 +27,25 @@ export interface LeadFormOption {
   isChecked: boolean;
 }
 
+export interface SliderRadioInput {
+  value: number;
+  options: SliderInputOption[];
+}
+
+export type SliderInputName =
+  | "blogPosts"
+  | "emails"
+  | "ecomProducts"
+  | "webSalesCopy";
+
+export interface SliderInputOption {
+  id: number;
+  name: string | SliderInputName;
+  value: number;
+  label: string;
+  isSelected: boolean;
+}
+
 export type UpdateValueFunction = (event: InputEvent) => void;
 
 export type UpdateOptionsFunction = (event: FocusEvent) => void;

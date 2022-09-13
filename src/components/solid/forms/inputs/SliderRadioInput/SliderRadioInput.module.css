@@ -1,0 +1,53 @@
+.slider_input_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 12px;
+  justify-items: start;
+  width: var(--container-width);
+}
+
+.slider_option_container {
+  position: relative;
+  padding: 6px;
+  display: grid;
+  grid-template-columns: var(--options-container-cols);
+  justify-items: center;
+  align-items: center;
+  background-image: linear-gradient(
+    to right,
+    hsla(252, 87%, 54%, 1),
+    var(--accent-purple)
+  );
+  border-radius: 12px;
+  width: 100%;
+  height: 60px;
+  box-shadow: 0 0 0 3px var(--dark-2);
+  isolation: isolate;
+}
+
+.slider_input_label {
+  padding-left: 14px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--light-1);
+  letter-spacing: 0.15rem;
+}
+
+.slider_input_label_value {
+  color: var(--accent-teal);
+}
+
+.slider_knob {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  bottom: 4px;
+  background-color: var(--accent-teal);
+  border-radius: 8px;
+  width: var(--indicator-width);
+  box-shadow: 3px 3px 0 0 hsla(0, 0%, 0%, 0.4);
+  z-index: 1;
+  /* transform: translateX(calc(33.9px * 4)); */
+  transform: translateX(var(--knob-start-x));
+}

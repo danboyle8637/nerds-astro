@@ -1,4 +1,4 @@
-import type { RadioOption } from "../types/forms";
+import type { RadioOption, SliderInputOption } from "../types/forms";
 
 export const leadFormOptions: RadioOption[] = [
   {
@@ -90,5 +90,220 @@ export const copywritingTimelineOptions: RadioOption[] = [
     value: "other",
     label: "Other",
     isChecked: false,
+  },
+];
+
+export const copyBlogOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "blog_post",
+    label: "1",
+    value: 1,
+    isSelected: false,
+  },
+  {
+    id: 1,
+    name: "blog_post",
+    label: "2",
+    value: 2,
+    isSelected: true,
+  },
+  {
+    id: 2,
+    name: "blog_post",
+    label: "3",
+    value: 3,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: "blog_post",
+    label: "4",
+    value: 4,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: "blog_post",
+    label: "4",
+    value: 4,
+    isSelected: false,
+  },
+];
+
+export const copyProductOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "ecom_product",
+    label: "1",
+    value: 1,
+    isSelected: false,
+  },
+  {
+    id: 1,
+    name: "ecom_product",
+    label: "2",
+    value: 2,
+    isSelected: true,
+  },
+  {
+    id: 2,
+    name: "ecom_product",
+    label: "3",
+    value: 3,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: "ecom_product",
+    label: "4",
+    value: 4,
+    isSelected: false,
+  },
+  {
+    id: 4,
+    name: "ecom_product",
+    label: "5",
+    value: 5,
+    isSelected: false,
+  },
+  {
+    id: 5,
+    name: "ecom_product",
+    label: "6",
+    value: 6,
+    isSelected: false,
+  },
+  {
+    id: 6,
+    name: "ecom_product",
+    label: "7",
+    value: 7,
+    isSelected: false,
+  },
+  {
+    id: 7,
+    name: "ecom_product",
+    label: "8",
+    value: 8,
+    isSelected: false,
+  },
+  {
+    id: 8,
+    name: "ecom_product",
+    label: "9",
+    value: 9,
+    isSelected: false,
+  },
+  {
+    id: 9,
+    name: "ecom_product",
+    label: "10+",
+    value: 10,
+    isSelected: false,
+  },
+];
+
+export const copyEmailOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "emails",
+    label: "1",
+    value: 1,
+    isSelected: false,
+  },
+  {
+    id: 1,
+    name: "emails",
+    label: "2",
+    value: 2,
+    isSelected: true,
+  },
+  {
+    id: 2,
+    name: "emails",
+    label: "3",
+    value: 3,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: "emails",
+    label: "4",
+    value: 4,
+    isSelected: false,
+  },
+  {
+    id: 4,
+    name: "emails",
+    label: "5",
+    value: 5,
+    isSelected: false,
+  },
+  {
+    id: 5,
+    name: "emails",
+    label: "6",
+    value: 6,
+    isSelected: false,
+  },
+  {
+    id: 6,
+    name: "emails",
+    label: "7",
+    value: 7,
+    isSelected: false,
+  },
+  {
+    id: 7,
+    name: "emails",
+    label: "8",
+    value: 8,
+    isSelected: false,
+  },
+  {
+    id: 8,
+    name: "emails",
+    label: "9",
+    value: 9,
+    isSelected: false,
+  },
+  {
+    id: 9,
+    name: "emails",
+    label: "10",
+    value: 10,
+    isSelected: false,
+  },
+];
+
+export const copyWebSalesCopyOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "web_sales_copy",
+    label: "1",
+    value: 1,
+    isSelected: false,
+  },
+  {
+    id: 1,
+    name: "web_sales_copy",
+    label: "2",
+    value: 2,
+    isSelected: true,
+  },
+  {
+    id: 2,
+    name: "web_sales_copy",
+    label: "3",
+    value: 3,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: "web_sales_copy",
+    label: "4",
+    value: 4,
+    isSelected: false,
   },
 ];

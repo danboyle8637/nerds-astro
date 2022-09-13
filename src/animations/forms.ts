@@ -1,4 +1,4 @@
-import { animate } from "motion";
+import { animate, spring } from "motion";
 
 export const checkIconOn = (path: SVGPathElement) => {
   const keyframes: Keyframe[] = [
@@ -83,6 +83,39 @@ export const inputActive = (
       repeat: Infinity,
       direction: "alternate-reverse",
       delay: 0,
+    }
+  );
+};
+
+export const toggleSwitchOn = (knob: HTMLSpanElement, xDistance: number) => {
+  animate(
+    knob,
+    { x: xDistance },
+    {
+      duration: 0.3,
+      easing: spring({ velocity: 1000, stiffness: 600, damping: 30 }),
+    }
+  );
+};
+
+export const toggleSwithOff = (knob: HTMLSpanElement) => {
+  animate(
+    knob,
+    { x: 0 },
+    {
+      duration: 0.3,
+      easing: spring({ velocity: 1000, stiffness: 600, damping: 30 }),
+    }
+  );
+};
+
+export const sliderRadioInputAni = (chip: HTMLDivElement, x: number) => {
+  animate(
+    chip,
+    { x: `${x}px` },
+    {
+      duration: 0.25,
+      easing: spring({ velocity: 1000, stiffness: 600, damping: 30 }),
     }
   );
 };

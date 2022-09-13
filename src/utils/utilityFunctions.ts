@@ -1,4 +1,4 @@
-import type { RadioOption } from "../types/forms";
+import type { RadioOption, SliderInputOption } from "../types/forms";
 
 export const updateOptions = (
   optionsArray: RadioOption[],
@@ -10,6 +10,22 @@ export const updateOptions = (
       return option;
     } else if (option.isChecked) {
       option.isChecked = !option.isChecked;
+      return option;
+    }
+    return option;
+  });
+};
+
+export const updateSliderOptions = (
+  optionsArray: SliderInputOption[],
+  value: number
+): SliderInputOption[] => {
+  return optionsArray.map((option) => {
+    if (option.value === value) {
+      option.isSelected = !option.isSelected;
+      return option;
+    } else if (option.isSelected) {
+      option.isSelected = !option.isSelected;
       return option;
     }
     return option;
@@ -46,3 +62,23 @@ export function formatPhoneNumber(phoneNumberString: string) {
   }
   return null;
 }
+
+export const adaptToggleInputSize = (toggleWidth: number) => {
+  const height = toggleWidth / 5;
+  // 75 is derived because that is my standard for a padding that looks good.
+  const containerPadding = (2 / 75) * toggleWidth;
+  const containerBorderRadius = (4 / 75) * toggleWidth;
+  const knobAspectRatio = toggleWidth / 2 / (height - containerPadding * 2);
+  const knobBorderRadius = (10 * toggleWidth) / 300;
+
+  return {
+    container: {
+      padding: containerPadding,
+      borderRadius: containerBorderRadius,
+    },
+    knob: {
+      aspectRatio: knobAspectRatio,
+      borderRadius: knobBorderRadius,
+    },
+  };
+};
