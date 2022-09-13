@@ -1,0 +1,64 @@
+---
+import TerminalHeader from "../../../components/typography/TerminalHeader.astro";
+import { CopywritingFormSwitcher } from '../../../components/solid/forms/CopywritingFormSwitcher'
+import type { CopyFormType } from '../../../types/forms'
+
+interface Props {
+  imageUrl: string
+  altTag: string
+  titleTag: string
+  headline: string
+  formType: CopyFormType
+}
+
+const { imageUrl, altTag, titleTag, headline, formType } = Astro.props
+---
+
+<div class="container">
+  <TerminalHeader cursor={false}>
+    <h1>~ {headline}</h1>
+  </TerminalHeader>
+  <div class="service-container">
+    <img src={imageUrl} alt={altTag} title={titleTag}>
+    <CopywritingFormSwitcher client:load formType={formType} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: start;
+  }
+
+  .service-container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 3.4rem;
+    }
+  }
+
+  img {
+    width: 90%;
+  }
+</style>

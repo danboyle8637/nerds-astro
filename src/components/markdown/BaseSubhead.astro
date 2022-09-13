@@ -1,0 +1,50 @@
+---
+import TerminalHeader from "../typography/TerminalHeader.astro";
+---
+
+<div class="container">
+  <div class="top-spacer"></div>
+  <TerminalHeader cursor={false}>
+    <h3><span>~</span> <slot /></h3>
+  </TerminalHeader>
+  <div class="bottom-spacer"></div>
+</div>
+
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  h3 {
+    color: var(--accent-teal);
+
+    span {
+      color: var(--font-color-light);
+    }
+
+    @include aboveMobile {
+      font-size: 4rem;
+    }
+
+    @include aboveTablet {
+      font-size: 5.4rem;
+    }
+  }
+
+  .top-spacer {
+    width: 100%;
+    height: 20px;
+
+    @include aboveTablet {
+      height: 40px;
+    }
+  }
+
+  .bottom-spacer {
+    width: 100%;
+    height: 40px;
+
+    @include aboveTablet {
+      height: 60px;
+    }
+  }
+</style>

@@ -48,13 +48,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--label-color);
+  color: var(--font-color-light);
   width: 100%;
   height: 100%;
   transition: color 300ms ease-in-out;
 }
 
 .option_label_active {
-  composes: option_input;
+  composes: option_label;
   color: var(--background-color-dark);
 }

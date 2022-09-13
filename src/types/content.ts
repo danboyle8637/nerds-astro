@@ -1,3 +1,5 @@
+import type { CopyFormType } from "./forms";
+
 export interface CopyServiceFrontmatter {
   id: number;
   title: string;
@@ -9,4 +11,5 @@ export interface CopyServiceFrontmatter {
   description: string;
   buttonLabel: string;
   buttonTitle: string;
+  formType: CopyFormType;
 }

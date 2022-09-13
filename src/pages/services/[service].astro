@@ -1,33 +1,84 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
+import ServicePricingSection from '../../sections/copyAndContent/services/ServicePricingSection.astro'
+
+import type { MDXInstance } from 'astro'
+import type { CopyServiceFrontmatter } from '../../types/content'
 
 interface Route {
   params: {
     service: string
   },
-  props: any
+  props: {
+    data: CopyServiceFrontmatter,
+    service: MDXInstance<Record<string, any>>
+  }
 }
 
 export async function getStaticPaths() {
   const services = await Astro.glob('../../data/copy-services/*.mdx')
 
-  const routes: Route[] = services.map(service => ({
+  const routes: Route[] = services.map(service => {
+    const frontmatter = service.frontmatter as CopyServiceFrontmatter
+
+    return ({
     params: { service: service.frontmatter.slug },
     props: {
-      id: service.frontmatter.id,
-      title: service.frontmatter.title,
+      data: frontmatter,
       service: service,
     }
-  }))
+  })
+  })
 
   return routes
 }
 
-const { id, title } = Astro.props
+const { id, title, imageUrl, altTag, titleTag, formType } = Astro.props.data as CopyServiceFrontmatter
 const { Content } = Astro.props.service
 ---
 
 <BaseLayout title={`${title} Service Page`}>
-  <h1>This is for the {title} page!</h1>
-  <Content />
+  <div class="container">
+    <ServicePricingSection 
+      formType={formType}
+      imageUrl={imageUrl}
+      altTag={altTag}
+      titleTag={titleTag}
+      headline={title}
+    />
+    <article>
+      <Content />
+    </article>
+  </div>
 </BaseLayout>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .container {
+    padding: 40px 12px 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+    max-width: 800px;
+
+    @include aboveMobile {
+      padding: 80px 24px 120px 24px;
+    }
+
+    @include aboveTablet {
+      padding: 80px 0 120px 0;
+    }
+  }
+
+  article {
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+  }
+</style>

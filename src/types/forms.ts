@@ -49,3 +49,10 @@ export interface SliderInputOption {
 export type UpdateValueFunction = (event: InputEvent) => void;
 
 export type UpdateOptionsFunction = (event: FocusEvent) => void;
+
+export type CopyFormType =
+  | "blogPosts"
+  | "emails"
+  | "ecomProducts"
+  | "adCopy"
+  | "webSalesPages";

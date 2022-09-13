@@ -123,10 +123,10 @@ export const copyBlogOptions: SliderInputOption[] = [
     isSelected: false,
   },
   {
-    id: 3,
+    id: 4,
     name: "blog_post",
-    label: "4",
-    value: 4,
+    label: "5",
+    value: 5,
     isSelected: false,
   },
 ];

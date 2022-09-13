@@ -1,5 +1,5 @@
-import { createMemo } from "solid-js";
-import type { Component } from "solid-js";
+import { createSignal, createMemo } from "solid-js";
+import type { Component, JSX } from "solid-js";
 
 import { SliderOption } from "./SliderOption";
 import { sliderRadioInputAni } from "../../../../../animations/forms";
@@ -21,21 +21,31 @@ interface SliderRadioInputProps {
 
 export const SliderRadioInput: Component<SliderRadioInputProps> = (props) => {
   let sliderKnob: HTMLDivElement;
-  const CONTAINER_WIDTH = props.inputWidth;
-  const OPTIONS_CONTAINER_WIDTH = CONTAINER_WIDTH - 12;
-
   const numOfOptions = props.options.length;
-  const knobWidth = OPTIONS_CONTAINER_WIDTH / numOfOptions;
-  const initialKnobX =
-    OPTIONS_CONTAINER_WIDTH -
-    (OPTIONS_CONTAINER_WIDTH - knobWidth * (props.startingValue - 1));
+
+  const [containerWidth, setContainerWidth] = createSignal<number>(351);
+
+  createMemo(() => {
+    setContainerWidth(props.inputWidth);
+  });
+
+  const OPTIONS_CONTAINER_WIDTH = createMemo(() => {
+    return containerWidth() - 12;
+  });
+
+  const knobWidth = createMemo(() => OPTIONS_CONTAINER_WIDTH() / numOfOptions);
+
+  const initialKnobX = createMemo(
+    () =>
+      OPTIONS_CONTAINER_WIDTH() -
+      (OPTIONS_CONTAINER_WIDTH() - knobWidth() * (props.startingValue - 1))
+  );
 
   createMemo(() => {
     const translateX =
-      OPTIONS_CONTAINER_WIDTH -
-      (OPTIONS_CONTAINER_WIDTH - knobWidth * (props.value - 1));
+      OPTIONS_CONTAINER_WIDTH() -
+      (OPTIONS_CONTAINER_WIDTH() - knobWidth() * (props.value - 1));
 
-    console.log(translateX);
     setTimeout(() => sliderRadioInputAni(sliderKnob, translateX));
   });
 
@@ -53,15 +63,18 @@ export const SliderRadioInput: Component<SliderRadioInputProps> = (props) => {
     ))
   );
 
-  const sliderStyles = {
-    "--container-width": `${props.inputWidth}px`,
-    "--options-container-cols": `repeat(${props.options.length}, 1fr)`,
-    "--indicator-width": `${knobWidth}px`,
-    "--knob-start-x": `${initialKnobX}px`,
-  };
+  const sliderStyles = createMemo(
+    () =>
+      ({
+        "--container-width": `${props.inputWidth}px`,
+        "--options-container-cols": `repeat(${props.options.length}, 1fr)`,
+        "--indicator-width": `${knobWidth()}px`,
+        "--knob-start-x": `${initialKnobX}px`,
+      } as JSX.CSSProperties)
+  );
 
   return (
-    <div class={styles.slider_input_container}>
+    <div class={styles.slider_input_container} style={sliderStyles()}>
       <p class={styles.slider_input_label}>
         {props.label}:{" "}
         <span class={styles.slider_input_label_value}>{props.value}</span>

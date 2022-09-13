@@ -36,6 +36,7 @@ export const SliderOption: Component<SliderOptionProps> = (props) => {
       </label>
       <input
         type="radio"
+        class={styles.option_input}
         id={props.id}
         name={props.name}
         value={props.value}
