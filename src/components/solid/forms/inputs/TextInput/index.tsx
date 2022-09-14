@@ -1,4 +1,4 @@
-import { createSignal, createMemo, onMount } from "solid-js";
+import { createSignal, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
 import { CheckIcon } from "../../../../svgs/forms/CheckIcon";

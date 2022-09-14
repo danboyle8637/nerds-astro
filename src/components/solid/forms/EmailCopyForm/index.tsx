@@ -84,18 +84,6 @@ export const EmailCopyForm: Component = () => {
     }
   });
 
-  createEffect(() => {
-    if (isToggleOn()) {
-      setEmailsToBroadcast();
-    }
-  });
-
-  createEffect(() => {
-    if (emails().value > 1) {
-      toggleIsToggleToFalse();
-    }
-  });
-
   const buttonLabel = () => {
     if (emails().value === 1) {
       return `Buy ${emails().value} Email`;
@@ -113,24 +101,26 @@ export const EmailCopyForm: Component = () => {
           the number of emails you want.
         </p>
       </div>
-      <div class={styles.input_container}>
-        <ToggleInput
-          theme="teal"
-          name="emailType"
-          title="Choose Email Type:"
-          leftLabel="Automation"
-          rightLabel="Broadcast"
-          toggleWidth={inputWidth()}
-        />
-        <SliderRadioInput
-          inputWidth={inputWidth()}
-          label="Num of Emails In Automation"
-          name="emails"
-          startingValue={5}
-          value={emails().value}
-          options={emails().options}
-          updateInputValue={updateEmails}
-        />
+      <div class={styles.inputs_price_container}>
+        <div class={styles.input_container}>
+          <ToggleInput
+            theme="teal"
+            name="emailType"
+            title="Choose Email Type:"
+            leftLabel="Automation"
+            rightLabel="Broadcast"
+            toggleWidth={inputWidth()}
+          />
+          <SliderRadioInput
+            inputWidth={inputWidth()}
+            label="Num of Emails In Automation"
+            name="emails"
+            startingValue={5}
+            value={emails().value}
+            options={emails().options}
+            updateInputValue={updateEmails}
+          />
+        </div>
         <div class={styles.price_container}>
           <p class={styles.price_sign}>$</p>
           <p class={styles.price}>{price()}</p>

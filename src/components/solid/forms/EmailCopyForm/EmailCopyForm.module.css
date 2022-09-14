@@ -30,11 +30,20 @@
   font-size: 1.4rem;
 }
 
-.input_container {
+.inputs_price_container {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   gap: 8px;
+  justify-items: center;
+  width: 100%;
+}
+
+.input_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 30px;
   justify-items: center;
   width: 100%;
 }
