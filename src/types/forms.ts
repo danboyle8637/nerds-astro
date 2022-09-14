@@ -55,4 +55,5 @@ export type CopyFormType =
   | "emails"
   | "ecomProducts"
   | "adCopy"
-  | "webSalesPages";
+  | "webSalesPages"
+  | "copyChat";

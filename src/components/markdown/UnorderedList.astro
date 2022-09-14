@@ -1,14 +1,29 @@
-<span>-----</span>
-<ul>
-  <slot />
-</ul>
-<span>-----</span>
+---
+---
+
+<div class="container">
+  <span>-----</span>
+    <ul>
+      <slot />
+    </ul>
+  <span>-----</span>
+</div>
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
 
+  .container {
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+  }
+
   ul {
-    padding: 20px 0 60px 20px;
+    padding: 0 0 0 20px;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
@@ -17,6 +32,7 @@
   }
 
   span {
-    justify-self: center;
+    font-size: 3rem;
+    color: #bfa9ff;
   }
 </style>

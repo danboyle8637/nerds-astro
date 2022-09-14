@@ -8,8 +8,6 @@ export interface SVGProps {
   gradientId?: string;
 }
 
-export type FormButtonTheme = "teal" | "purple" | "pink";
-
 export interface SevenDaySiteUseCase {
   id: number;
   imageUrl: string;

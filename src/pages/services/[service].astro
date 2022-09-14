@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
-import ServicePricingSection from '../../sections/copyAndContent/services/ServicePricingSection.astro'
+import ServicePricingWithHeadline from '../../sections/copyAndContent/services/ServicePricingWithHeadline.astro'
+import ServicePricingNoHeadline from '../../sections/copyAndContent/services/ServicePricingNoHeadline.astro'
 
 import type { MDXInstance } from 'astro'
 import type { CopyServiceFrontmatter } from '../../types/content'
@@ -33,13 +34,13 @@ export async function getStaticPaths() {
   return routes
 }
 
-const { id, title, imageUrl, altTag, titleTag, formType } = Astro.props.data as CopyServiceFrontmatter
+const { title, imageUrl, altTag, titleTag, formType } = Astro.props.data as CopyServiceFrontmatter
 const { Content } = Astro.props.service
 ---
 
 <BaseLayout title={`${title} Service Page`}>
   <div class="container">
-    <ServicePricingSection 
+    <ServicePricingWithHeadline 
       formType={formType}
       imageUrl={imageUrl}
       altTag={altTag}
@@ -49,6 +50,12 @@ const { Content } = Astro.props.service
     <article>
       <Content />
     </article>
+    <ServicePricingNoHeadline 
+      formType={formType}
+      imageUrl={imageUrl}
+      altTag={altTag}
+      titleTag={titleTag}
+    />
   </div>
 </BaseLayout>
 
@@ -72,6 +79,7 @@ const { Content } = Astro.props.service
     @include aboveTablet {
       padding: 80px 0 120px 0;
     }
+
   }
 
   article {

@@ -5,7 +5,6 @@ import {
   copyEmailOptions,
   copyProductOptions,
   copyWebSalesCopyOptions,
-  copywritingTimelineOptions,
 } from "../data/forms";
 import { updateSliderOptions } from "../utils/utilityFunctions";
 import type {
@@ -17,6 +16,8 @@ import type {
 export const [isToggleOn, setIsToggleOn] = createSignal<boolean>(false);
 
 export const toggleIsToggleOn = () => setIsToggleOn((prevValue) => !prevValue);
+
+export const toggleIsToggleToFalse = () => setIsToggleOn(false);
 
 export const toggleIsToggleWithKeyboard = (event: KeyboardEvent) => {
   if (event.key === "Enter") {
@@ -59,6 +60,18 @@ export const updateEmails = (event: InputEvent) => {
 
     return {
       value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const setEmailsToBroadcast = () => {
+  setEmails((prevValue) => {
+    const optionsCopy = [...prevValue.options];
+    const updatedOptions = updateSliderOptions(optionsCopy, 1);
+
+    return {
+      value: 1,
       options: updatedOptions,
     };
   });

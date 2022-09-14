@@ -1,0 +1,92 @@
+---
+import PiggyBankIcon from '../svgs/PiggyBankIcon.astro'
+import type { InternalButtonColor } from '../../types/components'
+
+interface Props {
+  type: InternalButtonColor
+  slug: string
+  title: string
+  width?: number
+  payment?: boolean
+}
+
+const { slug, title, type, width, payment = true } = Astro.props as Props
+
+const buttonStyles = {
+  "--button-layout": payment ? "min-content 1fr" : "1fr",
+  "--button-label-color": type === "teal" ? "var(--accent-teal-dark)" : type === "pink" ? "#f8f8f8" : "#f8f8f8",
+  "--background-color": type === "teal" ? "var(--accent-teal)" : type === "pink" ? "var(--accent-pink)" : "var(--accent-purple)",
+  "--shadow-color": type === "teal" ? "var(--accent-purple-dark)" : type === "pink" ? "var(--accent-pink-dark)" : "var(--accent-purple-dark)",
+  "--button-width": width ? `${width}px` : "100%",
+  "--focus-outline": type === "teal" ? "var(--accent-purple)" : "var(--accent-teal)" 
+}
+---
+
+<div class="container" style={buttonStyles}>
+  <a href={slug} title={title} rel="noopener noreferrer" target="_blank"> 
+    {payment ? (
+      <div class="money-icon">
+      <PiggyBankIcon />
+    </div>
+    ) : null}
+    <slot>Purchase</slot>
+  </a>
+  <div class="shadow" />
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    width: var(--button-width);
+  }
+
+  a {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: var(--button-layout);
+    gap: 8px;
+    justify-items: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--button-label-color);
+    text-decoration: none;
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    width: var(--button-width);
+    height: 60px;
+    z-index: 1;
+    transition: box-shadow, transform, 200ms ease-in-out;
+  }
+
+  a:focus {
+    outline-offset: 6px;
+    outline: 4px solid var(--focus-outline);
+  }
+
+  a:hover {
+    box-shadow: 1px 2px 4px 1px hsla(0, 0%, 0%, 0.4);
+    transform: translate(-10px, -10px);
+  }
+
+  .money-icon {
+    width: 46px;
+  } 
+
+  .shadow {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background-color: var(--shadow-color);
+    border-radius: 12px 8px 16px 8px;
+    width: 98%;
+    height: 90%;
+  }
+</style>

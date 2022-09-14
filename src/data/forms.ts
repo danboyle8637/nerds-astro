@@ -217,7 +217,7 @@ export const copyEmailOptions: SliderInputOption[] = [
     name: "emails",
     label: "2",
     value: 2,
-    isSelected: true,
+    isSelected: false,
   },
   {
     id: 2,
@@ -238,7 +238,7 @@ export const copyEmailOptions: SliderInputOption[] = [
     name: "emails",
     label: "5",
     value: 5,
-    isSelected: false,
+    isSelected: true,
   },
   {
     id: 5,

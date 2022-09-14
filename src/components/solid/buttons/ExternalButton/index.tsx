@@ -1,19 +1,19 @@
 import { createSignal, createEffect, children } from "solid-js";
 import type { Component, JSXElement } from "solid-js";
 
-import { MonthIcon } from "../../../svgs/MonthIcon";
+import { PiggyBankIcon } from "../../../svgs/PiggyBankIcon";
 import type { AccentColor } from "../../../../types/styles";
-import styles from "./FormButton.module.css";
+import styles from "./ExternalButton.module.css";
 
 interface FormButtonProps {
   theme: AccentColor;
-  disabled: boolean;
+  url: string;
   children: JSXElement;
 }
 
-export const FormButton: Component<FormButtonProps> = (props) => {
+export const ExternalButton: Component<FormButtonProps> = (props) => {
   const child = children(() => props.children);
-  let buttonRef: HTMLButtonElement;
+  let buttonRef: HTMLAnchorElement;
 
   const [isHovering, setIsHovering] = createSignal<boolean>(false);
 
@@ -31,41 +31,32 @@ export const FormButton: Component<FormButtonProps> = (props) => {
     }
   });
 
-  createEffect(() => {
-    if (props.disabled) {
-      buttonRef.classList.add(styles.form_button_disabled);
-    }
-
-    if (!props.disabled) {
-      buttonRef.classList.remove(styles.form_button_disabled);
-    }
-  });
-
   const toggleButtonHover = () => {
     setIsHovering((prevValue) => !prevValue);
   };
 
   return (
-    <div class={styles.form_button_container}>
-      <button
+    <div class={styles.button_container}>
+      <a
         ref={buttonRef!}
-        type="submit"
+        href={props.url}
+        rel="noopener noreferrer"
+        target="_blank"
         class={
           props.theme === "teal"
-            ? styles.form_button_teal
+            ? styles.button_teal
             : props.theme === "purple"
-            ? styles.form_button_purple
-            : styles.form_button_pink
+            ? styles.button_purple
+            : styles.button_pink
         }
         onMouseOver={toggleButtonHover}
         onMouseLeave={toggleButtonHover}
-        disabled={props.disabled}
       >
         <div class={styles.button_icon}>
-          <MonthIcon theme="dark" />
+          <PiggyBankIcon />
         </div>
         {child()}
-      </button>
+      </a>
     </div>
   );
 };
