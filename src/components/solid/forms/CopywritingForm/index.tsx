@@ -18,7 +18,7 @@ import {
   copyTimeline,
   updateCopyTimeline,
 } from "../../../../stores/leadFormStore";
-import styles from "./SevenDaySiteForm.module.css";
+import styles from "./CopywritingForm.module.css";
 
 export const CopywritingForm: Component = () => {
   const handleFormSubmit = (event: SubmitEvent) => {

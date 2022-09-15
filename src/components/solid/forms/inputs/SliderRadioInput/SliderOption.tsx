@@ -1,4 +1,4 @@
-import { children } from "solid-js";
+import { children, createEffect } from "solid-js";
 import type { Component, JSXElement } from "solid-js";
 
 import { handleSliderKeyboardEvent } from "../../../../../stores/forms";
@@ -40,6 +40,7 @@ export const SliderOption: Component<SliderOptionProps> = (props) => {
         id={props.id}
         name={props.name}
         value={props.value}
+        checked={props.isSelected}
         onInput={props.updateInputValue}
       />
     </div>

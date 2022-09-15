@@ -2,9 +2,12 @@ import { createSignal } from "solid-js";
 
 import {
   copyBlogOptions,
+  productTypeOptions,
   copyEmailOptions,
   copyProductOptions,
   copyWebSalesCopyOptions,
+  adCopyOptions,
+  nerdCopyChatOptions,
 } from "../data/forms";
 import { updateSliderOptions } from "../utils/utilityFunctions";
 import type {
@@ -15,9 +18,13 @@ import type {
 
 export const [isToggleOn, setIsToggleOn] = createSignal<boolean>(false);
 
-export const toggleIsToggleOn = () => setIsToggleOn((prevValue) => !prevValue);
+export const toggleIsToggleOn = () => {
+  setIsToggleOn((prevValue) => !prevValue);
+};
 
-export const toggleIsToggleToFalse = () => setIsToggleOn(false);
+export const toggleIsToggleToFalse = () => {
+  setIsToggleOn(false);
+};
 
 export const toggleIsToggleWithKeyboard = (event: KeyboardEvent) => {
   if (event.key === "Enter") {
@@ -55,8 +62,16 @@ export const updateEmails = (event: InputEvent) => {
   const value = Number(inputElement.value);
 
   setEmails((prevValue) => {
-    const optionsCopy = [...prevValue.options];
-    const updatedOptions = updateSliderOptions(optionsCopy, value);
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
 
     return {
       value: value,
@@ -65,13 +80,29 @@ export const updateEmails = (event: InputEvent) => {
   });
 };
 
-export const setEmailsToBroadcast = () => {
-  setEmails((prevValue) => {
-    const optionsCopy = [...prevValue.options];
-    const updatedOptions = updateSliderOptions(optionsCopy, 1);
+export const [productType, setProdcutType] = createSignal<SliderRadioInput>({
+  value: 1,
+  options: productTypeOptions,
+});
+
+export const updateProductType = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = Number(inputElement.value);
+
+  setProdcutType((prevValue) => {
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
 
     return {
-      value: 1,
+      value: value,
       options: updatedOptions,
     };
   });
@@ -87,8 +118,72 @@ export const updateProducts = (event: InputEvent) => {
   const value = Number(inputElement.value);
 
   setProducts((prevValue) => {
-    const optionsCopy = [...prevValue.options];
-    const updatedOptions = updateSliderOptions(optionsCopy, value);
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const [adCopy, setAdCopy] = createSignal<SliderRadioInput>({
+  value: 1,
+  options: adCopyOptions,
+});
+
+export const updateAdCopy = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = Number(inputElement.value);
+
+  setAdCopy((prevValue) => {
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const [nerdChatCopy, setNerdChatCopy] = createSignal<SliderRadioInput>({
+  value: 1,
+  options: nerdCopyChatOptions,
+});
+
+export const updateNerdChatCopy = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = Number(inputElement.value);
+
+  setNerdChatCopy((prevValue) => {
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
 
     return {
       value: value,

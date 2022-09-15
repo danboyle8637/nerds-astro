@@ -1,0 +1,34 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<div class="container">
+  <div class="nav-container">
+    <Logo />
+    <div></div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    z-index: 500;
+  }
+
+  .nav-container {
+    padding: 8px 12px 0 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+  }
+</style>

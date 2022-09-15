@@ -21,7 +21,7 @@ export const updateSliderOptions = (
   value: number
 ): SliderInputOption[] => {
   return optionsArray.map((option) => {
-    if (option.value === value) {
+    if (option.value === value && !option.isSelected) {
       option.isSelected = !option.isSelected;
       return option;
     } else if (option.isSelected) {

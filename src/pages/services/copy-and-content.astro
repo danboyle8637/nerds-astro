@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
+import Footer from '../../sections/Footer/index.astro'
 import CopyAndContent from '../../sections/copyAndContent/index.astro'
-
-import { CopyBlogForm } from '../../components/solid/forms/CopyBlogForm'
 
 const data = await Astro.glob("../../data/copy-services/*.mdx")
 
@@ -32,4 +31,5 @@ const copyServiceData = data.map(d => {
 
 <BaseLayout title="Copywriting and Content for Your Business">
   <CopyAndContent data={copyServiceData} />
+  <Footer />
 </BaseLayout>

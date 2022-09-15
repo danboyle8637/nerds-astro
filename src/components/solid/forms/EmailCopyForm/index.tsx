@@ -1,21 +1,14 @@
 import { createEffect, createMemo, createSignal, onMount } from "solid-js";
 import type { Component } from "solid-js";
 
-import { ToggleInput } from "../inputs/ToggleInput";
+import { EmailTypeIndicator } from "./EmailTypeIndicator";
 import { SliderRadioInput } from "../inputs/SliderRadioInput";
 import { ExternalButton } from "../../buttons/ExternalButton";
-import {
-  isToggleOn,
-  toggleIsToggleOn,
-  toggleIsToggleToFalse,
-  emails,
-  updateEmails,
-  setEmailsToBroadcast,
-} from "../../../../stores/forms";
+import { emails, updateEmails } from "../../../../stores/forms";
 import { shouldShow, setBreakPoint } from "../../../../solid/matchMediaStore";
 import styles from "./EmailCopyForm.module.css";
 
-export const EmailCopyForm: Component = () => {
+export const EmailCopyForm: Component = (props) => {
   const [price, setPrice] = createSignal<number>(794);
   const [paymentLink, setPaymentLink] = createSignal<string>("");
   const [inputWidth, setInputWidth] = createSignal<number>(351);
@@ -103,23 +96,16 @@ export const EmailCopyForm: Component = () => {
       </div>
       <div class={styles.inputs_price_container}>
         <div class={styles.input_container}>
-          <ToggleInput
-            theme="teal"
-            name="emailType"
-            title="Choose Email Type:"
-            leftLabel="Automation"
-            rightLabel="Broadcast"
-            toggleWidth={inputWidth()}
-          />
           <SliderRadioInput
             inputWidth={inputWidth()}
-            label="Num of Emails In Automation"
+            label="Num of Emails"
             name="emails"
             startingValue={5}
             value={emails().value}
             options={emails().options}
             updateInputValue={updateEmails}
           />
+          <EmailTypeIndicator />
         </div>
         <div class={styles.price_container}>
           <p class={styles.price_sign}>$</p>

@@ -5,9 +5,9 @@ import { SliderRadioInput } from "../inputs/SliderRadioInput";
 import { ExternalButton } from "../../buttons/ExternalButton";
 import { blogPosts, updateBlogPosts } from "../../../../stores/forms";
 import { shouldShow, setBreakPoint } from "../../../../solid/matchMediaStore";
-import styles from "./CopyBlogForm.module.css";
+import styles from "./BlogCopyForm.module.css";
 
-export const CopyBlogForm: Component = () => {
+export const BlogCopyForm: Component = () => {
   const [price, setPrice] = createSignal<number>(250);
   const [paymentLink, setPaymentLink] = createSignal<string>("");
   const [inputWidth, setInputWidth] = createSignal<number>(351);

@@ -48,6 +48,5 @@
   width: var(--indicator-width);
   box-shadow: 3px 3px 0 0 hsla(0, 0%, 0%, 0.4);
   z-index: 1;
-  /* transform: translateX(calc(33.9px * 4)); */
   transform: translateX(var(--knob-start-x));
 }

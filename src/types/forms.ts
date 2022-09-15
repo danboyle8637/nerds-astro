@@ -35,8 +35,11 @@ export interface SliderRadioInput {
 export type SliderInputName =
   | "blogPosts"
   | "emails"
+  | "ecomProductType"
   | "ecomProducts"
-  | "webSalesCopy";
+  | "webSalesCopy"
+  | "adCopy"
+  | "nerdCopyChat";
 
 export interface SliderInputOption {
   id: number;
@@ -53,7 +56,8 @@ export type UpdateOptionsFunction = (event: FocusEvent) => void;
 export type CopyFormType =
   | "blogPosts"
   | "emails"
+  | "ecomProductType"
   | "ecomProducts"
   | "adCopy"
   | "webSalesPages"
-  | "copyChat";
+  | "nerdCopyChat";

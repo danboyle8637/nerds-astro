@@ -7,11 +7,6 @@ import {
 } from "../../../../../animations/forms";
 import { adaptToggleInputSize } from "../../../../../utils/utilityFunctions";
 import {
-  isToggleOn,
-  toggleIsToggleOn,
-  toggleIsToggleWithKeyboard,
-} from "../../../../../stores/forms";
-import {
   tealToggleTheme,
   purpleToggleTheme,
   pinkToggleTheme,
@@ -26,6 +21,9 @@ interface ToggleSwitchProps {
   leftLabel: string;
   rightLabel: string;
   toggleWidth: number;
+  isToggleOn: boolean;
+  toggleIsToggleOn: () => void;
+  toggleIsToggleOnWithKeyboard: (event: KeyboardEvent) => void;
 }
 
 export const ToggleInput: Component<ToggleSwitchProps> = (props) => {
@@ -35,11 +33,11 @@ export const ToggleInput: Component<ToggleSwitchProps> = (props) => {
     const containerPadding = (2 / 75) * props.toggleWidth * 2;
     const xDistance = props.toggleWidth / 2 - containerPadding;
 
-    if (isToggleOn()) {
+    if (props.isToggleOn) {
       toggleSwitchOn(knobRef, xDistance);
     }
 
-    if (!isToggleOn()) {
+    if (!props.isToggleOn) {
       toggleSwithOff(knobRef);
     }
   });
@@ -70,15 +68,15 @@ export const ToggleInput: Component<ToggleSwitchProps> = (props) => {
         title={props.title}
         id={props.name}
         name={props.name}
-        checked={isToggleOn()}
-        onChange={toggleIsToggleOn}
-        onKeyDown={toggleIsToggleWithKeyboard}
+        checked={props.isToggleOn}
+        onClick={props.toggleIsToggleOn}
+        onKeyDown={props.toggleIsToggleOnWithKeyboard}
       />
       <label for={props.name} class={styles.toggle_label}>
         <div class={styles.toggle_label_container}>
           <span
             class={
-              isToggleOn()
+              props.isToggleOn
                 ? styles.toggle_switch_label
                 : styles.toggle_switch_label_active
             }
@@ -87,7 +85,7 @@ export const ToggleInput: Component<ToggleSwitchProps> = (props) => {
           </span>
           <span
             class={
-              isToggleOn()
+              props.isToggleOn
                 ? styles.toggle_switch_label_active
                 : styles.toggle_switch_label
             }

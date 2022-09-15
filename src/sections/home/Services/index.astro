@@ -13,6 +13,9 @@ import CardsContainer from "./CardsContainer.astro";
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
     padding: 80px 12px;
     display: grid;
@@ -22,6 +25,18 @@ import CardsContainer from "./CardsContainer.astro";
     justify-items: center;
     width: 100%;
     max-width: 1000px;
+
+    @include aboveMobile {
+      padding: 80px 24px 120px 24px;
+    }
+
+    @include aboveTablet {
+      padding: 80px 36px 120px 36px;
+    }
+
+    @include aboveIpadPro {
+      padding: 80px 0 120px 0;
+    }
   }
 
   .header {

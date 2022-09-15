@@ -131,6 +131,23 @@ export const copyBlogOptions: SliderInputOption[] = [
   },
 ];
 
+export const productTypeOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "productType",
+    label: "Short",
+    value: 1,
+    isSelected: true,
+  },
+  {
+    id: 1,
+    name: "productType",
+    label: "Long",
+    value: 2,
+    isSelected: false,
+  },
+];
+
 export const copyProductOptions: SliderInputOption[] = [
   {
     id: 0,
@@ -144,7 +161,7 @@ export const copyProductOptions: SliderInputOption[] = [
     name: "ecom_product",
     label: "2",
     value: 2,
-    isSelected: true,
+    isSelected: false,
   },
   {
     id: 2,
@@ -165,7 +182,7 @@ export const copyProductOptions: SliderInputOption[] = [
     name: "ecom_product",
     label: "5",
     value: 5,
-    isSelected: false,
+    isSelected: true,
   },
   {
     id: 5,
@@ -198,7 +215,7 @@ export const copyProductOptions: SliderInputOption[] = [
   {
     id: 9,
     name: "ecom_product",
-    label: "10+",
+    label: "10",
     value: 10,
     isSelected: false,
   },
@@ -304,6 +321,40 @@ export const copyWebSalesCopyOptions: SliderInputOption[] = [
     name: "web_sales_copy",
     label: "4",
     value: 4,
+    isSelected: false,
+  },
+];
+
+export const adCopyOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "adCopy",
+    label: "Google Ads",
+    value: 1,
+    isSelected: true,
+  },
+  {
+    id: 1,
+    name: "adCopy",
+    label: "Facebook Ads",
+    value: 2,
+    isSelected: false,
+  },
+];
+
+export const nerdCopyChatOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "nerdCopyChat",
+    label: "30 Minutes",
+    value: 1,
+    isSelected: true,
+  },
+  {
+    id: 1,
+    name: "nerdCopyChat",
+    label: "60 Minutes",
+    value: 2,
     isSelected: false,
   },
 ];

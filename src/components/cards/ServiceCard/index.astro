@@ -41,14 +41,15 @@ const {
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .card-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 12px;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       grid-template-columns: 1fr 1fr;
       gap: 0px;
       align-items: center;
