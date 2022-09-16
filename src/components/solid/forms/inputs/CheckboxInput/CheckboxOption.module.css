@@ -20,8 +20,9 @@
 }
 
 .indicator {
-  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-not-active_khmUjQ0M0.png?ik-sdk-version=javascript-1.4.3");
+  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/empty-checkmark-bullet_7_e3yo50p.png?ik-sdk-version=javascript-1.4.3");
   background-size: contain;
+  background-repeat: no-repeat;
   width: 60px;
   height: 60px;
 }
@@ -32,7 +33,7 @@
 
 .indicator_selected {
   composes: indicator;
-  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-active_idvf5QmIS.png?ik-sdk-version=javascript-1.4.3");
+  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/checkmark-bullet_KCkiBywH3.png?ik-sdk-version=javascript-1.4.3");
 }
 
 .checkbox_input {

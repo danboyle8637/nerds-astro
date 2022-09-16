@@ -9,6 +9,8 @@ import {
   copyWebSalesCopyOptions,
   adCopyOptions,
   nerdCopyChatOptions,
+  haveDesignOptions,
+  websiteTimelineOptions,
 } from "../data/forms";
 import { updateSliderOptions, updateOptions } from "../utils/utilityFunctions";
 import type {
@@ -411,4 +413,92 @@ export const updateIsSomethingElseCheckedWithKeyboard = (
   if (event.key === "Enter") {
     setIsSomethingElseChecked((prevValue) => !prevValue);
   }
+};
+
+export const [favorteSiteDesigns, setFavoriteSiteDesigns] =
+  createSignal<InputValue>({
+    value: "",
+    valid: false,
+  });
+
+export const [favorteSiteDesignsOptions, setFavorteSiteDesignsOptions] =
+  createSignal<InputOptions>({
+    initial: true,
+    touched: false,
+  });
+
+export const updateFavoriteSiteDesignValue = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLTextAreaElement;
+  const value = inputElement.value;
+
+  setFavoriteSiteDesigns({
+    value: value,
+    valid: true,
+  });
+};
+
+export const updateFavoriteSiteDesignOptions = () => {
+  setFavorteSiteDesignsOptions((prevValue) => {
+    return {
+      initial: false,
+      touched: !prevValue.touched,
+    };
+  });
+};
+
+export const [siteTimeline, setSiteTimeline] = createSignal<RadioInput>({
+  value: "",
+  options: websiteTimelineOptions,
+});
+
+export const updateSiteTimeline = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value;
+
+  setSiteTimeline((prevValue) => {
+    let updatedOptions: RadioOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const [haveSiteDesign, setHaveSiteDesign] =
+  createSignal<SliderRadioInput>({
+    value: 1,
+    options: haveDesignOptions,
+  });
+
+export const updateHaveSiteDesign = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = Number(inputElement.value);
+
+  setHaveSiteDesign((prevValue) => {
+    let updatedOptions: SliderInputOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateSliderOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
 };

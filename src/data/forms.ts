@@ -1,4 +1,8 @@
-import type { RadioOption, SliderInputOption } from "../types/forms";
+import type {
+  RadioInput,
+  RadioOption,
+  SliderInputOption,
+} from "../types/forms";
 
 export const contactFormOptions: RadioOption[] = [
   {
@@ -389,5 +393,51 @@ export const nerdCopyChatOptions: SliderInputOption[] = [
     label: "60 Minutes",
     value: 2,
     isSelected: false,
+  },
+];
+
+// ************* Pre Nerd Chat Form ************* //
+
+export const haveDesignOptions: SliderInputOption[] = [
+  {
+    id: 0,
+    name: "haveDesignOptions",
+    label: "No I Don't",
+    value: 1,
+    isSelected: true,
+  },
+  {
+    id: 1,
+    name: "haveDesignOptions",
+    label: "Yes I Do",
+    value: 2,
+    isSelected: false,
+  },
+];
+
+export const websiteTimelineOptions: RadioOption[] = [
+  {
+    id: 0,
+    label: "Under 14 days",
+    value: "under_14_days",
+    isChecked: true,
+  },
+  {
+    id: 1,
+    label: "One month or so",
+    value: "one_month",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    label: "Two months or so",
+    value: "two_months",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    label: "I want a site but I'm in no rush",
+    value: "not_serious",
+    isChecked: false,
   },
 ];

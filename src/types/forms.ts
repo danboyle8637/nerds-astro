@@ -39,7 +39,8 @@ export type SliderInputName =
   | "ecomProducts"
   | "webSalesCopy"
   | "adCopy"
-  | "nerdCopyChat";
+  | "nerdCopyChat"
+  | "haveSiteDesign";
 
 export interface SliderInputOption {
   id: number;
