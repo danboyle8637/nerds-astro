@@ -1,4 +1,4 @@
-import { createMemo, createEffect, For } from "solid-js";
+import { createMemo, For } from "solid-js";
 import type { Component } from "solid-js";
 
 import { RadioOption as Option } from "./RadioOption";
@@ -36,10 +36,6 @@ export const RadioInput: Component<RadioInputProps> = (props) => {
       );
     })
   );
-
-  // createEffect(() => {
-  //   console.log(props.options);
-  // });
 
   return (
     <div class={styles.container}>

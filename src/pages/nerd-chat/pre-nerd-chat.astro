@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+import SmallHeader from '../../sections/headers/SmallHeader.astro';
+import { NerdChatForm } from '../../components/solid/forms/NerdChatForm'
+import Footer from '../../sections/Footer/index.astro'
+---
+
+<BaseLayout title="Get Setup For Your Nerd Chat">
+  <SmallHeader headline="Pre Nerd Chat" />
+  <div class="container">
+    <NerdChatForm client:load />
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+
+  .container {
+    padding: 80px 12px;
+  }
+</style>

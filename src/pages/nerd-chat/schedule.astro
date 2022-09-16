@@ -1,9 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SmallHeader from '../../sections/headers/SmallHeader.astro';
 import { CalendlyEmbed } from '../../components/solid/Calendly'
 ---
 
 <Layout title="Schedule Your FREE Nerd Chat">
+  <SmallHeader headline="Schedule Chat" />
   <CalendlyEmbed client:visible  />
 </Layout>
 

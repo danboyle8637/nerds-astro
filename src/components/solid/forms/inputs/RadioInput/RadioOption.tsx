@@ -1,4 +1,3 @@
-import { createEffect } from "solid-js";
 import { children } from "solid-js";
 import type { Component, JSXElement } from "solid-js";
 

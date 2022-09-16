@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 
 import {
+  contactFormOptions,
   copyBlogOptions,
   productTypeOptions,
   copyEmailOptions,
@@ -9,11 +10,15 @@ import {
   adCopyOptions,
   nerdCopyChatOptions,
 } from "../data/forms";
-import { updateSliderOptions } from "../utils/utilityFunctions";
+import { updateSliderOptions, updateOptions } from "../utils/utilityFunctions";
 import type {
   SliderRadioInput,
   SliderInputOption,
   SliderInputName,
+  RadioInput,
+  RadioOption,
+  InputValue,
+  InputOptions,
 } from "../types/forms";
 
 export const [isToggleOn, setIsToggleOn] = createSignal<boolean>(false);
@@ -273,5 +278,137 @@ export const handleSliderKeyboardEvent = (
         return;
       }
     }
+  }
+};
+
+export const [contactFormReason, setContactFormReason] =
+  createSignal<RadioInput>({
+    value: "",
+    options: contactFormOptions,
+  });
+
+export const updateContactFormReason = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value;
+
+  setContactFormReason((prevValue) => {
+    let updatedOptions: RadioOption[] = [];
+
+    if (prevValue.value !== value) {
+      const optionsCopy = [...prevValue.options];
+      updatedOptions = updateOptions(optionsCopy, value);
+    }
+
+    if (prevValue.value === value) {
+      updatedOptions = prevValue.options;
+    }
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const [contactMessage, setContactMessage] = createSignal<InputValue>({
+  value: "",
+  valid: false,
+});
+
+export const [contactMessageOptions, setContactMessageOptions] =
+  createSignal<InputOptions>({
+    initial: true,
+    touched: false,
+  });
+
+export const updateContactMessageValue = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLTextAreaElement;
+  const value = inputElement.value;
+  const valid = value.length > 0;
+
+  setContactMessage({
+    value: value,
+    valid: valid,
+  });
+};
+
+export const updateContactMessageOptions = () => {
+  setContactMessageOptions((prevValue) => {
+    return {
+      initial: false,
+      touched: !prevValue.touched,
+    };
+  });
+};
+
+/*
+
+*/
+
+export const [isBlogChecked, setIsBlogChecked] = createSignal<boolean>(false);
+
+export const updateIsBlogchecked = () => {
+  setIsBlogChecked((prevValue) => !prevValue);
+};
+
+export const updateIsBlogcheckedWithKeyboard = (event: KeyboardEvent) => {
+  if (event.key === "Enter") {
+    setIsBlogChecked((prevValue) => !prevValue);
+  }
+};
+
+export const [isSchedulingChecked, setIsSchedulingChecked] =
+  createSignal<boolean>(false);
+
+export const updateIsSchedulingChecked = () => {
+  setIsSchedulingChecked((prevValue) => !prevValue);
+};
+
+export const updateIsSchedulingCheckedWithKeyboard = (event: KeyboardEvent) => {
+  if (event.key === "Enter") {
+    setIsSchedulingChecked((prevValue) => !prevValue);
+  }
+};
+
+export const [isLoginLogoutChecked, setIsLoginLogoutChecked] =
+  createSignal<boolean>(false);
+
+export const updateIsLoginLogoutChecked = () => {
+  setIsLoginLogoutChecked((prevValue) => !prevValue);
+};
+
+export const updateIsLoginLogoutCheckedWithKeyboard = (
+  event: KeyboardEvent
+) => {
+  if (event.key === "Enter") {
+    setIsLoginLogoutChecked((prevValue) => !prevValue);
+  }
+};
+
+export const [isPaymentsChecked, setIsPaymentsChecked] =
+  createSignal<boolean>(false);
+
+export const updateIsPaymentsChecked = () => {
+  setIsPaymentsChecked((prevValue) => !prevValue);
+};
+
+export const updateIsPaymentsCheckedWithKeyboard = (event: KeyboardEvent) => {
+  if (event.key === "Enter") {
+    setIsPaymentsChecked((prevValue) => !prevValue);
+  }
+};
+
+export const [isSomethingElseChecked, setIsSomethingElseChecked] =
+  createSignal<boolean>(false);
+
+export const updateIsSomethingElseChecked = () => {
+  setIsSomethingElseChecked((prevValue) => !prevValue);
+};
+
+export const updateIsSomethingElseCheckedWithKeyboard = (
+  event: KeyboardEvent
+) => {
+  if (event.key === "Enter") {
+    setIsSomethingElseChecked((prevValue) => !prevValue);
   }
 };

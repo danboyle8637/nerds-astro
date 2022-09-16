@@ -1,5 +1,38 @@
 import type { RadioOption, SliderInputOption } from "../types/forms";
 
+export const contactFormOptions: RadioOption[] = [
+  {
+    id: 0,
+    value: "website_design_and_dev",
+    label: "Website Design & Developement",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    value: "copywriting",
+    label: "Copywriting Services",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    value: "blog_posts",
+    label: "Guest Blog Posts",
+    isChecked: false,
+  },
+  {
+    id: 3,
+    value: "tech_reviews",
+    label: "Tech Review",
+    isChecked: false,
+  },
+  {
+    id: 4,
+    value: "other",
+    label: "Something else",
+    isChecked: false,
+  },
+];
+
 export const leadFormOptions: RadioOption[] = [
   {
     id: 0,

@@ -1,0 +1,36 @@
+---
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+import ContentContainer from "./ContentContainer.astro";
+---
+
+<div class="container">
+  <ContentContainer />
+  <div class="button-container">
+    <InternalNavButton type="purple" slug="/blog" title="Go To Blog" cta={false}>Go To Blog</InternalNavButton>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    gap: 80px;
+    width: 100%;
+
+    @include aboveMobile {
+      gap: 120px;
+      width: 660px;
+    }
+  }
+
+  .button-container {
+    width: 90%;
+    max-width: 390px;
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/Layout.astro'
+import SmallHeader from '../sections/headers/SmallHeader.astro';
+import Footer from '../sections/Footer/index.astro'
+import { ContactForm } from '../components/solid/forms/ContactForm'
+---
+
+<BaseLayout title="Contact a Nerd Who Sells">
+  <div class="view-container">
+    <SmallHeader headline="Contact Us" />
+    <ContactForm client:load />
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @import "../styles/sizes.scss";
+
+  .view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+</style>
