@@ -502,3 +502,31 @@ export const updateHaveSiteDesign = (event: InputEvent) => {
     };
   });
 };
+
+export const [additionalInfo, setAdditionalInfo] = createSignal<InputValue>({
+  value: "",
+  valid: false,
+});
+
+export const [additionalInfoOptions, setAdditionalInfoOptions] =
+  createSignal<InputOptions>({
+    initial: true,
+    touched: false,
+  });
+
+export const updateAdditionalInfoValue = (event: InputEvent) => {
+  const currentElement = event.currentTarget as HTMLTextAreaElement;
+  const value = currentElement.value;
+
+  setAdditionalInfo({
+    value: value,
+    valid: true,
+  });
+};
+
+export const updateAdditionalInfoOptions = (event: FocusEvent) => {
+  setAdditionalInfoOptions((prevValue) => ({
+    initial: false,
+    touched: !prevValue.touched,
+  }));
+};

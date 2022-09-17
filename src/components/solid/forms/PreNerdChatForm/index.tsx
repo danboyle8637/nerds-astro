@@ -5,6 +5,7 @@ import { TextArea } from "../inputs/TextArea";
 import { CheckboxInput } from "../inputs/CheckboxInput";
 import { CheckboxOption } from "../inputs/CheckboxInput/CheckboxOption";
 import { RadioInput } from "../inputs/RadioInput";
+import { FormButton } from "../../buttons/FormButton";
 import {
   haveSiteDesign,
   updateHaveSiteDesign,
@@ -29,6 +30,10 @@ import {
   updateIsSomethingElseCheckedWithKeyboard,
   siteTimeline,
   updateSiteTimeline,
+  additionalInfo,
+  additionalInfoOptions,
+  updateAdditionalInfoValue,
+  updateAdditionalInfoOptions,
 } from "../../../../stores/forms";
 import styles from "./NerdChatForm.module.css";
 
@@ -117,7 +122,29 @@ export const PreNerdChatForm: Component = () => {
           options={siteTimeline().options}
           updateInputValue={updateSiteTimeline}
         />
+        <TextArea
+          name="additionalInformation"
+          labelFor="addtiaionalInformation"
+          labelName="Anything else you want to add?"
+          labelInstructions=""
+          labelError=""
+          placeholder="If there's anything else, write it here..."
+          optional={true}
+          maxLength={400}
+          rows={5}
+          value={additionalInfo().value}
+          valid={additionalInfo().valid}
+          initial={additionalInfoOptions().initial}
+          touched={additionalInfoOptions().touched}
+          onInput={updateAdditionalInfoValue}
+          onFocus={updateAdditionalInfoOptions}
+          onBlur={updateAdditionalInfoOptions}
+          isLoading={false}
+        />
       </div>
+      <FormButton theme="teal" disabled={false}>
+        Send My Answers
+      </FormButton>
     </form>
   );
 };

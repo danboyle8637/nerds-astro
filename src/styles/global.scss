@@ -83,6 +83,32 @@ p {
   line-height: 1.6;
 }
 
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  line-height: 1.6;
+  transition: color 300ms ease-in-out;
+
+  &:hover {
+    color: #d631ff;
+  }
+
+  &:active {
+    color: #bfa9ff;
+  }
+
+  &:visited {
+    color: #8765ef;
+  }
+
+  &:visited:hover {
+    color: #d631ff;
+  }
+}
+
 strong {
   color: #bfa9ff;
   font-weight: 800;

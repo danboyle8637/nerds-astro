@@ -1,0 +1,31 @@
+---
+import HeadlineParagraph from "../../../components/typography/HeadlineParagraph.astro";
+
+const headline = "Pre - Nerd Chat Form"
+
+const paragraphs = [
+  "Great you're alsmost done. Fill out this form below.",
+  "It will give me a little extra information to make sure <strong>our conversation goes smoothly</strong>.",
+  "If you have any issues, <a href=\"/contact\">contact me</a> and I'll help you immediately. Talk soon!"
+]
+---
+
+<div class="container">
+  <HeadlineParagraph headline={headline} paragraphs={paragraphs} />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 80px 12px 0 12px;
+
+    @include aboveMobile {
+      padding: 120px 26px 0 26px;
+    }
+
+    @include aboveTablet {
+      padding: 120px 0 0 0;
+    }
+  }
+</style>

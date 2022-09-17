@@ -1,0 +1,46 @@
+---
+import HeadlineParagraph from "../../../components/typography/HeadlineParagraph.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+
+const headline = "Thank You... It Worked!"
+
+const paragraphs = [
+  "Thank you for filling out the Pre - Nerd Chat form. <strong>This does help me</strong>.",
+  "I will talk with you at the time specified below.",
+  "<strong>If anything changes... let me know</strong>.",
+  "I look forward to getting to know you and your projects.",
+]
+---
+
+<div class="container">
+  <HeadlineParagraph headline={headline} paragraphs={paragraphs} />
+  <div class="button-container">
+    <InternalNavButton type="purple" slug="/blog" title="Go To Blog" cta={false}>Go To Blog</InternalNavButton>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    gap: 80px;
+    width: 100%;
+
+    @include aboveMobile {
+      gap: 120px;
+      width: 660px;
+    }
+  }
+
+  .button-container {
+    width: 90%;
+    max-width: 390px;
+  }
+</style>
+
