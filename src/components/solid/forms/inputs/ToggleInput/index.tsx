@@ -69,7 +69,7 @@ export const ToggleInput: Component<ToggleSwitchProps> = (props) => {
         id={props.name}
         name={props.name}
         checked={props.isToggleOn}
-        onClick={props.toggleIsToggleOn}
+        onChange={props.toggleIsToggleOn}
         onKeyDown={props.toggleIsToggleOnWithKeyboard}
       />
       <label for={props.name} class={styles.toggle_label}>

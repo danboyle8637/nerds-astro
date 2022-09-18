@@ -1,0 +1,26 @@
+---
+id: 4
+section: 5
+---
+
+import "../../styles/mardown.scss";
+import BaseSubhead from "../../components/markdown/BaseSubhead.astro";
+import UnorderedList from "../../components/markdown/UnorderedList.astro";
+import BaseBullet from "../../components/typography/BaseBullet.astro";
+
+<BaseSubhead>Learn More By Reading Our Blog</BaseSubhead>
+
+Life is busy.
+
+But we're committed to blogging and sharing on a regular basis. The goal is at least one blog post per week.
+
+**Our blog is separated into**:
+
+<UnorderedList>
+  <BaseBullet small={true}>Design related posts</BaseBullet>
+  <BaseBullet small={true}>Coding case studies and tutorials</BaseBullet>
+  <BaseBullet small={true}>Marketing case studies and tutorials</BaseBullet>
+  <BaseBullet small={true}>Tech and software reviews</BaseBullet>
+</UnorderedList>
+
+Thanks for visiting Nerds Who Sell.

@@ -1,9 +1,18 @@
 ---
+interface Props {
+  showTwoCols?: boolean
+}
+
+const { showTwoCols } = Astro.props
+
+const listStyles = {
+  "--template-columns": showTwoCols ? "1fr 1fr" : "1fr",
+}
 ---
 
 <div class="container">
   <span>-----</span>
-    <ul>
+    <ul style={listStyles}>
       <slot />
     </ul>
   <span>-----</span>
@@ -11,6 +20,7 @@
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
 
   .container {
     padding-bottom: 40px;
@@ -29,6 +39,12 @@
     grid-auto-rows: min-content;
     gap: 40px;
     justify-items: start;
+
+    @include aboveMobile {
+      grid-template-columns: var(--template-columns);
+      column-gap: 20px;
+      row-gap: 40px;
+    }
   }
 
   span {

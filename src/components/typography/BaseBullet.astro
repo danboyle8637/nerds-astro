@@ -1,8 +1,18 @@
 ---
+interface Props {
+  small?: boolean
+}
+
+const { small } = Astro.props
+
 const checkImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-focus_UiuHs8It6.png?ik-sdk-version=javascript-1.4.3"
+
+const aboveMobileSize = {
+  "--above-mobile-font-size": small ? "2.1rem" : "2.6rem",
+}
 ---
 
-<li>
+<li style={aboveMobileSize}>
   <img src={checkImage} alt="Bullet point" title="Important Bullet Point">
   <slot />
 </li>
@@ -21,7 +31,7 @@ const checkImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asse
     width: 100%;
 
     @media (min-width: 960px) {
-      font-size: 2.6rem;
+      font-size: var(--above-mobile-font-size);
     }
   }
 
