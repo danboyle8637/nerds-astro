@@ -1,0 +1,29 @@
+---
+import ContentSection from "./ContentSection.astro";
+---
+
+<div class="container">
+  <div class="content-container">
+    <ContentSection />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 80px 12px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+  }
+
+  .content-container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+  }
+</style>
