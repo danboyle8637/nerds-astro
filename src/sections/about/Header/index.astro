@@ -1,0 +1,105 @@
+---
+import Content from "./Content.astro";
+
+const mobileImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/mobile-header-background-600x1300_rnK6VWPmd.png?ik-sdk-version=javascript-1.4.3"
+
+const aboveMobileImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/above-mobile-header-background-1200x600_D6CYD4YKt.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div class="container">
+  <Content />
+  <picture>
+    <source srcset={aboveMobileImage} media="(min-width: 600px)">
+    <img src={mobileImage} alt="A picture of Dan and Kindal" title="Nerds Who Sell">
+  </picture>
+  <div class="galaxy-blue" />
+  <div class="galaxy-teal" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+  }
+
+  picture {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    align-self: end;
+    width: 100%;
+    max-width: 1200px;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    filter: blur(200px);
+    transform: translate(-200px, -50%);
+    z-index: 1;
+
+    @media (min-width: 600px) {
+      transform: translate(-140px, -40%);
+    }
+
+    @media (min-width: 1100px) {
+      transform: translate(0, 80px);
+    }
+  }
+
+  .galaxy-blue {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    filter: blur(200px);
+    transform: translate(-80px, -50%);
+    z-index: 1;
+
+    @include aboveMobile {
+      transform: translate(0, 0);
+    }
+  }
+
+  .galaxy-teal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    filter: blur(200px);
+    transform: translate(200px, 0);
+    z-index: 1;
+
+    @include aboveMobile {
+      transform: translate(80px, 0);
+    }
+
+    @include aboveTablet {
+      transform: translate(0, 0);
+    }
+  }
+</style>

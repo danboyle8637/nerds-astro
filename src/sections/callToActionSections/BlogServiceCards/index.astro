@@ -1,10 +1,12 @@
 ---
 import ContentSection from "./ContentSection.astro";
+import CardsContainer from "./CardsContainer.astro";
 ---
 
 <div class="container">
   <div class="content-container">
     <ContentSection />
+    <CardsContainer />
   </div>
 </div>
 
@@ -16,13 +18,13 @@ import ContentSection from "./ContentSection.astro";
     padding: 80px 12px;
     display: flex;
     justify-content: center;
-    background-color: var(--background-color-dark);
+    background-color: #28234E;
     width: 100%;
   }
 
   .content-container {
     @include baseColGrid;
-    gap: 40px;
+    gap: 200px;
     justify-items: center;
     width: 100%;
   }
