@@ -1,11 +1,12 @@
 ---
 import Logo from "./Logo.astro";
+import HeaderNav from "./HeaderNav.astro";
 ---
 
 <div class="container">
   <div class="nav-container">
     <Logo />
-    <div></div>
+    <HeaderNav />
   </div>
 </div>
 
@@ -26,8 +27,10 @@ import Logo from "./Logo.astro";
 
   .nav-container {
     padding: 8px 12px 0 12px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 200px;
+    align-items: center;
     width: 100%;
     max-width: 1400px;
   }

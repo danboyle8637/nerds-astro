@@ -1,0 +1,19 @@
+.item_container {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 12px;
+  align-items: center;
+  width: max-content;
+}
+
+.item_link {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--font-color-light);
+  text-decoration: none;
+  outline: none;
+}
+
+.item_link:hover {
+  color: var(--accent-teal);
+}

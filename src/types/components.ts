@@ -27,3 +27,16 @@ export interface CopyContentService {
   buttonTitle: string;
   slug: string;
 }
+
+export type NavType = "about" | "now" | "services" | "blog" | "contact";
+
+export interface NavLink {
+  id: number;
+  navType: NavType;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  iconWidth: number;
+  navLabel: string;
+  slug: string;
+}
