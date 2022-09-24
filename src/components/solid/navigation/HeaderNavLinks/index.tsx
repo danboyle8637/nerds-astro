@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 
-import { NavLink } from "./NavLink";
-import { headerNavLinks } from "../../../data/navigation";
+import { NavItem } from "./NavItem";
+import { headerNavLinks } from "../../../../data/navigation";
 import styles from "./HeaderNavLinks.module.css";
 
 export const HeaderNavLinks: Component = () => {
@@ -10,7 +10,7 @@ export const HeaderNavLinks: Component = () => {
       link;
 
     return (
-      <NavLink
+      <NavItem
         navType={navType}
         imageUrl={imageUrl}
         altTag={altTag}

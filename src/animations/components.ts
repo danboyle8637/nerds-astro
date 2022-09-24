@@ -13,3 +13,22 @@ export const notificationPop = (notification: HTMLImageElement) => {
     }
   );
 };
+
+export const headerNavIconEnter = (icon: HTMLImageElement) => {
+  animate(
+    icon,
+    { x: 0, opacity: 1, scale: 1 },
+    { duration: 0.2, easing: "ease-in-out" }
+  );
+};
+
+export const headerNavIconExit = (icon: HTMLImageElement) => {
+  animate(
+    icon,
+    { x: "-60%", opacity: 0, scale: 0.9 },
+    {
+      duration: 0.2,
+      easing: "ease-in-out",
+    }
+  );
+};

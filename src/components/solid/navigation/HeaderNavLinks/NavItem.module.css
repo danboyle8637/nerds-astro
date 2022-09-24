@@ -17,3 +17,7 @@
 .item_link:hover {
   color: var(--accent-teal);
 }
+
+.item_link:visited {
+  color: var(--font-color-light);
+}

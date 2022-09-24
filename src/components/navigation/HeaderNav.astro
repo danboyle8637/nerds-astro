@@ -1,19 +1,18 @@
 ---
-import { HeaderNavLinks } from '../solid/HeaderNavLinks'
+import { HeaderNavLinks } from '../solid/navigation/HeaderNavLinks'
+import { HamburgerIcon } from '../solid/navigation/MainMobileNav/HamburgerIcon'
+import { MobileNavDrawer } from '../solid/navigation/MobileNavDrawer'
 ---
 
-<div>
-  <HeaderNavLinks />
-</div>
+
+  <!-- <HeaderNavLinks client:load /> -->
+  <HamburgerIcon client:load />
+  <MobileNavDrawer client:media="(max-width: 600px)" />
+
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
   @import "../../styles/layout.scss";
 
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
+
 </style>

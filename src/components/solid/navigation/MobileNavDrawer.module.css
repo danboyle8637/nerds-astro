@@ -1,0 +1,10 @@
+.drawer_container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  width: 90px;
+  transform: translateX(106%);
+  z-index: 10;
+}
