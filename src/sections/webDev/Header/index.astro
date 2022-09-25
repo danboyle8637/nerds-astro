@@ -2,46 +2,59 @@
 import Headline from "./Headline.astro";
 import { AppIcon } from '../../../components/solid/AppIcon'
 import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
 ---
 
 <div class="container">
   <div class="content-container">
-    <Headline />
-    <div class="model">
-      <AppIcon client:load />
+    <div class="three-d-container">
+      <Headline />
+      <div class="model">
+        <AppIcon client:load />
+      </div>
     </div>
-  </div>
     <InternalNavButton type="purple" title="Free Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
+  </div>
+  <div class="galaxy"></div>
+  <BottomLeftAccent backgroundType="header" />
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
-    padding: 60px 0 80px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
-    gap: 20px;
-    justify-items: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
     background-color: var(--background-color-dark);
     width: 100%;
     box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
-
-    @media (min-width: 600px) {
-      padding: 60px 0 80px 34px;
-      gap: 60px;
-    }
-
-    @media (min-width: 1100px) {
-      padding: 60px 0 80px 0;
-    }
+    isolation: isolate;
   }
 
   .content-container {
+    padding: 80px 0 80px 0;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @include aboveMobile {
+      padding: 80px 0 80px 34px;
+      gap: 60px;
+    }
+
+    @include aboveIpadPro {
+      padding: 120px 0 80px 0;
+    }
+  }
+
+  .three-d-container {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 40px;
     justify-items: center;
     width: 100%;
@@ -52,11 +65,29 @@ import InternalNavButton from "../../../components/buttons/InternalNavButton.ast
       align-items: center;
       gap: 0;
     }
-
-   
   }
 
   .model {
     width: 300px;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(40px, 0);
+    z-index: 1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+      transform: translate(40px, -120px);
+    }
   }
 </style>

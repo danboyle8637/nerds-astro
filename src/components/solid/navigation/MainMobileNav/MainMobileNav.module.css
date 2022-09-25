@@ -1,4 +1,5 @@
 .mobile_nav_container {
+  padding: 140px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

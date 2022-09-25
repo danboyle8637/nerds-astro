@@ -14,3 +14,9 @@
 img {
   width: 100%;
 }
+
+@media (min-width: 960px) {
+  .burger_container {
+    display: none;
+  }
+}

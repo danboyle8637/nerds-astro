@@ -1,0 +1,29 @@
+---
+import FooterLinkItem from "../../components/buttons/FooterLinkItem.astro";
+import { footerAdminNavLinks } from '../../data/navigation'
+---
+
+<nav>
+  <ul>
+    {footerAdminNavLinks.map(link => {
+      const {type, label, slug } = link
+
+      return (
+        <FooterLinkItem linkType={type} slug={slug}>{label}</FooterLinkItem>
+      )
+    })}
+  </ul>
+</nav>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 30px;
+    width: max-content;
+  }
+</style>

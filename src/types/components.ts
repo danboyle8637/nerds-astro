@@ -40,3 +40,14 @@ export interface NavLink {
   navLabel: string;
   slug: string;
 }
+
+export type FooterLinkType = "admin" | "service";
+
+export interface FooterLink {
+  id: number;
+  type: FooterLinkType;
+  label: string;
+  slug: string;
+}
+
+export type AccentBackground = "header" | "body" | "footer";

@@ -1,4 +1,4 @@
-import type { NavLink } from "../types/components";
+import type { NavLink, FooterLink } from "../types/components";
 
 export const headerNavLinks: NavLink[] = [
   {
@@ -10,7 +10,7 @@ export const headerNavLinks: NavLink[] = [
     titleTag: "About Nerds",
     iconWidth: 50,
     navLabel: "About",
-    slug: "/ablut",
+    slug: "/about",
   },
   {
     id: 1,
@@ -55,5 +55,125 @@ export const headerNavLinks: NavLink[] = [
     iconWidth: 30,
     navLabel: "Contact",
     slug: "/contact",
+  },
+];
+
+export const footerAdminNavLinks: FooterLink[] = [
+  {
+    id: 0,
+    type: "admin",
+    label: "Home",
+    slug: "/",
+  },
+  {
+    id: 1,
+    type: "admin",
+    label: "About",
+    slug: "/about",
+  },
+  {
+    id: 2,
+    type: "admin",
+    label: "Services",
+    slug: "/services",
+  },
+  {
+    id: 3,
+    type: "admin",
+    label: "Blog",
+    slug: "/blog",
+  },
+  {
+    id: 4,
+    type: "admin",
+    label: "Contact",
+    slug: "/contact",
+  },
+  {
+    id: 5,
+    type: "admin",
+    label: "Privacy",
+    slug: "/legal/privacy",
+  },
+];
+
+export const footerWebDevLinks: FooterLink[] = [
+  {
+    id: 0,
+    type: "service",
+    label: "Web Design & Dev",
+    slug: "/services/web-design-and-development",
+  },
+  {
+    id: 1,
+    type: "service",
+    label: "7 Day Site",
+    slug: "/services/seven-day-site",
+  },
+  {
+    id: 2,
+    type: "service",
+    label: "Web Strategy Chat",
+    slug: "/services/web-strategy-chat",
+  },
+];
+
+export const footerCopyLinks: FooterLink[] = [
+  {
+    id: 0,
+    type: "service",
+    label: "Web Sales Copy",
+    slug: "/services/web-page-sales-copy",
+  },
+  {
+    id: 1,
+    type: "service",
+    label: "Email Copy",
+    slug: "/services/email-marketing-copoy",
+  },
+  {
+    id: 2,
+    type: "service",
+    label: "Digital Ad Copy",
+    slug: "/services/digital-ad-copy",
+  },
+  {
+    id: 3,
+    type: "service",
+    label: "Product Copy",
+    slug: "/services/product-sales-copy",
+  },
+  {
+    id: 4,
+    type: "service",
+    label: "Blog Posts",
+    slug: "/services/blog-post-writing",
+  },
+  {
+    id: 5,
+    type: "service",
+    label: "Copy Chat",
+    slug: "/services/nerd-copy-chat",
+  },
+];
+
+export const footerBlogLinks: FooterLink[] = [
+  {
+    id: 0,
+    type: "service",
+    label: "Coding Blog",
+    slug: "/blog/coding",
+  },
+  {
+    id: 1,
+    type: "service",
+    label: "Marketing Blog",
+    slug: "/services/marketing",
+  },
+  {
+    id: 2,
+    type: "service",
+    label: "Tech Blog",
+    slug: "/services/tech",
   },
 ];

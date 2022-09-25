@@ -1,7 +1,11 @@
 import { createEffect } from "solid-js";
 import type { Component } from "solid-js";
 
-import { isMobileNavOpen } from "../../../stores/navigation";
+import { MainMobileNav } from "./MainMobileNav";
+import {
+  isMobileNavOpen,
+  toggleIsMobileNavOpen,
+} from "../../../stores/navigation";
 import {
   showMobileNavMenu,
   hideMobileNavMenu,
@@ -9,17 +13,33 @@ import {
 import styles from "./MobileNavDrawer.module.css";
 
 export const MobileNavDrawer: Component = () => {
-  let menuDrawer: HTMLDivElement;
+  let clickLayerRef: HTMLDivElement;
+  let menuDrawerRef: HTMLDivElement;
 
   createEffect(() => {
     if (isMobileNavOpen()) {
-      showMobileNavMenu(menuDrawer);
+      showMobileNavMenu(clickLayerRef, menuDrawerRef);
     }
 
     if (!isMobileNavOpen()) {
-      hideMobileNavMenu(menuDrawer);
+      hideMobileNavMenu(clickLayerRef, menuDrawerRef);
     }
   });
 
-  return <div ref={menuDrawer!} class={styles.drawer_container} />;
+  const handleClickLayerClick = () => {
+    if (isMobileNavOpen()) {
+      toggleIsMobileNavOpen();
+    }
+  };
+  return (
+    <div
+      ref={clickLayerRef!}
+      class={styles.drawer_click_layer}
+      onClick={handleClickLayerClick}
+    >
+      <div ref={menuDrawerRef!} class={styles.drawer_container}>
+        <MainMobileNav />
+      </div>
+    </div>
+  );
 };

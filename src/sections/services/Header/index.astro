@@ -1,6 +1,7 @@
 ---
 import BackgroundImage from './BackgroundImage.astro'
 import CallToAction from './CallToAction.astro';
+import BottomLeftAccent from '../../../components/accents/BottomLeftAccent.astro';
 ---
 <div class="container">
   <div class="content-container">
@@ -9,26 +10,31 @@ import CallToAction from './CallToAction.astro';
     <BackgroundImage />
     <div class="galaxy" />
   </div>
+  <BottomLeftAccent backgroundType="header" />
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+
   .container {
+    position: relative;
     display: flex;
     justify-content: center;
     background-color: #161E2D;
     width: 100%;
     box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
+    isolation: isolate;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       height: 600px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       height: 800px;
     }
 
-    @media (min-width: 1100px) {
+    @include aboveIpadPro {
       height: 700px;
     }
   }
@@ -52,48 +58,48 @@ import CallToAction from './CallToAction.astro';
     transform: translate(20px, 120px);
     z-index: 1;
 
-    @media (min-width: 392px) {
+    @include aboveIphone11 {
       font-size: 6rem;
     }
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       justify-self: center;
       font-size: 6rem;
       transform: translate(-80px, 60px);
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       font-size: 7rem;
       transform: translate(-60px, 80px);
     }
 
-    @media (min-width: 1100px) {
+    @include aboveIpadPro {
       transform: translate(-60px, 100px);
     }
 
-    @media (min-width: 1450px) {
+    @include aboveLaptop {
       transform: translate(-60px, 80px);
     }
   }
 
   .galaxy {
     position: absolute;
-    left: 0;
-    bottom: 0;
+    top: 0;
+    right: 0;
     background-color: var(--accent-teal);
     border-radius: 50%;
     width: 180px;
     height: 180px;
     filter: blur(200px);
-    transform: translate(-200px, -50%);
+    transform: translate(90px, -50%);
     z-index: 1;
 
-    @media (min-width: 600px) {
-      transform: translate(-140px, -40%);
+    @include aboveMobile {
+      transform: translate(100px, -40%);
     }
 
-    @media (min-width: 1100px) {
-      transform: translate(0, 80px);
+    @include aboveIpadPro {
+      transform: translate(200px, -80px);
     }
   }
 </style>
