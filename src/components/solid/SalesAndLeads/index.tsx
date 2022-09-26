@@ -47,38 +47,30 @@ export const SalesAndLeads: Component = () => {
 
   return (
     <div class={styles.container}>
-      <div class={styles.sale_container}>
-        <img
-          ref={notification1!}
-          class={styles.sale_notification}
-          src={salesNotification}
-          alt=""
-        />
-      </div>
-      <div class={styles.lead_container}>
-        <img
-          ref={notification2!}
-          class={styles.lead_notification}
-          src={leadNotification}
-          alt=""
-        />
-      </div>
-      <div class={styles.sale_container}>
-        <img
-          ref={notification3!}
-          class={styles.sale_notification}
-          src={salesNotification}
-          alt=""
-        />
-      </div>
-      <div class={styles.lead_container}>
-        <img
-          ref={notification4!}
-          class={styles.lead_notification}
-          src={leadNotification}
-          alt=""
-        />
-      </div>
+      <img
+        ref={notification1!}
+        class={styles.sale_notification}
+        src={salesNotification}
+        alt="Sales notification"
+      />
+      <img
+        ref={notification2!}
+        class={styles.lead_notification}
+        src={leadNotification}
+        alt="Lead notification"
+      />
+      <img
+        ref={notification3!}
+        class={styles.sale_notification}
+        src={salesNotification}
+        alt="Sales notification"
+      />
+      <img
+        ref={notification4!}
+        class={styles.lead_notification}
+        src={leadNotification}
+        alt="Lead notification"
+      />
     </div>
   );
 };

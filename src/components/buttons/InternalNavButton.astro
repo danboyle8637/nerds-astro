@@ -1,9 +1,9 @@
 ---
 import NerdChatIcon from '../svgs/NerdChatIcon.astro'
-import type { InternalButtonColor } from '../../types/components'
+import type { ThemeColor } from '../../types/components'
 
 interface Props {
-  type: InternalButtonColor
+  type: ThemeColor
   slug: string
   title: string
   width?: number
@@ -14,7 +14,7 @@ const { slug, title, type, width, cta = true } = Astro.props as Props
 
 const buttonStyles = {
   "--button-layout": cta ? "min-content 1fr" : "1fr",
-  "--button-label-color": type === "teal" ? "var(--accent-teal-dark)" : type === "pink" ? "#f8f8f8" : "#f8f8f8",
+  "--button-label-color": type === "teal" ? "var(--accent-teal-dark)" : "var(--font-color-light)",
   "--background-color": type === "teal" ? "var(--accent-teal)" : type === "pink" ? "var(--accent-pink)" : "var(--accent-purple)",
   "--shadow-color": type === "teal" ? "var(--accent-purple-dark)" : type === "pink" ? "var(--accent-pink-dark)" : "var(--accent-purple-dark)",
   "--button-width": width ? `${width}px` : "100%",
@@ -63,7 +63,6 @@ const buttonStyles = {
     background-color: var(--background-color);
     border: none;
     border-radius: 12px;
-    outline: none;
     width: var(--button-width);
     height: 60px;
     z-index: 1;

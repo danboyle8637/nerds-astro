@@ -1,4 +1,4 @@
-import { animate } from "motion";
+import { animate, timeline } from "motion";
 
 export const notificationPop = (notification: HTMLImageElement) => {
   animate(

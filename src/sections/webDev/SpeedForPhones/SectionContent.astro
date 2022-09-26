@@ -2,16 +2,16 @@
 import Headline from "./Headline.astro";
 
 const paragraphs = [
-  "Over 80% of website traffic starts on people's phone. Your website better look good and load FAST.",
+  "Over <strong>80% of website traffic starts on people's phone</strong>. Your website better look good and load FAST.",
   "Especially when the network connection is spotty.",
-  "And it better sell on a small screen where space is severely limited.",
+  "And it better <strong>sell on a small screen</strong> where space is severely limited.",
 ]
 ---
 
 <div class="container">
   <Headline />
   <div class="paragraph-container">
-    {paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
   </div>
 </div>
 

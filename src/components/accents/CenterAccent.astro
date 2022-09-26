@@ -15,25 +15,29 @@ const styles = {
 <div class="accent-container">
   <div class="galaxy"></div>
   <div class="grid-container" style={styles}>
-    <div />
-    <div />
-    <div />
-    <div class="grid-block" />
-    <div />
-    <div />
     <div class="grid-block" />
     <div class="grid-block" />
     <div class="grid-block" />
     <div class="grid-block" />
     <div class="grid-block" />
     <div class="grid-block" />
-    <div />
     <div class="grid-block" />
     <div class="grid-block" />
     <div class="grid-block" />
-    <div />
-    <div />
-    <div />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
+    <div class="grid-block" />
     <div class="grid-block" />
   </div>
 </div>
@@ -44,14 +48,15 @@ const styles = {
   .accent-container {
     position: absolute;
     top: 50%;
-    right: 0;
+    left: 50%;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     width: 100%;
     z-index: -1;
-    transform: translateY(-50%);
-    aspect-ratio: 4 / 5;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 4 / 6;
+    overflow: hidden;
 
     @include aboveMobile {
       width: 400px;
@@ -61,11 +66,10 @@ const styles = {
   .galaxy {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    background-image: linear-gradient(217deg, rgba(20, 255, 255, 0.8), rgba(48, 0, 219, 1) 70%);
+    background-image: linear-gradient(217deg, rgba(20, 255, 255, 0.8), rgba(122, 0, 235, 0.8) 70%);
     border-radius: 50%;
     filter: blur(70px);
-    transform: translate(80%, 0);
-    animation: rotateMiddleRightGalaxy 4000ms linear infinite;
+    animation: rotateCenterGalaxy 4000ms linear infinite;
   }
 
   .grid-container {
@@ -73,8 +77,8 @@ const styles = {
     grid-row: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 6px;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 3px;
     width: 100%;
     z-index: 1;
   }
@@ -85,13 +89,13 @@ const styles = {
     height: 100%;
   }
 
-  @keyframes rotateMiddleRightGalaxy {
+  @keyframes rotateCenterGalaxy {
     0% {
-      transform: translate(80%, 0) rotate(0deg);
+      transform: rotate(0deg);
     }
 
     100% {
-      transform: translate(80%, 0) rotate(360deg);
+      transform: rotate(360deg);
     }
   }
 </style>

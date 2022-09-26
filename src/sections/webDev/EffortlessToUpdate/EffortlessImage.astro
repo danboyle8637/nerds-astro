@@ -2,18 +2,20 @@
 const effortlessImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/easy-to-build-update_cAXe67POq.png?ik-sdk-version=javascript-1.4.3"
 ---
 
-<img src={effortlessImage} alt="Image of a blog post, updating an ecommerce product and a site update indicator." title="Effortless to Mange and Update">
+<img class="update-image" src={effortlessImage} alt="Image of a blog post, updating an ecommerce product and a site update indicator." title="Effortless to Mange and Update">
 
 <style lang="scss">
-  img {
+  @import "../../../styles/sizes.scss";
+
+  .update-image {
     order: 0;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 400px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       order: 1;
     }
   }

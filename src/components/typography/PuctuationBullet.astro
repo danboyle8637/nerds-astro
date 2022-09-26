@@ -10,7 +10,7 @@ const exclaimationImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/si
 ---
 
 <li>
-  <img src={type === "question" ? questionImage : exclaimationImage} alt="Check" title="Important Question">
+  <img class="bullet" src={type === "question" ? questionImage : exclaimationImage} alt="Check" title="Important Question">
   <slot />
 </li>
 
@@ -32,7 +32,7 @@ const exclaimationImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/si
     }
   }
 
-  img {
+  .bullet {
     width: 60px;
   }
 </style>

@@ -6,7 +6,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
 ---
 
 <div class="container">
-  <img src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
+  <img class="chat-image" src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
   <div class="content-container">
     <ContentContainer />
     <LeadForm client:visible />
@@ -14,6 +14,9 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
     position: relative;
     padding-top: 180px;
@@ -23,26 +26,28 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     background-color: var(--background-color-dark);
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       padding-top: 240px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       padding-top: 280px;
     }
   }
 
   .content-container {
     padding: 0 12px 80px 12px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 60px;
     justify-items: center;
     width: 100%;
-  }
 
-  img {
+    @include aboveMobile {
+      padding: 0 12px 120px 12px;
+    }
+   }
+
+  .chat-image {
     position: absolute;
     top: -60px;
     left: 50%;

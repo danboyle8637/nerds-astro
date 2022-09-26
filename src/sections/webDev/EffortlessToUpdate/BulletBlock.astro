@@ -16,30 +16,29 @@ const bullets = [
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
     order: 1;
     padding: 0 12px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 80px;
     justify-items: start;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 660px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       order: 0;
       width: auto;
     }
   }
 
   ul  {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 80px;
     width: 100%;
   }

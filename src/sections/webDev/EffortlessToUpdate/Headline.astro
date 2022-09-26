@@ -3,7 +3,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
 ---
 
 <div class="container">
-  <img src={numberImage} alt="Number 2 important website criteria." title="Easy To Update and Manage">
+  <img class="step-number" src={numberImage} alt="Number 2 important website criteria." title="Easy To Update and Manage">
   <h1>
     <span class="headline-group">
       <span>Effortless To</span>
@@ -15,33 +15,34 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
 
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 20px;
     width: 100%;
     
-    @media (min-width: 600px) {
+    @include aboveMobile {
       grid-template-columns: min-content 1fr;
       column-gap: 12px;
       width: 660px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       width: 880px;
     }
   }
 
-  img {
+  .step-number {
     width: 80px;
     transform: translate(80px, 0);
 
-    @media (min-width: 392px) {
+    @include aboveIphone11 {
       transform: translate(100px, 0);
     }
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 100px;
       transform: translate(0, -20px);
     }
@@ -49,9 +50,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
 
   h1 {
     padding: 0 12px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 6px;
     justify-items: end;
     width: 100%;
@@ -64,7 +63,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
     gap: 6px;
     width: fit-content;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       flex-direction: row;
       gap: 12px;
     }
@@ -75,7 +74,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
     font-weight: 700;
     color: var(--font-color-light);
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       font-size: 6rem;
     }
   }
