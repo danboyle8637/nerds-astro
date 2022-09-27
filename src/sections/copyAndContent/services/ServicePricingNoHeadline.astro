@@ -13,7 +13,7 @@ const { imageUrl, altTag, titleTag, formType, toggleName } = Astro.props
 ---
 
 <div class="service-container">
-  <img src={imageUrl} alt={altTag} title={titleTag}>
+  <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag}>
   <CopywritingFormSwitcher client:load formType={formType} />
 </div>
 
@@ -43,7 +43,7 @@ const { imageUrl, altTag, titleTag, formType, toggleName } = Astro.props
     }
   }
 
-  img {
+  .copy-image {
     order: 1;
     width: 90%;
 

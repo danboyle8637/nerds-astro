@@ -18,10 +18,10 @@ import MiddleRightAccent from "../../components/accents/MiddleRightAccent.astro"
     <ServiceLinkBlock links={footerCopyLinks} />
     <ServiceLinkBlock links={footerBlogLinks} />
   </div>
-  <TopRightAccent />
+  <TopRightAccent backgroundType="footer" />
   <BottomLeftAccent backgroundType="footer" />
   <div class="accent">
-    <MiddleRightAccent />
+    <MiddleRightAccent backgroundType="footer" />
   </div>
 </footer>
 
@@ -37,6 +37,7 @@ import MiddleRightAccent from "../../components/accents/MiddleRightAccent.astro"
     gap: 80px;
     justify-items: center;
     width: 100%;
+    box-shadow: 0 0 0 8px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
     isolation: isolate;
 

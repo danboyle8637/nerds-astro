@@ -11,6 +11,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     <ContentContainer />
     <LeadForm client:visible />
   </div>
+  <div class="galaxy" />
 </div>
 
 <style lang="scss">
@@ -25,6 +26,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     align-items: center;
     background-color: var(--background-color-dark);
     width: 100%;
+    isolation: isolate;
 
     @include aboveMobile {
       padding-top: 240px;
@@ -60,6 +62,26 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
 
     @media (min-width: 960px) {
       width: 480px;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(80px, 60px);
+    z-index: -1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+      transform: translate(280px, 120px);
     }
   }
 </style>

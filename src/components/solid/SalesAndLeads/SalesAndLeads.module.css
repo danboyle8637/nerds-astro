@@ -7,21 +7,16 @@
   width: 100%;
 }
 
-.notification_container {
-}
-
 .sale_notification {
   width: 320px;
   opacity: 0;
   transform: scale(0);
-  z-index: 1;
 }
 
 .lead_notification {
   opacity: 0;
   transform: scale(0);
   width: 280px;
-  z-index: 1;
 }
 
 @media (min-width: 392px) {

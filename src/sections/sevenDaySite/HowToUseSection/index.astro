@@ -1,6 +1,8 @@
 ---
 import Headline from "./Headline.astro";
 import UseCases from "./UseCases.astro";
+import TopRightAccent from "../../../components/accents/TopRightAccent.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
 ---
 
 <div class="container">
@@ -8,6 +10,8 @@ import UseCases from "./UseCases.astro";
     <Headline />
     <UseCases />
   </div>
+  <TopRightAccent backgroundType="header" />
+  <BottomLeftAccent backgroundType="header" />
 </div>
 
 <style lang="scss">
@@ -15,15 +19,18 @@ import UseCases from "./UseCases.astro";
   @import "../../../styles/layout.scss";
 
   .container {
+    position: relative;
     display: flex;
     justify-content: center;
     background-color: var(--background-color-dark);
     width: 100%;
     box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
   }
 
   .content-container {
-    padding: 80px 12px;
+    padding: 80px 12px 120px 12px;
     @include baseColGrid;
     gap: 120px;
     justify-items: center;

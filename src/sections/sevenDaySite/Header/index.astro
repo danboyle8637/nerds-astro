@@ -2,6 +2,7 @@
 import Headline from './Headline.astro';
 import Month from '../../../components/calendar/NormalMonth.astro'
 import InternalNavButton from '../../../components/buttons/InternalNavButton.astro';
+import TopRightAccent from '../../../components/accents/TopRightAccent.astro';
 ---
 
 <div class="view-container">
@@ -14,25 +15,29 @@ import InternalNavButton from '../../../components/buttons/InternalNavButton.ast
 		</div>
 		<InternalNavButton type="teal" title="Free Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
 	</div>
+	<TopRightAccent backgroundType="header" />
+	<div class="galaxy" />
 </div>
 
 <style lang="scss">
 	@import "../../../styles/sizes.scss";
+	@import "../../../styles/layout.scss";
 
 	.view-container {
+		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		background-color: var(--background-color-dark);
 		width: 100%;
 		box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+		overflow: hidden;
+		isolation: isolate;
 	}
 
 	.content-container {
-		padding: 40px 12px 80px 12px;
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-auto-rows: min-content; 
+		padding: 60px 12px 80px 12px;
+		@include baseColGrid;
 		gap: 80px;
 		justify-items: center;
 		width: 100%;
@@ -64,9 +69,7 @@ import InternalNavButton from '../../../components/buttons/InternalNavButton.ast
 	}
 
 	.headline-container {
-		display: grid;
-		grid-template-columns: 1fr;
-		grid-auto-rows: min-content; 
+		@include baseColGrid;
 		gap: 4px;
 		justify-items: center;
 		width: 100%;
@@ -80,6 +83,30 @@ import InternalNavButton from '../../../components/buttons/InternalNavButton.ast
 		}
 	}
 
-	@media (min-width: 600px) {
-	}
+	.galaxy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--accent-purple);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(-180px, 100px);
+
+		@include aboveMobile {
+			transform: translate(-120px, 20px);
+		}
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+      transform: translate(-220px, 20px);
+    }
+
+		@include aboveTablet {
+			transform: translate(-220px, -60px);
+		}
+  }
 </style>

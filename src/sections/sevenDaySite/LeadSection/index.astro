@@ -1,7 +1,7 @@
 ---
 const paragraphs: string[] = [
-  "The decisions you make during step 1 will be with you for years to come. Let's not mess this up.",
-  "And a good website is expensive... maybe out of your budget right now.",
+  "The decisions you make during step 1 will be with you for years to come. <strong>Let's not mess this up</strong>.",
+  "And a good website is expensive... maybe <strong>out of your budget</strong> right now.",
 ]
 ---
 
@@ -18,7 +18,7 @@ const paragraphs: string[] = [
     </div>
   </div>
   <div class="paragraphs">
-    {paragraphs.map(paragraph => <p>{paragraph}</p>)}
+    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -101,7 +101,6 @@ const paragraphs: string[] = [
       width: 400px;
       height: 400px;
       filter: blur(260px);
-     
     }
   }
 
@@ -110,5 +109,13 @@ const paragraphs: string[] = [
     top: 0;
     right: 0;
     transform: translate(100px, -200px);
+
+    @include aboveTablet {
+      transform: translate(220px, -300px);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(220px, -400px);
+    }
   }
 </style>

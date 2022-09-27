@@ -20,7 +20,9 @@ import { useCases } from '../../../data/sevenDaySite'
       )
     })}
   </div>
-  <InternalNavButton type="teal" title="Setup a Nerd Chat" slug="/">Setup a Nerd Chat</InternalNavButton>
+  <div class="button-container">
+    <InternalNavButton type="teal" title="Setup a Nerd Chat" slug="/">Setup a Nerd Chat</InternalNavButton>
+  </div>
 </div>
 
 <style lang="scss">
@@ -55,5 +57,9 @@ import { useCases } from '../../../data/sevenDaySite'
       column-gap: 80px;
       width: fit-content;
     }
+  }
+
+  .button-container {
+    width: 290px;
   }
 </style>

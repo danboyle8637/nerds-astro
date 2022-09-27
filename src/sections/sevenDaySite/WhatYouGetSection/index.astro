@@ -1,5 +1,6 @@
 ---
 import BaseBullet from "../../../components/typography/BaseBullet.astro";
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
 
 const bullets: string[] = [
   "Home page (the main sales page)",
@@ -12,7 +13,7 @@ const bullets: string[] = [
 <div class="container">
   <h1>Here's What You Get:</h1>
   <div class="bullet-container">
-    {bullets.map(bullet => <BaseBullet>{bullet}</BaseBullet>)}
+    {bullets.map(bullet => <PunctuationBullet type="check" bullet={bullet} />)}
   </div>
 </div>
 

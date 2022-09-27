@@ -1,16 +1,16 @@
 ---
-import PuctuationBullet from "../../../components/typography/PuctuationBullet.astro";
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
 
 const bullets = [
-  "Do you want to write blog posts and get FREE SEO traffic?",
-  "Do you need to create events or add new products every week?",
-  "We can make your website easy to update and manage yourself.",
+  "Do you want to write blog posts and get <strong>FREE SEO traffic</strong>?",
+  "Do you need to create events or <strong>add new products</strong> every week?",
+  "We can make your website easy to update and <strong>manage yourself</strong>.",
 ]
 ---
 
 <div class="container">
   <ul>
-    {bullets.map((bullet) => <PuctuationBullet type="question">{bullet}</PuctuationBullet>)}
+    {bullets.map((bullet) => <PunctuationBullet type="question" bullet={bullet} />)}
   </ul>
   
 </div>

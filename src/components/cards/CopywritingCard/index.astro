@@ -10,7 +10,7 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
 
 <div class="base-container">
   <div class="card-container">
-    <img src={imageUrl} alt={altTag} title={titleTag}>
+    <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag}>
     <CardContent 
       headline={headline}
       description={description}
@@ -53,7 +53,7 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     }
   }
 
-  img {
+  .copy-image {
     position: absolute;
     top: 0;
     left: 50%;

@@ -15,7 +15,8 @@
 
 .tag_container_textarea {
   composes: tag_container;
-  top: 20px;
+  top: unset;
+  bottom: 20px;
   transform: translate(-100%, 0);
 }
 

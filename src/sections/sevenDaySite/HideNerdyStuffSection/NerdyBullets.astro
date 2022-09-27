@@ -1,16 +1,16 @@
 ---
-import PuctuationBullet from "../../../components/typography/PuctuationBullet.astro";
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
 
 const nerdyBullets: string[] = [
-  "AirTable database to store your leads",
-  "Notification emails straight to your phone",
-  "Simple Stripe hookup for single payments",
-  "Hooked up to my recommended email service"
+  "AirTable database to <strong>store your leads</strong>",
+  "Notification emails straight to <strong>your phone</strong>",
+  "Simple Stripe hookup for <strong>single payments</strong>",
+  "Hooked up to my recommended email marketing service"
 ]
 ---
 
 <div class="container">
-  {nerdyBullets.map(bullet => <PuctuationBullet type="exclaimation">{bullet}</PuctuationBullet>)}
+  {nerdyBullets.map(bullet => <PunctuationBullet type="exclaimation" bullet={bullet} />)}
 </div>
 
 <style lang="scss">

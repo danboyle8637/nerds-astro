@@ -1,12 +1,15 @@
 ---
 import ContentContainer from "./ContentContainer.astro";
 import {SevenDaySiteForm} from '../../../components/solid/forms/SevenDaySiteForm'
+import TopRightAccent from "../../../components/accents/TopRightAccent.astro";
 
 const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3"
 ---
 
 <div class="container">
-  <img src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
+  <TopRightAccent backgroundType="header" />
+  <div class="galaxy" />
+  <img class="nerd-chat" src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
   <div class="content-container">
     <ContentContainer />
     <SevenDaySiteForm client:visible />
@@ -25,6 +28,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     align-items: center;
     background-color: var(--background-color-dark);
     width: 100%;
+    isolation: isolate;
 
     @include aboveMobile {
       padding-top: 240px;
@@ -43,7 +47,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     width: 100%;
   }
 
-  img {
+  .nerd-chat {
     position: absolute;
     top: -60px;
     left: 50%;
@@ -57,5 +61,29 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     @include aboveTablet {
       width: 480px;
     }
+  }
+
+  .galaxy {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    background-color: var(--accent-purple);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(-180px, 100px);
+
+		@include aboveMobile {
+			transform: translate(-120px, 20px);
+		}
+
+    @include aboveTablet {
+      transform: translate(-220px, 20px);
+    }
+
+		@include aboveTablet {
+			transform: translate(-220px, -60px);
+		}
   }
 </style>
