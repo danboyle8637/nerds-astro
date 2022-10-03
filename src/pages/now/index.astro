@@ -1,15 +1,28 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
-import Header2 from "../../components/blog/Header2.astro";
-import Header3 from '../../components/blog/Header3.astro';
-import Header4 from '../../components/blog/Header4.astro';
+import BlogCard from '../../components/cards/BlogCard/index.astro'
+import type { BlogPostFrontmatter } from '../../types/blog'
+
+const data = await Astro.glob("../../data/now/*.mdx")
+
+const nowCardsData = data.map(card => {
+  const { featureImageUrl, altTag, titleTag, cardTeaser, buttonLabel, slug } = card.frontmatter as BlogPostFrontmatter
+
+  return {
+    imageUrl: featureImageUrl,
+    altTag: altTag,
+    titleTag: altTag,
+    cardTeaser: cardTeaser,
+    buttonLabel: buttonLabel,
+    slug: slug,
+  }
+})
+
 ---
 
 <BaseLayout title="Now">
   <div class="container">
-    <Header2>This Is A Headline Two</Header2>
-    <Header3>This Is A Headline Three</Header3>
-    <Header4>This Is A Headline Four</Header4>
+    <BlogCard />
   </div>
 </BaseLayout>
 
