@@ -69,7 +69,7 @@ export const SliderRadioInput: Component<SliderRadioInputProps> = (props) => {
         "--container-width": `${props.inputWidth}px`,
         "--options-container-cols": `repeat(${props.options.length}, 1fr)`,
         "--indicator-width": `${knobWidth()}px`,
-        "--knob-start-x": `${initialKnobX}px`,
+        "--knob-start-x": `${initialKnobX()}px`,
       } as JSX.CSSProperties)
   );
 

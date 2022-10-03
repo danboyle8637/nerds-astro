@@ -1,0 +1,36 @@
+---
+export interface Props {
+  width?: string
+  height?: string
+}
+
+const { width, height } = Astro.props as Props
+---
+
+<svg
+id="external-link-icon"
+xmlns="http://www.w3.org/2000/svg"
+width={width}
+height={height}
+viewBox="0 0 83.24 81.95">
+  <path
+    id="box"
+    d="M69.95 45.72v14a16.26 16.26 0 01-16.22 16.25H22.21A16.26 16.26 0 016 59.73V28.21a16.26 16.26 0 0116.21-16.24h12.35"
+    fill="none"
+    stroke="#7d83ff"
+    stroke-linecap="round"
+    stroke-miterlimit="10"
+    stroke-width="12"
+  />
+  <g
+    id="arrow"
+    fill="none"
+    stroke="#7d83ff"
+    stroke-linecap="round"
+    stroke-miterlimit="10"
+    stroke-width="12">
+    <path id="link-out-base-line" d="M37.97 43.97L77.09 6.09" />
+    <path id="top-arrow-head" d="M56.13 6h21" />
+    <path id="bottom-arrow-head" d="M77.24 6v21" />
+  </g>
+</svg>
