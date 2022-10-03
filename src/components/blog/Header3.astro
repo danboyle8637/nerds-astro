@@ -1,0 +1,63 @@
+---
+const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<h3>
+  <span class="hash-container">
+    <img class="hash" src={hash} alt="Header 3" title="Headline">
+    <img class="hash right-hash-one" src={hash} alt="Header 3" title="Headline">
+    <img class="hash right-hash-two" src={hash} alt="Header 3" title="Headline">
+  </span>
+  <slot />
+</h3>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  h3 {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    justify-items: start;
+    align-items: start;
+    font-size: 3.0rem;
+    text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: 130px 1fr;
+      font-size: 3.8rem;
+      text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+    }
+
+    @include aboveTablet {
+      grid-template-columns: 160px 1fr;
+      font-size: 4.4rem;
+      text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+    }
+  }
+
+  .hash-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hash {
+    width: 40px;
+
+    @include aboveMobile {
+      width: 46px;
+    }
+
+    @include aboveTablet {
+      width: 56px;
+    }
+  }
+
+  .right-hash-one {
+    transform: translateX(-14px);
+  }
+
+  .right-hash-two {
+    transform: translateX(-28px);
+  }
+</style>

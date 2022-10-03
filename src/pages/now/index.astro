@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+import Header2 from "../../components/blog/Header2.astro";
+import Header3 from '../../components/blog/Header3.astro';
+import Header4 from '../../components/blog/Header4.astro';
+---
+
+<BaseLayout title="Now">
+  <div class="container">
+    <Header2>This Is A Headline Two</Header2>
+    <Header3>This Is A Headline Three</Header3>
+    <Header4>This Is A Headline Four</Header4>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../styles/layout.scss";
+
+  .container {
+    padding: 200px 20px;
+    @include baseColGrid;
+    align-items: center;
+    gap: 60px;
+    width: 100vw;
+    height: 100vh;
+  }
+</style>

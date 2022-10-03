@@ -1,0 +1,35 @@
+---
+interface Props {
+  imageUrl: string
+  altTag: string
+  titleTag: string
+}
+
+const { imageUrl, altTag, titleTag } = Astro.props
+---
+
+<div class="container">
+  <img class="post-image" src={imageUrl} alt={altTag} title={titleTag}>
+  <div class="background" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+  }
+
+  .post-image {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+
+  .background {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+  }
+</style>
