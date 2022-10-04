@@ -21,3 +21,14 @@ export interface BlogPostFrontmatter {
   category: BlogCategory;
   slug: string;
 }
+
+export interface BlogCardData {
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  cardTeaser: string;
+  buttonLabel: string;
+  tags: string[];
+  category: BlogCategory;
+  slug: string;
+}

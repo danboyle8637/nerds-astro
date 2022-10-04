@@ -1,0 +1,57 @@
+---
+import BlogCard from '../../components/cards/BlogCard/index.astro'
+import type { BlogCardData } from '../../types/blog'
+
+interface Props {
+  nowCardsData: BlogCardData[]
+}
+
+const { nowCardsData } = Astro.props
+---
+
+<div class="container">
+  {nowCardsData.map(card => {
+    const { imageUrl, altTag, titleTag, cardTeaser, buttonLabel, tags, category, slug } = card
+  
+    return (
+      <BlogCard 
+        imageUrl={imageUrl}
+        altTag={altTag}
+        titleTag={titleTag}
+        cardTeaser={cardTeaser}
+        buttonLabel={buttonLabel}
+        tags={tags}
+        category={category}
+        slug={slug}
+      />
+    )
+  })}
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    padding: 80px 12px 120px 12px;
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      padding: 120px 24px 120px 24px;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 120px;
+    }
+
+    @include aboveTablet {
+      width: fit-content;
+    }
+
+    @include aboveIpadPro {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

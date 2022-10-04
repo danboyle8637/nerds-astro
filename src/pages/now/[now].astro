@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+import Footer from '../../sections/Footer/index.astro'
+import type { MDXInstance } from 'astro'
+import type { BlogPostFrontmatter } from '../../types/blog'
+
+interface Route {
+  params: {
+    now: string
+  },
+  props: {
+    data: BlogPostFrontmatter,
+    now: MDXInstance<Record<string, any>>
+  }
+}
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../data/now/*.mdx")
+
+  const routes: Route[] = posts.map(post => {
+    const frontmatter = post.frontmatter as BlogPostFrontmatter
+
+    return ({
+      params: { now: frontmatter.slug },
+      props: {
+        data: frontmatter,
+        now: post
+      }
+    })
+  })
+
+  return routes
+}
+
+const { headline, seoTitle } = Astro.props.data as BlogPostFrontmatter
+const { Content } = Astro.props.now
+---
+
+<BaseLayout title={seoTitle}>
+  <h1>{headline}</h1>
+  <Content />
+  <Footer />
+</BaseLayout>

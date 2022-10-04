@@ -1,0 +1,37 @@
+---
+import client from '@sanity/client'
+
+const sanity = client({
+  projectId: "05wlmifi",
+  dataset: "production",
+  apiVersion: '2021-03-25',
+  useCdn: true,
+})
+
+const query = `
+  {
+    "blogCardData": *[_type == 'blogPost'] | order(_updatedAt desc) {
+        "id": _id,
+        "featureImage": image.image.asset,
+        "altTag": image.altTag,
+        "titleTag": image.titleTag,
+        "teaserCopy": description,
+        "slug": slug.current,
+        "tags": tags[]->{_id, tag},
+        "category": category.category[0]
+      }
+  }
+`
+
+interface Route {
+  params: { post: string },
+  props: {
+    data: string
+  }
+}
+
+const blogCardData = await sanity.fetch(query)
+console.log(blogCardData)
+---
+
+<h1>Marketing Blog</h1>
