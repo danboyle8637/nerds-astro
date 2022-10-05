@@ -1,10 +1,18 @@
 ---
 import client from '@sanity/client'
+import BaseLayout from '../../../layouts/Layout.astro'
 
-const sanity = client({
-  projectId: "#######",
-  dataset: "production",
+import Bullet from '../../../components/blog/Bullet.astro'
+import Paragraph from '../../../components/blog/Paragraph.astro'
+import Strong from '../../../components/blog/Strong.astro'
+import Link from '../../../components/blog/Link.astro'
+import PostImage from '../../../components/blog/PostImage.astro'
+
+export const sanity = client({
+  projectId: import.meta.env.SANITY_PROJECT_ID,
+  dataset: import.meta.env.SANITY_BASE,
   apiVersion: '2021-03-25',
+  token: import.meta.env.SANITY_TOKEN,
   useCdn: true,
 })
 
@@ -30,8 +38,41 @@ interface Route {
   }
 }
 
-const blogCardData = await sanity.fetch(query)
-console.log(blogCardData)
+// const blogCardData = await sanity.fetch(query)
+// console.log(blogCardData)
 ---
 
-<h1>Marketing Blog</h1>
+<BaseLayout title="Test">
+  <div class="container">
+    <h1>Marketing Blog</h1>
+    <div class="post-container">
+      <Bullet type="important">This is my amazing bullet point that you.</Bullet>
+      <Bullet type="blue">This is my amazing bullet point that you are compelled to rea.</Bullet>
+      <Paragraph>This is another <Strong>sentence that you will regret</Strong> if you don't read. I really want to get into <Link type="external" url="/">full time building</Link> apps and all the cool things I can come up with.'</Paragraph>
+      <PostImage imageUrl="https://cdn.sanity.io/images/05wlmifi/production/e3b58876fe6646cb0b7f6b7511286e2f44097baf-1200x680.jpg" altTag="Alt" titleTag="Title" />
+    </div>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .container {
+    padding: 200px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+    max-width: 800px;
+  }
+</style>

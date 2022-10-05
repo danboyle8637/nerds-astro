@@ -1,0 +1,48 @@
+---
+import InternalLinkIcon from '../svgs/InternalLinkIcon.astro'
+import ExternalLinkIcon from '../svgs/ExternalLinkIcon.astro'
+
+interface Props {
+  type: "internal" | "external"
+  url: string
+}
+
+const { type, url } = Astro.props
+
+const linkRel = type === "external" ? "noopener noreferrer" : "prefetch"
+const linkTarget = type === "external" ? "_blank" : "_self"
+---
+
+<span class="container">
+  <a href={url} rel={linkRel} target={linkTarget}>
+    <slot />
+  </a>
+  <span class="icon">
+    {type === "external" ? <ExternalLinkIcon /> : <InternalLinkIcon />}
+  </span>
+</span>
+
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .container {
+    padding: 0 8px 0 0;
+    display: inline-flex;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  a {
+    font-size: 2.1rem;
+    
+    @include aboveMobile {
+      font-size: 2.4rem;
+    }
+  }
+
+  .icon {
+    width: 20px;
+    transform: translateY(4px);
+  }
+</style>

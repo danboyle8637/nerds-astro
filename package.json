@@ -17,6 +17,7 @@
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/solid-js": "^1.1.0",
     "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
     "@splinetool/runtime": "^0.9.103",
     "motion": "^10.14.1",
     "solid-js": "^1.5.1",
