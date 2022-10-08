@@ -1,0 +1,299 @@
+@import "./sizes.scss";
+
+.h2-container {
+  padding: 120px 0 40px 0;
+}
+
+h2 {
+  position: relative;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: start;
+  align-items: start;
+  gap: 4px;
+  font-size: 3.6rem;
+  text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+  background-color: #253041;
+  border-radius: 12px;
+  width: 100%;
+  isolation: isolate;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "h2";
+    color: var(--background-color);
+    font-size: 6rem;
+    text-shadow: -6px 4px 2px hsla(0, 0%, 0%, 0.2);
+    transform: translate(120px, 4px);
+
+    @include aboveMobile {
+      font-size: 7rem;
+      transform: translate(140px, 4px);
+    }
+
+    @include aboveTablet {
+      font-size: 8rem;
+      transform: translate(180px, 4px);
+    }
+  }
+
+  @include aboveMobile {
+    font-size: 4.4rem;
+    text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  @include aboveTablet {
+    font-size: 6rem;
+    text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  .hash-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hash {
+    width: 50px;
+
+    @include aboveMobile {
+      width: 60px;
+    }
+
+    @include aboveTablet {
+      width: 76px;
+    }
+  }
+
+  .right-hash {
+    transform: translateX(-14px);
+  }
+}
+
+h3 {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  justify-items: start;
+  align-items: start;
+  font-size: 3rem;
+  text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+  width: 100%;
+
+  @include aboveMobile {
+    grid-template-columns: 130px 1fr;
+    font-size: 3.8rem;
+    text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  @include aboveTablet {
+    grid-template-columns: 160px 1fr;
+    font-size: 4.4rem;
+    text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  .hash-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hash {
+    width: 40px;
+
+    @include aboveMobile {
+      width: 46px;
+    }
+
+    @include aboveTablet {
+      width: 56px;
+    }
+  }
+
+  .right-hash-one {
+    transform: translateX(-14px);
+  }
+
+  .right-hash-two {
+    transform: translateX(-28px);
+  }
+}
+
+h4 {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  justify-items: start;
+  align-items: start;
+  font-size: 2.8rem;
+  text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+  width: 100%;
+
+  @include aboveMobile {
+    grid-template-columns: 140px 1fr;
+    font-size: 3.6rem;
+    text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  @include aboveTablet {
+    grid-template-columns: 180px 1fr;
+    font-size: 4rem;
+    text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+  }
+
+  .hash-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hash {
+    width: 30px;
+
+    @include aboveMobile {
+      width: 40px;
+    }
+
+    @include aboveTablet {
+      width: 50px;
+    }
+  }
+
+  .right-hash-one {
+    transform: translateX(-12px);
+  }
+
+  .right-hash-two {
+    transform: translateX(-24px);
+  }
+
+  .right-hash-three {
+    transform: translateX(-36px);
+  }
+}
+
+.link-container {
+  padding: 0 8px 0 0;
+  display: inline-flex;
+  gap: 8px;
+  width: fit-content;
+
+  a {
+    font-size: 2.1rem;
+
+    @include aboveMobile {
+      font-size: 2.4rem;
+    }
+  }
+
+  .icon {
+    width: 20px;
+    transform: translateY(4px);
+  }
+}
+
+.paragraph {
+  padding-bottom: 30px;
+  font-size: 2.1rem;
+  letter-spacing: 0.08rem;
+  word-spacing: 0.6rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  @include aboveMobile {
+    font-size: 2.4rem;
+  }
+}
+
+ul {
+  padding: 20px 0 40px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 26px;
+
+  @include aboveIphone11 {
+    gap: 36px;
+  }
+
+  @include aboveMobile {
+    padding: 40px 0 60px 60px;
+  }
+}
+
+.base-bullet {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 12px;
+  justify-items: start;
+  align-items: start;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--font-color-light);
+  letter-spacing: 0.08rem;
+  word-spacing: 0.6rem;
+  width: 100%;
+
+  @include aboveMobile {
+    font-size: 2.4rem;
+  }
+
+  img {
+    width: 40px;
+    transform: translateY(-2px);
+  }
+}
+
+.important-bullet {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 12px;
+  justify-items: start;
+  align-items: start;
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--font-color-light);
+  width: 100%;
+
+  @include aboveMobile {
+    font-size: 2.4rem;
+  }
+
+  .block {
+    width: 50px;
+    transform: translateY(-6px);
+  }
+}
+
+.post-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  .post-image {
+    position: absolute;
+    border-radius: 20px;
+    width: 100%;
+    z-index: 1;
+    transition: box-shadow, transform, 300ms ease-in-out;
+
+    &:hover {
+      box-shadow: 2px 4px 8px 1px hsla(0, 0%, 0%, 0.4);
+      transform: translate(-8px, -8px);
+    }
+  }
+
+  .background {
+    position: absolute;
+    background-color: var(--footer-background);
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.strong-text {
+  color: #f74dff;
+}

@@ -1,0 +1,160 @@
+---
+import { sanity } from '../../../pages/blog/marketing/index.astro'
+import client from '@sanity/client'
+import BaseLayout from '../../../layouts/Layout.astro'
+import PostHeader from '../../../components/blog/BlogComponents/PostHeader.astro'
+import Footer from '../../../sections/Footer/index.astro'
+import BlockContent from '../../../components/blog/BlockContent.astro'
+import type { HeadMeta, PostPage, SanityBlogPost } from '../../../types/blog'
+import "../../../styles/blog.scss"
+
+interface Route {
+  params: {
+    post: string
+  },
+  props: {
+    headMeta: HeadMeta,
+    postPage: PostPage,
+    blockContent: []
+  }
+}
+
+export async function getStaticPaths(): Promise<Route[]> {
+  // const sanity = client({
+  //   projectId: import.meta.env.SANITY_PROJECT_ID,
+  //   dataset: import.meta.env.SANITY_BASE,
+  //   apiVersion: '2021-03-25',
+  //   token: import.meta.env.SANITY_TOKEN,
+  //   useCdn: true,
+  // })
+
+  const query = `
+    {
+      "blogPostData": *[_type == 'blogPost' && "design" in category.category] {
+        "seoTitle": seoMeta.title,
+        "seoDescription": seoMeta.description,
+        "socialHeadline": socialMeta.headline,
+        "socialDescription": socialMeta.description,
+        "socialSlug":  socialMeta.slug.current,
+        "socialHeadline": socialMeta.headline,
+        "socialDescription": socialMeta.description,
+        "socialImage": socialMeta.image.asset->url,
+        "slug": slug.current,
+        "headerImage": postHeaderImage.image.asset,
+        "altTag": postHeaderImage.altTag,
+        "titleTag": postHeaderImage.titleTag,
+        "headline": headline,
+        "category": category.category[0],
+        "tags": tags[]->{ tag },
+        "author": author->{
+          name, 
+          "image": image.asset,
+          description,
+          github,
+          twitter,
+          instagram,
+          tiktok,
+        },
+        "postBody": blogContent[] {
+            ...,
+            markDefs[] {
+              ...,
+              _type == "internalPostLink" => {
+              "slug": @.reference->slug
+            }
+          }
+        }
+      }
+    }
+  `
+
+  const data = await sanity.fetch(query)
+  const { blogPostData } = data
+  
+  const routes = blogPostData.map((post: SanityBlogPost): Route => {
+    const slug = post.slug
+
+    return ({
+      params: { post: slug },
+      props: {
+        headMeta: {
+          seoTitle: post.seoTitle,
+          seoDescription: post.seoDescription,
+          socialHeadline: post.socialHeadline,
+          socialDescription: post.socialDescription,
+          socialSlug: post.socialSlug,
+          socialImage: post.socialImage,
+        },
+        postPage: {
+          headerIamge: post.headerImage,
+          altTag: post.altTag,
+          titleTag: post.titleTag,
+          headline: post.headline,
+          category: post.category,
+          tags: post.tags,
+          author: post.author,
+        },
+        blockContent: post.postBody,
+      }
+    })
+  })
+
+  return routes
+}
+
+
+
+const { seoTitle, seoDescription, socialHeadline, socialDescription, socialImage } = Astro.props.headMeta as HeadMeta
+
+const {  
+  headerIamge, 
+  altTag,
+  titleTag,
+  headline,
+  category,
+  tags,
+  author,
+} = Astro.props.postPage as PostPage
+
+const blockContent = Astro.props.blockContent
+---
+
+<BaseLayout title="Post">
+  <div class="container">
+    <PostHeader 
+      imageUrl={headerIamge}
+      altTag={altTag}
+      titleTag={titleTag}
+      headline={headline}
+      category={category}
+      tags={tags}
+    />
+    <div class="post-body">
+      <BlockContent portableText={blockContent} />
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .post-body {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+  }
+</style>

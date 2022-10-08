@@ -24,12 +24,12 @@ export async function getStaticPaths() {
     const frontmatter = service.frontmatter as CopyServiceFrontmatter
 
     return ({
-    params: { service: frontmatter.slug },
-    props: {
-      data: frontmatter,
-      service: service,
-    }
-  })
+      params: { service: frontmatter.slug },
+      props: {
+        data: frontmatter,
+        service: service,
+      }
+    })
   })
 
   return routes

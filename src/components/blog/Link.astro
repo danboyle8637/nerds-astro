@@ -13,7 +13,7 @@ const linkRel = type === "external" ? "noopener noreferrer" : "prefetch"
 const linkTarget = type === "external" ? "_blank" : "_self"
 ---
 
-<span class="container">
+<span class="link-container">
   <a href={url} rel={linkRel} target={linkTarget}>
     <slot />
   </a>
@@ -26,7 +26,7 @@ const linkTarget = type === "external" ? "_blank" : "_self"
 <style lang="scss">
   @import "../../styles/sizes.scss";
 
-  .container {
+  .link-container {
     padding: 0 8px 0 0;
     display: inline-flex;
     gap: 8px;

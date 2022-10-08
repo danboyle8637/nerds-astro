@@ -1,0 +1,13 @@
+---
+import { renderBlogPostContent } from './serializer'
+
+interface Props {
+  portableText: string
+}
+
+const { portableText } = Astro.props
+
+const html = renderBlogPostContent(portableText)
+---
+
+<Fragment set:html={html} />

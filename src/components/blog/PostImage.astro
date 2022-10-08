@@ -19,7 +19,7 @@ function urlFor(source: string) {
 const imageSrc = urlFor(imageUrl).width(800).auto("format").url()
 ---
 
-<div class="container">
+<div class="post-image-container">
   <img class="post-image" src={imageSrc} alt={altTag} title={titleTag}>
   <div class="background" />
 </div>
@@ -27,7 +27,7 @@ const imageSrc = urlFor(imageUrl).width(800).auto("format").url()
 <style lang="scss">
   @import "../../styles/sizes.scss";
 
-  .container {
+  .post-image-container {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;

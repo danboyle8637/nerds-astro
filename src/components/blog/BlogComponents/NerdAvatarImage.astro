@@ -1,0 +1,32 @@
+---
+import { sanity } from '../../../pages/blog/marketing/index.astro'
+import imageUrlBuilder from '@sanity/image-url'
+
+interface Props {
+  nerd: "dan" | "kindal"
+}
+
+const { nerd } = Astro.props
+
+const builder = imageUrlBuilder(sanity)
+
+function urlFor(source: string) {
+  return builder.image(source)
+}
+
+const danImage = urlFor("https://cdn.sanity.io/images/05wlmifi/production/4e6aa0debd852936c118a184bfccbaae0ddc501d-300x300.jpg").width(180).auto("format").url()
+
+const kindalImage = urlFor("https://cdn.sanity.io/images/05wlmifi/production/e824b0811473944fe270caf28c8c39c57f466986-300x300.jpg").width(180).auto("format").url()
+
+const avatarImg = nerd === "dan" ? danImage : kindalImage
+const altTag = nerd === "dan" ? "Avatar image of Dan" : "Avatar image of Kindal"
+const titleTag = nerd === "dan" ? "Nerd Dan" : "Nerd Kindal"
+---
+
+<div class="avatar">
+  <img src={avatarImg} alt={altTag} title={titleTag}>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+</style>

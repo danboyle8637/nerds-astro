@@ -1,0 +1,123 @@
+---
+import type { PostTag } from '../../../types/blog'
+
+interface Props {
+  category: string
+  tags: PostTag[]
+}
+
+const { category, tags } = Astro.props
+let commaCount = 0
+---
+
+<div class="container">
+  <div class="tags">
+    <p>
+      <span class="const">const</span>
+      <span class="label">category</span>
+      <span class="operator">=</span>
+      <span class="string">"{category}"</span>
+    </p>
+  </div>
+  <div class="tags">
+    <p>
+      <span class="const">const</span>
+      <span class="label">tags</span>
+      <span class="operator">=</span>
+      <span class="array">[</span>
+    </p>
+    <div class="category-container">
+      {tags.map(tag => {
+        commaCount++
+        return (
+        <div class="category">
+          <a href="#" title={tag.tag}>
+            <span class="string">"</span>{tag.tag}<span class="string">"</span>
+          </a>
+          <p class="label">{commaCount === tags.length ? "" : ","}</p>
+        </div>
+        )
+      })}
+    </div>
+    <p>
+      <span class="array">]</span>
+    </p>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 8px 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 12px;
+    justify-items: start;
+    background-color: #292C34;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px hsla(0, 0%, 0%, 0.4);
+    width: max-content;
+  }
+
+  .tags {
+    display: flex;
+    width: max-content;
+  }
+
+  p {
+    display: flex;
+    gap: 8px;
+    font-size: 1.3rem;
+
+    @include aboveIphone11 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .const {
+    color: #BC7AD9;
+  }
+
+  .label {
+    color: #ACB2BE;
+  }
+
+  .operator {
+    color: #6BB4C1;
+  }
+
+  .string {
+    color: #A0C27E;
+  }
+
+  .array {
+    color: #CF7074;
+  }
+
+  .category-container {
+    padding: 0 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .category {
+    display: flex;
+  }
+
+  a {
+    font-size: 1.3rem;
+    color: #A0C27E;
+    text-decoration: none;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+      color: #CF7074;
+    }
+
+    @include aboveIphone11 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,153 @@
+---
+import client from '@sanity/client'
+import BaseLayout from '../../../layouts/Layout.astro'
+import Footer from '../../../sections/Footer/index.astro'
+import BlockContent from '../../../components/blog/BlockContent.astro'
+import "../../../styles/blog.scss"
+
+interface Route {
+  params: {
+    post: string
+  },
+  props: {
+    headMeta: {
+      seoTitle: string
+      seoDescription: string
+      socialHeadline: string
+      socialDescription: string
+      socialSlug: string
+      socialImage: string
+    },
+    postPage: {
+      featureIamge: string
+      altTag: string
+      titleTag: string
+      headline: string
+      category: string
+      tags: string[]
+    }
+  }
+}
+
+
+
+export async function getStaticPaths(): Promise<Route[]> {
+  const sanity = client({
+    projectId: import.meta.env.SANITY_PROJECT_ID,
+    dataset: import.meta.env.SANITY_BASE,
+    apiVersion: '2021-03-25',
+    token: import.meta.env.SANITY_TOKEN,
+    useCdn: true,
+  })
+
+  const query = `
+    {
+      "blogPostData": *[_type == 'blogPost' && "marketing" in category.category] {
+        "seoTitle": seoMeta.title,
+        "seoDescription": seoMeta.description,
+        "socialHeadline": socialMeta.headline,
+        "socialDescription": socialMeta.description,
+        "socialImage": socialMeta.image.asset->url,
+        "socialSlug":  socialMeta.slug.current,
+        "socialHeadline": socialMeta.headline,
+        "socialDescription": socialMeta.description,
+        "featureImage": image.image.asset,
+        "altTag": image.altTag,
+        "titleTag": image.titleTag,
+        "headline": headline,
+        "teaserCopy": description,
+        "slug": slug.current,
+        "category": category.category[0],
+        "tags": tags[],
+        "authorName": author->{
+          name, 
+          "image": image.asset,
+          description,
+          github,
+          twitter,
+          instagram,
+          tiktok,
+        },
+        "postBody": blogContent[] {
+            ...,
+            markDefs[] {
+              ...,
+              _type == "internalPostLink" => {
+              "slug": @.reference->slug
+            }
+          }
+        }
+      }
+    }
+  `
+
+  const data = await sanity.fetch(query)
+  const { blogPostData } = data
+  
+  const routes = blogPostData.map((post: any): Route => {
+    const slug = post.slug
+
+    console.log(post)
+
+    return ({
+      params: { post: slug },
+      props: {
+        headMeta: {
+          seoTitle: post
+        },
+        postPage: {},
+        blockContent: post.postBody,
+      }
+    })
+  })
+
+  return routes
+}
+
+const p = Astro.params.post
+const { headline, blockContent } = Astro.props
+---
+
+<BaseLayout title="Post">
+  <div class="container">
+    <div class="post-header">
+      <div class="post-image">
+
+      </div>
+      <div class="post-meta">
+
+      </div>
+    </div>
+    <div class="post-body">
+      <BlockContent portableText={blockContent} />
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 120px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .post-header {
+
+  }
+
+  .post-body {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+  }
+</style>
