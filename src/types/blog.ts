@@ -1,8 +1,8 @@
 type AuthorName = "Dan" | "Kindal";
 
-type BlogCategory = "Now" | "Design" | "Coding" | "Marketing" | "Tech";
+export type BlogCategory = "now" | "design" | "coding" | "marketing" | "tech";
 
-type Tag = "marketing" | "coding" | "offers";
+export type Tag = "marketing" | "coding" | "offers";
 
 export interface Author {}
 
@@ -90,3 +90,8 @@ export interface SanityBlogPost {
   author: SanityAuthor;
   postBody: [];
 }
+
+export type SerializedLink =
+  | "externalLink"
+  | "internalPostLink"
+  | "linkReference";

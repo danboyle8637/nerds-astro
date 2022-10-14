@@ -5,6 +5,9 @@ import {
   baseBullet,
   excalaimationBullet,
 } from "./components/lists";
+import { postLink } from "./components/links";
+import { postImage } from "./components/postImage";
+import { nerdCallout } from "./components/nerdCallout";
 
 export {
   paragraph,
@@ -14,4 +17,7 @@ export {
   unorderedList,
   baseBullet,
   excalaimationBullet,
+  postLink,
+  postImage,
+  nerdCallout,
 };

@@ -14,9 +14,9 @@ export const headline3 = (children: string) => `
   <span class="h2-container"> 
     <h3>
       <span class="hash-container">
-        <img class="hash" src={hash} alt="Header 3" title="Headline">
-        <img class="hash right-hash-one" src={hash} alt="Header 3" title="Headline">
-        <img class="hash right-hash-two" src={hash} alt="Header 3" title="Headline">
+        <img class="hash" src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3" alt="Header 3" title="Headline">
+        <img class="hash right-hash-one" src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3" alt="Header 3" title="Headline">
+        <img class="hash right-hash-two" src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3" alt="Header 3" title="Headline">
       </span>
       ${children}
     </h3>

@@ -15,20 +15,13 @@ import {
   unorderedList,
   baseBullet,
   excalaimationBullet,
+  postLink,
+  postImage,
+  nerdCallout,
 } from "./components";
+import type { BlogCategory } from "../../types/blog";
 
 const serializer: Partial<PortableTextHtmlComponents> = {
-  types: {
-    baseImage: (props: any) => {
-      return `<p>In post image goes here</p>`;
-    },
-    nerdCallout: (props: any) => {
-      return `<p>Nerd callout goes here</p>`;
-    },
-    youTubeEmbed: (props: any) => {
-      return `<p>YouTube player here</p>`;
-    },
-  },
   block: (props: any): string => {
     switch (props.node.style) {
       case "normal": {
@@ -79,77 +72,52 @@ const serializer: Partial<PortableTextHtmlComponents> = {
       return `<strong>${props.children}</strong>`;
     },
     internalPostLink: (props: any) => {
-      const blogLocation = "";
-      const slug = props.mark.slug.current || "/";
-      return `
-        <span class="link-container">
-          <a href=${slug} title="More Information Link">
-            ${props.children}
-          </a>
-          <span class="icon">
-            <svg
-              id="internal-link-icon"
-              data-name="internal-link-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 72.66 72.24">
-              <path
-                d="M35.04 57l-7.14 7.12a14 14 0 01-19.8 0h0a14 14 0 010-19.8L22.24 30.2a14 14 0 0119.8 0h0"
-                fill="none"
-                stroke="#7d83ff"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="8"
-              />
-              <path
-                d="M36.81 16.06l8-8a14 14 0 0119.8 0h0a14 14 0 010 19.8L50.42 42.04a14 14 0 01-19.8 0h0"
-                fill="none"
-                stroke="#7d83ff"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="8"
-              />
-            </svg>
-          </span>
-        </span>
-      `;
+      const location = props.value.blogLocation as BlogCategory;
+
+      let baseUrl = "";
+
+      switch (location) {
+        case "marketing":
+          baseUrl = "/marketing";
+          break;
+        case "coding":
+          baseUrl = "/coding";
+          break;
+        case "design":
+          baseUrl = "/design";
+          break;
+        case "now":
+          baseUrl = "/now";
+          break;
+        case "tech":
+          baseUrl = "/tech";
+          break;
+      }
+
+      const slug = `${baseUrl}/${props.value.slug}`;
+      return postLink(props.markType, props.text, slug);
     },
     internalPageLink: (props: any) => {
-      const slug = props.mark.slug.current || "";
-      return `
-        <span class="link-container">
-          <a href=${slug} title="Check This Out Link">
-            ${props.children}
-          </a>
-          <span class="icon">
-            <svg
-              id="internal-link-icon"
-              data-name="internal-link-icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 72.66 72.24">
-              <path
-                d="M35.04 57l-7.14 7.12a14 14 0 01-19.8 0h0a14 14 0 010-19.8L22.24 30.2a14 14 0 0119.8 0h0"
-                fill="none"
-                stroke="#7d83ff"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="8"
-              />
-              <path
-                d="M36.81 16.06l8-8a14 14 0 0119.8 0h0a14 14 0 010 19.8L50.42 42.04a14 14 0 01-19.8 0h0"
-                fill="none"
-                stroke="#7d83ff"
-                stroke-linecap="round"
-                stroke-miterlimit="10"
-                stroke-width="8"
-              />
-            </svg>
-          </span>
-        </span>
-      `;
+      return postLink(props.markType, props.text, props.value.pageUrl);
     },
     externalLink: (props: any) => {
-      const url = props.mark.externalLink;
-      return `<p>This is an external link</p>`;
+      return postLink(props.markType, props.text, props.value.externalLink);
+    },
+  },
+  types: {
+    postImage: (props: any) => {
+      const imageUrl = `${props.value.imageUrl}`;
+      const altTag = props.value.altTag;
+      const titleTag = props.value.titleTag;
+      return postImage(imageUrl, altTag, titleTag);
+    },
+    nerdCallout: (props: any) => {
+      console.log(props);
+      return nerdCallout(props.value.headline, props.value.calloutDetails);
+      return `<p>Nerd callout goes here</p>`;
+    },
+    youTubeEmbed: (props: any) => {
+      return `<p>YouTube player here</p>`;
     },
   },
 };

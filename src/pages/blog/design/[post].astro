@@ -48,7 +48,7 @@ export async function getStaticPaths(): Promise<Route[]> {
         "tags": tags[]->{ tag },
         "author": author->{
           name, 
-          "image": image.asset,
+          "image": image.asset->url,
           description,
           github,
           twitter,
@@ -56,12 +56,12 @@ export async function getStaticPaths(): Promise<Route[]> {
           tiktok,
         },
         "postBody": blogContent[] {
-            ...,
+            ...,   
+            "imageUrl": image.asset->url,
             markDefs[] {
               ...,
-              _type == "internalPostLink" => {
-              "slug": @.reference->slug
-            }
+              "blogLocation": blogLocation[0],
+              "slug": linkReference->slug.current,
           }
         }
       }

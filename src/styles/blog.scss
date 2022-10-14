@@ -268,12 +268,16 @@ ul {
 }
 
 .post-image-container {
-  position: relative;
+  padding-bottom: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   width: 100%;
   aspect-ratio: 16 / 9;
 
   .post-image {
-    position: absolute;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
     border-radius: 20px;
     width: 100%;
     z-index: 1;
@@ -285,15 +289,20 @@ ul {
     }
   }
 
-  .background {
-    position: absolute;
+  .post-image-background {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
     background-color: var(--footer-background);
-    border-radius: 20px;
+    border-radius: 30px;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 100%;
   }
 }
 
 .strong-text {
   color: #f74dff;
+}
+
+.nerd-callout-container {
+  width: 500px;
 }
