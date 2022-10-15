@@ -1,10 +1,10 @@
 ---
 import { sanity } from '../../../pages/blog/marketing/index.astro'
-import client from '@sanity/client'
 import BaseLayout from '../../../layouts/Layout.astro'
 import PostHeader from '../../../components/blog/BlogComponents/PostHeader.astro'
 import Footer from '../../../sections/Footer/index.astro'
 import BlockContent from '../../../components/blog/BlockContent.astro'
+
 import type { HeadMeta, PostPage, SanityBlogPost } from '../../../types/blog'
 import "../../../styles/blog.scss"
 
@@ -129,6 +129,7 @@ const blockContent = Astro.props.blockContent
       category={category}
       tags={tags}
     />
+    <div class="galaxy" />
     <div class="post-body">
       <BlockContent portableText={blockContent} />
     </div>
@@ -141,12 +142,14 @@ const blockContent = Astro.props.blockContent
   @import "../../../styles/sizes.scss";
 
   .container {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
     gap: 80px;
     justify-items: center;
     width: 100%;
+    isolation: isolate;
   }
 
   .post-body {
@@ -156,5 +159,29 @@ const blockContent = Astro.props.blockContent
     align-items: flex-start;
     width: 100%;
     max-width: 800px;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #3d00bd;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(0, 260px);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(40px, 360px);
+    }
+
+    @include aboveTablet {
+      width: 300px;
+      height: 300px;
+      filter: blur(260px);
+      transform: translate(40px, 420px);
+    }
   }
 </style>

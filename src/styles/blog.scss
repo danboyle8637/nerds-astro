@@ -35,6 +35,7 @@ h2 {
     }
 
     @include aboveTablet {
+      display: none;
       font-size: 8rem;
       transform: translate(180px, 4px);
     }
@@ -46,13 +47,30 @@ h2 {
   }
 
   @include aboveTablet {
+    padding: 0 0 0 36px;
     font-size: 6rem;
     text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+    background-color: var(--background-color);
+  }
+
+  @include aboveIpadPro {
+    padding: 0;
   }
 
   .hash-container {
     display: flex;
     justify-content: center;
+
+    @include aboveTablet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-120px, 0px);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(-160px, 0px);
+    }
   }
 
   .hash {
@@ -205,6 +223,11 @@ h4 {
   }
 }
 
+strong {
+  color: #7f6aff;
+  text-shadow: 1px 2px 6px hsla(0, 0%, 0%, 0.4);
+}
+
 ul {
   padding: 20px 0 40px 20px;
   display: grid;
@@ -305,4 +328,136 @@ ul {
 
 .nerd-callout-container {
   width: 500px;
+}
+
+// ************************** Nerd Callout Card ************************** //
+
+.nerd-callout-spacer {
+  align-self: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: start;
+  align-items: start;
+  padding: 80px 0;
+}
+
+.nerd-callout-container {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  position: relative;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  isolation: isolate;
+
+  @include aboveMobile {
+    width: 600px;
+  }
+
+  @include aboveTablet {
+    width: 700px;
+  }
+}
+
+.nerd-callout-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 160px;
+  transform: translate(-20px, 0);
+  z-index: 1;
+
+  @include aboveMobile {
+    width: 180px;
+  }
+
+  @include aboveTablet {
+    transform: translate(-20px, -20px);
+  }
+}
+
+.nerd-callout-card-container {
+  position: relative;
+  padding: 140px 12px 40px 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 20px;
+  background-color: var(--footer-background);
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 0 0 0 6px hsla(0, 0%, 05, 0.4);
+  isolation: isolate;
+  overflow: hidden;
+
+  @include aboveTablet {
+    padding: 40px 20px 40px 180px;
+  }
+
+  .callout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-right: 6px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 0;
+    justify-items: end;
+    width: 100%;
+    z-index: -1;
+
+    @include aboveTablet {
+      width: max-content;
+      transform: translate(-50px, 160px) rotate(-90deg);
+    }
+  }
+
+  .callout-nerd {
+    font-size: 7rem;
+    color: #141526;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .callout-word {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #141526;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+.callout-headline {
+  display: block;
+  font-size: 3rem;
+  color: var(--nerd-callout-headline);
+
+  @include aboveMobile {
+    font-size: 3.6rem;
+  }
+
+  @include aboveTablet {
+    font-size: 4rem;
+  }
+}
+
+.nerd-callout-galaxy {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  background-color: #3d00bd;
+  border-radius: 50%;
+  width: 220px;
+  height: 220px;
+  filter: blur(160px);
+  z-index: -1;
+
+  @media (min-width: 960px) {
+    width: 300px;
+    height: 300px;
+    filter: blur(260px);
+  }
 }

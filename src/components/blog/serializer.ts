@@ -112,9 +112,10 @@ const serializer: Partial<PortableTextHtmlComponents> = {
       return postImage(imageUrl, altTag, titleTag);
     },
     nerdCallout: (props: any) => {
-      console.log(props);
-      return nerdCallout(props.value.headline, props.value.calloutDetails);
-      return `<p>Nerd callout goes here</p>`;
+      const nerd = props.value.nerd;
+      const headline = props.value.headline;
+      const blockContent = props.value.calloutDetails;
+      return nerdCallout(nerd, headline, blockContent);
     },
     youTubeEmbed: (props: any) => {
       return `<p>YouTube player here</p>`;
