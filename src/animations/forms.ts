@@ -119,3 +119,7 @@ export const sliderRadioInputAni = (chip: HTMLDivElement, x: number) => {
     }
   );
 };
+
+export const threeDInputActive = (path: SVGPathElement, color: string) => {
+  animate(path, { fill: color }, { duration: 0.3, easing: "ease-in-out" });
+};

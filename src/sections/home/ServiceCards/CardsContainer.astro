@@ -46,7 +46,12 @@ const styles = {
     }
 
     @include aboveTablet {
-      width: 800px
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @include aboveIpadPro {
+      width: 1200px;
     }
   }
 </style>

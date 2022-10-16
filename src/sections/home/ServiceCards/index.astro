@@ -1,0 +1,53 @@
+---
+import ContentSection from "./ContentSection.astro";
+import CardsContainer from "./CardsContainer.astro";
+---
+
+<div class="container">
+  <div class="galaxy" />
+  <ContentSection />
+  <CardsContainer />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding: 80px 12px 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    gap: 200px;
+    width: 100%;
+
+    @include aboveTablet {
+      padding: 120px 12px 0 12px;
+    }
+
+    @include aboveIpadPro {
+      padding: 120px 0 0 0;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(0, 0);
+    z-index: -1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+    }
+  }
+</style>

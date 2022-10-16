@@ -38,9 +38,14 @@ const aboveMobileImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/sit
     align-self: end;
     width: 100%;
     max-width: 1200px;
+    aspect-ratio: 6 / 13;
 
     & img {
       width: 100%;
+    }
+
+    @include aboveMobile {
+      aspect-ratio: 2 / 1;
     }
   }
 

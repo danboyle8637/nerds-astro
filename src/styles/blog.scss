@@ -388,7 +388,7 @@ ul {
   background-color: var(--footer-background);
   border-radius: 20px;
   width: 100%;
-  box-shadow: 0 0 0 6px hsla(0, 0%, 05, 0.4);
+  box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
   isolation: isolate;
   overflow: hidden;
 
@@ -455,7 +455,7 @@ ul {
   filter: blur(160px);
   z-index: -1;
 
-  @media (min-width: 960px) {
+  @include aboveTablet {
     width: 300px;
     height: 300px;
     filter: blur(260px);

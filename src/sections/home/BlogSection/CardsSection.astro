@@ -1,0 +1,36 @@
+---
+import BlogCategoryCard from '../../../components/cards/BlogCategoryCard/index.astro'
+import { blogCategoryCards } from '../../../data/navigation'
+---
+
+<div class="container">
+  {blogCategoryCards.map(card => {
+    const { imageUrl, altTag, titleTag, category, slug } = card
+
+    return (
+      <BlogCategoryCard 
+        imageUrl={imageUrl}
+        altTag={altTag}
+        titleTag={titleTag}
+        category={category}
+        slug={slug}
+      />
+    )
+  })}
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 40px;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 40px;
+    }
+  }
+</style>

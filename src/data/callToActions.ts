@@ -9,7 +9,7 @@ export const copyAndContentServices: CopyContentService[] = [
     titleTag: "Website Design and Development",
     headline: "Web Design & Dev",
     description:
-      "Get sales copy for the money pages on your website so they <strong>convert leads and make sales</strong>.",
+      "Get a custom website designed to convert, written to sell, and coded to be blazingly fast.",
     buttonLabel: "I Need a New Site",
     buttonTitle: "Get a New Site Today",
     slug: "/services/web-design-and-development",
@@ -22,7 +22,7 @@ export const copyAndContentServices: CopyContentService[] = [
     titleTag: "7 Day Site Design",
     headline: "7 Day Site",
     description:
-      "Get sales copy for the money pages on your website so they <strong>convert leads and make sales</strong>.",
+      "Get a custom starter site designed and coded to sell and finally get your business online.",
     buttonLabel: "I Want a 7 Day Site",
     buttonTitle: "Get a 7 Day Site",
     slug: "/services/seven-day-site",
@@ -33,24 +33,11 @@ export const copyAndContentServices: CopyContentService[] = [
       "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/copywriting-card-icon_ZI5CqWSll.png?ik-sdk-version=javascript-1.4.3",
     altTag: "Copywriting serives.",
     titleTag: "Copywriting Services To Sell",
-    headline: "Copywriting Services",
+    headline: "Words That Sell",
     description:
-      "Get sales copy for the money pages on your website so they <strong>convert leads and make sales</strong>.",
-    buttonLabel: "I Need a New Site",
-    buttonTitle: "Get a New Site Today",
-    slug: "/services/web-design-and-development",
-  },
-  {
-    id: 3,
-    imageUrl:
-      "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/marketing-nerd-chat-icon_oLnwTngON.png?ik-sdk-version=javascript-1.4.3",
-    altTag: "Marketing chat bubbles",
-    titleTag: "Marketing Nerd Chat",
-    headline: "Marketing Nerd Chat",
-    description:
-      "Get sales copy for the money pages on your website so they <strong>convert leads and make sales</strong>.",
-    buttonLabel: "Let's Talk Leads & Sales",
-    buttonTitle: "Let's Talk Leads & Sales",
+      "Get sales copy for the money pages on your website so they convert leads and make sales.",
+    buttonLabel: "I Need Words That Sell",
+    buttonTitle: "I Need Words That Sell",
     slug: "/services/web-design-and-development",
   },
 ];

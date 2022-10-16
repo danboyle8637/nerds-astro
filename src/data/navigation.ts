@@ -1,4 +1,8 @@
-import type { NavLink, FooterLink } from "../types/components";
+import type {
+  NavLink,
+  FooterLink,
+  BlogCategoryCard,
+} from "../types/components";
 
 export const headerNavLinks: NavLink[] = [
   {
@@ -175,5 +179,44 @@ export const footerBlogLinks: FooterLink[] = [
     type: "service",
     label: "Tech Blog",
     slug: "/services/tech",
+  },
+];
+
+export const blogCategoryCards: BlogCategoryCard[] = [
+  {
+    id: 0,
+    imageUrl:
+      "https://ik.imagekit.io/csu76xuqqlwj/tr:w-600/nerds-who-sell/blog/marketing-cover-1200x680_zVkusqHke.jpg?ik-sdk-version=javascript-1.4.3",
+    altTag: "Google Analytics graph.",
+    titleTag: "Marketing Blog",
+    category: "marketing",
+    slug: "/blog/marketing",
+  },
+  {
+    id: 1,
+    imageUrl:
+      "https://ik.imagekit.io/csu76xuqqlwj/tr:w-600/nerds-who-sell/blog/code-cover-1200x680_6svvGtpow.jpg?ik-sdk-version=javascript-1.4.3",
+    altTag: "The code of the Nerds Who Sell site.",
+    titleTag: "Coding Blog",
+    category: "coding",
+    slug: "/blog/coding",
+  },
+  {
+    id: 2,
+    imageUrl:
+      "https://ik.imagekit.io/csu76xuqqlwj/tr:w-600/nerds-who-sell/blog/design-cover-1200x680_vWoJxEab9.jpg?ik-sdk-version=javascript-1.4.3",
+    altTag: "Figma design of a fitness app.",
+    titleTag: "Design Blog",
+    category: "design",
+    slug: "/blog/design",
+  },
+  {
+    id: 3,
+    imageUrl:
+      "https://ik.imagekit.io/csu76xuqqlwj/tr:w-600/nerds-who-sell/blog/tech-cover-1200x680_oGaql4TAq.jpg?ik-sdk-version=javascript-1.4.3",
+    altTag: "Dygma Raise keyboard",
+    titleTag: "Tech Blog",
+    category: "tech",
+    slug: "/blog/tech",
   },
 ];

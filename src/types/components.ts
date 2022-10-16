@@ -1,3 +1,5 @@
+import type { BlogCategory } from "./blog";
+
 export type ThemeColor = "teal" | "pink" | "purple";
 
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5";
@@ -51,3 +53,12 @@ export interface FooterLink {
 }
 
 export type AccentBackground = "header" | "body" | "footer";
+
+export interface BlogCategoryCard {
+  id: number;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  category: BlogCategory;
+  slug: string;
+}

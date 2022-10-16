@@ -71,10 +71,14 @@ const serializer: Partial<PortableTextHtmlComponents> = {
     strong: (props: any) => {
       return `<strong>${props.children}</strong>`;
     },
+    codeHighlight: (props: any) => {
+      console.log(props);
+      return `<span class="code-callout">${props.children}</span>`;
+    },
     internalPostLink: (props: any) => {
       const location = props.value.blogLocation as BlogCategory;
 
-      let baseUrl = "";
+      let baseUrl = "/blog";
 
       switch (location) {
         case "marketing":
