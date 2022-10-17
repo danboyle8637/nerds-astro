@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/Layout.astro'
 import SmallHeader from '../../sections/headers/SmallHeader.astro'
+import ContentSection from '../../sections/now/ContentSection.astro'
+import NewsletterSection from '../../sections/callToActionSections/NewsletterSection/index.astro'
 import Footer from '../../sections/Footer/index.astro'
 import CardSection from '../../sections/now/CardSection.astro'
 import type { BlogPostFrontmatter, BlogCardData } from '../../types/blog'
@@ -24,8 +26,11 @@ const nowCardsData: BlogCardData[] = data.map(card => {
 ---
 
 <BaseLayout title="Now">
-  <SmallHeader headline="Now" />
+  <SmallHeader headline="Now">
+    <img src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_3LCOPEVg6.png?ik-sdk-version=javascript-1.4.3" alt="Now logo" title="Working On Now">
+  </SmallHeader>
+  <ContentSection />
   <CardSection nowCardsData={nowCardsData} />
-  <h1>Some future newsletter signup</h1>
+  <NewsletterSection />
   <Footer />
 </BaseLayout>

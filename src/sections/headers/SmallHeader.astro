@@ -8,11 +8,14 @@ const { headline } = Astro.props
 
 <div class="container">
   <h1>{headline}</h1>
+  <div class="header-image">
+    <slot />
+  </div>
   <div class="galaxy-pink"></div>
   <div class="galaxy-purple"></div>
 </div>
 
-<style lang="sccs">
+<style lang="scss">
   @import "../../styles/sizes.scss";
   @import "../../styles/layout.scss";
 
@@ -27,11 +30,35 @@ const { headline } = Astro.props
     box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
     isolation: isolate;
+
+    @include aboveTablet {
+      height: 260px;
+    }
   }
 
   h1 {
     font-size: 4rem;
     color: hsla(219, 34%, 15%, 1);
+  }
+
+  .header-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 240px;
+    transform: translate(-50%, -50%);
+
+    @include aboveIphone11 {
+      width: 280px;
+    }
+
+    @include aboveMobile {
+      width: 320px;
+    }
+
+    @include aboveTablet {
+      width: 380px;
+    }
   }
 
   .galaxy-pink {
@@ -46,17 +73,17 @@ const { headline } = Astro.props
     transform: translate(-200px, 0);
     z-index: 1;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       transform: translate(-140px, -40%);
     }
 
-    @media (min-width: 1100px) {
+    @include aboveIpadPro {
       transform: translate(0, 80px);
     }
   }
 
   .galaxy-purple {
-    @media (min-width: 600px) {
+    @include aboveMobile {
       position: absolute;
       right: 0;
       bottom: 0;
@@ -69,7 +96,7 @@ const { headline } = Astro.props
       z-index: 1;
     }
 
-    @media (min-width: 1100px) {
+    @include aboveIpadPro {
       transform: translate(0, 80px);
     }
   }

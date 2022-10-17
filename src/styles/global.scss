@@ -130,8 +130,8 @@ textarea {
 
 .code-callout {
   position: relative;
-  padding: 8px 16px 8px 32px;
-  display: flex;
+  padding: 4px 16px 4px 32px;
+  display: inline-flex;
   gap: 6px;
   background-color: hsla(218, 32%, 10%, 0.4);
   border: 2px solid var(--background-color-dark);

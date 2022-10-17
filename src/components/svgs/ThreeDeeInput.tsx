@@ -2,10 +2,12 @@ import { createEffect } from "solid-js";
 import type { Component } from "solid-js";
 import type { SVGProps } from "../../types/components";
 
-import { threeDInputActive } from "../../animations/forms";
+import { threeDInputFade } from "../../animations/forms";
 
 interface ThreeDeeInputProps extends SVGProps {
+  initial: boolean;
   isTouched: boolean;
+  isValid: boolean;
 }
 
 export const ThreeDeeInput: Component<ThreeDeeInputProps> = (props) => {
@@ -14,13 +16,18 @@ export const ThreeDeeInput: Component<ThreeDeeInputProps> = (props) => {
 
   createEffect(() => {
     if (props.isTouched) {
-      threeDInputActive(leftPath, "#099B9B");
-      threeDInputActive(bottomPath, "#84FFFF");
+      threeDInputFade(leftPath, "#099B9B");
+      threeDInputFade(bottomPath, "#84FFFF");
     }
 
-    if (!props.isTouched) {
-      threeDInputActive(leftPath, "#4e2a6f");
-      threeDInputActive(bottomPath, "#bb71ff");
+    if (!props.isTouched && props.initial) {
+      threeDInputFade(leftPath, "#4e2a6f");
+      threeDInputFade(bottomPath, "#bb71ff");
+    }
+
+    if (!props.isTouched && !props.initial && !props.isValid) {
+      threeDInputFade(leftPath, "#E02132");
+      threeDInputFade(bottomPath, "#E85E6A");
     }
   });
 

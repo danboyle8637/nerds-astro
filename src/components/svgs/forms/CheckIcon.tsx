@@ -1,4 +1,4 @@
-import { createMemo } from "solid-js";
+import { createEffect, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
 import { checkIconOn } from "../../../animations/forms";
@@ -13,12 +13,10 @@ interface CheckIconProps extends SVGProps {
 export const CheckIcon: Component<CheckIconProps> = (props) => {
   let checkRef: SVGPathElement;
 
-  createMemo(() => {
-    setTimeout(() => {
-      if (props.isActive && checkRef) {
-        checkIconOn(checkRef);
-      }
-    });
+  createEffect(() => {
+    if (props.isActive && checkRef) {
+      checkIconOn(checkRef);
+    }
   });
 
   return (

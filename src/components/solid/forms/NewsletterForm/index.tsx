@@ -1,7 +1,7 @@
+import { createResource } from "solid-js";
 import type { Component } from "solid-js";
 
-import { BasePhoneInput } from "../inputs/PhoneInput/BasePhoneInput";
-import { FormButton } from "../../buttons/FormButton";
+import { BaseInput } from "../inputs/BaseTextInput";
 import { ThreeDeeInput } from "../../../svgs/ThreeDeeInput";
 import { ThreeDeeInputButton } from "../../../svgs/ThreeDeeInputButton";
 import { CheckIcon } from "../../../svgs/forms/CheckIcon";
@@ -16,14 +16,24 @@ import styles from "./NewsletterForm.module.css";
 export const NewsletterForm: Component = () => {
   let inputRef: HTMLInputElement;
 
+  const handleFormSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
+
+    console.log("Submit form and safe email address");
+  };
+
   return (
-    <form class={styles.form_container}>
+    <form class={styles.form_container} onSubmit={handleFormSubmit}>
       <div class={styles.input_container}>
         <div class={styles.fake_input}>
-          <ThreeDeeInput isTouched={emailAddressOptions().touched} />
+          <ThreeDeeInput
+            initial={emailAddressOptions().initial}
+            isTouched={emailAddressOptions().touched}
+            isValid={emailAddress().valid}
+          />
         </div>
         <div class={styles.real_input}>
-          <BasePhoneInput
+          <BaseInput
             ref={inputRef!}
             name="emailAddress"
             dataName="lastFour"
@@ -43,9 +53,13 @@ export const NewsletterForm: Component = () => {
           />
         </div>
       </div>
-      <div class={styles.button_container}>
-        <ThreeDeeInputButton />
-      </div>
+      <button
+        type="submit"
+        aria-label="Submit newsletter form"
+        class={styles.button_container}
+      >
+        <ThreeDeeInputButton isValid={emailAddress().valid} />
+      </button>
     </form>
   );
 };

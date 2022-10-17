@@ -17,6 +17,7 @@ import { blogCategoryCards } from '../../../data/navigation'
       />
     )
   })}
+  <div class="galaxy" />
 </div>
 
 <style lang="scss">
@@ -24,6 +25,7 @@ import { blogCategoryCards } from '../../../data/navigation'
   @import "../../../styles/layout.scss";
 
   .container {
+    position: relative;
     @include baseColGrid;
     gap: 40px;
 
@@ -31,6 +33,25 @@ import { blogCategoryCards } from '../../../data/navigation'
       grid-template-columns: 1fr 1fr;
       column-gap: 20px;
       row-gap: 40px;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--accent-pink);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(0, 0);
+    z-index: -1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
     }
   }
 </style>

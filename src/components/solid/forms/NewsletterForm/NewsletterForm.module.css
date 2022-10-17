@@ -33,7 +33,11 @@
 }
 
 .button_container {
+  background: none;
+  border: none;
   width: 260px;
+  outline: none;
+  cursor: pointer;
   transform: translate(0px, -20px) rotate(-4.5deg);
 }
 
@@ -42,8 +46,8 @@
   grid-row: 1 / -1;
   align-self: start;
   justify-self: end;
-  width: 40px;
-  transform: translate(-40px, 40px) rotate(-6deg);
+  width: 20px;
+  transform: translate(-20px, 26px) rotate(-6deg);
   z-index: 2;
 }
 
@@ -51,11 +55,19 @@
   .real_input {
     transform: translate(-16px, -24px) rotate(-5deg);
   }
+
+  .check_icon {
+    transform: translate(-20px, 30px) rotate(-6deg);
+  }
 }
 
 @media (min-width: 600px) {
   .real_input {
     transform: translate(-26px, -34px) rotate(-5deg);
+  }
+
+  .check_icon {
+    transform: translate(-40px, 50px) rotate(-6deg);
   }
 
   .button_container {

@@ -1,0 +1,20 @@
+.the_input {
+  margin: 0;
+  padding: 8px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--form-input-text, var(--font-color-light));
+  text-align: left;
+  background-color: var(--form-input-background);
+  border: none;
+  width: 100%;
+  height: 48px;
+  outline: none;
+  caret-color: var(--form-caret, var(--accent-teal));
+  transition: color, background-color, border-color, 300ms ease-in-out;
+}
+
+.the_input::placeholder {
+  font-size: 1.6rem;
+  color: #363853;
+}
