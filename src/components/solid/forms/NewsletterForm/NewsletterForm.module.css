@@ -74,4 +74,11 @@
     width: 340px;
     transform: translate(0px, -20px) rotate(-4.5deg);
   }
+
+  .button_container:focus {
+    outline-offset: 2px;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: var(--accent-teal);
+  }
 }

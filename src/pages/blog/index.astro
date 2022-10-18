@@ -1,3 +1,16 @@
 ---
-// https://github.com/littlesticks/astro-sanity
+import BaseLayout from '../../layouts/Layout.astro'
+import Footer from '../../sections/Footer/index.astro'
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import BlogSection from '../../sections/home/BlogSection/index.astro'
+import NewsletterSection from '../../sections/callToActionSections/NewsletterSection/index.astro'
 ---
+
+<BaseLayout title="Nerds Who Sell Blog">
+  <SmallHeader headline="Blog">
+    <img src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/blog-header_p1Xvv6Ok4.png?ik-sdk-version=javascript-1.4.3" alt="Nerds Who Sell Blog" title="Nerds Who Sell Blog">
+  </SmallHeader>
+  <BlogSection />
+  <NewsletterSection />
+  <Footer />
+</BaseLayout>

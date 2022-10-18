@@ -20,14 +20,14 @@ const nowCardsData: BlogCardData[] = data.map(card => {
     buttonLabel: buttonLabel,
     tags: tags,
     category: category,
-    slug: slug,
+    slug: `now/${slug}`,
   }
 })
 ---
 
 <BaseLayout title="Now">
   <SmallHeader headline="Now">
-    <img src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_3LCOPEVg6.png?ik-sdk-version=javascript-1.4.3" alt="Now logo" title="Working On Now">
+    <img src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_hlcE9nGIs.png?ik-sdk-version=javascript-1.4.3" alt="Now logo" title="Working On Now">
   </SmallHeader>
   <ContentSection />
   <CardSection nowCardsData={nowCardsData} />

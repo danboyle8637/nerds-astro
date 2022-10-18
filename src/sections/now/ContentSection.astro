@@ -6,6 +6,7 @@ const paragraphs: string[] = [
 ---
 
 <div class="container">
+  <div class="galaxy"></div>
   <h2>Working On Now?</h2>
   <div class="paragraph-container">
     {paragraphs.map(paragraph => <p set:html={paragraph} />)}
@@ -17,11 +18,13 @@ const paragraphs: string[] = [
   @import "../../styles/layout.scss";
 
   .container {
+    position: relative;
     padding: 80px 12px 0 12px;
     @include baseColGrid;
     gap: 40px;
     justify-items: start;
     width: 100%;
+    isolation: isolate;
 
     @include aboveMobile {
       padding: 80px 0 0 0;
@@ -44,5 +47,30 @@ const paragraphs: string[] = [
     @include baseColGrid;
     gap: 30px;
     width: 100%;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #d631ff;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    filter: blur(200px);
+    transform: translate(0, -50%);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(0, 0);
+    }
+
+    @include aboveTablet {
+      transform: translate(80px, 0);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(120px, -50%);
+    }
   }
 </style>
