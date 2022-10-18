@@ -16,10 +16,11 @@ export interface BlogPostFrontmatter {
   author: AuthorName;
   featureImageUrl: string;
   socialImageUrl: string;
+  headerImageUrl: string;
   altTag: string;
   titleTag: string;
   buttonLabel: string;
-  tags: string[];
+  tags: PostTag[];
   category: BlogCategory;
   slug: string;
 }

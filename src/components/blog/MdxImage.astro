@@ -1,0 +1,45 @@
+---
+interface Props {
+  imageUrl: string
+  altTag: string
+  titleTag: string
+}
+
+const { imageUrl, altTag, titleTag } = Astro.props
+---
+
+<div class="post-image-container">
+  <img class="post-image" src={imageUrl} alt={altTag} title={titleTag}>
+  <div class="background" />
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .post-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .post-image {
+    position: absolute;
+    border-radius: 20px;
+    width: 100%;
+    z-index: 1;
+    transition: box-shadow, transform, 300ms ease-in-out;
+
+    &:hover {
+      box-shadow: 2px 4px 8px 1px hsla(0, 0%, 0%, 0.4);
+      transform: translate(-8px, -8px);
+    }
+  }
+
+  .background {
+    position: absolute;
+    background-color: var(--footer-background);
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+</style>

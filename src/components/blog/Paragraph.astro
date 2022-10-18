@@ -6,7 +6,14 @@
   @import "../../styles/sizes.scss";
 
   .paragraph {
+    padding-bottom: 30px;
     font-size: 2.1rem;
+    letter-spacing: 0.08rem;
+    word-spacing: 0.6rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
 
     @include aboveMobile {
       font-size: 2.4rem;

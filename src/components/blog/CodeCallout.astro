@@ -1,0 +1,26 @@
+<span class="callout">
+  <slot />
+</span>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .callout {
+    position: relative;
+    padding: 4px 16px 4px 40px;
+    display: inline-flex;
+    gap: 6px;
+    background-color: hsla(218, 32%, 10%, 0.4);
+    border: 2px solid var(--background-color-dark);
+    border-radius: 8px;
+
+    &::before {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      padding-left: 12px;
+      content: "~";
+      color: var(--accent-teal);
+    }
+  }
+</style>

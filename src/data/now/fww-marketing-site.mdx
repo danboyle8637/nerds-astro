@@ -8,34 +8,41 @@ cardTeaser: We've got our product offering down. It's time to build out the site
 author: Dan
 featureImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-live-marketing-now-feature_pTLeWmaiM.jpg?ik-sdk-version=javascript-1.4.3
 socialImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-live-marketing-now-social_SwjIlQjhd.jpg?ik-sdk-version=javascript-1.4.3
+headerImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-marketing-post-header_8PH3iE-Ms.png?ik-sdk-version=javascript-1.4.3
 altTag: Fit Women's Weekly Marketing Website
 titleTag: Fit Women's Weekly Marketing Website
 buttonLabel: Learn About The Updates
 tags:
-  - now
-  - fww
-  - marketing
+  - { tag: now }
+  - { tag: fww }
+  - { tag: marketing }
 category: now
 slug: fww-marketing-site
 ---
 
-[Fit Women's Weekly](https://fitwomensweekly.com/) is Kindal and I's online fitness business.
+import Link from "../../components/blog/Link.astro";
+import UnorderedList from "../../components/blog/UnorderedList.astro";
+import Bullet from "../../components/blog/Bullet.astro";
+
+Word <Link type="external" url="http://fitwomensweekly.com">Fit Women's Weekly</Link> is Kindal and I's online fitness business.
 
 Our marketing site has been in production for about two years. It's going through some transformations to say the least.
 
-Currently its [build with NextJS](https://nextjs.org/).
+Currently it's built with <Link type="external" url="https://nextjs.org/">NextJs</Link>.
 
 **It's also in dire need or an update**.
 
-- We are dialing in our offerings.
-- We are dialing in the offers to get customers.
-- And I need to tweak the design slightly as well.
+<UnorderedList>
+  <Bullet type="blue">We are dialing in our offerings.</Bullet>
+  <Bullet type="blue">We are dialing in the offers to get customers.</Bullet>
+  <Bullet type="blue">And I need to tweak the design slightly as well.</Bullet>
+</UnorderedList>
 
-This is a good chance to port it to [Astro](https://astro.build/) or [Qwik](https://qwik.builder.io/).
+This is a good chance to port it to <Link type="external" url="https://astro.build/">Astro</Link> or <Link type="external" url="https://qwik.builder.io/">Qwik</Link>.
 
-I've really enjoyed building Nerds in Astro. It's a great solution for so many use cases online.
+I've really enjoyed building Nerds in Astro (for the most part). It's a great solution for so many use cases online.
 
-Plus porting it won't be that big of a challenge. The hardest part for me is using CSS modules in my SolidJS components.
+Plus porting it won't be that big of a challenge. The hardest part for me is using **CSS modules in my SolidJS components**.
 
 That extra CSS file as opposed to having the CSS directly in the component file... it's a headache to deal with.
 
@@ -45,14 +52,23 @@ Yes, you read that correctly. I will switch the React components that need inter
 
 **By November 1, 2022 I want**...
 
-- An organized Figma file with every detail of my update mapped out.
-- A catalog of the new components I need.
-- A process to update and change existing components over to better versions.
-- And I want to know which components I want to add to my personal component library.
+<UnorderedList>
+  <Bullet type="important">
+    An organized Figma file with every detail of my update mapped out.
+  </Bullet>
+  <Bullet type="important">A catalog of the new components I need.</Bullet>
+  <Bullet type="important">
+    A process to update and change existing components over to better versions.
+  </Bullet>
+  <Bullet type="important">
+    And I want to know which components I want to add to my personal component
+    library.
+  </Bullet>
+</UnorderedList>
 
 The biggest mistake I've made over the last few years of building websites and the few apps I have built...
 
-**Not FULLY designing them in Figma first**.
+_Not FULLY designing them in Figma first_.
 
 And I mean every possible view and state the UI could have... including error states.
 
