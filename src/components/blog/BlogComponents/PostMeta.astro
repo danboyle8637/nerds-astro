@@ -1,15 +1,18 @@
 ---
-import type { PostTag } from '../../../types/blog'
+import Breadcrumbs from '../../navigation/Breadcrumbs/Breadcrumb.astro'
+import type { PostTag, Pathname } from '../../../types/blog'
 
 interface Props {
   category: string
   tags: PostTag[]
+  paths: Pathname[]
 }
 
-const { category, tags } = Astro.props
+const { category, tags, paths } = Astro.props
 let commaCount = 0
 ---
 
+<Breadcrumbs paths={paths} />
 <div class="container">
   <div class="tags">
     <p>

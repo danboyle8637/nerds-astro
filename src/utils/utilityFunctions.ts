@@ -46,6 +46,13 @@ export const capitalizeName = (name: string) => {
   }
 };
 
+export const createBreadcrumbLabel = (path: string) => {
+  return path
+    .split("-")
+    .map((el) => capitalizeName(el))
+    .join(" ");
+};
+
 export function formatPhoneNumber(phoneNumberString: string) {
   var cleaned = ("" + phoneNumberString).replace(/\D/g, "");
   var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);

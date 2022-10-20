@@ -1,0 +1,29 @@
+<p>
+  <slot />
+</p>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  p {
+    position: relative;
+    padding: 4px 22px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: hsla(218, 32%, 10%, 0.4);
+    border: 2px solid var(--background-color-dark);
+    border-radius: 8px;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      content: "";
+      background-color: var(--accent-teal);
+      border-radius: 60px;
+      width: 3px;
+      height: 60%;
+      transform: translate(-16px, -50%) rotate(-30deg);
+    }
+  }
+</style>

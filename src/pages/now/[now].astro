@@ -3,9 +3,11 @@ import BaseLayout from '../../layouts/Layout.astro'
 import Footer from '../../sections/Footer/index.astro'
 import MdxPostHeader from '../../components/blog/BlogComponents/MdxPostHeader.astro'
 import type { MDXInstance } from 'astro'
-import type { BlogPostFrontmatter } from '../../types/blog'
+import type { BlogPostFrontmatter, Pathname } from '../../types/blog'
 
 import Header2 from '../../components/blog/Header2.astro'
+import Header3 from '../../components/blog/Header3.astro'
+import Header4 from '../../components/blog/Header4.astro'
 import Paragraph from '../../components/blog/Paragraph.astro'
 import CodeCallout from '../../components/blog/CodeCallout.astro'
 import PostImage from '../../components/blog/PostImage.astro'
@@ -18,6 +20,10 @@ interface Route {
     data: BlogPostFrontmatter,
     now: MDXInstance<Record<string, any>>
   }
+}
+
+interface Params {
+  [index: string]: string
 }
 
 export async function getStaticPaths() {
@@ -38,6 +44,20 @@ export async function getStaticPaths() {
   return routes
 }
 
+const params = Astro.params as Params
+
+let breadcrumbs: Pathname[] = []
+
+for (const p in params) {
+  const pathname = {
+    base: [p],
+    slug: params[p],
+  }
+  breadcrumbs.push(pathname)
+}
+
+// [[now, slug], [base, slug]]
+
 const { headline, seoTitle, seoDescription, headerImageUrl, altTag, titleTag, category, tags } = Astro.props.data as BlogPostFrontmatter
 const { Content } = Astro.props.now
 ---
@@ -51,12 +71,15 @@ const { Content } = Astro.props.now
       headline={headline}
       category={category}
       tags={tags}
+      paths={breadcrumbs}
     />
     <div class="galaxy"></div>
     <div class="post-body">
       <Content 
         components={{
           h2: Header2,
+          h3: Header3,
+          h4: Header4,
           p: Paragraph,
           em: CodeCallout,
           img: PostImage,

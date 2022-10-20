@@ -72,7 +72,6 @@ const serializer: Partial<PortableTextHtmlComponents> = {
       return `<strong>${props.children}</strong>`;
     },
     codeHighlight: (props: any) => {
-      console.log(props);
       return `<span class="code-callout">${props.children}</span>`;
     },
     internalPostLink: (props: any) => {

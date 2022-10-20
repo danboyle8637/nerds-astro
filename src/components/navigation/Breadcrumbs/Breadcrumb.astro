@@ -1,0 +1,38 @@
+---
+import BreadcrumbBaseLink from "./BreadcrumbBaseLink.astro";
+import BreadcrumbLink from "./BreadcrumbLink.astro";
+import BreadcrumbLocation from "./BreadcrumbLocation.astro";
+import type { Pathname } from '../../../types/blog'
+
+interface Props {
+  paths: Pathname[]
+}
+
+
+const { paths } = Astro.props
+
+const pathSegments = paths[0].base
+---
+
+<div class="container">
+  {pathSegments.map((path, i) => {
+    if (i === 0) {
+      return <BreadcrumbBaseLink path={path}>{path}</BreadcrumbBaseLink>
+    }
+
+    return <BreadcrumbLink path={`/blog/${path}`}>{path}</BreadcrumbLink>
+  })}
+  <BreadcrumbLocation>{paths[0].slug}</BreadcrumbLocation>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    width: max-content;
+  }
+</style>

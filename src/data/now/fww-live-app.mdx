@@ -21,17 +21,19 @@ slug: fww-live-app
 ---
 
 import "../../styles/mardown.scss";
-import BaseSubhead from "../../components/markdown/BaseSubhead.astro";
+import Link from "../../components/blog/Link.astro";
+import UnorderedList from "../../components/blog/UnorderedList.astro";
+import Bullet from "../../components/blog/Bullet.astro";
 
-This past year, my wife and I shut our fitness studio down after about 7 years in business. I'll spare you the details.
+This past year, my wife and I shut our fitness studio down **after 7 years** in business. I'll spare you the details.
 
-We created an online streaming fitness program called [Fit Women's Weekly LIVE](https://fitwomensweekly.com/fww-live/what-members-get). It's a unique program. Among other things, **only 300 members are allowed to be active** at any one time.
+We created an online streaming fitness program called <Link type="external" url="https://fitwomensweekly.com/fww-live/what-members-get">Fit Women's Weekly LIVE</Link>. It's a unique program. Among other things, **only 300 members are allowed to be active** at any one time.
 
 We decided on this membership limit because **we talk to our members and give them real training help**. It's important to us to keep a close relationship with our members.
 
-We have another program called [Habit](https://fitwomensweekly.com/fww-habit/what-members-get) on our horizon. Habit will have an uncapped membership. Our goal for it will be 5,000 active members.
+We have another program called <Link type="external" url="https://fitwomensweekly.com/fww-habit/what-members-get">Habit</Link> on our horizon. Habit will have an uncapped membership. Our goal for it will be 5,000 active members. And who knows... maybe we can blow it up more!?!
 
-Currently there are 78 active members in Fit Women's Weekly LIVE.
+Currently there are **78 active members in Fit Women's Weekly LIVE**.
 
 ## How Are We Going To Fill Membership?
 
@@ -39,7 +41,7 @@ The app.
 
 The app is going to be our primary lead generation method.
 
-And obviously... are primary member retention mechanism. There must be a better word for mechanism. And I'm a copywriter.
+And obviously... are primary member retention mechanism. There must be a better word for mechanism. (And I'm a copywriter.)
 
 Because this is a private app... I decided to keep this a **web app (PWA)**. I plan on making it fully offline compatible over time.
 
@@ -53,14 +55,16 @@ Let's get technical, here's the tech stack.
 
 #### Technologies Used:
 
-- SolidJS
-- Cloudflare Workers
-- Cloudflare D1
-- Cloudflare Images
-- Cloudflare Stream
-- Auth is undecided
+<UnorderedList>
+  <Bullet type="blue">SolidJS</Bullet>
+  <Bullet type="blue">Cloudflare Workers</Bullet>
+  <Bullet type="blue">Cloudflare D1</Bullet>
+  <Bullet type="blue">Cloudflare Images</Bullet>
+  <Bullet type="blue">Cloudflare Stream</Bullet>
+  <Bullet type="blue">Auth is undecided</Bullet>
+</UnorderedList>
 
-This app is build on what I call the "Cloudflare stack".
+This app is build on what I call the **Cloudflare stack**.
 
 ## App Features For Round 1
 
@@ -94,16 +98,22 @@ The app tracks everything day to day.
 
 **Everyday you have a series of goals to complete**.
 
-- A primary goal
-- A busy woman's goal
-- A fitness challenge
-- And more...
+<UnorderedList>
+  <Bullet type="blue">A primary goal</Bullet>
+  <Bullet type="blue">A busy woman's goal</Bullet>
+  <Bullet type="blue">A fitness challenge</Bullet>
+  <Bullet type="blue">And more...</Bullet>
+</UnorderedList>
 
 Some days the **primary goal is to take a rest day**. So all you have to do is check that off.
 
-- Each goal has points.
-- Each combination of completed goals has points.
-- You can even get negative points for not completing days.
+<UnorderedList>
+  <Bullet type="blue">Each goal has points.</Bullet>
+  <Bullet type="blue">Each combination of completed goals has points.</Bullet>
+  <Bullet type="blue">
+    You can even get negative points for not completing days.
+  </Bullet>
+</UnorderedList>
 
 Your goal is to **get as many points as possible during the training plan** and see if you can crack the top 10 leaderboard for that plan.
 
@@ -117,21 +127,25 @@ I do have a 97% working version of the app built with React and NextJS on the fr
 
 The backend is using the Cloudflare stack as I mentioned.
 
-- Workers for edge functions
-- KV for some database needs
-- Durable Objects for transactional and consistent data storage needs.
+<UnorderedList>
+  <Bullet type="blue">Workers for edge functions</Bullet>
+  <Bullet type="blue">KV for some database needs</Bullet>
+  <Bullet type="blue">
+    Durable Objects for transactional and consistent data storage needs.
+  </Bullet>
+</UnorderedList>
 
 But this is going to change a little.
 
 ## Change 1: SolidJS
 
-I started to learn [Solid](https://www.solidjs.com/) and I really enjoy it.
+I started to learn <Link type="external" url="https://www.solidjs.com/">Solid</Link> and I really enjoy it.
 
 Once you get your head around the way signals and stores work in Solid... it makes so much more sense to update the UI compared to React and `useEffect`.
 
-React is fixing most of the issues with `useEffect` with a new hook. I can't remember the name of it. I don't even think it's released yet. Knowing React it will probably take another year for it to come out.
+React is fixing most of the issues with `useEffect` with a new hook. I can't remember the name of it. I don't even think it's released yet. Knowing React, it will probably take another year for it to come out.
 
-But Solid is pretty awesome. And I really like [Ryan Carniato](https://twitter.com/RyanCarniato). I think he is one of the smartest coders. I trust he and his team will make Solid a beast of a framework going forward.
+But Solid is pretty awesome. And I really like <Link type="external" url="https://twitter.com/RyanCarniato">Ryan Carniato</Link>. I think he is one of the smartest coders. I trust he and his team will make Solid a beast of a framework going forward.
 
 Plus **this transition also lets me double check all my logic and make improvements** to features if needed.
 
@@ -144,6 +158,8 @@ I got early access to D1... **Cloudflare's distributed SQLite database**. I thin
 I am going to get rid of Durable Objects and use D1 instead. I think it makes a lot more sense to solve the problems I'm having with Durable Objects.
 
 Durable Objects are pretty cool. But I find they can be tough to work with at the moment. I still plan on using them for future features.
+
+**UPDATE** - I might stick with Durable Objects. Mainly because I want total flexibility with my persistance until I know what the final version of the app will look like.
 
 ## Change 3: Bonus... Auth
 

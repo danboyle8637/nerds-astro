@@ -1,7 +1,7 @@
 ---
 import PostMeta from './PostMeta.astro'
 import TopRightAccent from '../../accents/TopRightAccent.astro'
-import type { SanityImage, PostTag } from '../../../types/blog'
+import type { Pathname, PostTag } from '../../../types/blog'
 
 interface Props {
   imageUrl: string
@@ -9,7 +9,8 @@ interface Props {
   titleTag: string
   headline: string
   category: string
-  tags: PostTag[] 
+  tags: PostTag[]
+  paths: Pathname[]
 }
 
 const {
@@ -19,9 +20,8 @@ const {
   headline,
   category,
   tags,
+  paths,
 } = Astro.props
-
-console.log(tags)
 ---
 
 <div class="container">
@@ -31,7 +31,7 @@ console.log(tags)
     </div>
     <TopRightAccent backgroundType="footer" />
   </div>
-  <PostMeta category={category} tags={tags} />
+  <PostMeta category={category} tags={tags} paths={paths} />
   <h1>{headline}</h1>
 </div>
 

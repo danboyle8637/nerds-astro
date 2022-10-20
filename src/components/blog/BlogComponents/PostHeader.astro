@@ -3,7 +3,7 @@ import { sanity } from '../../../pages/blog/marketing/index.astro'
 import imageUrlBuilder from '@sanity/image-url'
 import PostMeta from './PostMeta.astro'
 import TopRightAccent from '../../accents/TopRightAccent.astro'
-import type { SanityImage, PostTag } from '../../../types/blog'
+import type { SanityImage, PostTag, Pathname } from '../../../types/blog'
 
 interface Props {
   imageUrl: SanityImage
@@ -12,6 +12,7 @@ interface Props {
   headline: string
   category: string
   tags: PostTag[] 
+  paths: Pathname[]
 }
 
 const {
@@ -21,6 +22,7 @@ const {
   headline,
   category,
   tags,
+  paths,
 } = Astro.props
 
 const builder = imageUrlBuilder(sanity)
@@ -39,7 +41,7 @@ const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url()
     </div>
     <TopRightAccent backgroundType="footer" />
   </div>
-  <PostMeta category={category} tags={tags} />
+  <PostMeta category={category} tags={tags} paths={paths} />
   <h1>{headline}</h1>
 </div>
 

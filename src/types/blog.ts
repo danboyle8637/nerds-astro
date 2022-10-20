@@ -96,3 +96,8 @@ export type SerializedLink =
   | "externalLink"
   | "internalPostLink"
   | "linkReference";
+
+export interface Pathname {
+  base: string[];
+  slug: string;
+}
