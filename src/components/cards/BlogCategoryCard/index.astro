@@ -11,21 +11,19 @@ interface Props {
 
 const { imageUrl, altTag, titleTag, category, slug } = Astro.props
 
-const styles = {
-  "--button-label-color": category === "marketing" ? "#171717" : "var(--font-color-light)",
-  "--button-background": `url(${imageUrl})`,
-}
+const buttonLabelColor = category === "marketing" ? "#171717" : "var(--font-color-light)"
+const buttonBackground = `url(${imageUrl})`
 ---
 
 <div class="container">
-  <a style={styles} href={slug}>
+  <a href={slug}>
     <img src={imageUrl} alt={altTag} title={titleTag} class="category-image">
     <span class="label">{category}</span>
   </a>
   <div class="background"></div>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ buttonLabelColor, buttonBackground }}>
   @import "../../../styles/sizes.scss";
   
   .container {
@@ -74,7 +72,7 @@ const styles = {
     padding: 0 0 12px 12px;
     font-size: 5rem;
     font-weight: 700;
-    color: var(--button-label-color);
+    color: var(--buttonLabelColor);
     z-index: 2;
 
     @include aboveTablet {

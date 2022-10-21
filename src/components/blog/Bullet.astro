@@ -13,18 +13,16 @@ const importantBullet = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site
 
 const bulletImage = type === "blue" ? blueBullet : type === "purple" ? purpleBullet : importantBullet
 
-const styles = {
-  "--bullet-width": type === "important" ? "50px" : "40px",
-  "--bullet-translateY": type === "important" ? "translateY(-12px)" : "translateY(-2px)",
-}
+const bulletWidth = type === "important" ? "50px" : "40px"
+const bulletTranslateY = type === "important" ? "translateY(-12px)" : "translateY(-2px)"
 ---
 
-<li class="base-bullet" style={styles}>
+<li class="base-bullet">
   <img class="block" src={bulletImage} alt="Bullet point" title="Bullet Point">
   <slot />
 </li>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ bulletWidth, bulletTranslateY }}>
   @import "../../styles/sizes.scss";
 
   .base-bullet {
@@ -45,7 +43,7 @@ const styles = {
   }
   
   .block {
-    width: var(--bullet-width);
-    transform: var(--bullet-translateY);
+    width: var(--bulletWidth);
+    transform: var(--bulletTranslateY);
   }
 </style>

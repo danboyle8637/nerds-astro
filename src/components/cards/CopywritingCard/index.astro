@@ -29,7 +29,7 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    background-color: var(--accent-purple-dark);
+    background-color: var(--cardContentBackgroundColor, var(--accent-purple-dark));
     border-radius: 30px;
     width: 100%;
     max-width: 360px;
@@ -43,6 +43,7 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     @include baseColGrid;
     gap: 0px;
     justify-items: center;
+    background-color: red;
     border-radius: 20px;
     width: 100%;
     transition: transform, box-shadow, 300ms ease-in-out;

@@ -8,18 +8,16 @@ interface Props {
 
 const { linkType, slug } = Astro.props
 
-const styles = {
-  "--link-font-size": linkType === "admin" ? "2.4rem" : "2.4rem",
-}
+const linkFontSize = linkType === "admin" ? "2.4rem" : "2.4rem"
 ---
 
-<li style={styles}>
+<li>
   <a href={slug}>
   <slot />
   </a>
 </li>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ linkFontSize }}>
   @import "../../styles/sizes.scss";
 
   li {

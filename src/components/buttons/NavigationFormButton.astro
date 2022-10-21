@@ -10,12 +10,7 @@ interface Props {
 
 const { theme, slug, title } = Astro.props
 
-const styles = 
-  theme === "teal"
-    ? {"--button-background-color": "var(--accent-teal)"}
-    : theme === "purple" 
-    ? {"--button-background-color": "var(--accent-purple)"}
-    : {"--button-background-color": "var(--accent-pink)"}
+const buttonBackgroundColor = theme === "teal" ? "var(--accent-teal)" : theme === "purple" ? "var(--accent-purple)" : "var(--accent-pink)"
 ---
 
 <div class="form-button-container">
@@ -23,16 +18,15 @@ const styles =
   <a
     href={slug}
     title={title}
-    style={styles}
   >
     <div class="button-icon">
-      <MonthIcon client:idle theme="dark" />
+      
     </div>
     <slot />
   </a>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ buttonBackgroundColor }}>
   .form-button-container {
     display: grid;
     grid-template-columns: 1fr;

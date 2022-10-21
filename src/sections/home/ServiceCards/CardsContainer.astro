@@ -2,12 +2,10 @@
 import CopywritingCard from '../../../components/cards/CopywritingCard/index.astro'
 import { copyAndContentServices } from '../../../data/callToActions'
 
-const styles = {
-  "--card-content-background-color": "#161427",
-}
+const cardContentBackgroundColor = "var(--accent-purple)"
 ---
 
-<div class="container" style={styles}>
+<div class="container">
   {copyAndContentServices.map(card => {
     const { id, imageUrl, altTag, titleTag, headline, description, buttonLabel, buttonTitle, slug } = card
 
@@ -27,7 +25,7 @@ const styles = {
   })}
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ cardContentBackgroundColor }}>
   @import "../../../styles/sizes.scss";
   @import "../../../styles/layout.scss";
 
