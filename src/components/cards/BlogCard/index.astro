@@ -1,6 +1,7 @@
 ---
 import Image from "./Image.astro";
 import Content from "./Content.astro";
+import type { PostTag } from '../../../types/blog'
 
 interface Props {
   imageUrl: string
@@ -8,7 +9,7 @@ interface Props {
   titleTag: string
   cardTeaser: string
   buttonLabel: string
-  tags: string[]
+  tags: PostTag[]
   category: string
   slug: string
 }

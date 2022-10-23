@@ -1,10 +1,9 @@
 ---
-  import { sanity } from '../../../pages/blog/marketing/index.astro'
+  import client from '@sanity/client'
   import BaseLayout from '../../../layouts/Layout.astro'
   import PostHeader from '../../../components/blog/BlogComponents/PostHeader.astro'
   import Footer from '../../../sections/Footer/index.astro'
   import BlockContent from '../../../components/blog/BlockContent.astro'
-
   import type { HeadMeta, PostPage, SanityBlogPost, Pathname } from '../../../types/blog'
   import "../../../styles/blog.scss"
 
@@ -24,13 +23,13 @@
   }
 
   export async function getStaticPaths(): Promise<Route[]> {
-    // const sanity = client({
-    //   projectId: import.meta.env.SANITY_PROJECT_ID,
-    //   dataset: import.meta.env.SANITY_BASE,
-    //   apiVersion: '2021-03-25',
-    //   token: import.meta.env.SANITY_TOKEN,
-    //   useCdn: true,
-    // })
+    const sanity = client({
+      projectId: import.meta.env.SANITY_PROJECT_ID,
+      dataset: import.meta.env.SANITY_BASE,
+      apiVersion: '2021-03-25',
+      token: import.meta.env.SANITY_TOKEN,
+      useCdn: true,
+    })
 
     const query = `
       {
@@ -90,7 +89,7 @@
             socialImage: post.socialImage,
           },
           postPage: {
-            headerIamge: post.headerImage,
+            headerImage: post.headerImage,
             altTag: post.altTag,
             titleTag: post.titleTag,
             headline: post.headline,
@@ -121,7 +120,7 @@
   const { seoTitle, seoDescription, socialHeadline, socialDescription, socialImage } = Astro.props.headMeta as HeadMeta
 
   const {  
-    headerIamge, 
+    headerImage, 
     altTag,
     titleTag,
     headline,
@@ -133,10 +132,10 @@
   const blockContent = Astro.props.blockContent
 ---
 
-<BaseLayout title="Post">
+<BaseLayout title={seoTitle}>
   <div class="container">
     <PostHeader 
-      imageUrl={headerIamge}
+      imageUrl={headerImage}
       altTag={altTag}
       titleTag={titleTag}
       headline={headline}

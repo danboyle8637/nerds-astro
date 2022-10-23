@@ -2,13 +2,13 @@
 import client from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import BaseLayout from '../../../layouts/Layout.astro'
-import Footer from '../../../sections/Footer/index.astro'
 import BlogCategoryHeader from '../../../sections/blog/BlogCategoryHeader.astro'
 import Breadcrumbs from '../../../components/navigation/Breadcrumbs/Breadcrumb.astro'
 import BlogCard from '../../../components/cards/BlogCard/index.astro'
+import Footer from '../../../sections/Footer/index.astro'
 import type { SanityBlogCardQuery, SanityImage, Pathname } from '../../../types/blog'
 
-const marketingHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/marketing-blog-header_MIG8rVLwS.png?ik-sdk-version=javascript-1.4.3"
+const techHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/tech-blog-header_upcrIT9Tp.png?ik-sdk-version=javascript-1.4.3"
 
 export const sanity = client({
   projectId: import.meta.env.SANITY_PROJECT_ID,
@@ -20,7 +20,7 @@ export const sanity = client({
 
 const query = `
   {
-    "cardData": *[_type == 'blogPost' && "marketing" in category.category] {
+    "cardData": *[_type == 'blogPost' && "tech" in category.category] {
       "cardImage": image.image.asset,
       "altTag": image.altTag,
       "titleTag": image.titleTag,
@@ -43,14 +43,14 @@ function urlFor(source: SanityImage) {
 const breadcrumbs: Pathname[] = [
   {
     base: ["blog"],
-    slug: "marketing",
+    slug: "tech",
   }
 ]
 ---
 
-<BaseLayout title="Marketing Blog">
-  <BlogCategoryHeader headline="Marketing Blog">
-    <img class="marketing-image" src={marketingHeader} alt="Marketing blog header" title="Marketing Blog" width="900px" height="205px" />
+<BaseLayout title="Tech Blog">
+  <BlogCategoryHeader headline="Tech Blog">
+    <img class="tech-image" src={techHeader} alt="Tech blog header" title="Tech Blog" width="900px" height="205px" />
   </BlogCategoryHeader>
   <div class="container">
     <Breadcrumbs paths={breadcrumbs} />
@@ -67,7 +67,7 @@ const breadcrumbs: Pathname[] = [
             category="design"
             tags={tags}
             buttonLabel="Read Post"
-            slug={`/blog/marketing/${slug}`}
+            slug={`/blog/tech/${slug}`}
           />
         )
       })}
@@ -80,7 +80,7 @@ const breadcrumbs: Pathname[] = [
   @import "../../../styles/sizes.scss";
   @import "../../../styles/layout.scss";
 
-  .marketing-image {
+  .tech-image {
     width: 100%;
     height: auto;
   }

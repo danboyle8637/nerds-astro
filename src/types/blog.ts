@@ -25,13 +25,26 @@ export interface BlogPostFrontmatter {
   slug: string;
 }
 
+export interface SanityBlogCardQuery {
+  cardData: SanityBlogCardData[];
+}
+
+export interface SanityBlogCardData {
+  cardImage: SanityImage;
+  altTag: string;
+  titleTag: string;
+  description: string;
+  tags: PostTag[];
+  slug: string;
+}
+
 export interface BlogCardData {
   imageUrl: string;
   altTag: string;
   titleTag: string;
   cardTeaser: string;
   buttonLabel: string;
-  tags: string[];
+  tags: PostTag[];
   category: BlogCategory;
   slug: string;
 }
@@ -55,7 +68,7 @@ export interface HeadMeta {
 }
 
 export interface PostPage {
-  headerIamge: SanityImage;
+  headerImage: SanityImage;
   altTag: string;
   titleTag: string;
   headline: string;

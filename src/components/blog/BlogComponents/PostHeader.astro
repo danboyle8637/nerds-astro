@@ -1,5 +1,5 @@
 ---
-import { sanity } from '../../../pages/blog/marketing/index.astro'
+import client from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import PostMeta from './PostMeta.astro'
 import TopRightAccent from '../../accents/TopRightAccent.astro'
@@ -14,6 +14,14 @@ interface Props {
   tags: PostTag[] 
   paths: Pathname[]
 }
+
+export const sanity = client({
+  projectId: import.meta.env.SANITY_PROJECT_ID,
+  dataset: import.meta.env.SANITY_BASE,
+  apiVersion: '2021-03-25',
+  token: import.meta.env.SANITY_TOKEN,
+  useCdn: true,
+})
 
 const {
   imageUrl,
