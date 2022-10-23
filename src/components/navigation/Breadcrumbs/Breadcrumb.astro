@@ -2,26 +2,27 @@
 import BreadcrumbBaseLink from "./BreadcrumbBaseLink.astro";
 import BreadcrumbLink from "./BreadcrumbLink.astro";
 import BreadcrumbLocation from "./BreadcrumbLocation.astro";
-import type { Pathname } from '../../../types/blog'
+import type { Pathname } from "../../../types/blog";
 
 interface Props {
-  paths: Pathname[]
+  paths: Pathname[];
 }
 
+const { paths } = Astro.props;
 
-const { paths } = Astro.props
-
-const pathSegments = paths[0].base
+const pathSegments = paths[0].base;
 ---
 
 <div class="container">
-  {pathSegments.map((path, i) => {
-    if (i === 0) {
-      return <BreadcrumbBaseLink path={path}>{path}</BreadcrumbBaseLink>
-    }
+  {
+    pathSegments.map((path, i) => {
+      if (i === 0) {
+        return <BreadcrumbBaseLink path={path}>{path}</BreadcrumbBaseLink>;
+      }
 
-    return <BreadcrumbLink path={`/blog/${path}`}>{path}</BreadcrumbLink>
-  })}
+      return <BreadcrumbLink path={`/blog/${path}`}>{path}</BreadcrumbLink>;
+    })
+  }
   <BreadcrumbLocation>{paths[0].slug}</BreadcrumbLocation>
 </div>
 

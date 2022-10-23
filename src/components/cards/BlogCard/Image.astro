@@ -1,17 +1,17 @@
 ---
 interface Props {
-  imageUrl: string
-  altTag: string
-  titleTag: string
-  slug: string
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  slug: string;
 }
 
-const { imageUrl, altTag, titleTag, slug } = Astro.props
+const { imageUrl, altTag, titleTag, slug } = Astro.props;
 ---
 
 <a class="container" href={slug} title={titleTag}>
-  <img class="post-image" src={imageUrl} alt={altTag} title={titleTag}>
-  <div class="background" />
+  <img class="post-image" src={imageUrl} alt={altTag} title={titleTag} />
+  <div class="background"></div>
 </a>
 
 <style lang="scss">
@@ -30,6 +30,7 @@ const { imageUrl, altTag, titleTag, slug } = Astro.props
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     border-radius: 20px;
+    width: 100%;
     transition: transform, box-shadow, 300ms ease-in-out;
     z-index: 1;
 

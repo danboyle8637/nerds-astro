@@ -1,16 +1,25 @@
 ---
-import BaseLayout from '../../layouts/Layout.astro'
-import SmallHeader from '../../sections/headers/SmallHeader.astro'
-import ContentSection from '../../sections/now/ContentSection.astro'
-import NewsletterSection from '../../sections/callToActionSections/NewsletterSection/index.astro'
-import Footer from '../../sections/Footer/index.astro'
-import CardSection from '../../sections/now/CardSection.astro'
-import type { BlogPostFrontmatter, BlogCardData } from '../../types/blog'
+import BaseLayout from "../../layouts/Layout.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import ContentSection from "../../sections/now/ContentSection.astro";
+import NewsletterSection from "../../sections/callToActionSections/NewsletterSection/index.astro";
+import Footer from "../../sections/Footer/index.astro";
+import CardSection from "../../sections/now/CardSection.astro";
+import type { BlogPostFrontmatter, BlogCardData } from "../../types/blog";
 
-const data = await Astro.glob("../../data/now/*.mdx")
+const data = await Astro.glob("../../data/now/*.mdx");
 
-const nowCardsData: BlogCardData[] = data.map(card => {
-  const { featureImageUrl, altTag, titleTag, cardTeaser, buttonLabel, tags, category, slug } = card.frontmatter as BlogPostFrontmatter
+const nowCardsData: BlogCardData[] = data.map((card) => {
+  const {
+    featureImageUrl,
+    altTag,
+    titleTag,
+    cardTeaser,
+    buttonLabel,
+    tags,
+    category,
+    slug,
+  } = card.frontmatter as BlogPostFrontmatter;
 
   return {
     imageUrl: featureImageUrl,
@@ -21,14 +30,17 @@ const nowCardsData: BlogCardData[] = data.map(card => {
     tags: tags,
     category: category,
     slug: `now/${slug}`,
-  }
-})
+  };
+});
 ---
 
 <BaseLayout title="Now">
-  <SmallHeader headline="Now">
-    <img src="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_hlcE9nGIs.png?ik-sdk-version=javascript-1.4.3" alt="Now logo" title="Working On Now">
-  </SmallHeader>
+  <SmallHeader
+    headline="Now"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_hlcE9nGIs.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Now logo"
+    titleTag="Working On Now"
+  />
   <ContentSection />
   <CardSection nowCardsData={nowCardsData} />
   <NewsletterSection />

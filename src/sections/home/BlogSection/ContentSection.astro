@@ -2,13 +2,13 @@
 const paragraphs: string[] = [
   "We blog about our experience marketing... designing... coding... and reviewing the cool tech and software we use on a daily basis.",
   "<strong>Click on a blog card</strong> to read the posts from that category.",
-]
+];
 ---
 
 <div class="container">
-  <h2>Read The Nerd Blogs:</h2>
+  <h2 class="headline">Read The Nerd Blogs:</h2>
   <div class="paragraph-container">
-    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -23,7 +23,6 @@ const paragraphs: string[] = [
     width: 100%;
 
     @include aboveMobile {
-
     }
 
     @include aboveTablet {
@@ -31,7 +30,7 @@ const paragraphs: string[] = [
     }
   }
 
-  h2 {
+  .headline {
     @include aboveMobile {
       font-size: 6rem;
     }

@@ -45,9 +45,24 @@ export const HamburgerIcon: Component = () => {
       title="Main Menu"
       onClick={toggleIsMobileNavOpen}
     >
-      <img ref={topBarRef!} src={topBar} alt="Top menu bar" />
-      <img ref={middleBarRef!} src={middleBar} alt="Middle menu bar" />
-      <img ref={bottomBarRef!} src={bottomBar} alt="Bottom menu bar" />
+      <img
+        class={styled.nav_bar}
+        ref={topBarRef!}
+        src={topBar}
+        alt="Top menu bar"
+      />
+      <img
+        class={styled.nav_bar}
+        ref={middleBarRef!}
+        src={middleBar}
+        alt="Middle menu bar"
+      />
+      <img
+        class={styled.nav_bar}
+        ref={bottomBarRef!}
+        src={bottomBar}
+        alt="Bottom menu bar"
+      />
     </button>
   );
 };

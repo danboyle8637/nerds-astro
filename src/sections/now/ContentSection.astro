@@ -1,15 +1,15 @@
 ---
 const paragraphs: string[] = [
-  "I can't remember where I heard about the <span class=\"code-callout\">now</span> page... but I wanted to include it on my site.",
+  'I can\'t remember where I heard about the <span class="code-callout">now</span> page... but I wanted to include it on my site.',
   "These are the <strong>personal projects</strong> I am working on right now. I will built a little progress component so you can see where I stand on actually finishing these. I think that will help me as well.",
-]
+];
 ---
 
 <div class="container">
   <div class="galaxy"></div>
-  <h2>Working On Now?</h2>
+  <h2 class="headline">Working On Now?</h2>
   <div class="paragraph-container">
-    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -37,7 +37,7 @@ const paragraphs: string[] = [
     }
   }
 
-  h2 {
+  .headline {
     @include aboveMobile {
       font-size: 6rem;
     }

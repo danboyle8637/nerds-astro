@@ -1,10 +1,19 @@
 ---
 import ContentSection from "./ContentSection.astro";
 import CardsContainer from "./CardsContainer.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 ---
 
 <div class="container">
-  <div class="galaxy" />
+  <div class="galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={200}
+      height={200}
+      blur={160}
+    />
+  </div>
   <ContentSection />
   <CardsContainer />
 </div>
@@ -36,18 +45,11 @@ import CardsContainer from "./CardsContainer.astro";
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #3D00BD;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
     transform: translate(0, 0);
     z-index: -1;
 
     @include aboveTablet {
-      width: 400px;
-      height: 400px;
-      filter: blur(260px);
+      transform: translate(-20%, -20%);
     }
   }
 </style>

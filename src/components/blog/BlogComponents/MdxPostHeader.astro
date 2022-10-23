@@ -1,33 +1,26 @@
 ---
-import PostMeta from './PostMeta.astro'
-import TopRightAccent from '../../accents/TopRightAccent.astro'
-import type { Pathname, PostTag } from '../../../types/blog'
+import PostMeta from "./PostMeta.astro";
+import TopRightAccent from "../../accents/TopRightAccent.astro";
+import type { Pathname, PostTag } from "../../../types/blog";
 
 interface Props {
-  imageUrl: string
-  altTag: string
-  titleTag: string
-  headline: string
-  category: string
-  tags: PostTag[]
-  paths: Pathname[]
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  category: string;
+  tags: PostTag[];
+  paths: Pathname[];
 }
 
-const {
-  imageUrl,
-  altTag,
-  titleTag,
-  headline,
-  category,
-  tags,
-  paths,
-} = Astro.props
+const { imageUrl, altTag, titleTag, headline, category, tags, paths } =
+  Astro.props;
 ---
 
 <div class="container">
   <div class="post-header">
     <div class="post-image">
-      <img src={imageUrl} alt={altTag} title={titleTag} />
+      <img class="header-image" src={imageUrl} alt={altTag} title={titleTag} />
     </div>
     <TopRightAccent backgroundType="footer" />
   </div>
@@ -66,6 +59,10 @@ const {
   .post-image {
     width: 100%;
     aspect-ratio: 800 / 453;
+
+    & img {
+      width: 100%;
+    }
 
     @include aboveMobile {
       width: 600px;

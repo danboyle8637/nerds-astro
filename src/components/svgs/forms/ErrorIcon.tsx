@@ -1,4 +1,4 @@
-import { createMemo } from "solid-js";
+import { createEffect, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
 import { errorIconOn } from "../../../animations/forms";
@@ -12,12 +12,10 @@ export const ErrorIcon: Component<ErrorIconProps> = (props) => {
   let rightCrossRef: SVGPathElement;
   let leftCrossRef: SVGPathElement;
 
-  createMemo(() => {
-    setTimeout(() => {
-      if (rightCrossRef && leftCrossRef) {
-        errorIconOn(rightCrossRef, leftCrossRef);
-      }
-    });
+  createEffect(() => {
+    if (rightCrossRef && leftCrossRef) {
+      errorIconOn(rightCrossRef, leftCrossRef);
+    }
   });
 
   return (

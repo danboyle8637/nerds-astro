@@ -1,16 +1,36 @@
-import { animate, spring } from "motion";
+import { animate, spring, MotionKeyframesDefinition } from "motion";
 
-export const checkIconOn = (path: SVGPathElement) => {
-  const keyframes: Keyframe[] = [
-    { visibility: "visible", strokeDashoffset: 0 },
-  ];
-  const options: KeyframeAnimationOptions = {
-    fill: "forwards",
-    duration: 300,
-    easing: "linear",
+const draw = (progress: number): MotionKeyframesDefinition => {
+  return {
+    strokeDashoffset: 1 - progress * -1,
+    visibility: "visible",
   };
+};
 
-  path.animate(keyframes, options);
+export const checkIconOn = (checkPath: SVGPathElement, kill?: boolean) => {
+  const check = animate(checkPath, draw(1), {
+    duration: 0.3,
+    easing: "ease-in-out",
+  });
+
+  if (kill) {
+    check.cancel();
+  } else {
+    check.play();
+  }
+};
+
+export const checkIconOff = (checkPath: SVGPathElement, kill?: boolean) => {
+  const check = animate(checkPath, draw(1), {
+    duration: 0.4,
+    easing: spring(),
+  });
+
+  if (kill) {
+    check.cancel();
+  } else {
+    check.play();
+  }
 };
 
 export const errorIconOn = (

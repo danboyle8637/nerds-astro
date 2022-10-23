@@ -2,20 +2,31 @@
 import TerminalHeader from "../../../components/typography/TerminalHeader.astro";
 import CardsContainer from "./CardsContainer.astro";
 import MiddleLeftAccent from "../../../components/accents/MiddleLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 ---
 
 <div class="container">
   <div class="content-container">
     <div class="header">
       <TerminalHeader cursor={true}>
-        <h3>~ Services</h3>
+        <h3 class="headline"><span>~</span> Services</h3>
       </TerminalHeader>
     </div>
     <CardsContainer />
   </div>
-  <div class="galaxy top-galaxy"></div>
+  <div class="top-galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={240}
+      height={240}
+      blur={160}
+    />
+  </div>
   <MiddleLeftAccent backgroundType="body" />
-  <div class="galaxy bottom-galaxy"></div>
+  <div class="bottom-galaxy">
+    <Galaxy client:idle color="purple" width={240} height={240} blur={160} />
+  </div>
 </div>
 
 <style lang="scss">
@@ -28,6 +39,7 @@ import MiddleLeftAccent from "../../../components/accents/MiddleLeftAccent.astro
     justify-content: center;
     width: 100%;
     overflow: hidden;
+    isolation: isolate;
   }
 
   .content-container {
@@ -53,32 +65,20 @@ import MiddleLeftAccent from "../../../components/accents/MiddleLeftAccent.astro
       padding: 120px 0 120px 0;
     }
   }
- 
+
   .header {
     width: 100%;
     max-width: 600px;
-  }
 
-  h3 {
-    text-transform: uppercase;
-    @media (min-width: 600px) {
-      font-size: 6rem;
+    & span {
+      color: var(--accent-teal);
     }
   }
 
-  .galaxy {
-    background-color: #3D00BD;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
-    z-index: -1;
-
-    @media (min-width: 960px) {
-      width: 400px;
-      height: 400px;
-      filter: blur(260px);
-     
+  .headline {
+    text-transform: uppercase;
+    @media (min-width: 600px) {
+      font-size: 6rem;
     }
   }
 
@@ -86,14 +86,15 @@ import MiddleLeftAccent from "../../../components/accents/MiddleLeftAccent.astro
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(80px, -60px);
+    transform: translate(20px, -60px);
+    z-index: -1;
 
     @include aboveMobile {
-      transform: translate(60px, -20px);
+      transform: translate(20px, -20px);
     }
 
     @include aboveIpadPro {
-      transform: translate(60px, -220px);
+      transform: translate(20px, -80px);
     }
   }
 
@@ -102,10 +103,10 @@ import MiddleLeftAccent from "../../../components/accents/MiddleLeftAccent.astro
     bottom: 0;
     right: 0;
     transform: translate(80px, 80px);
+    z-index: -1;
 
     @include aboveTablet {
       transform: translate(180px, 120px);
     }
-   }
+  }
 </style>
-

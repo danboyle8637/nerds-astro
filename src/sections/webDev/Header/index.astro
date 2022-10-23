@@ -1,8 +1,9 @@
 ---
 import Headline from "./Headline.astro";
-import { AppIcon } from '../../../components/solid/AppIcon'
+import { AppIcon } from "../../../components/solid/AppIcon";
 import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
 import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 ---
 
 <div class="container">
@@ -13,9 +14,19 @@ import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro
         <AppIcon client:idle />
       </div>
     </div>
-    <InternalNavButton type="purple" title="Free Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
+    <InternalNavButton type="purple" title="Free Nerd Chat" slug="/" width={290}
+      >Schedule a Nerd Chat</InternalNavButton
+    >
   </div>
-  <div class="galaxy"></div>
+  <div class="galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={220}
+      height={220}
+      blur={240}
+    />
+  </div>
   <BottomLeftAccent backgroundType="header" />
 </div>
 
@@ -60,7 +71,7 @@ import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro
     width: 100%;
     max-width: 1000px;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       grid-template-columns: 1fr 1fr;
       align-items: center;
       gap: 0;
@@ -75,19 +86,7 @@ import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro
     position: absolute;
     top: 0;
     right: 0;
-    background-color: #3D00BD;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
     transform: translate(40px, 0);
-    z-index: 1;
-
-    @include aboveTablet {
-      width: 400px;
-      height: 400px;
-      filter: blur(260px);
-      transform: translate(40px, -120px);
-    }
+    z-index: -1;
   }
 </style>

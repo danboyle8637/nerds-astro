@@ -1,18 +1,27 @@
 ---
+import { Galaxy } from "../../components/solid/galaxies/Galaxy";
+
 interface Props {
-  headline: string
+  headline: string;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
 }
 
-const { headline } = Astro.props
+const { headline, imageUrl, altTag, titleTag } = Astro.props;
 ---
 
 <div class="container">
-  <h1>{headline}</h1>
+  <h1 class="headline">{headline}</h1>
   <div class="header-image">
-    <slot />
+    <img class="header-logo" src={imageUrl} alt={altTag} title={titleTag} />
   </div>
-  <div class="galaxy-pink"></div>
-  <div class="galaxy-purple"></div>
+  <div class="galaxy-pink">
+    <Galaxy client:idle color="pink" width={240} height={240} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={240} height={240} blur={200} />
+  </div>
 </div>
 
 <style lang="scss">
@@ -37,7 +46,7 @@ const { headline } = Astro.props
     }
   }
 
-  h1 {
+  .headline {
     font-size: 4rem;
     color: hsla(219, 34%, 15%, 1);
   }
@@ -48,6 +57,10 @@ const { headline } = Astro.props
     left: 50%;
     width: 245px;
     transform: translate(-50%, -50%);
+
+    img {
+      width: 100%;
+    }
 
     @include aboveIphone11 {
       width: 280px;
@@ -66,13 +79,8 @@ const { headline } = Astro.props
     position: absolute;
     left: 0;
     bottom: 0;
-    background-color: var(--accent-pink);
-    border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    filter: blur(200px);
     transform: translate(-200px, 0);
-    z-index: 1;
+    z-index: -1;
 
     @include aboveMobile {
       transform: translate(-140px, -40%);
@@ -84,18 +92,11 @@ const { headline } = Astro.props
   }
 
   .galaxy-purple {
-    @include aboveMobile {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background-color: var(--accent-purple);
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
-      filter: blur(200px);
-      transform: translate(200px, 0);
-      z-index: 1;
-    }
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(200px, 0);
+    z-index: 1;
 
     @include aboveIpadPro {
       transform: translate(0, 80px);

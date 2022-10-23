@@ -1,70 +1,78 @@
 ---
-import BaseLayout from '../../layouts/Layout.astro'
-import Footer from '../../sections/Footer/index.astro'
-import MdxPostHeader from '../../components/blog/BlogComponents/MdxPostHeader.astro'
-import type { MDXInstance } from 'astro'
-import type { BlogPostFrontmatter, Pathname } from '../../types/blog'
+import BaseLayout from "../../layouts/Layout.astro";
+import Footer from "../../sections/Footer/index.astro";
+import NewsletterSection from "../../sections/callToActionSections/NewsletterSection/index.astro";
+import MdxPostHeader from "../../components/blog/BlogComponents/MdxPostHeader.astro";
+import type { MDXInstance } from "astro";
+import type { BlogPostFrontmatter, Pathname } from "../../types/blog";
 
-import Header2 from '../../components/blog/Header2.astro'
-import Header3 from '../../components/blog/Header3.astro'
-import Header4 from '../../components/blog/Header4.astro'
-import Paragraph from '../../components/blog/Paragraph.astro'
-import CodeCallout from '../../components/blog/CodeCallout.astro'
-import PostImage from '../../components/blog/PostImage.astro'
+import Header2 from "../../components/blog/Header2.astro";
+import Header3 from "../../components/blog/Header3.astro";
+import Header4 from "../../components/blog/Header4.astro";
+import Paragraph from "../../components/blog/Paragraph.astro";
+import CodeCallout from "../../components/blog/CodeCallout.astro";
+import PostImage from "../../components/blog/PostImage.astro";
 
 interface Route {
   params: {
-    now: string
-  },
+    now: string;
+  };
   props: {
-    data: BlogPostFrontmatter,
-    now: MDXInstance<Record<string, any>>
-  }
+    data: BlogPostFrontmatter;
+    now: MDXInstance<Record<string, any>>;
+  };
 }
 
 interface Params {
-  [index: string]: string
+  [index: string]: string;
 }
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob("../../data/now/*.mdx")
+  const posts = await Astro.glob("../../data/now/*.mdx");
 
-  const routes: Route[] = posts.map(post => {
-    const frontmatter = post.frontmatter as BlogPostFrontmatter
+  const routes = posts.map((post) => {
+    const frontmatter = post.frontmatter as BlogPostFrontmatter;
 
-    return ({
+    return {
       params: { now: frontmatter.slug },
       props: {
         data: frontmatter,
-        now: post
-      }
-    })
-  })
+        now: post,
+      },
+    };
+  });
 
-  return routes
+  return routes;
 }
 
-const params = Astro.params as Params
+const params = Astro.params as Params;
 
-let breadcrumbs: Pathname[] = []
+let breadcrumbs: Pathname[] = [];
 
 for (const p in params) {
   const pathname = {
     base: [p],
     slug: params[p],
-  }
-  breadcrumbs.push(pathname)
+  };
+  breadcrumbs.push(pathname);
 }
 
-// [[now, slug], [base, slug]]
-
-const { headline, seoTitle, seoDescription, headerImageUrl, altTag, titleTag, category, tags } = Astro.props.data as BlogPostFrontmatter
-const { Content } = Astro.props.now
+const {
+  headline,
+  seoTitle,
+  seoDescription,
+  headerImageUrl,
+  altTag,
+  titleTag,
+  category,
+  tags,
+} = Astro.props.data as BlogPostFrontmatter;
+const { Content } = Astro.props.now;
 ---
 
 <BaseLayout title={seoTitle}>
   <div class="container">
-    <MdxPostHeader 
+    <MdxPostHeader
       imageUrl={headerImageUrl}
       altTag={altTag}
       titleTag={titleTag}
@@ -75,7 +83,7 @@ const { Content } = Astro.props.now
     />
     <div class="galaxy"></div>
     <div class="post-body">
-      <Content 
+      <Content
         components={{
           h2: Header2,
           h3: Header3,
@@ -87,6 +95,7 @@ const { Content } = Astro.props.now
       />
     </div>
   </div>
+  <NewsletterSection />
   <Footer />
 </BaseLayout>
 
@@ -95,6 +104,7 @@ const { Content } = Astro.props.now
 
   .container {
     position: relative;
+    padding: 0 0 80px 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: min-content;
@@ -102,6 +112,10 @@ const { Content } = Astro.props.now
     justify-items: center;
     width: 100%;
     isolation: isolate;
+
+    @include aboveTablet {
+      padding: 0 0 120px 0;
+    }
   }
 
   .post-body {
@@ -110,7 +124,7 @@ const { Content } = Astro.props.now
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    
+
     @include aboveMobile {
       width: 660px;
     }

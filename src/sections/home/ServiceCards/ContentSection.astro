@@ -2,13 +2,13 @@
 const paragraphs: string[] = [
   "If you <strong>need a website</strong> or you need your current website to <strong>convert and grow your business</strong>...",
   "<strong>Click below on the service</strong> that will help you the most and let's set up a Nerd Chat.",
-]
+];
 ---
 
 <div class="container">
-  <h2>Need a Nerds Help?</h2>
+  <h2 class="headline">Need a Nerds Help?</h2>
   <div class="paragraph-container">
-    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -31,7 +31,7 @@ const paragraphs: string[] = [
     }
   }
 
-  h2 {
+  .headline {
     @include aboveMobile {
       font-size: 6rem;
     }

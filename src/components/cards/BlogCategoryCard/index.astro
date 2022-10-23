@@ -1,31 +1,31 @@
 ---
-import type { BlogCategory } from '../../../types/blog'
+import type { BlogCategory } from "../../../types/blog";
 
 interface Props {
   imageUrl: string;
-  altTag: string
-  titleTag: string
+  altTag: string;
+  titleTag: string;
   category: BlogCategory;
   slug: string;
 }
 
-const { imageUrl, altTag, titleTag, category, slug } = Astro.props
+const { imageUrl, altTag, titleTag, category, slug } = Astro.props;
 
-const buttonLabelColor = category === "marketing" ? "#171717" : "var(--font-color-light)"
-const buttonBackground = `url(${imageUrl})`
+const buttonLabelColor =
+  category === "marketing" ? "#171717" : "var(--font-color-light)";
 ---
 
 <div class="container">
-  <a href={slug}>
-    <img src={imageUrl} alt={altTag} title={titleTag} class="category-image">
+  <a class="card-link" href={slug}>
+    <img src={imageUrl} alt={altTag} title={titleTag} class="category-image" />
     <span class="label">{category}</span>
   </a>
   <div class="background"></div>
 </div>
 
-<style lang="scss" define:vars={{ buttonLabelColor, buttonBackground }}>
+<style lang="scss" define:vars={{ buttonLabelColor }}>
   @import "../../../styles/sizes.scss";
-  
+
   .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -33,7 +33,7 @@ const buttonBackground = `url(${imageUrl})`
     width: 100%;
   }
 
-  a {
+  .card-link {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     display: grid;
@@ -50,11 +50,12 @@ const buttonBackground = `url(${imageUrl})`
     overflow: hidden;
     cursor: pointer;
     box-shadow: 2px 2px 12px 1px hsla(0, 0%, 0%, 0.5);
-    transition: transform 300ms ease-in-out;
+    transition: transform, box-shadow, 300ms ease-in-out;
     aspect-ratio: 30 / 17;
 
     &:hover {
       transform: translate(-8px, -8px);
+      box-shadow: 2px 2px 12px 1px hsla(0, 0%, 0%, 0.5);
     }
 
     &:focus {

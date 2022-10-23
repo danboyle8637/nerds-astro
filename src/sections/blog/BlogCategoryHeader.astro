@@ -1,13 +1,13 @@
 ---
 interface Props {
-  headline: string
+  headline: string;
 }
 
-const { headline } = Astro.props
+const { headline } = Astro.props;
 ---
 
 <div class="container">
-  <h1>{headline}</h1>
+  <h1 class="headline">{headline}</h1>
   <div class="header-image">
     <slot />
     <div class="shadow-1"></div>
@@ -38,7 +38,7 @@ const { headline } = Astro.props
     }
   }
 
-  h1 {
+  .headline {
     font-size: 4rem;
     color: hsla(219, 34%, 15%, 1);
   }

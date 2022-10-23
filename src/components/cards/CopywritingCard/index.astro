@@ -1,17 +1,25 @@
 ---
 import CardContent from "./CardContent.astro";
-import type { CopyContentService } from '../../../types/components'
+import type { CopyContentService } from "../../../types/components";
 
 interface Props extends CopyContentService {}
 
-const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonTitle, slug  } = Astro.props
-
+const {
+  imageUrl,
+  altTag,
+  titleTag,
+  headline,
+  description,
+  buttonLabel,
+  buttonTitle,
+  slug,
+} = Astro.props;
 ---
 
 <div class="base-container">
   <div class="card-container">
-    <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag}>
-    <CardContent 
+    <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag} />
+    <CardContent
       headline={headline}
       description={description}
       buttonLabel={buttonLabel}
@@ -29,7 +37,10 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    background-color: var(--cardContentBackgroundColor, var(--accent-purple-dark));
+    background-color: var(
+      --cardContentBackgroundColor,
+      var(--accent-purple-dark)
+    );
     border-radius: 30px;
     width: 100%;
     max-width: 360px;
@@ -43,7 +54,6 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     @include baseColGrid;
     gap: 0px;
     justify-items: center;
-    background-color: red;
     border-radius: 20px;
     width: 100%;
     transition: transform, box-shadow, 300ms ease-in-out;
@@ -62,4 +72,3 @@ const { imageUrl, altTag, titleTag,  headline, description, buttonLabel, buttonT
     transform: translate(-50%, -50%);
   }
 </style>
-

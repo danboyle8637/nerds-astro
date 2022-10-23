@@ -19,7 +19,9 @@ const fontSize = isSmall ? "5.8rem" : "6.8rem"
 
 
 
-<style>
+<style lang="scss" define:vars={{ fontSize }}>
+  @import "../../styles/sizes.scss";
+
   .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -41,24 +43,22 @@ const fontSize = isSmall ? "5.8rem" : "6.8rem"
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
     z-index: 1;
+
+    @include aboveMobile {
+      font-size: 9rem;
+    }
   }
 
   .shadow {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    font-size: var(--font-size);
+    font-size: var(--fontSize);
     font-weight: 800;
     color: #000;
     letter-spacing: 0.4rem;
     transform: translate(-6px, 4px);
-  }
 
-  @media (min-width: 600px) {
-    .perspective-gradient {
-      font-size: 9rem;
-    }
-
-    .shadow {
+    @include aboveMobile {
       font-size: 9rem;
     }
   }

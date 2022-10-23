@@ -1,51 +1,62 @@
 ---
-import TerminalHeader from "../../typography/TerminalHeader.astro"; 
+import TerminalHeader from "../../typography/TerminalHeader.astro";
 import InternalNavButton from "../../buttons/InternalNavButton.astro";
 
 export interface Props {
-  headline: string
-  description: string
-  buttonLabel: string
-  buttonSlug: string
+  headline: string;
+  description: string;
+  buttonLabel: string;
+  buttonSlug: string;
 }
 
-const { headline, description, buttonLabel, buttonSlug } = Astro.props as Props
+const { headline, description, buttonLabel, buttonSlug } = Astro.props as Props;
 ---
 
 <div class="content-container">
   <TerminalHeader cursor={false}>
-    <h3>~ {headline}</h3>
+    <h3 class="headline"><span>~</span> {headline}</h3>
   </TerminalHeader>
   <div class="description-container">
     <p>{description}</p>
-    <InternalNavButton type="teal" cta={false} title={headline.toLowerCase()} slug={buttonSlug} width={290}>{buttonLabel}</InternalNavButton>
+    <InternalNavButton
+      type="teal"
+      cta={false}
+      title={headline.toLowerCase()}
+      slug={buttonSlug}
+      width={290}>{buttonLabel}</InternalNavButton
+    >
   </div>
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .content-container {
     padding: 0 12px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 30px;
     justify-items: start;
 
-    @media (min-width: 392px) {
+    @include aboveIphone11 {
       padding: 0 20px;
     }
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       padding: 0;
     }
   }
 
-  h3 {
+  .headline {
     font-size: 2.6rem;
     font-weight: 800;
     color: var(--font-color-light);
 
-    @media (min-width: 960px) {
+    & span {
+      color: var(--accent-teal);
+    }
+
+    @include aboveTablet {
       font-size: 3.4rem;
     }
   }
@@ -58,7 +69,7 @@ const { headline, description, buttonLabel, buttonSlug } = Astro.props as Props
     justify-items: end;
     width: 100%;
 
-    @media (min-width: 392px) {
+    @include aboveIphone11 {
       gap: 40px;
     }
   }

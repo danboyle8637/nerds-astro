@@ -2,6 +2,8 @@ import type { BlogCategory } from "./blog";
 
 export type ThemeColor = "teal" | "pink" | "purple";
 
+export type GalaxyColor = "teal" | "dark-purple" | "purple" | "pink";
+
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5";
 
 export interface SVGProps {

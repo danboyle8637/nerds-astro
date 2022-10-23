@@ -1,15 +1,15 @@
 ---
-import Breadcrumbs from '../../navigation/Breadcrumbs/Breadcrumb.astro'
-import type { PostTag, Pathname } from '../../../types/blog'
+import Breadcrumbs from "../../navigation/Breadcrumbs/Breadcrumb.astro";
+import type { PostTag, Pathname } from "../../../types/blog";
 
 interface Props {
-  category: string
-  tags: PostTag[]
-  paths: Pathname[]
+  category: string;
+  tags: PostTag[];
+  paths: Pathname[];
 }
 
-const { category, tags, paths } = Astro.props
-let commaCount = 0
+const { category, tags, paths } = Astro.props;
+let commaCount = 0;
 ---
 
 <Breadcrumbs paths={paths} />
@@ -27,24 +27,30 @@ let commaCount = 0
       <span class="const">const</span>
       <span class="label">tags</span>
       <span class="operator">=</span>
-      <span class="array">[</span>
     </p>
-    <div class="category-container">
-      {tags.map(tag => {
-        commaCount++
-        return (
-        <div class="category">
-          <a href="#" title={tag.tag}>
-            <span class="string">"</span>{tag.tag}<span class="string">"</span>
-          </a>
-          <p class="label">{commaCount === tags.length ? "" : ","}</p>
-        </div>
-        )
-      })}
+    <div class="tags-container">
+      <p>
+        <span class="array">[</span>
+      </p>
+      {
+        tags.map((tag) => {
+          commaCount++;
+          return (
+            <div class="tag-container">
+              <a href="#" title={tag.tag}>
+                <span class="string">"</span>
+                {tag.tag}
+                <span class="string">"</span>
+              </a>
+              <p class="label">{commaCount === tags.length ? "" : ","}</p>
+            </div>
+          );
+        })
+      }
+      <p>
+        <span class="array">]</span>
+      </p>
     </div>
-    <p>
-      <span class="array">]</span>
-    </p>
   </div>
 </div>
 
@@ -58,7 +64,7 @@ let commaCount = 0
     grid-auto-rows: min-content;
     gap: 12px;
     justify-items: start;
-    background-color: #292C34;
+    background-color: #292c34;
     border-radius: 12px;
     box-shadow: 0 0 0 4px hsla(0, 0%, 0%, 0.4);
     width: max-content;
@@ -80,43 +86,53 @@ let commaCount = 0
   }
 
   .const {
-    color: #BC7AD9;
+    color: #bc7ad9;
   }
 
   .label {
-    color: #ACB2BE;
+    color: #acb2be;
   }
 
   .operator {
-    color: #6BB4C1;
+    color: #6bb4c1;
   }
 
   .string {
-    color: #A0C27E;
+    color: #a0c27e;
   }
 
   .array {
-    color: #CF7074;
+    color: #cf7074;
   }
 
-  .category-container {
+  .tags-container {
     padding: 0 8px;
     display: flex;
+    flex-direction: column;
     gap: 8px;
+
+    @include aboveMobile {
+      flex-direction: row;
+    }
   }
 
-  .category {
+  .tag-container {
+    padding-left: 18px;
     display: flex;
+
+    @include aboveMobile {
+      padding-left: 0;
+    }
   }
 
   a {
     font-size: 1.3rem;
-    color: #A0C27E;
+    color: #a0c27e;
     text-decoration: none;
     transition: color 300ms ease-in-out;
 
     &:hover {
-      color: #CF7074;
+      color: #cf7074;
     }
 
     @include aboveIphone11 {
