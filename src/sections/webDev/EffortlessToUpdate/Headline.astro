@@ -1,10 +1,16 @@
 ---
-const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/cube-2_E_iAkTQsz.png?ik-sdk-version=javascript-1.4.3"
+const numberImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/cube-2_E_iAkTQsz.png?ik-sdk-version=javascript-1.4.3";
 ---
 
 <div class="container">
-  <img class="step-number" src={numberImage} alt="Number 2 important website criteria." title="Easy To Update and Manage">
-  <h1>
+  <img
+    class="step-number"
+    src={numberImage}
+    alt="Number 2 important website criteria."
+    title="Easy To Update and Manage"
+  />
+  <h1 class="headline">
     <span class="headline-group">
       <span>Effortless To</span>
       <span>Upate And</span>
@@ -12,7 +18,6 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
     <span>Take Care Of</span>
   </h1>
 </div>
-
 
 <style lang="scss">
   @import "../../../styles/sizes.scss";
@@ -22,7 +27,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
     @include baseColGrid;
     gap: 20px;
     width: 100%;
-    
+
     @include aboveMobile {
       grid-template-columns: min-content 1fr;
       column-gap: 12px;
@@ -48,7 +53,7 @@ const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-ass
     }
   }
 
-  h1 {
+  .headline {
     padding: 0 12px;
     @include baseColGrid;
     gap: 6px;

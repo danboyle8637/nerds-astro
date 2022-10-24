@@ -1,27 +1,40 @@
 ---
 interface Props {
-  type: "question" | "exclaimation" | "check"
-  bullet: string
+  type: "question" | "exclaimation" | "check";
+  bullet: string;
 }
 
-const { type, bullet } = Astro.props
+const { type, bullet } = Astro.props;
 
-const questionImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/question-bullet_mPB-OZdzy.png?ik-sdk-version=javascript-1.4.3"
-const exclaimationImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/exclaimation-bullet_6hT7S6T9g.png?ik-sdk-version=javascript-1.4.3"
-const checkmarkImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/checkmark-bullet_KCkiBywH3.png?ik-sdk-version=javascript-1.4.3"
+const questionImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/question-bullet_mPB-OZdzy.png?ik-sdk-version=javascript-1.4.3";
+const exclaimationImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/exclaimation-bullet_6hT7S6T9g.png?ik-sdk-version=javascript-1.4.3";
+const checkmarkImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/checkmark-bullet_KCkiBywH3.png?ik-sdk-version=javascript-1.4.3";
 
-const bulletImage = type === "question" ? questionImage : type === "exclaimation" ? exclaimationImage : checkmarkImage
+const bulletImage =
+  type === "question"
+    ? questionImage
+    : type === "exclaimation"
+    ? exclaimationImage
+    : checkmarkImage;
 ---
 
-<li>
-  <img class="bullet" src={bulletImage} alt="Check" title="Important Question">
-  <span set:html={bullet} />
+<li class="list-item">
+  <img
+    class="bullet"
+    src={bulletImage}
+    alt="Check"
+    title="Important Question"
+  />
+  <span set:html={bullet}></span>
 </li>
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
-  
-  li {
+
+  .list-item {
     display: grid;
     grid-template-columns: min-content 1fr;
     gap: 16px;
@@ -34,7 +47,7 @@ const bulletImage = type === "question" ? questionImage : type === "exclaimation
     width: 100%;
 
     @include aboveMobile {
-      align-items: center;
+      align-items: start;
     }
 
     @include aboveTablet {

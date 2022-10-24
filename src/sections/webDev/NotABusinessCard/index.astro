@@ -1,16 +1,29 @@
 ---
 import NotABusinessCard from "./NotABusinessCard.astro";
 import YourSalesTool from "./YourSalesTool.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 ---
 
 <div class="container">
-  <div class="galaxy top-galaxy" />
+  <div class="top-galaxy">
+    <Galaxy client:idle color="pink" width={220} height={220} blur={240} />
+  </div>
   <NotABusinessCard />
   <YourSalesTool />
-  <div class="galaxy bottom-galaxy" />
+  <div class="bottom-galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={220}
+      height={220}
+      blur={240}
+    />
+  </div>
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+
   .container {
     position: relative;
     display: flex;
@@ -18,23 +31,6 @@ import YourSalesTool from "./YourSalesTool.astro";
     align-items: center;
     width: 100%;
     isolation: isolate;
-    z-index: -1;
-  }
-
-  .galaxy {
-    background-color: #3D00BD;
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
-    z-index: -1;
-
-    @media (min-width: 960px) {
-      width: 400px;
-      height: 400px;
-      filter: blur(260px);
-     
-    }
   }
 
   .top-galaxy {
@@ -42,6 +38,7 @@ import YourSalesTool from "./YourSalesTool.astro";
     top: 0;
     right: 0;
     transform: translate(80px, -120px);
+    z-index: -1;
   }
 
   .bottom-galaxy {
@@ -49,5 +46,6 @@ import YourSalesTool from "./YourSalesTool.astro";
     bottom: 0;
     left: 0;
     transform: translate(-80px, 120px);
+    z-index: -1;
   }
 </style>

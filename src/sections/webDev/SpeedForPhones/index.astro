@@ -11,6 +11,8 @@ import DisclaimerSection from "./DisclaimerSection.astro";
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+
   .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -19,7 +21,7 @@ import DisclaimerSection from "./DisclaimerSection.astro";
     justify-items: center;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       gap: 120px;
     }
   }

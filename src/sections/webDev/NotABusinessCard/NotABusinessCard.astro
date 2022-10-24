@@ -5,19 +5,21 @@ const bullets = [
   "...to look generic, blend in, and sound boring?",
   "...to load slow and be hard to use on a phone?",
   "...to be tossed in the digital trash bin?",
-]
+];
 ---
 
 <div class="container">
   <div class="content">
-    <p>
-      Business cards get tossed in the garbage. Fogotten about.
-    </p>
+    <p>Business cards get tossed in the garbage. Fogotten about.</p>
   </div>
   <div class="question-container">
     <p>Do you want your website...</p>
     <div class="questions">
-      {bullets.map(bullet => <PunctuationBullet type="question" bullet={bullet} />)}
+      {
+        bullets.map((bullet) => (
+          <PunctuationBullet type="question" bullet={bullet} />
+        ))
+      }
     </div>
   </div>
   <div class="content">
@@ -27,6 +29,8 @@ const bullets = [
 </div>
 
 <style lang="scss">
+  @import "../../../styles/sizes.scss";
+
   .container {
     padding: 0 12px;
     display: grid;
@@ -36,7 +40,7 @@ const bullets = [
     justify-items: start;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       width: 660px;
     }
   }

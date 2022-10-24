@@ -5,14 +5,17 @@ const bullets = [
   "Do you want to write blog posts and get <strong>FREE SEO traffic</strong>?",
   "Do you need to create events or <strong>add new products</strong> every week?",
   "We can make your website easy to update and <strong>manage yourself</strong>.",
-]
+];
 ---
 
 <div class="container">
-  <ul>
-    {bullets.map((bullet) => <PunctuationBullet type="question" bullet={bullet} />)}
+  <ul class="list">
+    {
+      bullets.map((bullet) => (
+        <PunctuationBullet type="question" bullet={bullet} />
+      ))
+    }
   </ul>
-  
 </div>
 
 <style lang="scss">
@@ -37,7 +40,7 @@ const bullets = [
     }
   }
 
-  ul  {
+  .list {
     @include baseColGrid;
     gap: 80px;
     width: 100%;
