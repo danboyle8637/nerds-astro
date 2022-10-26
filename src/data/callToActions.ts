@@ -38,6 +38,6 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get sales copy for the money pages on your website so they convert leads and make sales.",
     buttonLabel: "I Need Words That Sell",
     buttonTitle: "I Need Words That Sell",
-    slug: "/services/web-design-and-development",
+    slug: "/services/copy",
   },
 ];

@@ -16,6 +16,7 @@ import "../../styles/mardown.scss";
 import BaseSubhead from "../../components/markdown/BaseSubhead.astro";
 import UnorderedList from "../../components/markdown/UnorderedList.astro";
 import BaseBullet from "../../components/typography/BaseBullet.astro";
+import PunctuationBullet from "../../components/typography/PunctuationBullet.astro";
 
 **Money pages**. The pages that:
 
@@ -34,10 +35,16 @@ We'll turn the **small flame of interest into a burning fire of desire** that dr
 500 to 1000 words that capture attention, stir desire, and prompt action.
 
 <UnorderedList>
-  <BaseBullet>One headline</BaseBullet>
-  <BaseBullet>2 to 4 sections of body copy</BaseBullet>
-  <BaseBullet>1 call to action</BaseBullet>
-  <BaseBullet>Notes on images to support copy</BaseBullet>
+  <PunctuationBullet type="check" bullet="One headline"></PunctuationBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="2 to 4 sections of body copy"
+  ></PunctuationBullet>
+  <PunctuationBullet type="check" bullet="1 call to action"></PunctuationBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="Notes on images to support copy"
+  ></PunctuationBullet>
 </UnorderedList>
 
 <BaseSubhead>How It Works</BaseSubhead>

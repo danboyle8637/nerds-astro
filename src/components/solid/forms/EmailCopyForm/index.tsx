@@ -18,52 +18,52 @@ export const EmailCopyForm: Component = (props) => {
   createMemo(() => {
     if (emails().value === 1) {
       setPrice(100);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/7sI03W4uJ1pB6kg007");
     }
 
     if (emails().value === 2) {
       setPrice(177);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/8wM03WaT74BNbEAaEM");
     }
 
     if (emails().value === 3) {
       setPrice(247);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/5kAcQI2mB0lxgYU5kt");
     }
 
     if (emails().value === 4) {
       setPrice(297);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/14kdUM3qF4BN6kgbIS");
     }
 
     if (emails().value === 5) {
       setPrice(347);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/cN27wo9P33xJbEA4gr");
     }
 
     if (emails().value === 6) {
       setPrice(397);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/28o5ogbXb9W738428k");
     }
 
     if (emails().value === 7) {
       setPrice(447);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/cN29Ew4uJgkv6kg8wJ");
     }
 
     if (emails().value === 8) {
       setPrice(497);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/00geYQgdr9W79wsaES");
     }
 
     if (emails().value === 9) {
       setPrice(547);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/28o1802mB8S3eQM00f");
     }
 
     if (emails().value === 10) {
       setPrice(597);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/dR6g2U2mBgkv24014k");
     }
   });
 

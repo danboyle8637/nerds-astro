@@ -30,7 +30,7 @@ interface Params {
 export async function getStaticPaths() {
   const posts = await Astro.glob("../../data/now/*.mdx");
 
-  const routes = posts.map((post) => {
+  const routes: Route[] = posts.map((post: any) => {
     const frontmatter = post.frontmatter as BlogPostFrontmatter;
 
     return {

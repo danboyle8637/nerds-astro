@@ -12,7 +12,7 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get sales copy for the money pages on your website so they <strong>convert leads and make sales</strong>.",
     buttonLabel: "Write My Copy",
     buttonTitle: "Write My Sales Page Copy",
-    slug: "/services/website-sales-copy",
+    slug: "/services/copy/website-sales-copy",
   },
   {
     id: 1,
@@ -25,7 +25,7 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get emails and automations that get opened, read, and clicked so <strong>you get more sales</strong>.",
     buttonLabel: "Write My Email Copy",
     buttonTitle: "Write My Email Copy",
-    slug: "/services/email-copy",
+    slug: "/services/copy/email-copy",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get product sales copy that sizzles and makes your store visitors <strong>click your add to cart button</strong>.",
     buttonLabel: "Write My Product Copy",
     buttonTitle: "Write My Product Copy",
-    slug: "/services/ecommerce-product-copy",
+    slug: "/services/copy/ecommerce-product-copy",
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get headlines and ad copy to deliver high click through rates and <strong>cheap, quality clicks</strong>.",
     buttonLabel: "Write My Ad Copy",
     buttonTitle: "Write My Ad Copy",
-    slug: "/services/digital-ad-copy",
+    slug: "/services/copy/digital-ad-copy",
   },
   {
     id: 4,
@@ -64,7 +64,7 @@ export const copyAndContentServices: CopyContentService[] = [
       "Get quality blog posts to <strong>help your site rank</strong> and convince your readers to become leads.",
     buttonLabel: "Write My Blog Posts",
     buttonTitle: "Write My Blog Posts",
-    slug: "/services/blog-posts",
+    slug: "/services/copy/blog-posts",
   },
   {
     id: 5,
@@ -77,6 +77,6 @@ export const copyAndContentServices: CopyContentService[] = [
       "Let's talk about your copy needs and how a Nerd can whip up copy to <strong>help your business grow</strong>.",
     buttonLabel: "Help With My Copy",
     buttonTitle: "Help With My Copy",
-    slug: "/services/nerd-copy-chat",
+    slug: "/services/copy/nerd-copy-chat",
   },
 ];

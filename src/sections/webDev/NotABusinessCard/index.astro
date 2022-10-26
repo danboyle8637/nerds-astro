@@ -35,10 +35,13 @@ import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 
   .top-galaxy {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(80px, -120px);
+    top: 260px;
+    right: -80px;
     z-index: -1;
+
+    @include aboveMobile {
+      right: -120px;
+    }
   }
 
   .bottom-galaxy {

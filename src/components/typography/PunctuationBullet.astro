@@ -57,5 +57,10 @@ const bulletImage =
 
   .bullet {
     width: 60px;
+    transform: translateY(-12px);
+
+    @include aboveMobile {
+      transform: translateY(-6px);
+    }
   }
 </style>

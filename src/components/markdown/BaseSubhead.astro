@@ -5,20 +5,19 @@ import TerminalHeader from "../typography/TerminalHeader.astro";
 <div class="container">
   <div class="top-spacer"></div>
   <TerminalHeader cursor={false}>
-    <h3><span>~</span> <slot /></h3>
+    <h3 class="headline"><span>~</span> <slot /></h3>
   </TerminalHeader>
   <div class="bottom-spacer"></div>
 </div>
 
-
 <style lang="scss">
   @import "../../styles/sizes.scss";
 
-  h3 {
-    color: var(--accent-teal);
+  .headline {
+    color: var(--font-color-light);
 
     span {
-      color: var(--font-color-light);
+      color: var(--accent-teal);
     }
 
     @include aboveMobile {

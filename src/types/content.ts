@@ -13,3 +13,15 @@ export interface CopyServiceFrontmatter {
   buttonTitle: string;
   formType: CopyFormType;
 }
+
+export interface CopyCard {
+  id: number;
+  slug: string;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  description: string;
+  buttonLabel: string;
+  buttonTitle: string;
+}

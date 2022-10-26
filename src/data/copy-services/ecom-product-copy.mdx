@@ -16,6 +16,7 @@ import "../../styles/mardown.scss";
 import BaseSubhead from "../../components/markdown/BaseSubhead.astro";
 import UnorderedList from "../../components/markdown/UnorderedList.astro";
 import BaseBullet from "../../components/typography/BaseBullet.astro";
+import PunctuationBullet from "../../components/typography/PunctuationBullet.astro";
 
 Most e-commerce owners give their products a lame paragraph of "sales" copy.
 
@@ -34,15 +35,23 @@ You'll get sales copy that get's your **add to cart button clicked** more than..
 Short description:
 
 <UnorderedList>
-  <BaseBullet>400 words</BaseBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="1 section of body copy"
+  ></PunctuationBullet>
+  <PunctuationBullet type="check" bullet="1 call to action"></PunctuationBullet>
+  <PunctuationBullet type="check" bullet="200 to 300 words"></PunctuationBullet>
 </UnorderedList>
 
 Long Sales Page Copy:
 
 <UnorderedList>
-  <BaseBullet>2 to 4 sections of body copy</BaseBullet>
-  <BaseBullet>1 call to action</BaseBullet>
-  <BaseBullet>500 to 700 words</BaseBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="2 to 4 sections of body copy"
+  ></PunctuationBullet>
+  <PunctuationBullet type="check" bullet="1 call to action"></PunctuationBullet>
+  <PunctuationBullet type="check" bullet="500 to 700 words"></PunctuationBullet>
 </UnorderedList>
 
 <BaseSubhead>How It Works</BaseSubhead>

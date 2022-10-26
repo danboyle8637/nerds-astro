@@ -2,16 +2,22 @@
 import ContentContainer from "./ContentContainer.astro";
 import { LeadForm } from "../../../components/solid/forms/LeadForm";
 
-const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3"
+const chatImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3";
 ---
 
 <div class="container">
-  <img class="chat-image" src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
+  <img
+    class="chat-image"
+    src={chatImage}
+    alt="Book a FREE Nerd Chat"
+    title="Button a Free Nerd Chat"
+  />
   <div class="content-container">
     <ContentContainer />
     <LeadForm client:visible />
   </div>
-  <div class="galaxy" />
+  <div class="galaxy"></div>
 </div>
 
 <style lang="scss">
@@ -26,6 +32,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     align-items: center;
     background-color: var(--background-color-dark);
     width: 100%;
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
     isolation: isolate;
 
     @include aboveMobile {
@@ -47,7 +54,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     @include aboveMobile {
       padding: 0 12px 120px 12px;
     }
-   }
+  }
 
   .chat-image {
     position: absolute;

@@ -1,25 +1,25 @@
 ---
 import TerminalHeader from "../../../components/typography/TerminalHeader.astro";
-import { CopywritingFormSwitcher } from '../../../components/solid/forms/CopywritingFormSwitcher'
-import type { CopyFormType } from '../../../types/forms'
+import { CopywritingFormSwitcher } from "../../../components/solid/forms/CopywritingFormSwitcher";
+import type { CopyFormType } from "../../../types/forms";
 
 interface Props {
-  imageUrl: string
-  altTag: string
-  titleTag: string
-  headline: string
-  formType: CopyFormType
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  formType: CopyFormType;
 }
 
-const { imageUrl, altTag, titleTag, headline, formType } = Astro.props
+const { imageUrl, altTag, titleTag, headline, formType } = Astro.props;
 ---
 
 <div class="container">
   <TerminalHeader cursor={false}>
-    <h1>~ {headline}</h1>
+    <h1 class="headline"><span>~</span> {headline}</h1>
   </TerminalHeader>
   <div class="service-container">
-    <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag}>
+    <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag} />
     <CopywritingFormSwitcher client:load formType={formType} />
   </div>
 </div>
@@ -48,10 +48,14 @@ const { imageUrl, altTag, titleTag, headline, formType } = Astro.props
     }
   }
 
-  h1 {
+  .headline {
     font-size: 2.6rem;
     font-weight: 800;
     color: var(--font-color-light);
+
+    & span {
+      color: var(--accent-teal);
+    }
 
     @include aboveTablet {
       font-size: 3.4rem;

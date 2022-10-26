@@ -1,15 +1,24 @@
 ---
 import ContentContainer from "./ContentContainer.astro";
-import {SevenDaySiteForm} from '../../../components/solid/forms/SevenDaySiteForm'
+import { SevenDaySiteForm } from "../../../components/solid/forms/SevenDaySiteForm";
 import TopRightAccent from "../../../components/accents/TopRightAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 
-const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3"
+const chatImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3";
 ---
 
 <div class="container">
   <TopRightAccent backgroundType="header" />
-  <div class="galaxy" />
-  <img class="nerd-chat" src={chatImage} alt="Book a FREE Nerd Chat" title="Button a Free Nerd Chat">
+  <div class="galaxy">
+    <Galaxy client:idle color="pink" width={220} height={220} blur={200} />
+  </div>
+  <img
+    class="nerd-chat"
+    src={chatImage}
+    alt="Book a FREE Nerd Chat"
+    title="Button a Free Nerd Chat"
+  />
   <div class="content-container">
     <ContentContainer />
     <SevenDaySiteForm client:visible />
@@ -28,6 +37,7 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     align-items: center;
     background-color: var(--background-color-dark);
     width: 100%;
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
     isolation: isolate;
 
     @include aboveMobile {
@@ -67,23 +77,6 @@ const chatImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-asset
     position: absolute;
     bottom: -100px;
     left: 0;
-    background-color: var(--accent-purple);
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
     transform: translate(-180px, 100px);
-
-		@include aboveMobile {
-			transform: translate(-120px, 20px);
-		}
-
-    @include aboveTablet {
-      transform: translate(-220px, 20px);
-    }
-
-		@include aboveTablet {
-			transform: translate(-220px, -60px);
-		}
   }
 </style>

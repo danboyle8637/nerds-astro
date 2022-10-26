@@ -1,36 +1,48 @@
 ---
-import Header from './Header/index.astro'
-import CopywritingCard from '../../components/cards/CopywritingCard/index.astro'
-import type { CopyContentService } from '../../types/components'
+import Header from "./Header/index.astro";
+import CopywritingCard from "../../components/cards/CopywritingCard/index.astro";
+import type { CopyContentService } from "../../types/components";
 
 interface Props {
-  data: CopyContentService[]
+  data: CopyContentService[];
 }
 
-const { data } = Astro.props
+const { data } = Astro.props;
 ---
 
 <div class="view-container">
   <Header />
   <div class="container">
     <div class="cards-container">
-      {data.map(card => {
-        const { id, imageUrl, altTag, titleTag, headline, description, buttonLabel, buttonTitle, slug } = card
-  
-        return (
-          <CopywritingCard 
-            id={id}
-            imageUrl={imageUrl}
-            altTag={altTag}
-            titleTag={titleTag}
-            headline={headline}
-            description={description}
-            buttonLabel={buttonLabel}
-            buttonTitle={buttonTitle}
-            slug={slug}
-          />
-        )
-      })}
+      {
+        data.map((card) => {
+          const {
+            id,
+            imageUrl,
+            altTag,
+            titleTag,
+            headline,
+            description,
+            buttonLabel,
+            buttonTitle,
+            slug,
+          } = card;
+
+          return (
+            <CopywritingCard
+              id={id}
+              imageUrl={imageUrl}
+              altTag={altTag}
+              titleTag={titleTag}
+              headline={headline}
+              description={description}
+              buttonLabel={buttonLabel}
+              buttonTitle={buttonTitle}
+              slug={slug}
+            />
+          );
+        })
+      }
     </div>
   </div>
 </div>

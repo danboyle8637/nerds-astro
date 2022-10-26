@@ -17,22 +17,22 @@ export const WebSalesCopyForm: Component = () => {
   createMemo(() => {
     if (webSalesPages().value === 1) {
       setPrice(397);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/9AQ2c44uJgkv240cN5");
     }
 
     if (webSalesPages().value === 2) {
       setPrice(794);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/cN21803qF2tFbEAfZi");
     }
 
     if (webSalesPages().value === 3) {
       setPrice(1191);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/cN21803qF2tFbEAfZi");
     }
 
     if (webSalesPages().value === 4) {
       setPrice(1588);
-      setPaymentLink("#");
+      setPaymentLink("https://buy.stripe.com/fZe4kc3qF8S36kgdRc");
     }
   });
 

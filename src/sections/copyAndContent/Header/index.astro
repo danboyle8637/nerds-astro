@@ -5,15 +5,22 @@ import AdCopyChip from "./AdCopyChip.astro";
 import LandingPageChip from "./LandingPageChip.astro";
 import ProductDescriptionChip from "./ProductDescriptionChip.astro";
 import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 
-const copyLogo = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/copy-header-word_FD4MRnT7Z.png?ik-sdk-version=javascript-1.4.3"
+const copyLogo =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/copy-header-word_FD4MRnT7Z.png?ik-sdk-version=javascript-1.4.3";
 ---
 
 <div class="header-container">
   <div class="content-container">
     <div class="headline-container">
       <h3>Sell More With</h3>
-      <img class="copy-logo" src={copyLogo} alt="Copywriting and content logo" title="Copy and Content Services">
+      <img
+        class="copy-logo"
+        src={copyLogo}
+        alt="Copywriting and content logo"
+        title="Copy and Content Services"
+      />
     </div>
     <EmailAutomationChip />
     <BlogPostsChip />
@@ -22,8 +29,12 @@ const copyLogo = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets
     <ProductDescriptionChip />
   </div>
   <BottomLeftAccent backgroundType="header" />
-  <div class="galaxy-teal" />
-  <div class="galaxy-purple" />
+  <div class="galaxy-teal">
+    <Galaxy client:idle color="teal" width={180} height={180} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={200} height={200} blur={200} />
+  </div>
 </div>
 
 <style lang="scss">
@@ -97,34 +108,26 @@ const copyLogo = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets
     position: absolute;
     left: 0;
     top: 0;
-    background-color: var(--accent-teal);
-    border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    filter: blur(200px);
-    transform: translate(-200px, -160px);
+    transform: translate(-100px, -160px);
     z-index: 1;
 
-    @include aboveMobile{
+    @include aboveMobile {
       transform: translate(-140px, -120%);
     }
   }
 
   .galaxy-purple {
-    @media (min-width: 600px) {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background-color: var(--accent-purple);
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
-      filter: blur(200px);
-      transform: translate(200px, 0);
-      z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(100px, 40px);
+    z-index: 1;
+
+    @include aboveMobile {
+      transform: translate(100px, 0);
     }
 
-    @media (min-width: 1100px) {
+    @include aboveIpadPro {
       transform: translate(0, 80px);
     }
   }

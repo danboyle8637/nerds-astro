@@ -1,112 +1,98 @@
 ---
-import Headline from './Headline.astro';
-import Month from '../../../components/calendar/NormalMonth.astro'
-import InternalNavButton from '../../../components/buttons/InternalNavButton.astro';
-import TopRightAccent from '../../../components/accents/TopRightAccent.astro';
+import Headline from "./Headline.astro";
+import Month from "../../../components/calendar/NormalMonth.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+import TopRightAccent from "../../../components/accents/TopRightAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
 ---
 
 <div class="view-container">
-	<div class="content-container">
-		<div class="headline-container">
-			<Headline />
-			<div class="month-container">
-				<Month timelineInDays={7} />
-			</div>
-		</div>
-		<InternalNavButton type="teal" title="Free Nerd Chat" slug="/" width={290}>Schedule a Nerd Chat</InternalNavButton>
-	</div>
-	<TopRightAccent backgroundType="header" />
-	<div class="galaxy" />
+  <div class="content-container">
+    <div class="headline-container">
+      <Headline />
+      <div class="month-container">
+        <Month timelineInDays={7} />
+      </div>
+    </div>
+    <InternalNavButton type="teal" title="Free Nerd Chat" slug="/" width={290}
+      >Schedule a Nerd Chat</InternalNavButton
+    >
+  </div>
+  <TopRightAccent backgroundType="header" />
+  <div class="galaxy">
+    <Galaxy client:idle color="purple" width={220} height={220} blur={220} />
+  </div>
 </div>
 
 <style lang="scss">
-	@import "../../../styles/sizes.scss";
-	@import "../../../styles/layout.scss";
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
 
-	.view-container {
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--background-color-dark);
-		width: 100%;
-		box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
-		overflow: hidden;
-		isolation: isolate;
-	}
+  .view-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+  }
 
-	.content-container {
-		padding: 60px 12px 80px 12px;
-		@include baseColGrid;
-		gap: 80px;
-		justify-items: center;
-		width: 100%;
+  .content-container {
+    padding: 60px 12px 80px 12px;
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
 
-		@include aboveIphone11 {
-			gap: 120px;
-		}
+    @include aboveIphone11 {
+      gap: 120px;
+    }
 
-		@include aboveTablet {
-			padding: 80px 0 120px 0;
-		}
+    @include aboveTablet {
+      padding: 80px 0 120px 0;
+    }
 
-		@include aboveIpadPro {
-			width: 1100px;
-		}
-	}
+    @include aboveIpadPro {
+      width: 1100px;
+    }
+  }
 
-	.month-container {
-		width: 100%;
-		perspective: 1000px;
+  .month-container {
+    width: 100%;
+    perspective: 1000px;
 
-		@include aboveMobile {
-			width: 500px;
-		}
+    @include aboveMobile {
+      width: 500px;
+    }
 
-		@include aboveTablet {
-			transform: translate(0, 60px);
-		}
-	}
+    @include aboveTablet {
+      transform: translate(0, 60px);
+    }
+  }
 
-	.headline-container {
-		@include baseColGrid;
-		gap: 4px;
-		justify-items: center;
-		width: 100%;
+  .headline-container {
+    @include baseColGrid;
+    gap: 4px;
+    justify-items: center;
+    width: 100%;
 
-		@include aboveTablet {
-			grid-template-columns: 1fr 1fr;
-		}
+    @include aboveTablet {
+      grid-template-columns: 1fr 1fr;
+    }
 
-		@include aboveIpadPro {
-			gap: 40px;
-		}
-	}
+    @include aboveIpadPro {
+      gap: 40px;
+    }
+  }
 
-	.galaxy {
+  .galaxy {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: var(--accent-purple);
-    border-radius: 50%;
-    width: 220px;
-    height: 220px;
-    filter: blur(160px);
-    transform: translate(-180px, 100px);
-
-		@include aboveMobile {
-			transform: translate(-120px, 20px);
-		}
-
-    @include aboveTablet {
-      width: 400px;
-      height: 400px;
-      filter: blur(260px);
-      transform: translate(-220px, 20px);
-    }
-
-		@include aboveTablet {
-			transform: translate(-220px, -60px);
-		}
+    transform: translate(-80px, 80px);
+    z-index: -1;
   }
 </style>

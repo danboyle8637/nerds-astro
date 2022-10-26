@@ -1,19 +1,19 @@
 ---
-import { CopywritingFormSwitcher } from '../../../components/solid/forms/CopywritingFormSwitcher'
-import type { CopyFormType } from '../../../types/forms'
+import { CopywritingFormSwitcher } from "../../../components/solid/forms/CopywritingFormSwitcher";
+import type { CopyFormType } from "../../../types/forms";
 
 interface Props {
-  imageUrl: string
-  altTag: string
-  titleTag: string
-  formType: CopyFormType
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  formType: CopyFormType;
 }
 
-const { imageUrl, altTag, titleTag, formType } = Astro.props
+const { imageUrl, altTag, titleTag, formType } = Astro.props;
 ---
 
 <div class="service-container">
-  <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag}>
+  <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag} />
   <CopywritingFormSwitcher client:load formType={formType} />
 </div>
 
@@ -33,7 +33,7 @@ const { imageUrl, altTag, titleTag, formType } = Astro.props
     }
   }
 
-  h1 {
+  .headline {
     font-size: 2.6rem;
     font-weight: 800;
     color: var(--font-color-light);

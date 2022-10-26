@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../../layouts/Layout.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import CopyAndContent from "../../../sections/CopyAndContent/index.astro";
+import type { CopyServiceFrontmatter, CopyCard } from "../../../types/content";
+
+const data = await Astro.glob("../../../data/copy-services/*.mdx");
+
+const copyServiceData = data
+  .map((d: any) => {
+    const {
+      id,
+      slug,
+      imageUrl,
+      altTag,
+      titleTag,
+      headline,
+      description,
+      buttonLabel,
+      buttonTitle,
+    } = d.frontmatter as CopyServiceFrontmatter;
+
+    return {
+      id: id,
+      slug: `copy/${slug}`,
+      imageUrl: imageUrl,
+      altTag: altTag,
+      titleTag: titleTag,
+      headline: headline,
+      description: description,
+      buttonLabel: buttonLabel,
+      buttonTitle: buttonTitle,
+    };
+  })
+  .sort((a: CopyCard, b: CopyCard) => {
+    if (a.id < b.id) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+---
+
+<BaseLayout title="Copywriting and Content for Your Business">
+  <CopyAndContent data={copyServiceData} />
+  <Footer />
+</BaseLayout>

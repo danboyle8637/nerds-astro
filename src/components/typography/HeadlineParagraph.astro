@@ -1,16 +1,16 @@
 ---
 interface Props {
-  headline: string
-  paragraphs: string[]
+  headline: string;
+  paragraphs: string[];
 }
 
-const { headline, paragraphs } = Astro.props
+const { headline, paragraphs } = Astro.props;
 ---
 
 <div class="container">
-  <h1>{headline}</h1>
+  <h1 class="headline">{headline}</h1>
   <div class="paragraph-container">
-    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -25,7 +25,7 @@ const { headline, paragraphs } = Astro.props
     width: 100%;
   }
 
-  h1 {
+  .headline {
     @include aboveTablet {
       font-size: 4.6rem;
     }

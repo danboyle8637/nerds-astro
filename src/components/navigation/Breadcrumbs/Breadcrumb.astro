@@ -9,18 +9,25 @@ interface Props {
 }
 
 const { paths } = Astro.props;
-
-const pathSegments = paths[0].base;
 ---
 
 <div class="container">
   {
-    pathSegments.map((path, i) => {
-      if (i === 0) {
-        return <BreadcrumbBaseLink path={path}>{path}</BreadcrumbBaseLink>;
-      }
+    paths.map((path, i) => {
+      const base = path.base;
+      let pathname = "";
 
-      return <BreadcrumbLink path={`/blog/${path}`}>{path}</BreadcrumbLink>;
+      const breadcrumbs = base.map((p, i) => {
+        pathname = `${pathname}` + `/${p}`;
+
+        if (i === 0) {
+          return <BreadcrumbBaseLink path={pathname}>{p}</BreadcrumbBaseLink>;
+        }
+
+        return <BreadcrumbLink path={pathname}>{p}</BreadcrumbLink>;
+      });
+
+      return <>{breadcrumbs}</>;
     })
   }
   <BreadcrumbLocation>{paths[0].slug}</BreadcrumbLocation>

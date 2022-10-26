@@ -17,12 +17,12 @@ export const AdCopyForm: Component = () => {
   createMemo(() => {
     if (adCopy().value === 1) {
       setPrice(47);
-      setPaymentLink("");
+      setPaymentLink("https://buy.stripe.com/9AQ1801ix6JV7ok5kk");
     }
 
     if (adCopy().value === 2) {
       setPrice(69);
-      setPaymentLink("");
+      setPaymentLink("https://buy.stripe.com/28o9Ew4uJ2tFdMI3cd");
     }
   });
 

@@ -1,12 +1,12 @@
 ---
 const paragraphs: string[] = [
   "The decisions you make during step 1 will be with you for years to come. <strong>Let's not mess this up</strong>.",
-  "And a good website is expensive... maybe <strong>out of your budget</strong> right now.",
-]
+  "Plus a good website is expensive... maybe <strong>out of your budget</strong> right now.",
+];
 ---
 
 <div class="container">
-  <div class="galaxy top-galaxy" />
+  <div class="galaxy top-galaxy"></div>
   <div class="grabber-container">
     <div class="solo-grabber">
       <p>Building a website...</p>
@@ -18,7 +18,7 @@ const paragraphs: string[] = [
     </div>
   </div>
   <div class="paragraphs">
-    {paragraphs.map(paragraph => <p set:html={paragraph} />)}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </div>
 </div>
 
@@ -90,7 +90,7 @@ const paragraphs: string[] = [
   }
 
   .galaxy {
-    background-color: #3D00BD;
+    background-color: #3d00bd;
     border-radius: 50%;
     width: 220px;
     height: 220px;

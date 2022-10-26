@@ -1,12 +1,12 @@
 ---
 interface Props {
-  path: string
+  path: string;
 }
 
-const { path } = Astro.props
+const { path } = Astro.props;
 ---
 
-<a class="base-link" href={`/${path}`} title={path}>
+<a class="base-link" href={`${path}`} title={path}>
   <slot />
 </a>
 

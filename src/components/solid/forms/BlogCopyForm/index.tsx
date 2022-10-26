@@ -17,37 +17,27 @@ export const BlogCopyForm: Component = () => {
   createMemo(() => {
     if (blogPosts().value === 1) {
       setPrice(125);
-      setPaymentLink(
-        "https://my.freshbooks.com/#/checkout/20dddcc993c746e6975e53e84754a867"
-      );
+      setPaymentLink("https://buy.stripe.com/8wM1807GV5FRgYU002");
     }
 
     if (blogPosts().value === 2) {
       setPrice(250);
-      setPaymentLink(
-        "https://my.freshbooks.com/#/checkout/cf7124c363784200a439c70500e9c6f2"
-      );
+      setPaymentLink("https://buy.stripe.com/14kdUMaT7gkv384cMP");
     }
 
     if (blogPosts().value === 3) {
       setPrice(350);
-      setPaymentLink(
-        "https://my.freshbooks.com/#/checkout/4e3d3f3e99cf45ccae59e34652c58dfd"
-      );
+      setPaymentLink("https://buy.stripe.com/bIYg2Ugdrgkv6kgfZ2");
     }
 
     if (blogPosts().value === 4) {
       setPrice(450);
-      setPaymentLink(
-        "https://my.freshbooks.com/#/checkout/9801b03b9d0740f29f9a73712244c491"
-      );
+      setPaymentLink("https://buy.stripe.com/8wM3g86CR4BN2404gl");
     }
 
     if (blogPosts().value === 5) {
       setPrice(550);
-      setPaymentLink(
-        "https://my.freshbooks.com/#/checkout/f33535e065ff46e4b511d3070ca05879"
-      );
+      setPaymentLink("https://buy.stripe.com/14kbME5yNc4f9ws7sy");
     }
   });
 

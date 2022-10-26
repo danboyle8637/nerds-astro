@@ -1,19 +1,25 @@
 ---
 import Headline from "../Headline.astro";
 import BaseBullet from "../../../components/typography/BaseBullet.astro";
-import TerminalHeader from '../../../components/typography/TerminalHeader.astro'
+import TerminalHeader from "../../../components/typography/TerminalHeader.astro";
 
 const bullets: string[] = [
-  "This is a productize service.",
+  "This is a productized service.",
   "<strong>Its also a partnership</strong>.",
-  "I expect you to use this site to grow your business."
-]
+  "I expect you to use this site to grow your business.",
+];
 ---
 
 <div class="container">
   <Headline />
   <div class="content-container">
-    {bullets.map(bullet => <BaseBullet><span set:html={bullet} /></BaseBullet>)}
+    {
+      bullets.map((bullet) => (
+        <BaseBullet>
+          <span set:html={bullet} />
+        </BaseBullet>
+      ))
+    }
     <div class="price-container">
       <div class="pricing-container">
         <p>Pricing Starts At:</p>
@@ -21,7 +27,11 @@ const bullets: string[] = [
           <p>$1800</p>
         </TerminalHeader>
       </div>
-      <p class="price-explainer">The goal of this service is to get you a 3 page website in 7 days. The pricing will only go up if you want to add another landing page. Beyond that, I'll quote you normal web design pricing.</p>
+      <p class="price-explainer">
+        The goal of this service is to get you a 3 page website in 7 days. The
+        pricing will only go up if you want to add another landing page. Beyond
+        that, I'll quote you normal web design pricing.
+      </p>
     </div>
   </div>
 </div>
@@ -31,18 +41,18 @@ const bullets: string[] = [
   @import "../../../styles/layout.scss";
 
   .container {
-      @include baseColGrid;
-      gap: 80px;
-      justify-items: center;
-      width: 100%;
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
 
-      @include aboveMobile {
-        width: 660px;
-      }
+    @include aboveMobile {
+      width: 660px;
+    }
 
-      @include aboveTablet {
-        width: 860px;
-      }
+    @include aboveTablet {
+      width: 860px;
+    }
   }
 
   .content-container {
@@ -91,7 +101,7 @@ const bullets: string[] = [
       @include aboveMobile {
         font-size: 4rem;
       }
-  
+
       @include aboveTablet {
         font-size: 6rem;
       }

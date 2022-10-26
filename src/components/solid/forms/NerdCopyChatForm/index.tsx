@@ -17,12 +17,12 @@ export const NerdCopyChatForm: Component = () => {
   createMemo(() => {
     if (nerdChatCopy().value === 1) {
       setPrice(60);
-      setPaymentLink("");
+      setPaymentLink("https://buy.stripe.com/4gw9Ew7GV4BNbEAdR7");
     }
 
     if (nerdChatCopy().value === 2) {
       setPrice(97);
-      setPaymentLink("");
+      setPaymentLink("https://buy.stripe.com/9AQ9Ewf9n0lx8so00i");
     }
   });
 

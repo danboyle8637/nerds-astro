@@ -1,24 +1,22 @@
 ---
 interface Props {
-  showTwoCols?: boolean
+  showTwoCols?: boolean;
 }
 
-const { showTwoCols } = Astro.props
+const { showTwoCols } = Astro.props;
 
-const listStyles = {
-  "--template-columns": showTwoCols ? "1fr 1fr" : "1fr",
-}
+const templateColumns = showTwoCols ? "1fr 1fr" : "1fr";
 ---
 
 <div class="container">
   <span>-----</span>
-    <ul style={listStyles}>
-      <slot />
-    </ul>
+  <ul class="list">
+    <slot />
+  </ul>
   <span>-----</span>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ templateColumns }}>
   @import "../../styles/sizes.scss";
   @import "../../styles/layout.scss";
 
@@ -32,7 +30,7 @@ const listStyles = {
     width: 100%;
   }
 
-  ul {
+  .list {
     padding: 0 0 0 20px;
     display: grid;
     grid-template-columns: 1fr;
@@ -41,7 +39,7 @@ const listStyles = {
     justify-items: start;
 
     @include aboveMobile {
-      grid-template-columns: var(--template-columns);
+      grid-template-columns: var(--templateColumns);
       column-gap: 20px;
       row-gap: 40px;
     }

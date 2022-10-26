@@ -1,0 +1,113 @@
+---
+import BaseLayout from "../../../layouts/Layout.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import ServicePricingWithHeadline from "../../../sections/copyAndContent/services/ServicePricingWithHeadline.astro";
+import ServicePricingNoHeadline from "../../../sections/copyAndContent/services/ServicePricingNoHeadline.astro";
+import Breadcrumbs from "../../../components/navigation/Breadcrumbs/Breadcrumb.astro";
+
+import type { MDXInstance } from "astro";
+import type { CopyServiceFrontmatter } from "../../../types/content";
+import type { Pathname } from "../../../types/blog";
+
+interface Route {
+  params: {
+    copy: string;
+  };
+  props: {
+    data: CopyServiceFrontmatter;
+    service: MDXInstance<Record<string, any>>;
+  };
+}
+
+interface Params {
+  [index: string]: string;
+}
+
+export async function getStaticPaths() {
+  const services = await Astro.glob("../../../data/copy-services/*.mdx");
+
+  const routes: Route[] = services.map((service: any) => {
+    const frontmatter = service.frontmatter as CopyServiceFrontmatter;
+
+    return {
+      params: { copy: frontmatter.slug },
+      props: {
+        data: frontmatter,
+        service: service,
+      },
+    };
+  });
+
+  return routes;
+}
+
+const params = Astro.params as Params;
+
+let breadcrumbs: Pathname[] = [];
+
+for (const p in params) {
+  const pathname = {
+    base: ["services", p],
+    slug: params[p],
+  };
+  breadcrumbs.push(pathname);
+}
+
+const { title, imageUrl, altTag, titleTag, formType } = Astro.props
+  .data as CopyServiceFrontmatter;
+const { Content } = Astro.props.service;
+---
+
+<BaseLayout title={`${title} Service Page`}>
+  <div class="container">
+    <Breadcrumbs paths={breadcrumbs} />
+    <ServicePricingWithHeadline
+      formType={formType}
+      imageUrl={imageUrl}
+      altTag={altTag}
+      titleTag={titleTag}
+      headline={title}
+    />
+    <article>
+      <Content />
+    </article>
+    <ServicePricingNoHeadline
+      formType={formType}
+      imageUrl={imageUrl}
+      altTag={altTag}
+      titleTag={titleTag}
+    />
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 80px 12px 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+    max-width: 800px;
+
+    @include aboveMobile {
+      padding: 120px 24px 120px 24px;
+    }
+
+    @include aboveTablet {
+      padding: 80px 0 120px 0;
+    }
+  }
+
+  article {
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+  }
+</style>

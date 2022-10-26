@@ -16,6 +16,7 @@ import "../../styles/mardown.scss";
 import BaseSubhead from "../../components/markdown/BaseSubhead.astro";
 import UnorderedList from "../../components/markdown/UnorderedList.astro";
 import BaseBullet from "../../components/typography/BaseBullet.astro";
+import PunctuationBullet from "../../components/typography/PunctuationBullet.astro";
 
 Getting ranked in Google and Bing (yes people still use Bing) is the pinnacle of traffic to your website.
 
@@ -32,9 +33,18 @@ Select the number of blog posts you want and **we'll deliver posts ranging from 
 Each post will include notes on:
 
 <UnorderedList>
-  <BaseBullet>Where to include images</BaseBullet>
-  <BaseBullet>What images or graphics to include</BaseBullet>
-  <BaseBullet>Where to insert call to actions</BaseBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="Where to include images"
+  ></PunctuationBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="What images or graphics to include"
+  ></PunctuationBullet>
+  <PunctuationBullet
+    type="check"
+    bullet="Where to insert call to actions"
+  ></PunctuationBullet>
 </UnorderedList>
 
 <BaseSubhead>How It Works</BaseSubhead>
