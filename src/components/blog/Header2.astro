@@ -1,0 +1,107 @@
+---
+const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/teal-hash_D9EMi-Ga2.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div class="container">
+  <h2>
+    <span class="hash-container">
+      <img class="hash" src={hash} alt="Header 2" title="Headline">
+      <img class="hash right-hash" src={hash} alt="Header 2" title="Headline">
+    </span>
+    <slot />
+  </h2>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .container {
+    padding: 80px 0 40px 0;
+  }
+
+  h2 {
+    position: relative;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-items: start;
+    gap: 4px;
+    font-size: 3.6rem;
+    text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+    background-color: var(--background-color-dark);
+    border-radius: 12px;
+    width: 100%;
+    isolation: isolate;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "h2";
+      color: var(--background-color);
+      font-size: 6rem;
+      text-shadow: -6px 4px 2px hsla(0, 0%, 0%, 0.2);
+      transform: translate(120px, 4px);
+
+      @include aboveMobile {
+        font-size: 7rem;
+        transform: translate(140px, 4px);
+      }
+
+      @include aboveTablet {
+        display: none;
+        font-size: 8rem;
+        transform: translate(180px, 4px);
+      }
+    }
+
+    @include aboveMobile {
+      font-size: 4.4rem;
+      text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+    }
+
+    @include aboveTablet {
+      padding: 0 0 0 36px;
+      font-size: 6rem;
+      text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+      background-color: var(--background-color);
+    }
+
+    @include aboveIpadPro {
+      padding: 0;
+    }
+
+    .hash-container {
+      display: flex;
+      justify-content: center;
+
+      @include aboveTablet {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-120px, 0px);
+      }
+
+      @include aboveIpadPro {
+        transform: translate(-160px, 0px);
+      }
+    }
+
+    .hash {
+      width: 50px;
+
+      @include aboveMobile {
+        width: 60px;
+      }
+
+      @include aboveTablet {
+        width: 76px;
+      }
+    }
+
+    .right-hash {
+      transform: translateX(-14px);
+    }
+  }
+</style>

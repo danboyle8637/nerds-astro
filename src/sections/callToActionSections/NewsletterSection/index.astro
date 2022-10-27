@@ -1,0 +1,34 @@
+---
+import ContentContainer from './ContentContainer.astro';
+import { NewsletterForm } from '../../../components/solid/forms/NewsletterForm'
+---
+
+<div class="container">
+  <div class="content-container">
+    <ContentContainer />
+    <NewsletterForm client:visible />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: flex;
+    justify-content: center;
+    background-color: #341E49;
+    width: 100%;
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
+  }
+
+  .content-container {
+    padding: 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+    max-width: 800px;
+  }
+</style>

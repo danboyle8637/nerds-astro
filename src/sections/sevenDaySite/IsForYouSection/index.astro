@@ -1,0 +1,28 @@
+---
+import Headline from "./Headline.astro";
+import ContentSection from "./ContentSection.astro";
+import MiddleRightAccent from "../../../components/accents/MiddleRightAccent.astro";
+---
+
+<div class="container">
+  <Headline />
+  <ContentSection />
+  <MiddleRightAccent backgroundType="body" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 100px;
+    justify-items: center;
+    width: 100%;
+    isolation: isolate;
+  }
+</style>

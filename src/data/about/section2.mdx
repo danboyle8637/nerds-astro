@@ -1,0 +1,19 @@
+---
+id: 1
+section: 2
+---
+
+import "../../styles/mardown.scss";
+import UnorderedList from "../../components/markdown/UnorderedList.astro";
+import BaseBullet from "../../components/typography/BaseBullet.astro";
+
+We're also Nerds with a deep background in **sales and digital marketing**.
+
+<UnorderedList showTwoCols={true}>
+  <BaseBullet small={true}>Telephone sales</BaseBullet>
+  <BaseBullet small={true}>Google Ads</BaseBullet>
+  <BaseBullet small={true}>Facebook Ads</BaseBullet>
+  <BaseBullet small={true}>Copywriting</BaseBullet>
+  <BaseBullet small={true}>Email marketing</BaseBullet>
+  <BaseBullet small={true}>And more!</BaseBullet>
+</UnorderedList>

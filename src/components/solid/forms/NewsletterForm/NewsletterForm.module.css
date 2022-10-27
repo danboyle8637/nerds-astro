@@ -1,0 +1,84 @@
+.form_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  gap: 0px;
+  justify-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.input_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+}
+
+.fake_input {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  width: 100%;
+}
+
+.real_input {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  justify-self: end;
+  z-index: 1;
+  width: 70%;
+  transform: translate(-16px, -20px) rotate(-4.5deg);
+}
+
+.button_container {
+  background: none;
+  border: none;
+  width: 260px;
+  outline: none;
+  cursor: pointer;
+  transform: translate(0px, -20px) rotate(-4.5deg);
+}
+
+.check_icon {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  align-self: start;
+  justify-self: end;
+  width: 20px;
+  transform: translate(-20px, 26px) rotate(-6deg);
+  z-index: 2;
+}
+
+@media (min-width: 392px) {
+  .real_input {
+    transform: translate(-16px, -24px) rotate(-5deg);
+  }
+
+  .check_icon {
+    transform: translate(-20px, 30px) rotate(-6deg);
+  }
+}
+
+@media (min-width: 600px) {
+  .real_input {
+    transform: translate(-26px, -34px) rotate(-5deg);
+  }
+
+  .check_icon {
+    transform: translate(-40px, 50px) rotate(-6deg);
+  }
+
+  .button_container {
+    width: 340px;
+    transform: translate(0px, -20px) rotate(-4.5deg);
+  }
+
+  .button_container:focus {
+    outline-offset: 2px;
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: var(--accent-teal);
+  }
+}

@@ -1,0 +1,105 @@
+---
+import { Galaxy } from "../../components/solid/galaxies/Galaxy";
+
+interface Props {
+  headline: string;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+}
+
+const { headline, imageUrl, altTag, titleTag } = Astro.props;
+---
+
+<div class="container">
+  <h1 class="headline">{headline}</h1>
+  <div class="header-image">
+    <img class="header-logo" src={imageUrl} alt={altTag} title={titleTag} />
+  </div>
+  <div class="galaxy-pink">
+    <Galaxy client:idle color="pink" width={240} height={240} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={240} height={240} blur={200} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    height: 200px;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+
+    @include aboveTablet {
+      height: 260px;
+    }
+  }
+
+  .headline {
+    font-size: 4rem;
+    color: hsla(219, 34%, 15%, 1);
+  }
+
+  .header-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 245px;
+    transform: translate(-50%, -50%);
+
+    img {
+      width: 100%;
+    }
+
+    @include aboveIphone11 {
+      width: 280px;
+    }
+
+    @include aboveMobile {
+      width: 320px;
+    }
+
+    @include aboveTablet {
+      width: 380px;
+    }
+  }
+
+  .galaxy-pink {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-200px, 0);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(-140px, -40%);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(0, 80px);
+    }
+  }
+
+  .galaxy-purple {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(200px, 0);
+    z-index: 1;
+
+    @include aboveIpadPro {
+      transform: translate(0, 80px);
+    }
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import { Galaxy } from "../../components/solid/galaxies/Galaxy";
+
+interface Props {
+  headline: string;
+}
+
+const { headline } = Astro.props;
+---
+
+<div class="container">
+  <h1 class="headline">{headline}</h1>
+  <div class="header-image">
+    <slot />
+    <div class="shadow-1"></div>
+  </div>
+  <div class="galaxy-pink">
+    <Galaxy client:idle color="pink" width={240} height={240} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={240} height={240} blur={200} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+
+    @include aboveTablet {
+      height: 400px;
+    }
+  }
+
+  .headline {
+    font-size: 4rem;
+    color: hsla(219, 34%, 15%, 1);
+  }
+
+  .header-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 0 12px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+
+    @include aboveMobile {
+      width: 90%;
+    }
+
+    @include aboveIpadPro {
+      width: 800px;
+    }
+  }
+
+  .shadow-1 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    border-radius: 50%;
+    width: 100%;
+    height: 90px;
+    filter: blur(20px);
+    transform: translate(0px, 0px) rotate(-4deg);
+    z-index: -1;
+  }
+
+  .galaxy-pink {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-200px, 0);
+    z-index: 1;
+  }
+
+  .galaxy-purple {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(200px, 0);
+    z-index: 1;
+  }
+</style>

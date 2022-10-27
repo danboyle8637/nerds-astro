@@ -1,0 +1,10 @@
+---
+import { HeaderNavLinks } from '../solid/navigation/HeaderNavLinks'
+import { HamburgerIcon } from '../solid/navigation/MainMobileNav/HamburgerIcon'
+import { MobileNavDrawer } from '../solid/navigation/MobileNavDrawer'
+---
+
+
+<HeaderNavLinks client:load />
+<HamburgerIcon client:load />
+<MobileNavDrawer client:media="(max-width: 600px)" />

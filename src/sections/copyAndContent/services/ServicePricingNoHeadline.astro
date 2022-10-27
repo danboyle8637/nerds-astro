@@ -1,0 +1,54 @@
+---
+import { CopywritingFormSwitcher } from "../../../components/solid/forms/CopywritingFormSwitcher";
+import type { CopyFormType } from "../../../types/forms";
+
+interface Props {
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  formType: CopyFormType;
+}
+
+const { imageUrl, altTag, titleTag, formType } = Astro.props;
+---
+
+<div class="service-container">
+  <img class="copy-image" src={imageUrl} alt={altTag} title={titleTag} />
+  <CopywritingFormSwitcher client:load formType={formType} />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .service-container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+  }
+
+  .headline {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 3.4rem;
+    }
+  }
+
+  .copy-image {
+    order: 1;
+    width: 90%;
+
+    @include aboveMobile {
+      order: 0;
+    }
+  }
+</style>

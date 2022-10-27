@@ -1,0 +1,55 @@
+---
+import ContentSection from "./ContentSection.astro";
+import CardsContainer from "./CardsContainer.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+---
+
+<div class="container">
+  <div class="galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={200}
+      height={200}
+      blur={160}
+    />
+  </div>
+  <ContentSection />
+  <CardsContainer />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding: 80px 12px 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    justify-items: center;
+    gap: 200px;
+    width: 100%;
+
+    @include aboveTablet {
+      padding: 120px 12px 0 12px;
+    }
+
+    @include aboveIpadPro {
+      padding: 120px 0 0 0;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    z-index: -1;
+
+    @include aboveTablet {
+      transform: translate(-20%, -20%);
+    }
+  }
+</style>

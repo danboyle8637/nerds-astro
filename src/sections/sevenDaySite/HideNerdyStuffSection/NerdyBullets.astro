@@ -1,0 +1,33 @@
+---
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
+
+const nerdyBullets: string[] = [
+  "AirTable database to <strong>store your leads</strong>",
+  "Notification emails straight to <strong>your phone</strong>",
+  "Simple Stripe hookup for <strong>single payments</strong>",
+  "Hooked up to my recommended email marketing service"
+]
+---
+
+<div class="container">
+  {nerdyBullets.map(bullet => <PunctuationBullet type="exclaimation" bullet={bullet} />)}
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 60px;
+    width: 280px;
+
+    @include aboveIphone11 {
+      width: 320px;
+    }
+
+    @include aboveMobile {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,134 @@
+---
+import EmailAutomationChip from "./EmailAutomationChip.astro";
+import BlogPostsChip from "./BlogPostsChip.astro";
+import AdCopyChip from "./AdCopyChip.astro";
+import LandingPageChip from "./LandingPageChip.astro";
+import ProductDescriptionChip from "./ProductDescriptionChip.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+
+const copyLogo =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/copy-header-word_FD4MRnT7Z.png?ik-sdk-version=javascript-1.4.3";
+---
+
+<div class="header-container">
+  <div class="content-container">
+    <div class="headline-container">
+      <h3>Sell More With</h3>
+      <img
+        class="copy-logo"
+        src={copyLogo}
+        alt="Copywriting and content logo"
+        title="Copy and Content Services"
+      />
+    </div>
+    <EmailAutomationChip />
+    <BlogPostsChip />
+    <AdCopyChip />
+    <LandingPageChip />
+    <ProductDescriptionChip />
+  </div>
+  <BottomLeftAccent backgroundType="header" />
+  <div class="galaxy-teal">
+    <Galaxy client:idle color="teal" width={180} height={180} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={200} height={200} blur={200} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .header-container {
+    position: relative;
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .content-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    isolation: isolate;
+    z-index: 1;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      height: 500px;
+    }
+  }
+
+  .headline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: fit-content;
+  }
+
+  h3 {
+    font-size: 2.1rem;
+    transform: rotate(-7deg);
+
+    @include aboveMobile {
+      font-size: 2.5rem;
+    }
+
+    @include aboveTablet {
+      font-size: 3.4rem;
+    }
+  }
+
+  .copy-logo {
+    width: 280px;
+
+    @include aboveMobile {
+      width: 340px;
+    }
+
+    @include aboveTablet {
+      width: 420px;
+    }
+  }
+
+  .galaxy-teal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100px, -160px);
+    z-index: 1;
+
+    @include aboveMobile {
+      transform: translate(-140px, -120%);
+    }
+  }
+
+  .galaxy-purple {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(100px, 40px);
+    z-index: 1;
+
+    @include aboveMobile {
+      transform: translate(100px, 0);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(0, 80px);
+    }
+  }
+</style>

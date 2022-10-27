@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/Layout.astro'
+import SmallHeader from '../../sections/headers/SmallHeader.astro';
+import Instructions from '../../sections/nerdChat/WebDevPreNerdChat/Instructions.astro';
+import { PreNerdChatForm } from '../../components/solid/forms/PreNerdChatForm'
+import Footer from '../../sections/Footer/index.astro'
+---
+
+<BaseLayout title="Get Setup For Your Nerd Chat">
+  <SmallHeader headline="Pre Nerd Chat" />
+  <div class="view-container">
+    <Instructions />
+    <PreNerdChatForm client:load />
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .view-container {
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+  }
+</style>

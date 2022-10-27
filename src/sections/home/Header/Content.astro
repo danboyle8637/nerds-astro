@@ -1,0 +1,57 @@
+---
+import PerspectiveGradient from '../../../components/typography/PerspectiveGradient.astro'
+---
+
+<h1>
+  <span class="normal pull-left">We Are</span>
+    <PerspectiveGradient>Nerds</PerspectiveGradient>
+    <PerspectiveGradient>Who</PerspectiveGradient>
+  <PerspectiveGradient>SELL</PerspectiveGradient>
+</h1>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  h1 {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    justify-self: end;
+    @include baseColGrid;
+    gap: 0px;
+    justify-items: end;
+    width: max-content;
+    transform: translate(-30px, 80px);
+    z-index: 1;
+
+    @include aboveIphone11 {
+      transform: translate(-30px, 110px);
+    }
+
+    @include aboveMobile {
+      justify-self: center;
+      align-self: start;
+      transform: translate(-140px, 40px);
+    }
+
+    @include aboveTablet {
+      align-self: center;
+      transform: translate(-180px, 0px);
+    }
+  }
+
+  .normal {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 3.6rem;
+    }
+  }
+
+  .pull-left {
+    justify-self: start;
+    transform: translateX(20px);
+  }
+</style>

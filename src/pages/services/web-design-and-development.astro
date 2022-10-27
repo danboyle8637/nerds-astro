@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/Layout.astro";
+import Header from "../../sections/webDev/Header/index.astro";
+import NotABusinessCard from "../../sections/webDev/NotABusinessCard/index.astro";
+import SpeedForPhones from "../../sections/webDev/SpeedForPhones/index.astro";
+import EffortlessToUpdate from "../../sections/webDev/EffortlessToUpdate/index.astro";
+import SellSection from "../../sections/webDev/SellSection/index.astro";
+import FooterAndForm from "../../sections/callToActionSections/FooterAndForm/index.astro";
+import Footer from "../../sections/Footer/index.astro";
+---
+
+<BaseLayout title="Charleston Web Design and Developement">
+  <div class="view-container">
+    <Header />
+    <NotABusinessCard />
+    <SpeedForPhones />
+    <EffortlessToUpdate />
+    <SellSection />
+    <FooterAndForm />
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .view-container {
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @include aboveMobile {
+      gap: 160px;
+    }
+
+    @include aboveTablet {
+      gap: 200px;
+    }
+  }
+</style>

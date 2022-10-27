@@ -1,0 +1,68 @@
+---
+const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/pink-hash_fVzt1O9_m.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<h4>
+  <span class="hash-container">
+    <img class="hash" src={hash} alt="Header 3" title="Headline">
+    <img class="hash right-hash-one" src={hash} alt="Header 3" title="Headline">
+    <img class="hash right-hash-two" src={hash} alt="Header 3" title="Headline">
+    <img class="hash right-hash-three" src={hash} alt="Header 3" title="Headline">
+  </span>
+  <slot />
+</h4>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  h4 {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    justify-items: start;
+    align-items: start;
+    font-size: 2.8rem;
+    text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: 140px 1fr;
+      font-size: 3.6rem;
+      text-shadow: -10px 8px 2px hsla(0, 0%, 0%, 0.2);
+    }
+
+    @include aboveTablet {
+      grid-template-columns: 180px 1fr;
+      font-size: 4rem;
+      text-shadow: -12px 10px 2px hsla(0, 0%, 0%, 0.2);
+    }
+  }
+
+  .hash-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hash {
+    width: 30px;
+
+    @include aboveMobile {
+      width: 40px;
+    }
+
+    @include aboveTablet {
+      width: 50px;
+    }
+  }
+
+  .right-hash-one {
+    transform: translateX(-12px);
+  }
+
+  .right-hash-two {
+    transform: translateX(-24px);
+  }
+
+  .right-hash-three {
+    transform: translateX(-36px);
+  }
+</style>

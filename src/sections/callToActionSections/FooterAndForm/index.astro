@@ -1,0 +1,94 @@
+---
+import ContentContainer from "./ContentContainer.astro";
+import { LeadForm } from "../../../components/solid/forms/LeadForm";
+
+const chatImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-bubbles_QwS4ErsbU.png?ik-sdk-version=javascript-1.4.3";
+---
+
+<div class="container">
+  <img
+    class="chat-image"
+    src={chatImage}
+    alt="Book a FREE Nerd Chat"
+    title="Button a Free Nerd Chat"
+  />
+  <div class="content-container">
+    <ContentContainer />
+    <LeadForm client:visible />
+  </div>
+  <div class="galaxy"></div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding-top: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
+    isolation: isolate;
+
+    @include aboveMobile {
+      padding-top: 240px;
+    }
+
+    @include aboveTablet {
+      padding-top: 280px;
+    }
+  }
+
+  .content-container {
+    padding: 0 12px 80px 12px;
+    @include baseColGrid;
+    gap: 60px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      padding: 0 12px 120px 12px;
+    }
+  }
+
+  .chat-image {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    width: 320px;
+    transform: translate(-50%, 0);
+
+    @media (min-width: 600px) {
+      width: 400px;
+    }
+
+    @media (min-width: 960px) {
+      width: 480px;
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--accent-teal);
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    transform: translate(80px, 60px);
+    z-index: -1;
+
+    @include aboveTablet {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+      transform: translate(280px, 120px);
+    }
+  }
+</style>

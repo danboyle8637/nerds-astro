@@ -1,0 +1,20 @@
+---
+id: 0
+section: 1
+---
+
+import "../../styles/mardown.scss";
+import UnorderedList from "../../components/markdown/UnorderedList.astro";
+import BaseBullet from "../../components/typography/BaseBullet.astro";
+
+Welcome to Nerds Who Sell.
+
+**We're Nerds who love to code**:
+
+<UnorderedList showTwoCols={true}>
+  <BaseBullet small={true}>Frontend technologies</BaseBullet>
+  <BaseBullet small={true}>iOS development</BaseBullet>
+  <BaseBullet small={true}>Backend technologies</BaseBullet>
+  <BaseBullet small={true}>Database technologies</BaseBullet>
+  <BaseBullet small={true}>Machine learning and big data</BaseBullet>
+</UnorderedList>

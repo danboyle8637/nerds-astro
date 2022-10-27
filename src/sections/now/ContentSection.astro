@@ -1,0 +1,76 @@
+---
+const paragraphs: string[] = [
+  'I can\'t remember where I heard about the <span class="code-callout">now</span> page... but I wanted to include it on my site.',
+  "These are the <strong>personal projects</strong> I am working on right now. I will built a little progress component so you can see where I stand on actually finishing these. I think that will help me as well.",
+];
+---
+
+<div class="container">
+  <div class="galaxy"></div>
+  <h2 class="headline">Working On Now?</h2>
+  <div class="paragraph-container">
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    padding: 80px 12px 0 12px;
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: start;
+    width: 100%;
+    isolation: isolate;
+
+    @include aboveMobile {
+      padding: 80px 0 0 0;
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      padding: 120px 0 0 0;
+      width: 800px;
+    }
+  }
+
+  .headline {
+    @include aboveMobile {
+      font-size: 6rem;
+    }
+  }
+
+  .paragraph-container {
+    @include baseColGrid;
+    gap: 30px;
+    width: 100%;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #d631ff;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    filter: blur(200px);
+    transform: translate(0, -50%);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(0, 0);
+    }
+
+    @include aboveTablet {
+      transform: translate(80px, 0);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(120px, -50%);
+    }
+  }
+</style>

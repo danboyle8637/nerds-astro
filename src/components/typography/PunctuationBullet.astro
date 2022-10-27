@@ -1,0 +1,66 @@
+---
+interface Props {
+  type: "question" | "exclaimation" | "check";
+  bullet: string;
+}
+
+const { type, bullet } = Astro.props;
+
+const questionImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/question-bullet_mPB-OZdzy.png?ik-sdk-version=javascript-1.4.3";
+const exclaimationImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/exclaimation-bullet_6hT7S6T9g.png?ik-sdk-version=javascript-1.4.3";
+const checkmarkImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/checkmark-bullet_KCkiBywH3.png?ik-sdk-version=javascript-1.4.3";
+
+const bulletImage =
+  type === "question"
+    ? questionImage
+    : type === "exclaimation"
+    ? exclaimationImage
+    : checkmarkImage;
+---
+
+<li class="list-item">
+  <img
+    class="bullet"
+    src={bulletImage}
+    alt="Check"
+    title="Important Question"
+  />
+  <span set:html={bullet}></span>
+</li>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .list-item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 16px;
+    justify-items: start;
+    align-items: start;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--font-color-light);
+    width: 100%;
+
+    @include aboveMobile {
+      align-items: start;
+    }
+
+    @include aboveTablet {
+      font-size: 2.6rem;
+    }
+  }
+
+  .bullet {
+    width: 60px;
+    transform: translateY(-12px);
+
+    @include aboveMobile {
+      transform: translateY(-6px);
+    }
+  }
+</style>

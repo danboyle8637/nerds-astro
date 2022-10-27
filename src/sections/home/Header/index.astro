@@ -1,31 +1,97 @@
 ---
-import BackgroundImage from './BackgroundImage.astro'
-import CallToAction from './CallToAction.astro';
+import Content from "./Content.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+
+const mobileImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/mobile-header-background-600x1300_rnK6VWPmd.png?ik-sdk-version=javascript-1.4.3";
+
+const aboveMobileImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/above-mobile-header-background-1200x600_D6CYD4YKt.png?ik-sdk-version=javascript-1.4.3";
 ---
+
 <div class="container">
-  <h1>Get More</h1>
-  <CallToAction />
-  <BackgroundImage />
+  <Content />
+  <picture>
+    <source srcset={aboveMobileImage} media="(min-width: 600px)" />
+    <img
+      src={mobileImage}
+      alt="A picture of Dan and Kindal"
+      title="Nerds Who Sell"
+    />
+  </picture>
+  <div class="galaxy-teal">
+    <Galaxy client:visible color="teal" width={200} height={200} blur={200} />
+  </div>
+  <div class="galaxy-dark-purple">
+    <Galaxy
+      client:visible
+      color="dark-purple"
+      width={200}
+      height={200}
+      blur={200}
+    />
+  </div>
 </div>
 
-<style>
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
   .container {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    background-color: #161E2D;
+    justify-items: center;
+    background-color: var(--background-color-dark);
     width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
     overflow: hidden;
+    isolation: isolate;
   }
 
-  h1 {
+  picture {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    font-size: 5rem;
-    color: var(--font-color-light);
-    text-transform: uppercase;
-    width: fit-content;
-    transform: translate(20px, 120px);
-    z-index: 1;
+    align-self: end;
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 6 / 13;
+
+    & img {
+      width: 100%;
+    }
+
+    @include aboveMobile {
+      aspect-ratio: 2 / 1;
+    }
+  }
+
+  .galaxy-dark-purple {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-80px, -50%);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(0, 0);
+    }
+  }
+
+  .galaxy-teal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(80px, 0);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(80px, 0);
+    }
+
+    @include aboveTablet {
+      transform: translate(0, 0);
+    }
   }
 </style>

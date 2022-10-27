@@ -1,0 +1,82 @@
+---
+const numberImage = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/cube-3_KKsu8TQcy.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<div class="container">
+  <img class="step-number" src={numberImage} alt="Number 3 important website criteria" title="Sell And Make Money With Copy">
+  <h1>
+    <span class="headline-group">
+      <span>Sell & Make</span>
+      <span>Money With</span>
+    </span>
+    <span>Marketing Copy</span>
+  </h1>
+</div>
+
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 0 12px;
+    @include baseColGrid;
+    gap: 20px;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: min-content 1fr;
+      column-gap: 12px;
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 900px;
+    }
+  }
+
+  .step-number {
+    width: 80px;
+    transform: translate(100px, 0);
+
+    @include aboveIphone11 {
+      transform: translate(130px, 0);
+    }
+
+    @include aboveMobile {
+      width: 100px;
+      transform: translate(0, -20px);
+    }
+  }
+
+  h1 {
+    @include baseColGrid;
+    gap: 6px;
+    justify-items: end;
+    width: 100%;
+  }
+
+  .headline-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    width: 100%;
+
+    @include aboveMobile {
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+  }
+
+  span {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 6rem;
+    }
+  }
+</style>

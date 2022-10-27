@@ -1,0 +1,69 @@
+---
+import Headline from "./Headline.astro";
+import BulletBlock from "./BulletBlock.astro";
+import EffortlessImage from "./EffortlessImage.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+---
+
+<div class="container">
+  <Headline />
+  <div class="copy-container">
+    <EffortlessImage />
+    <BulletBlock />
+  </div>
+  <div class="paragraph-container">
+    <p>
+      <span class="code-callout">Or, we can do it all for you.</span> 
+    </p>
+    <p>And you can focus on what you care most about... your business!</p>
+  </div>
+  <div class="button-container">
+    <InternalNavButton type="teal" slug="/" title="Schedule a Nerd Call">
+      Schedule Nerd Call
+    </InternalNavButton>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+  
+  .container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      gap: 120px;
+    }
+  }
+
+  .copy-container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveTablet {
+      grid-template-columns: 1fr 400px;
+      align-items: center;
+    }
+
+    @include aboveIpadPro {
+      width: 1200px;
+    }
+  }
+
+  .paragraph-container {
+    padding: 0 12px;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: start;
+    width: fit-content;
+  }
+
+  .button-container {
+    width: 290px;
+  }
+</style>

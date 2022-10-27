@@ -1,0 +1,83 @@
+---
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
+
+const bullets = [
+  "...to look generic, blend in, and sound boring?",
+  "...to load slow and be hard to use on a phone?",
+  "...to be tossed in the digital trash bin?",
+];
+---
+
+<div class="container">
+  <div class="content">
+    <p>Business cards get tossed in the garbage. Fogotten about.</p>
+  </div>
+  <div class="question-container">
+    <p>Do you want your website...</p>
+    <div class="questions">
+      {
+        bullets.map((bullet) => (
+          <PunctuationBullet type="question" bullet={bullet} />
+        ))
+      }
+    </div>
+  </div>
+  <div class="content">
+    <p>Of course not.</p>
+    <p class="code-callout">A website is NOT a business card or brochure.</p>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    justify-items: start;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 30px;
+    justify-items: start;
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+  }
+
+  .question-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    width: 100%;
+
+    p {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--font-color-light);
+    }
+  }
+
+  .questions {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 60px;
+  }
+</style>

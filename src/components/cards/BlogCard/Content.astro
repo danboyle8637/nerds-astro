@@ -1,0 +1,51 @@
+---
+import InternalNavButton from "../../buttons/InternalNavButton.astro";
+
+interface Props {
+  description: string
+  buttonLabel: string
+  slug: string
+}
+
+const { description, buttonLabel, slug } = Astro.props
+---
+
+<div class="container">
+  <div class="description">
+    <p>{description}</p>
+  </div>
+  <div class="button-container">
+    <InternalNavButton 
+      type="teal" 
+      title={buttonLabel} 
+      slug={slug} 
+      cta={false}>{buttonLabel}</InternalNavButton>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 30px;
+    justify-items: end;
+    width: 100%;
+  }
+
+  .description {
+    padding-left: 20px;
+    justify-self: start;
+    width: 90%;
+
+    & p {
+      line-height: 1.6;
+    }
+  }
+
+  .button-container {
+    padding-right: 20px;
+    width: 290px;
+  }
+</style>

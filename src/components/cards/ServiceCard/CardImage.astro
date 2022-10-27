@@ -1,0 +1,26 @@
+---
+export interface Props {
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  order: number;
+}
+
+const { imageUrl, altTag, titleTag, order } = Astro.props as Props;
+
+const imageOrder = order;
+---
+
+<img class="service-image" src={imageUrl} alt={altTag} title={titleTag} />
+
+<style lang="scss" define:vars={{ imageOrder }}>
+  @import "../../../styles/sizes.scss";
+
+  .service-image {
+    width: 100%;
+
+    @include aboveMobile {
+      order: var(--imageOrder);
+    }
+  }
+</style>

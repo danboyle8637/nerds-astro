@@ -1,0 +1,49 @@
+.label_container {
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  justify-items: start;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+  color: var(--font-color-light);
+  font-weight: 700;
+  line-height: 1.6;
+  cursor: pointer;
+  transition: color 300ms ease-in-out;
+  isolation: isolate;
+}
+
+.label_container:focus {
+  outline: none;
+  color: var(--accent-teal);
+}
+
+.indicator {
+  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-not-active_khmUjQ0M0.png?ik-sdk-version=javascript-1.4.3");
+  background-size: contain;
+  width: 60px;
+  height: 60px;
+}
+
+.indicator_focus {
+  composes: indicator;
+  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-focus_UiuHs8It6.png?ik-sdk-version=javascript-1.4.3");
+}
+
+.indicator_selected {
+  composes: indicator;
+  background-image: url("https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-active_idvf5QmIS.png?ik-sdk-version=javascript-1.4.3");
+}
+
+.radio_input {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+}

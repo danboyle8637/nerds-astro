@@ -1,0 +1,119 @@
+---
+import client from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
+import BaseLayout from '../../../layouts/Layout.astro'
+import BlogCategoryHeader from '../../../sections/blog/BlogCategoryHeader.astro'
+import Breadcrumbs from '../../../components/navigation/Breadcrumbs/Breadcrumb.astro'
+import BlogCard from '../../../components/cards/BlogCard/index.astro'
+import Footer from '../../../sections/Footer/index.astro'
+import type { SanityBlogCardQuery, SanityImage, Pathname } from '../../../types/blog'
+
+const techHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/tech-blog-header_upcrIT9Tp.png?ik-sdk-version=javascript-1.4.3"
+
+export const sanity = client({
+  projectId: import.meta.env.SANITY_PROJECT_ID,
+  dataset: import.meta.env.SANITY_BASE,
+  apiVersion: '2021-03-25',
+  token: import.meta.env.SANITY_TOKEN,
+  useCdn: true,
+})
+
+const query = `
+  {
+    "cardData": *[_type == 'blogPost' && "tech" in category.category] {
+      "cardImage": image.image.asset,
+      "altTag": image.altTag,
+      "titleTag": image.titleTag,
+      "description": description,
+      "tags": tags,
+      "slug": slug.current,
+    }
+  }
+`
+
+const blogCardData: SanityBlogCardQuery = await sanity.fetch(query)
+const { cardData } = blogCardData
+
+const builder = imageUrlBuilder(sanity)
+
+function urlFor(source: SanityImage) {
+  return builder.image(source)
+}
+
+const breadcrumbs: Pathname[] = [
+  {
+    base: ["blog"],
+    slug: "tech",
+  }
+]
+---
+
+<BaseLayout title="Tech Blog">
+  <BlogCategoryHeader headline="Tech Blog">
+    <img class="tech-image" src={techHeader} alt="Tech blog header" title="Tech Blog" width="900px" height="205px" />
+  </BlogCategoryHeader>
+  <div class="container">
+    <Breadcrumbs paths={breadcrumbs} />
+    <div class="card-container">
+      {cardData.map(card => {
+        const { cardImage, altTag, titleTag, description, tags, slug } = card
+  
+        return (
+          <BlogCard 
+            imageUrl={urlFor(cardImage).width(400).auto("format").url()}
+            altTag={altTag}
+            titleTag={titleTag}
+            cardTeaser={description}
+            category="design"
+            tags={tags}
+            buttonLabel="Read Post"
+            slug={`/blog/tech/${slug}`}
+          />
+        )
+      })}
+    </div>
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .tech-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    padding: 80px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .card-container {
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 120px;
+    }
+
+    @include aboveTablet {
+      width: fit-content;
+    }
+
+    @include aboveIpadPro {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
+

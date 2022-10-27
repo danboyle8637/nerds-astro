@@ -1,0 +1,68 @@
+.button_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+  background-color: rgb(17, 17, 17);
+  border-radius: 16px;
+  width: 300px;
+  max-width: 400px;
+  height: 60px;
+}
+
+.button {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--font-color-dark);
+  text-decoration: none;
+  border: none;
+  border-radius: 16px;
+  outline: none;
+  width: 300px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform, background-color, 250ms ease-in-out;
+  z-index: 1;
+}
+
+.button:focus {
+  outline: 3px solid var(--accent-teal);
+  outline-offset: 5px;
+  transform: translate(-8px, -8px);
+}
+
+.button:hover {
+  transform: translate(-8px, -8px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.button_teal {
+  composes: button;
+  background-color: var(--accent-teal);
+}
+
+.button_purple {
+  composes: button;
+  background-color: var(--accent-purple);
+}
+
+.button_pink {
+  composes: button;
+  background-color: var(--accent-pink);
+}
+
+.button_icon {
+  width: 40px;
+}

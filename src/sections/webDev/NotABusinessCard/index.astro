@@ -1,0 +1,54 @@
+---
+import NotABusinessCard from "./NotABusinessCard.astro";
+import YourSalesTool from "./YourSalesTool.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+---
+
+<div class="container">
+  <div class="top-galaxy">
+    <Galaxy client:idle color="pink" width={220} height={220} blur={240} />
+  </div>
+  <NotABusinessCard />
+  <YourSalesTool />
+  <div class="bottom-galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={220}
+      height={220}
+      blur={240}
+    />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    isolation: isolate;
+  }
+
+  .top-galaxy {
+    position: absolute;
+    top: 260px;
+    right: -80px;
+    z-index: -1;
+
+    @include aboveMobile {
+      right: -120px;
+    }
+  }
+
+  .bottom-galaxy {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-80px, 120px);
+    z-index: -1;
+  }
+</style>

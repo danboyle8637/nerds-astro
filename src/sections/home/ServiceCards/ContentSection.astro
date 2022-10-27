@@ -1,0 +1,45 @@
+---
+const paragraphs: string[] = [
+  "If you <strong>need a website</strong> or you need your current website to <strong>convert and grow your business</strong>...",
+  "<strong>Click below on the service</strong> that will help you the most and let's set up a Nerd Chat.",
+];
+---
+
+<div class="container">
+  <h2 class="headline">Need a Nerds Help?</h2>
+  <div class="paragraph-container">
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: start;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+  }
+
+  .headline {
+    @include aboveMobile {
+      font-size: 6rem;
+    }
+  }
+
+  .paragraph-container {
+    @include baseColGrid;
+    gap: 30px;
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,180 @@
+---
+draft: true
+date: 9 / 30 / 22
+seoTitle: Build The Fit Women's Weekly LIVE App. A Fitness App Like No Other
+seoDescription: The FWW LIVE app is my first big app. I am finishing the build for this and it's a huge goal for our fitness business. Read about it.
+headline: FWW LIVE Web App (PWA)
+cardTeaser: The FWW LIVE app is my first big app. I am finishing the build for this and it's a huge goal for our fitness business. Read about it.
+author: Dan
+featureImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-live-now-feature_-WAjAZ0hg.jpg?ik-sdk-version=javascript-1.4.3
+socialImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-live-now-social_Zhj5Z5pJw.jpg?ik-sdk-version=javascript-1.4.3
+headerImageUrl: https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/now/fww-live-post-header_jXwuZVowa.png?ik-sdk-version=javascript-1.4.3
+altTag: Fit Women's Weekly LIVE
+titleTag: Fit Women's Weekly LIVE
+buttonLabel: Read About The LIVE App
+tags:
+  - { tag: now }
+  - { tag: apps }
+  - { tag: pwa }
+category: now
+slug: fww-live-app
+---
+
+import "../../styles/mardown.scss";
+import Link from "../../components/blog/Link.astro";
+import UnorderedList from "../../components/blog/UnorderedList.astro";
+import Bullet from "../../components/blog/Bullet.astro";
+
+This past year, my wife and I shut our fitness studio down **after 7 years** in business. I'll spare you the details.
+
+We created an online streaming fitness program called <Link type="external" url="https://fitwomensweekly.com/fww-live/what-members-get">Fit Women's Weekly LIVE</Link>. It's a unique program. Among other things, **only 300 members are allowed to be active** at any one time.
+
+We decided on this membership limit because **we talk to our members and give them real training help**. It's important to us to keep a close relationship with our members.
+
+We have another program called <Link type="external" url="https://fitwomensweekly.com/fww-habit/what-members-get">Habit</Link> on our horizon. Habit will have an uncapped membership. Our goal for it will be 5,000 active members. And who knows... maybe we can blow it up more!?!
+
+Currently there are **78 active members in Fit Women's Weekly LIVE**.
+
+## How Are We Going To Fill Membership?
+
+The app.
+
+The app is going to be our primary lead generation method.
+
+And obviously... are primary member retention mechanism. There must be a better word for mechanism. (And I'm a copywriter.)
+
+Because this is a private app... I decided to keep this a **web app (PWA)**. I plan on making it fully offline compatible over time.
+
+We offer **three FREE 14 day training plans** among the paid training plans.
+
+The FREE training plan is being tested with a downloadable PDF and it's converting well from prospect to lead. **Lead to member can use a boost**... but that is what the app is supposed to help with.
+
+Let's get technical, here's the tech stack.
+
+## FWW LIVE Tech Stack
+
+#### Technologies Used:
+
+<UnorderedList>
+  <Bullet type="blue">SolidJS</Bullet>
+  <Bullet type="blue">Cloudflare Workers</Bullet>
+  <Bullet type="blue">Cloudflare D1</Bullet>
+  <Bullet type="blue">Cloudflare Images</Bullet>
+  <Bullet type="blue">Cloudflare Stream</Bullet>
+  <Bullet type="blue">Auth is undecided</Bullet>
+</UnorderedList>
+
+This app is build on what I call the **Cloudflare stack**.
+
+## App Features For Round 1
+
+In this group, we stream (and record) two LIVE workouts every weekday and one Saturday stretch session. It's done through a private Facebook Group at the moment. (Cloudflare Stream within the next 6 months.)
+
+The app is built around 30 day training plans that use these workouts.
+
+However, you don't have to use a training plan. You can structure your weekly workouts using the LIVE Workouts and recordings.
+
+## Workout Tracking
+
+I don't want to go into the details here too much because I have some really cool ideas to implement **machine learning** with the data we're collecting.
+
+This is not your typical workout tracking app.
+
+I'm bringing over 10 years of personal training experience to this project... so I have some fresh ideas on how to make tracking helpful.
+
+## Workout Journal
+
+This is pretty basic. Just a journal or personal blog of your workout days.
+
+At the moment, nothing fancy here. Just the ability to tag journal entries and mark a journal entry as a favorite.
+
+## Training Plans
+
+This is the meat of the app.
+
+Most training plans are 30 days long. We have two special yearly training plans that are 60 days long.
+
+The app tracks everything day to day.
+
+**Everyday you have a series of goals to complete**.
+
+<UnorderedList>
+  <Bullet type="blue">A primary goal</Bullet>
+  <Bullet type="blue">A busy woman's goal</Bullet>
+  <Bullet type="blue">A fitness challenge</Bullet>
+  <Bullet type="blue">And more...</Bullet>
+</UnorderedList>
+
+Some days the **primary goal is to take a rest day**. So all you have to do is check that off.
+
+<UnorderedList>
+  <Bullet type="blue">Each goal has points.</Bullet>
+  <Bullet type="blue">Each combination of completed goals has points.</Bullet>
+  <Bullet type="blue">
+    You can even get negative points for not completing days.
+  </Bullet>
+</UnorderedList>
+
+Your goal is to **get as many points as possible during the training plan** and see if you can crack the top 10 leaderboard for that plan.
+
+There's even more that makes the training plan so cool. This feature is going to be the central feature in Habit when I build that out next.
+
+I want our members to use and rely on this feature to help them workout more. In my eyes it's the star, but **you never know what users will do**.
+
+## Converting From React to SolidJS And Using D1
+
+I do have a 97% working version of the app built with React and NextJS on the frontend.
+
+The backend is using the Cloudflare stack as I mentioned.
+
+<UnorderedList>
+  <Bullet type="blue">Workers for edge functions</Bullet>
+  <Bullet type="blue">KV for some database needs</Bullet>
+  <Bullet type="blue">
+    Durable Objects for transactional and consistent data storage needs.
+  </Bullet>
+</UnorderedList>
+
+But this is going to change a little.
+
+## Change 1: SolidJS
+
+I started to learn <Link type="external" url="https://www.solidjs.com/">Solid</Link> and I really enjoy it.
+
+Once you get your head around the way signals and stores work in Solid... it makes so much more sense to update the UI compared to React and `useEffect`.
+
+React is fixing most of the issues with `useEffect` with a new hook. I can't remember the name of it. I don't even think it's released yet. Knowing React, it will probably take another year for it to come out.
+
+But Solid is pretty awesome. And I really like <Link type="external" url="https://twitter.com/RyanCarniato">Ryan Carniato</Link>. I think he is one of the smartest coders. I trust he and his team will make Solid a beast of a framework going forward.
+
+Plus **this transition also lets me double check all my logic and make improvements** to features if needed.
+
+I've already found some big bugs and smashed them.
+
+## Change 2: Cloudflare D1
+
+I got early access to D1... **Cloudflare's distributed SQLite database**. I think they call it distributed. It should be in open beta by now.
+
+I am going to get rid of Durable Objects and use D1 instead. I think it makes a lot more sense to solve the problems I'm having with Durable Objects.
+
+Durable Objects are pretty cool. But I find they can be tough to work with at the moment. I still plan on using them for future features.
+
+**UPDATE** - I might stick with Durable Objects. Mainly because I want total flexibility with my persistance until I know what the final version of the app will look like.
+
+## Change 3: Bonus... Auth
+
+I'm still trying to find a good auth solution I like.
+
+I wanted to go with Magic.link. I really like them, but there are so many other possibilities like Stytch I'm interested in trying.
+
+I was looking at Stytch the other day and really like it. **It has API endpoints you can hit rather than be forced to use an SDK**. I really like that. So this is currently in first place. I'll blog more about this when I start playing with it.
+
+I might roll my own OAuth2 solution with Google, Facebook, and Apple logins. Not sure but I've been wanting to learn OAuth2 deeply for some time now.
+
+## Deadline: Jan 1st 2023
+
+**This deadline is approaching FAST**.
+
+But I think I can transition the app to Solid before Jan. We have one of those "special" eight week training plans coming up in early January.
+
+Kindal and I want to use the app to msanage it. And hopefully get our membership full by then as well.

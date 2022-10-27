@@ -1,0 +1,13 @@
+.link_container {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .link_container {
+    padding: 0 40px 0 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}

@@ -1,0 +1,5 @@
+.icon_container {
+  width: var(--icon-width);
+  opacity: 0;
+  transform: translateX(-60%), scale(0.9);
+}

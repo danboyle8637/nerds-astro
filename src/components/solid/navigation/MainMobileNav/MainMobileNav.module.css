@@ -1,0 +1,9 @@
+.mobile_nav_container {
+  padding: 140px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,25 @@
+---
+import PunctuationBullet from "../../../components/typography/PunctuationBullet.astro";
+
+const questions: string[] = [
+  "If you have a <strong>limited budget</strong> but you know you need to get online fast...",
+  "If you have an awesome product or service you want to highlight and <strong>start selling like crazy</strong>...",
+  "If you need a website dedicated to <strong>getting leads</strong> and building an email list...",
+  "If you want the perfect <strong>starter website</strong>, ready to grow with you for years..."
+]
+---
+
+<div class="container">
+  {questions.map(question => <PunctuationBullet type="question" bullet={question} />)}
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 80px;
+    width: 100%;
+  }
+</style>

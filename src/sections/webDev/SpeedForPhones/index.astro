@@ -1,0 +1,28 @@
+---
+import SectionContent from "./SectionContent.astro";
+import Images from "./Images.astro";
+import DisclaimerSection from "./DisclaimerSection.astro";
+---
+
+<div class="container">
+  <SectionContent />
+  <Images />
+  <DisclaimerSection />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      gap: 120px;
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import SpeedScoreDisclaimerCard from "../../../components/cards/SpeedScoreDisclaimerCard.astro";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+---
+
+<div class="container">
+  <SpeedScoreDisclaimerCard />
+  <InternalNavButton type="teal" slug="/" title="Setup a Nerd Chat" width={290}
+    >Setup A Nerd Chat</InternalNavButton
+  >
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 0 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      padding: 0;
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+const mobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/mobile-home-header-600x1300_dhkklq6ce.png?ik-sdk-version=javascript-1.4.3"
+
+const aboveMobileImageUrl = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/above-mobile-home-header-1200x900_AQAR0A1GV.png?ik-sdk-version=javascript-1.4.3"
+---
+
+<picture>
+  <source srcset={aboveMobileImageUrl} media="(min-width: 600px)">
+  <img src={mobileImageUrl} alt="Graph boxes for more traffic leads and sales" title="More Traffic Leads And Sales">
+</picture>
+
+<style lang="scss">
+  picture {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+
+    @media (min-width: 600px) {
+      transform: translate(-240px, 100px);
+    }
+
+    @media (min-width: 960px) {
+      transform: translate(-190px, 120px);
+    }
+
+    @media (min-width: 1100px) {
+      align-self: end;
+      width: 900px;
+      transform: translate(0px, 120px);
+    }
+
+    @media (min-width: 1450px) {
+      transform: translate(0px, 100px);
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+</style>

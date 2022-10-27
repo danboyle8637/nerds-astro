@@ -1,0 +1,41 @@
+---
+import PerspectiveGradient from "../../../components/typography/PerspectiveGradient.astro";
+---
+
+<h1>
+  <span class="normal pull-left">Get a</span>
+  <PerspectiveGradient>Beautiful</PerspectiveGradient>
+  <PerspectiveGradient>BLAZING</PerspectiveGradient>
+  <span class="normal extra-padding">Fast Website That</span>
+  <PerspectiveGradient>Sells!</PerspectiveGradient>
+</h1>
+
+<style lang="scss">
+  h1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 10px;
+    justify-items: center;
+    width: max-content;
+  }
+
+  .normal {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--font-color-light);
+
+    @media (min-width: 960px) {
+      font-size: 3.6rem;
+    }
+  }
+
+  .pull-left {
+    justify-self: start;
+    transform: translateX(20px);
+  }
+
+  .extra-padding {
+    padding: 20px 0 12px 0;
+  }
+</style>

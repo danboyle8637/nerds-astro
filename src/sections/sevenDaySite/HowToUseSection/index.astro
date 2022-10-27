@@ -1,0 +1,43 @@
+---
+import Headline from "./Headline.astro";
+import UseCases from "./UseCases.astro";
+import TopRightAccent from "../../../components/accents/TopRightAccent.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+---
+
+<div class="container">
+  <div class="content-container">
+    <Headline />
+    <UseCases />
+  </div>
+  <TopRightAccent backgroundType="header" />
+  <BottomLeftAccent backgroundType="header" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .content-container {
+    padding: 80px 12px 120px 12px;
+    @include baseColGrid;
+    gap: 120px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      padding: 120px 0;
+    }
+  }
+</style>

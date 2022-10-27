@@ -1,0 +1,58 @@
+---
+import CardImage from "./CardImage.astro";
+import ContentBlock from "./ContentBlock.astro";
+
+export interface Props {
+  order: 0 | 1
+  imageUrl: string
+  altTag: string
+  titleTag: string
+  headline: string
+  description: string
+  buttonLabel: string
+  buttonSlug: string
+}
+
+const {  
+  order,
+  imageUrl,
+  altTag,
+  titleTag,
+  headline,
+  description,
+  buttonLabel,
+  buttonSlug,
+} = Astro.props as Props
+---
+
+<div class="card-container">
+  <CardImage 
+    imageUrl={imageUrl}
+    altTag={altTag}
+    titleTag={titleTag}
+    order={order}
+  />
+  <ContentBlock 
+    headline={headline}
+    description={description}
+    buttonLabel={buttonLabel}
+    buttonSlug={buttonSlug}
+  />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .card-container {
+    @include baseColGrid;
+    gap: 12px;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 0px;
+      align-items: center;
+    }
+  }
+</style>

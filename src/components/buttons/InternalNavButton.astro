@@ -1,81 +1,126 @@
 ---
-import type { InternalButtonColor } from '../../types/components'
+import NerdChatIcon from "../svgs/NerdChatIcon.astro";
+import type { ThemeColor } from "../../types/components";
 
 interface Props {
-  type: InternalButtonColor
-  slug: string
-  title: string
-  width: number
+  type: ThemeColor;
+  slug: string;
+  title: string;
+  width?: number;
+  cta?: boolean;
 }
 
-const { slug, title, type, width = 290 } = Astro.props as Props
+const { slug, title, type, width, cta = true } = Astro.props as Props;
 
-const buttonStyles = {
-  "--button-label-color": type === "teal" ? "var(--accent-teal-dark)" : type === "pink" ? "#f8f8f8" : "#f8f8f8",
-  "--background-color": type === "teal" ? "var(--accent-teal)" : type === "pink" ? "var(--accent-pink)" : "var(--accent-purple)",
-  "--shadow-color": type === "teal" ? "var(--accent-purple-dark)" : type === "pink" ? "var(--accent-pink-dark)" : "var(--accent-purple-dark)",
-  "--button-width": `${width}px`,
-}
+const buttonLayout = cta ? "min-content 1fr" : "1fr";
+const buttonLabelColor =
+  type === "teal" ? "var(--accent-teal-dark)" : "var(--font-color-light)";
+const backgroundColor =
+  type === "teal"
+    ? "var(--accent-teal)"
+    : type === "pink"
+    ? "var(--accent-pink)"
+    : "var(--accent-purple)";
+const shadowColor =
+  type === "teal"
+    ? "var(--accent-purple-dark)"
+    : type === "pink"
+    ? "var(--accent-pink-dark)"
+    : "var(--accent-purple-dark)";
+const buttonWidth = width ? `${width}px` : "100%";
+const focusOutline =
+  type === "teal" ? "var(--accent-purple)" : "var(--accent-teal)";
 ---
 
-<a href={slug} title={title} style={buttonStyles}> 
-  <div class="button">
+<div class="container">
+  <a href={slug} title={title}>
+    {
+      cta ? (
+        <div class="chat-icon">
+          <NerdChatIcon />
+        </div>
+      ) : null
+    }
     <slot>Learn More</slot>
-  </div>
-  <div class="shadow" />
-</a>
+  </a>
+  <div class="shadow"></div>
+</div>
 
-<style>
-  a {
+<style
+  lang="scss"
+  define:vars={{
+    buttonLayout,
+    buttonLabelColor,
+    backgroundColor,
+    shadowColor,
+    buttonWidth,
+    focusOutline,
+  }}
+>
+  @import "../../styles/sizes.scss";
+
+  .container {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     justify-items: center;
     align-items: center;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--button-label-color);
-    text-decoration: none;
-    border-radius: 12px;
-    outline: none;
-    width: var(--button-width);
-    height: 60px;
+    width: var(--buttonWidth);
   }
 
-  a:focus {
-    outline-offset: 6px;
-    outline: 4px solid var(--accent-purple);
-  }
-
-
-  .button {
+  a {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    display: flex;
-    justify-content: center;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: var(--buttonLayout);
+    gap: 8px;
+    justify-items: center;
     align-items: center;
-    background-color: var(--background-color);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--buttonLabelColor);
+    text-decoration: none;
+    line-height: 1;
+    background-color: var(--backgroundColor);
     border: none;
     border-radius: 12px;
-    width: 100%;
-    height: 100%;
+    width: var(--buttonWidth);
+    height: 60px;
     z-index: 1;
-    transition: box-shadow, transform, 200ms ease-in-out;
+    transition: box-shadow, transform, 300ms ease-in-out;
+
+    &:focus {
+      color: var(--buttonLabelColor);
+      outline-offset: 6px;
+      outline: 4px solid var(--focusOutline);
+    }
+
+    &:hover {
+      color: var(--buttonLabelColor);
+      box-shadow: 1px 2px 4px 1px hsla(0, 0%, 0%, 0.4);
+      transform: translate(-8px, -8px);
+    }
+
+    &:visited {
+      color: var(--buttonLabelColor);
+    }
+
+    &:visited:hover {
+      color: var(--buttonLabelColor);
+    }
   }
 
-  .button:hover {
-    box-shadow: 1px 1px 12px 1px var(--accent-purple);
-    transform: translate(-10px, -10px);
+  .chat-icon {
+    width: 46px;
   }
 
   .shadow {
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    background-color: var(--shadow-color);
-    border-radius: 12px 12px 18px 12px;
-    width: var(--button-width);
-    height: 100%;
+    background-color: var(--shadowColor);
+    border-radius: 12px 8px 16px 8px;
+    width: 98%;
+    height: 90%;
   }
-
-  
 </style>

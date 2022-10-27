@@ -1,0 +1,41 @@
+---
+interface Props {
+  path: string;
+}
+
+const { path } = Astro.props;
+---
+
+<a class="base-link" href={`${path}`} title={path}>
+  <slot />
+</a>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .constainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  .base-link {
+    padding: 4px 22px 4px 32px;
+    position: relative;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background-color: hsla(218, 32%, 10%, 0.4);
+    border: 2px solid var(--background-color-dark);
+    border-radius: 8px;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      content: "~";
+      color: var(--accent-teal);
+      transform: translate(12px, -50%);
+    }
+  }
+</style>

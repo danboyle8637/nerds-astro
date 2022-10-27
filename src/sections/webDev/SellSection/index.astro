@@ -1,0 +1,53 @@
+---
+import Headline from "./Headline.astro";
+import CopyBlock from "./CopyBlock.astro";
+import { SalesAndLeads } from '../../../components/solid/SalesAndLeads'
+import MiddleRightAccent from "../../../components/accents/MiddleRightAccent.astro";
+---
+<div class="container">
+  <Headline />
+  <SalesAndLeads client:idle />
+  <CopyBlock />
+  <MiddleRightAccent backgroundType="body" />
+  <div class="galaxy" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+    isolation: isolate;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    background-color: #3D00BD;
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    filter: blur(160px);
+    z-index: -1;
+
+    @include aboveMobile {
+      width: 400px;
+      height: 400px;
+      filter: blur(260px);
+      transform: translate(-100px, 0);
+    }
+
+    @include aboveTablet {
+      width: 600px;
+      height: 600px;
+      filter: blur(260px);
+      transform: translate(-300px, 0);
+    }
+  }
+</style>

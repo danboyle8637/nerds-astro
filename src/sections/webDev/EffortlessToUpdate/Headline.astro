@@ -1,0 +1,86 @@
+---
+const numberImage =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/cube-2_E_iAkTQsz.png?ik-sdk-version=javascript-1.4.3";
+---
+
+<div class="container">
+  <img
+    class="step-number"
+    src={numberImage}
+    alt="Number 2 important website criteria."
+    title="Easy To Update and Manage"
+  />
+  <h1 class="headline">
+    <span class="headline-group">
+      <span>Effortless To</span>
+      <span>Upate And</span>
+    </span>
+    <span>Take Care Of</span>
+  </h1>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    @include baseColGrid;
+    gap: 20px;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: min-content 1fr;
+      column-gap: 12px;
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 880px;
+    }
+  }
+
+  .step-number {
+    width: 80px;
+    transform: translate(80px, 0);
+
+    @include aboveIphone11 {
+      transform: translate(100px, 0);
+    }
+
+    @include aboveMobile {
+      width: 100px;
+      transform: translate(0, -20px);
+    }
+  }
+
+  .headline {
+    padding: 0 12px;
+    @include baseColGrid;
+    gap: 6px;
+    justify-items: end;
+    width: 100%;
+  }
+
+  .headline-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    width: fit-content;
+
+    @include aboveMobile {
+      flex-direction: row;
+      gap: 12px;
+    }
+  }
+
+  span {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+
+    @include aboveTablet {
+      font-size: 6rem;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+interface Props {
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  slug: string;
+}
+
+const { imageUrl, altTag, titleTag, slug } = Astro.props;
+---
+
+<a class="container" href={slug} title={titleTag}>
+  <img class="post-image" src={imageUrl} alt={altTag} title={titleTag} />
+  <div class="background"></div>
+</a>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .post-image {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    border-radius: 20px;
+    width: 100%;
+    transition: transform, box-shadow, 300ms ease-in-out;
+    z-index: 1;
+
+    &:hover {
+      box-shadow: 2px 4px 8px 1px hsla(0, 0%, 0%, 0.4);
+      transform: translate(-8px, -8px);
+    }
+  }
+
+  .background {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background-color: var(--accent-purple);
+    border-radius: 20px;
+  }
+</style>

@@ -18,5 +18,6 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "types": ["astro/client"]
-  }
+  },
+  "exclude": ["functions/**/*"]
 }

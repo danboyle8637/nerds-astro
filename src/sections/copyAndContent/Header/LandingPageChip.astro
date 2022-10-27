@@ -1,0 +1,47 @@
+---
+
+---
+
+<div>
+  <p>Landing Page Copy</p>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  div {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    border-radius: 12px;
+    transform: skew(12deg, -8deg);
+    z-index: 1;
+
+    @include aboveMobile {
+      right: 12px;
+    }
+
+    @include aboveTablet {
+      bottom: 60px;
+      right: -40px;
+    }
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+    opacity: 0.8;
+    
+    @include aboveMobile {
+      font-size: 2.4rem;
+    };
+
+    @include aboveTablet {
+      font-size: 2.7rem;
+    }
+  }
+</style>

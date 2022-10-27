@@ -1,0 +1,46 @@
+---
+import Logo from "./Logo.astro";
+import HeaderNav from "./HeaderNav.astro";
+---
+
+<div class="container">
+  <div class="nav-container">
+    <a class="logo-container" href="/" title="Nerds Who Sell">
+      <Logo />
+    </a>
+    <HeaderNav />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  
+  .container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 500;
+
+    @include aboveIpadPro {
+      background-color: hsla(238, 36%, 8%, 0.4);
+    }
+  }
+
+  .nav-container {
+    padding: 8px 12px 8px 12px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    justify-items: end;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+  }
+
+  .logo-container {
+    line-height: 1;
+  }
+</style>

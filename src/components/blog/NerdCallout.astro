@@ -1,0 +1,122 @@
+---
+const danImage = "https://cdn.sanity.io/images/05wlmifi/production/a48a0439728e6a0acd1ff5501e759a71f964cddd-300x300.png"
+
+const kindalImage = "https://cdn.sanity.io/images/05wlmifi/production/328ec8f40ba78453eb8f1fb7c57d6430a7c5b54c-300x300.png"
+---
+
+<div class="nerd-callout-container">
+  <img class="nerd-callout-image" src={danImage} alt="dan">
+  <div class="nerd-callout-card-container">
+    <div class="callout">
+      <p class="callout-nerd">Nerd</p>
+      <p class="callout-word">Callout</p>
+    </div>
+    <h4 class="callout-headline">This Is The Callout Headline</h4>
+    <div class="content-container">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+
+  .nerd-callout-container {
+    position: relative;
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    isolation: isolate;
+
+    @include aboveMobile {
+      width: 600px;
+    }
+
+    @include aboveTablet {
+      width: 700px;
+    }
+  }
+
+  .nerd-callout-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    transform: translate(-20px, 0);
+    z-index: 1;
+
+    @include aboveMobile {
+      width: 180px;
+    }
+
+    @include aboveTablet {
+      transform: translate(-20px, -20px);
+    }
+  }
+
+  .nerd-callout-card-container {
+    position: relative;
+    padding: 140px 12px 40px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 20px;
+    background-color: var(--footer-background);
+    border-radius: 20px;
+    width: 100%;
+    isolation: isolate;
+    overflow: hidden;
+
+    @include aboveTablet {
+      padding: 40px 20px 40px 180px;
+    }
+
+    .callout {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-right: 6px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: min-content;
+      gap: 0;
+      justify-items: end;
+      width: 100%;
+      z-index: -1;
+      
+      @include aboveTablet {
+        width: max-content;
+        transform: translate(-50px, 160px) rotate(-90deg);
+      }
+  }
+
+  .callout-nerd {
+      font-size: 7rem;
+      color: #141526;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .callout-headline {
+      font-size: 3rem;
+      color: var(--accent-purple);
+
+      @include aboveMobile {
+        font-size: 3.6rem;
+      }
+
+      @include aboveTablet {
+        
+      }
+    }
+
+    .callout-word {
+      font-size: 6rem;
+      font-weight: 800;
+      color: #141526;
+      text-transform: uppercase;
+      line-height: 1;
+    }  
+  }
+</style>

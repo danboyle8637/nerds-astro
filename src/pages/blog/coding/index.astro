@@ -1,0 +1,59 @@
+---
+import client from '@sanity/client'
+import imageUrlBuilder from '@sanity/image-url'
+import BaseLayout from '../../../layouts/Layout.astro'
+import Footer from '../../../sections/Footer/index.astro'
+import BlogCategoryHeader from '../../../sections/blog/BlogCategoryHeader.astro'
+import BlogCard from '../../../components/cards/BlogCard/index.astro'
+import type { SanityBlogCardQuery, SanityImage } from '../../../types/blog'
+
+const codingHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/coding-blog-header__xEBlq-C9.png?ik-sdk-version=javascript-1.4.3"
+
+const year = new Date().getFullYear()
+const month = new Date().getMonth()
+
+const data = await Astro.glob("../../../../posts/*.mdx")
+
+/*
+<div class="card-container">
+    {cardData.map(card => {
+      const { cardImage, altTag, titleTag, description, tags } = card
+
+      return (
+        <BlogCard 
+          imageUrl={urlFor(cardImage).width(800).auto("format").url()}
+          altTag={altTag}
+          titleTag={titleTag}
+          cardTeaser={description}
+          category="design"
+          tags={tags}
+          buttonLabel="Read Post"
+          slug={}
+        />
+      )
+    })}
+  </div>
+*/
+---
+
+<BaseLayout title="Coding Blog">
+  <BlogCategoryHeader headline="Coding Blog">
+    <img class="coding-image" src={codingHeader} alt="Coding blog header" title="Coding Blog" width="900px" height="205px" />
+  </BlogCategoryHeader>
+  
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .coding-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-container {
+  
+  }
+</style>
+

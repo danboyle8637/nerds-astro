@@ -1,0 +1,47 @@
+---
+
+---
+
+<div>
+  <p>Product Description Copy</p>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  div {
+    position: absolute;
+    bottom: 90px;
+    left: 14px;
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    border-radius: 12px;
+    transform: skew(12deg, -8deg);
+    z-index: 1;
+
+    @include aboveMobile {
+      bottom: 60px;
+      left: 40px;
+    }
+
+    @include aboveTablet {
+      bottom: 90px;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+    opacity: 0.6;
+
+    @include aboveMobile {
+      font-size: 1.5rem;
+    }
+
+    @include aboveTablet {
+      font-size: 2rem;
+    }
+  }
+</style>

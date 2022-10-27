@@ -1,0 +1,104 @@
+---
+import BackgroundImage from "./BackgroundImage.astro";
+import CallToAction from "./CallToAction.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+---
+
+<div class="container">
+  <div class="content-container">
+    <h1>Get More</h1>
+    <CallToAction />
+    <BackgroundImage />
+    <div class="galaxy">
+      <Galaxy client:idle color="teal" width={240} height={240} blur={200} />
+    </div>
+  </div>
+  <BottomLeftAccent backgroundType="header" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: #161e2d;
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+
+    @include aboveMobile {
+      height: 600px;
+    }
+
+    @include aboveTablet {
+      height: 800px;
+    }
+
+    @include aboveIpadPro {
+      height: 700px;
+    }
+  }
+
+  .content-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    font-size: 5rem;
+    color: var(--font-color-light);
+    text-transform: uppercase;
+    width: fit-content;
+    transform: translate(20px, 120px);
+    z-index: 1;
+
+    @include aboveIphone11 {
+      font-size: 6rem;
+    }
+
+    @include aboveMobile {
+      justify-self: center;
+      font-size: 6rem;
+      transform: translate(-80px, 60px);
+    }
+
+    @include aboveTablet {
+      font-size: 7rem;
+      transform: translate(-60px, 80px);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(-60px, 100px);
+    }
+
+    @include aboveLaptop {
+      transform: translate(-60px, 80px);
+    }
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(90px, -50%);
+    z-index: -1;
+
+    @include aboveMobile {
+      transform: translate(100px, -40%);
+    }
+
+    @include aboveIpadPro {
+      transform: translate(200px, -80px);
+    }
+  }
+</style>

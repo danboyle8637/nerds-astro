@@ -1,0 +1,90 @@
+---
+import CenterAccent from "../../../components/accents/CenterAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+
+const fwwSpeedScore =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/fww-google-speed-scores_M_1Fq7x_x.png?ik-sdk-version=javascript-1.4.3";
+
+const ttfSpeedScore =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/ttf-google-speed-scores_nXl7pxcC4.png?ik-sdk-version=javascript-1.4.3";
+---
+
+<div class="container">
+  <img
+    class="fww-scores"
+    src={fwwSpeedScore}
+    alt="Fit Women's Weekly on an iphone mockup"
+    title="Fit Women's Weekly Google Site Speed Scores"
+  />
+  <div class="image-container">
+    <img
+      class="ttf-scores"
+      src={ttfSpeedScore}
+      alt="This Time Fitness on an iphone mockup"
+      title="This Time Fitness Google Site Speed Scores"
+    />
+    <div class="galaxy">
+      <Galaxy client:idle color="purple" width={200} height={200} blur={160} />
+    </div>
+  </div>
+  <CenterAccent backgroundType="body" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    @include baseColGrid;
+    gap: 60px;
+    justify-items: center;
+    width: 100%;
+    isolation: isolate;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: visible;
+    }
+
+    @include aboveTablet {
+      width: 1000px;
+    }
+  }
+
+  .image-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+  }
+
+  .fww-scores {
+    width: 100%;
+    transform: translateX(-40px);
+
+    @include aboveMobile {
+      transform: translate(40px, -60px);
+    }
+  }
+
+  .ttf-scores {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    transform: translateX(40px);
+
+    @include aboveMobile {
+      transform: translate(-40px, 60px);
+    }
+  }
+
+  .galaxy {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    justify-self: end;
+    align-self: center;
+    z-index: -1;
+  }
+</style>

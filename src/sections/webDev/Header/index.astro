@@ -1,0 +1,92 @@
+---
+import Headline from "./Headline.astro";
+import { AppIcon } from "../../../components/solid/AppIcon";
+import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
+import BottomLeftAccent from "../../../components/accents/BottomLeftAccent.astro";
+import { Galaxy } from "../../../components/solid/galaxies/Galaxy";
+---
+
+<div class="container">
+  <div class="content-container">
+    <div class="three-d-container">
+      <Headline />
+      <div class="model">
+        <AppIcon client:idle />
+      </div>
+    </div>
+    <InternalNavButton type="purple" title="Free Nerd Chat" slug="/" width={290}
+      >Schedule a Nerd Chat</InternalNavButton
+    >
+  </div>
+  <div class="galaxy">
+    <Galaxy
+      client:idle
+      color="dark-purple"
+      width={220}
+      height={220}
+      blur={240}
+    />
+  </div>
+  <BottomLeftAccent backgroundType="header" />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color-dark);
+    width: 100%;
+    box-shadow: 0 4px 18px 1px hsla(0, 0%, 0%, 0.4);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .content-container {
+    padding: 80px 0 80px 0;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+    overflow: hidden;
+
+    @include aboveMobile {
+      padding: 80px 0 80px 34px;
+      gap: 60px;
+    }
+
+    @include aboveIpadPro {
+      padding: 120px 0 80px 0;
+    }
+  }
+
+  .three-d-container {
+    position: relative;
+    @include baseColGrid;
+    gap: 40px;
+    justify-items: center;
+    width: 100%;
+    max-width: 1000px;
+
+    @include aboveMobile {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+    }
+  }
+
+  .model {
+    width: 300px;
+  }
+
+  .galaxy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(40px, 0);
+    z-index: -1;
+  }
+</style>

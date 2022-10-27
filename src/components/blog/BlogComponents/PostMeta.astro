@@ -1,0 +1,142 @@
+---
+import Breadcrumbs from "../../navigation/Breadcrumbs/Breadcrumb.astro";
+import type { PostTag, Pathname } from "../../../types/blog";
+
+interface Props {
+  category: string;
+  tags: PostTag[];
+  paths: Pathname[];
+}
+
+const { category, tags, paths } = Astro.props;
+let commaCount = 0;
+---
+
+<Breadcrumbs paths={paths} />
+<div class="container">
+  <div class="tags">
+    <p>
+      <span class="const">const</span>
+      <span class="label">category</span>
+      <span class="operator">=</span>
+      <span class="string">"{category}"</span>
+    </p>
+  </div>
+  <div class="tags">
+    <p>
+      <span class="const">const</span>
+      <span class="label">tags</span>
+      <span class="operator">=</span>
+    </p>
+    <div class="tags-container">
+      <p>
+        <span class="array">[</span>
+      </p>
+      {
+        tags.map((tag) => {
+          commaCount++;
+          return (
+            <div class="tag-container">
+              <a href="#" title={tag.tag}>
+                <span class="string">"</span>
+                {tag.tag}
+                <span class="string">"</span>
+              </a>
+              <p class="label">{commaCount === tags.length ? "" : ","}</p>
+            </div>
+          );
+        })
+      }
+      <p>
+        <span class="array">]</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .container {
+    padding: 8px 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 12px;
+    justify-items: start;
+    background-color: #292c34;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px hsla(0, 0%, 0%, 0.4);
+    width: max-content;
+  }
+
+  .tags {
+    display: flex;
+    width: max-content;
+  }
+
+  p {
+    display: flex;
+    gap: 8px;
+    font-size: 1.3rem;
+
+    @include aboveIphone11 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .const {
+    color: #bc7ad9;
+  }
+
+  .label {
+    color: #acb2be;
+  }
+
+  .operator {
+    color: #6bb4c1;
+  }
+
+  .string {
+    color: #a0c27e;
+  }
+
+  .array {
+    color: #cf7074;
+  }
+
+  .tags-container {
+    padding: 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include aboveMobile {
+      flex-direction: row;
+    }
+  }
+
+  .tag-container {
+    padding-left: 18px;
+    display: flex;
+
+    @include aboveMobile {
+      padding-left: 0;
+    }
+  }
+
+  a {
+    font-size: 1.3rem;
+    color: #a0c27e;
+    text-decoration: none;
+    transition: color 300ms ease-in-out;
+
+    &:hover {
+      color: #cf7074;
+    }
+
+    @include aboveIphone11 {
+      font-size: 1.5rem;
+    }
+  }
+</style>

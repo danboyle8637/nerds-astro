@@ -1,0 +1,100 @@
+---
+import Header from "./Header/index.astro";
+import CopywritingCard from "../../components/cards/CopywritingCard/index.astro";
+import type { CopyContentService } from "../../types/components";
+
+interface Props {
+  data: CopyContentService[];
+}
+
+const { data } = Astro.props;
+---
+
+<div class="view-container">
+  <Header />
+  <div class="container">
+    <div class="cards-container">
+      {
+        data.map((card) => {
+          const {
+            id,
+            imageUrl,
+            altTag,
+            titleTag,
+            headline,
+            description,
+            buttonLabel,
+            buttonTitle,
+            slug,
+          } = card;
+
+          return (
+            <CopywritingCard
+              id={id}
+              imageUrl={imageUrl}
+              altTag={altTag}
+              titleTag={titleTag}
+              headline={headline}
+              description={description}
+              buttonLabel={buttonLabel}
+              buttonTitle={buttonTitle}
+              slug={slug}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/sizes.scss";
+  @import "../../styles/layout.scss";
+
+  .view-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .container {
+    padding: 300px 12px 80px 12px;
+    @include baseColGrid;
+    gap: 20px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveTablet {
+      padding: 300px 0px 120px 0px;
+    }
+
+    @include aboveIpadPro {
+      width: fit-content;
+    }
+  }
+
+  .cards-container {
+    @include baseColGrid;
+    gap: 260px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      row-gap: 260px;
+    }
+
+    @include aboveTablet {
+      column-gap: 40px;
+      width: fit-content;
+    }
+
+    @include aboveIpadPro {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 20px;
+      row-gap: 260px;
+    }
+  }
+</style>

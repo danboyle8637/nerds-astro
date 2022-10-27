@@ -1,0 +1,46 @@
+---
+
+---
+
+<div>
+  <p>Blog Posts</p>
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  div {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    width: fit-content;
+    padding: 8px 20px;
+    background-color: hsla(0, 0%, 0%, 0.4);
+    border-radius: 12px;
+    transform: skew(12deg, -8deg);
+    z-index: 1;
+
+    @include aboveMobile {
+      right: 20px;
+    }
+
+    @include aboveTablet {
+      right: -30px;
+    }
+  }
+
+  p {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--font-color-light);
+    opacity: 0.6;
+
+    @include aboveMobile {
+      font-size: 1.6rem;
+    }
+
+    @include aboveTablet {
+      font-size: 1.9rem;
+    }
+  }
+</style>

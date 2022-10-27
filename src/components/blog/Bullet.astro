@@ -1,0 +1,49 @@
+---
+interface Props {
+  type: "blue" | "purple" | "important"
+}
+
+const { type } = Astro.props
+
+const blueBullet = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-focus_UiuHs8It6.png?ik-sdk-version=javascript-1.4.3"
+
+const purpleBullet = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/radio-not-active_khmUjQ0M0.png?ik-sdk-version=javascript-1.4.3"
+
+const importantBullet = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/exclaimation-bullet_6hT7S6T9g.png?ik-sdk-version=javascript-1.4.3"
+
+const bulletImage = type === "blue" ? blueBullet : type === "purple" ? purpleBullet : importantBullet
+
+const bulletWidth = type === "important" ? "50px" : "40px"
+const bulletTranslateY = type === "important" ? "translateY(-12px)" : "translateY(-2px)"
+---
+
+<li class="base-bullet">
+  <img class="block" src={bulletImage} alt="Bullet point" title="Bullet Point">
+  <slot />
+</li>
+
+<style lang="scss" define:vars={{ bulletWidth, bulletTranslateY }}>
+  @import "../../styles/sizes.scss";
+
+  .base-bullet {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 12px;
+    justify-items: start;
+    align-items: start;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--font-color-light);
+    width: 100%;
+
+    @include aboveMobile {
+      font-size: 2.4rem;
+    }
+  }
+  
+  .block {
+    width: var(--bulletWidth);
+    transform: var(--bulletTranslateY);
+  }
+</style>
