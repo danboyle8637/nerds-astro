@@ -1,4 +1,4 @@
-import { createResource } from "solid-js";
+import { createResource, createEffect } from "solid-js";
 import type { Component } from "solid-js";
 
 import { BaseInput } from "../inputs/BaseTextInput";
@@ -21,6 +21,10 @@ export const NewsletterForm: Component = () => {
 
     console.log("Submit form and safe email address");
   };
+
+  createEffect(() => {
+    // console.log(emailAddress().valid ? "Email is good" : "Email is bad");
+  });
 
   return (
     <form class={styles.form_container} onSubmit={handleFormSubmit}>

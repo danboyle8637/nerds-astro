@@ -1,45 +1,38 @@
 ---
-import client from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
-import PostMeta from './PostMeta.astro'
-import TopRightAccent from '../../accents/TopRightAccent.astro'
-import type { SanityImage, PostTag, Pathname } from '../../../types/blog'
+import client from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+import PostMeta from "./PostMeta.astro";
+import TopRightAccent from "../../accents/TopRightAccent.astro";
+import type { SanityImage, PostTag, Pathname } from "../../../types/blog";
 
 interface Props {
-  imageUrl: SanityImage
-  altTag: string
-  titleTag: string
-  headline: string
-  category: string
-  tags: PostTag[] 
-  paths: Pathname[]
+  imageUrl: SanityImage;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  category: string;
+  tags: PostTag[];
+  paths: Pathname[];
 }
 
 export const sanity = client({
   projectId: import.meta.env.SANITY_PROJECT_ID,
   dataset: import.meta.env.SANITY_BASE,
-  apiVersion: '2021-03-25',
+  apiVersion: "2021-03-25",
   token: import.meta.env.SANITY_TOKEN,
   useCdn: true,
-})
+});
 
-const {
-  imageUrl,
-  altTag,
-  titleTag,
-  headline,
-  category,
-  tags,
-  paths,
-} = Astro.props
+const { imageUrl, altTag, titleTag, headline, category, tags, paths } =
+  Astro.props;
 
-const builder = imageUrlBuilder(sanity)
+const builder = imageUrlBuilder(sanity);
 
 function urlFor(source: SanityImage) {
-  return builder.image(source)
+  return builder.image(source);
 }
 
-const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url()
+const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url();
 ---
 
 <div class="container">
@@ -50,7 +43,7 @@ const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url()
     <TopRightAccent backgroundType="footer" />
   </div>
   <PostMeta category={category} tags={tags} paths={paths} />
-  <h1>{headline}</h1>
+  <h1 class="headline">{headline}</h1>
 </div>
 
 <style lang="scss">
@@ -84,6 +77,10 @@ const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url()
   .post-image {
     width: 100%;
 
+    & img {
+      width: 100%;
+    }
+
     @include aboveMobile {
       width: 600px;
     }
@@ -93,7 +90,7 @@ const postHeaderImage = urlFor(imageUrl).width(800).auto("format").url()
     }
   }
 
-  h1 {
+  .headline {
     padding: 0 12px;
     font-size: 4.4rem;
 

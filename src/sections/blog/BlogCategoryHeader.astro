@@ -1,4 +1,6 @@
 ---
+import { Galaxy } from "../../components/solid/galaxies/Galaxy";
+
 interface Props {
   headline: string;
 }
@@ -12,8 +14,12 @@ const { headline } = Astro.props;
     <slot />
     <div class="shadow-1"></div>
   </div>
-  <div class="galaxy-pink"></div>
-  <div class="galaxy-purple"></div>
+  <div class="galaxy-pink">
+    <Galaxy client:idle color="pink" width={240} height={240} blur={200} />
+  </div>
+  <div class="galaxy-purple">
+    <Galaxy client:idle color="purple" width={240} height={240} blur={200} />
+  </div>
 </div>
 
 <style lang="scss">
@@ -77,39 +83,15 @@ const { headline } = Astro.props;
     position: absolute;
     left: 0;
     bottom: 0;
-    background-color: var(--accent-pink);
-    border-radius: 50%;
-    width: 180px;
-    height: 180px;
-    filter: blur(200px);
     transform: translate(-200px, 0);
     z-index: 1;
-
-    @include aboveMobile {
-      transform: translate(-140px, -40%);
-    }
-
-    @include aboveIpadPro {
-      transform: translate(0, 80px);
-    }
   }
 
   .galaxy-purple {
-    @include aboveMobile {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      background-color: var(--accent-purple);
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
-      filter: blur(200px);
-      transform: translate(200px, 0);
-      z-index: 1;
-    }
-
-    @include aboveIpadPro {
-      transform: translate(0, 80px);
-    }
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(200px, 0);
+    z-index: 1;
   }
 </style>

@@ -1,7 +1,7 @@
 import { createEffect, createMemo } from "solid-js";
 import type { Component } from "solid-js";
 
-import { checkIconOn, checkIconOff } from "../../../animations/forms";
+import { checkIconOn } from "../../../animations/forms";
 import type { SVGProps } from "../../../types/components";
 
 interface CheckIconProps extends SVGProps {
@@ -15,11 +15,8 @@ export const CheckIcon: Component<CheckIconProps> = (props) => {
 
   createEffect(() => {
     if (props.isActive && checkRef) {
-      checkIconOn(checkRef);
-    }
-
-    if (!props.isActive && checkRef) {
-      checkIconOff(checkRef);
+      console.log("Show the check");
+      checkIconOn(checkRef, false);
     }
   });
 
