@@ -11,20 +11,20 @@
   },
   "devDependencies": {
     "@astrojs/cloudflare": "^3.1.0",
-    "astro": "^1.5.2",
+    "astro": "^1.5.3",
     "sass": "^1.55.0",
     "wrangler": "^2.1.13"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.11.1",
+    "@astrojs/mdx": "^0.11.5",
     "@astrojs/solid-js": "^1.2.1",
-    "@cloudflare/workers-types": "^3.17.0",
+    "@cloudflare/workers-types": "^3.18.0",
     "@portabletext/to-html": "^1.0.4",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@splinetool/runtime": "^0.9.103",
     "motion": "^10.14.1",
-    "solid-js": "^1.5.1",
+    "solid-js": "^1.6.0",
     "solid-transition-group": "^0.0.11"
   }
 }

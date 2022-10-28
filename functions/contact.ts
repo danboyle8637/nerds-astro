@@ -1,4 +1,4 @@
-export async function onRequestPost(context: any): Promise<Response> {
+export async function onRequest(context: any) {
   // Contents of context object
   const {
     request, // same as existing Worker API
@@ -9,5 +9,5 @@ export async function onRequestPost(context: any): Promise<Response> {
     data, // arbitrary space for passing data between middlewares
   } = context;
 
-  return new Response("Hello, world!");
+  return new Response("Hello, world from Nerds function!");
 }

@@ -1,34 +1,31 @@
 ---
-import BlankDay from './days/BlankDay.astro'
-import NormalDay from './days/NormalDay.astro'
-import {  
+import BlankDay from "./days/BlankDay.astro";
+import NormalDay from "./days/NormalDay.astro";
+import {
   getCurrentDateElements,
   getActiveMonthString,
   getTotalDaysArrayInGivenMonth,
   getBlankDaysAtBeginningOfMonth,
-  getFirstDayOfWeekOfMonth, 
-} from '../../utils/calendarFunctions'
+  getFirstDayOfWeekOfMonth,
+} from "../../utils/calendarFunctions";
 
 interface Props {
-  timelineInDays: number
+  timelineInDays: number;
 }
 
-const { timelineInDays } = Astro.props
+const { timelineInDays } = Astro.props;
 
-const [currentMonth, currentDay, currentYear] = getCurrentDateElements()
-const currentMonthString = getActiveMonthString(currentMonth);
+const [currentMonth, currentDay, currentYear] = getCurrentDateElements();
+// const currentMonthString = getActiveMonthString(currentMonth);
 const firstDay = getFirstDayOfWeekOfMonth(currentMonth, currentYear);
 const blankDays = getBlankDaysAtBeginningOfMonth(firstDay);
-
 const daysArray = getTotalDaysArrayInGivenMonth(currentMonth);
 ---
 
 <div class="container">
   <div class="days-container">
-    <BlankDay 
-      daysArray={blankDays}
-    />
-    <NormalDay 
+    <BlankDay daysArray={blankDays} />
+    <NormalDay
       type="date-picker"
       daysArray={daysArray}
       today={currentDay}
@@ -63,5 +60,5 @@ const daysArray = getTotalDaysArrayInGivenMonth(currentMonth);
     @include aboveMobile {
       gap: 12px;
     }
-   }
+  }
 </style>
