@@ -7,6 +7,7 @@ export interface CopyServiceFrontmatter {
   imageUrl: string;
   altTag: string;
   titleTag: string;
+  socialImage: string;
   headline: string;
   description: string;
   buttonLabel: string;

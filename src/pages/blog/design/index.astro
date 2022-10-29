@@ -1,22 +1,27 @@
 ---
-import client from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
-import BaseLayout from '../../../layouts/Layout.astro'
-import BlogCategoryHeader from '../../../sections/blog/BlogCategoryHeader.astro'
-import Breadcrumbs from '../../../components/navigation/Breadcrumbs/Breadcrumb.astro'
-import BlogCard from '../../../components/cards/BlogCard/index.astro'
-import Footer from '../../../sections/Footer/index.astro'
-import type { SanityBlogCardQuery, SanityImage, Pathname } from '../../../types/blog'
+import client from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+import BaseLayout from "../../../layouts/Layout.astro";
+import BlogCategoryHeader from "../../../sections/blog/BlogCategoryHeader.astro";
+import Breadcrumbs from "../../../components/navigation/Breadcrumbs/Breadcrumb.astro";
+import BlogCard from "../../../components/cards/BlogCard/index.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import type {
+  SanityBlogCardQuery,
+  SanityImage,
+  Pathname,
+} from "../../../types/blog";
 
-const designHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/design-blog-header_nfIK1NS2u.png?ik-sdk-version=javascript-1.4.3"
+const designHeader =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/design-blog-header_nfIK1NS2u.png?ik-sdk-version=javascript-1.4.3";
 
 export const sanity = client({
   projectId: import.meta.env.SANITY_PROJECT_ID,
   dataset: import.meta.env.SANITY_BASE,
-  apiVersion: '2021-03-25',
+  apiVersion: "2021-03-25",
   token: import.meta.env.SANITY_TOKEN,
   useCdn: true,
-})
+});
 
 const query = `
   {
@@ -29,48 +34,63 @@ const query = `
       "slug": slug.current,
     }
   }
-`
+`;
 
-const blogCardData: SanityBlogCardQuery = await sanity.fetch(query)
-const { cardData } = blogCardData
+const blogCardData: SanityBlogCardQuery = await sanity.fetch(query);
+const { cardData } = blogCardData;
 
-const builder = imageUrlBuilder(sanity)
+const builder = imageUrlBuilder(sanity);
 
 function urlFor(source: SanityImage) {
-  return builder.image(source)
+  return builder.image(source);
 }
 
 const breadcrumbs: Pathname[] = [
   {
     base: ["blog"],
     slug: "design",
-  }
-]
+  },
+];
 ---
 
-<BaseLayout title="Design Blog">
+<BaseLayout
+  title="Nerds Website and App Design Blog"
+  description="We are not 'professional' designers. Whatever that is. But we bring a unique and fun design to everything we build. Here's how we do it."
+  socialTitle="Nerds Website and App Design Blog"
+  socialDescription="We are not 'professional' designers. Whatever that is. But we bring a unique and fun design to everything we build. Here's how we do it."
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerds-blog-design-social-1200x630_z7BOVCpFH.jpg?ik-sdk-version=javascript-1.4.3"
+>
   <BlogCategoryHeader headline="Coding Blog">
-    <img class="design-image" src={designHeader} alt="Design blog header" title="Design Blog" width="900px" height="205px" />
+    <img
+      class="design-image"
+      src={designHeader}
+      alt="Design blog header"
+      title="Design Blog"
+      width="900px"
+      height="205px"
+    />
   </BlogCategoryHeader>
   <div class="container">
     <Breadcrumbs paths={breadcrumbs} />
     <div class="card-container">
-      {cardData.map(card => {
-        const { cardImage, altTag, titleTag, description, tags, slug } = card
-  
-        return (
-          <BlogCard 
-            imageUrl={urlFor(cardImage).width(400).auto("format").url()}
-            altTag={altTag}
-            titleTag={titleTag}
-            cardTeaser={description}
-            category="design"
-            tags={tags}
-            buttonLabel="Read Post"
-            slug={`/blog/design/${slug}`}
-          />
-        )
-      })}
+      {
+        cardData.map((card) => {
+          const { cardImage, altTag, titleTag, description, tags, slug } = card;
+
+          return (
+            <BlogCard
+              imageUrl={urlFor(cardImage).width(400).auto("format").url()}
+              altTag={altTag}
+              titleTag={titleTag}
+              cardTeaser={description}
+              category="design"
+              tags={tags}
+              buttonLabel="Read Post"
+              slug={`/blog/design/${slug}`}
+            />
+          );
+        })
+      }
     </div>
   </div>
   <Footer />
@@ -116,4 +136,3 @@ const breadcrumbs: Pathname[] = [
     }
   }
 </style>
-

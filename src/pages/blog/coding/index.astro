@@ -1,18 +1,19 @@
 ---
-import client from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
-import BaseLayout from '../../../layouts/Layout.astro'
-import Footer from '../../../sections/Footer/index.astro'
-import BlogCategoryHeader from '../../../sections/blog/BlogCategoryHeader.astro'
-import BlogCard from '../../../components/cards/BlogCard/index.astro'
-import type { SanityBlogCardQuery, SanityImage } from '../../../types/blog'
+import client from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+import BaseLayout from "../../../layouts/Layout.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import BlogCategoryHeader from "../../../sections/blog/BlogCategoryHeader.astro";
+import BlogCard from "../../../components/cards/BlogCard/index.astro";
+import type { SanityBlogCardQuery, SanityImage } from "../../../types/blog";
 
-const codingHeader = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/coding-blog-header__xEBlq-C9.png?ik-sdk-version=javascript-1.4.3"
+const codingHeader =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/coding-blog-header__xEBlq-C9.png?ik-sdk-version=javascript-1.4.3";
 
-const year = new Date().getFullYear()
-const month = new Date().getMonth()
+const year = new Date().getFullYear();
+const month = new Date().getMonth();
 
-const data = await Astro.glob("../../../../posts/*.mdx")
+const data = await Astro.glob("../../../../posts/*.mdx");
 
 /*
 <div class="card-container">
@@ -36,11 +37,24 @@ const data = await Astro.glob("../../../../posts/*.mdx")
 */
 ---
 
-<BaseLayout title="Coding Blog">
+<BaseLayout
+  title="Nerds Coding Blog"
+  description="Mainly web developers but we love some Rust and SQL and learning the right tools to build solutions people will use."
+  socialTitle="Nerds Coding Blog"
+  socialDescription="Mainly web developers but we love some Rust and SQL and learning the right tools to build solutions people will use."
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerds-blog-coding-social-1200x630_rcZNo73iO.jpg?ik-sdk-version=javascript-1.4.3"
+>
   <BlogCategoryHeader headline="Coding Blog">
-    <img class="coding-image" src={codingHeader} alt="Coding blog header" title="Coding Blog" width="900px" height="205px" />
+    <img
+      class="coding-image"
+      src={codingHeader}
+      alt="Coding blog header"
+      title="Coding Blog"
+      width="900px"
+      height="205px"
+    />
   </BlogCategoryHeader>
-  
+
   <Footer />
 </BaseLayout>
 
@@ -53,7 +67,5 @@ const data = await Astro.glob("../../../../posts/*.mdx")
   }
 
   .card-container {
-  
   }
 </style>
-

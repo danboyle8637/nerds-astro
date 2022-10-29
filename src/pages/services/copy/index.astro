@@ -22,7 +22,7 @@ const copyServiceData = data
 
     return {
       id: id,
-      slug: `copy/${slug}`,
+      slug: `/copy/${slug}`,
       imageUrl: imageUrl,
       altTag: altTag,
       titleTag: titleTag,
@@ -41,7 +41,13 @@ const copyServiceData = data
   });
 ---
 
-<BaseLayout title="Copywriting and Content for Your Business">
+<BaseLayout
+  title="Nerds Copywriting and Content for Your Business"
+  description="Words sell whether in word form or in script form. What you say and how you say it sell. Nerds will help you sell more with persuasive words!"
+  socialTitle="Nerds Copywriting and Content for Your Business"
+  socialDescription="Words sell whether in word form or in script form. What you say and how you say it sell. Nerds will help you sell more with persuasive words!"
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerds-main-copy-social-1200x630_QVST_ZaKn.jpg?ik-sdk-version=javascript-1.4.3"
+>
   <CopyServices data={copyServiceData} />
   <Footer />
 </BaseLayout>

@@ -1,37 +1,42 @@
 ---
-  import client from '@sanity/client'
-  import BaseLayout from '../../../layouts/Layout.astro'
-  import PostHeader from '../../../components/blog/BlogComponents/PostHeader.astro'
-  import Footer from '../../../sections/Footer/index.astro'
-  import BlockContent from '../../../components/blog/BlockContent.astro'
-  import type { HeadMeta, PostPage, SanityBlogPost, Pathname } from '../../../types/blog'
-  import "../../../styles/blog.scss"
+import client from "@sanity/client";
+import BaseLayout from "../../../layouts/Layout.astro";
+import PostHeader from "../../../components/blog/BlogComponents/PostHeader.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import BlockContent from "../../../components/blog/BlockContent.astro";
+import type {
+  HeadMeta,
+  PostPage,
+  SanityBlogPost,
+  Pathname,
+} from "../../../types/blog";
+import "../../../styles/blog.scss";
 
-  interface Route {
-    params: {
-      design: string
-    },
-    props: {
-      headMeta: HeadMeta,
-      postPage: PostPage,
-      blockContent: []
-    }
-  }
+interface Route {
+  params: {
+    design: string;
+  };
+  props: {
+    headMeta: HeadMeta;
+    postPage: PostPage;
+    blockContent: [];
+  };
+}
 
-  interface Params {
-    [index: string]: string
-  }
+interface Params {
+  [index: string]: string;
+}
 
-  export async function getStaticPaths(): Promise<Route[]> {
-    const sanity = client({
-      projectId: import.meta.env.SANITY_PROJECT_ID,
-      dataset: import.meta.env.SANITY_BASE,
-      apiVersion: '2021-03-25',
-      token: import.meta.env.SANITY_TOKEN,
-      useCdn: true,
-    })
+export async function getStaticPaths(): Promise<Route[]> {
+  const sanity = client({
+    projectId: import.meta.env.SANITY_PROJECT_ID,
+    dataset: import.meta.env.SANITY_BASE,
+    apiVersion: "2021-03-25",
+    token: import.meta.env.SANITY_TOKEN,
+    useCdn: true,
+  });
 
-    const query = `
+  const query = `
       {
         "blogPostData": *[_type == 'blogPost' && "design" in category.category] {
           "seoTitle": seoMeta.title,
@@ -69,72 +74,78 @@
           }
         }
       }
-    `
+    `;
 
-    const data = await sanity.fetch(query)
-    const { blogPostData } = data
-    
-    const routes = blogPostData.map((post: SanityBlogPost): Route => {
-      const slug = post.slug
+  const data = await sanity.fetch(query);
+  const { blogPostData } = data;
 
-      return ({
-        params: { design: slug },
-        props: {
-          headMeta: {
-            seoTitle: post.seoTitle,
-            seoDescription: post.seoDescription,
-            socialHeadline: post.socialHeadline,
-            socialDescription: post.socialDescription,
-            socialSlug: post.socialSlug,
-            socialImage: post.socialImage,
-          },
-          postPage: {
-            headerImage: post.headerImage,
-            altTag: post.altTag,
-            titleTag: post.titleTag,
-            headline: post.headline,
-            category: post.category,
-            tags: post.tags,
-            author: post.author,
-          },
-          blockContent: post.postBody,
-        }
-      })
-    })
+  const routes = blogPostData.map((post: SanityBlogPost): Route => {
+    const slug = post.slug;
 
-    return routes
-  }
+    return {
+      params: { design: slug },
+      props: {
+        headMeta: {
+          seoTitle: post.seoTitle,
+          seoDescription: post.seoDescription,
+          socialHeadline: post.socialHeadline,
+          socialDescription: post.socialDescription,
+          socialSlug: post.socialSlug,
+          socialImage: post.socialImage,
+        },
+        postPage: {
+          headerImage: post.headerImage,
+          altTag: post.altTag,
+          titleTag: post.titleTag,
+          headline: post.headline,
+          category: post.category,
+          tags: post.tags,
+          author: post.author,
+        },
+        blockContent: post.postBody,
+      },
+    };
+  });
 
-  const params = Astro.params as Params
+  return routes;
+}
 
-  let breadcrumbs: Pathname[] = []
+const params = Astro.params as Params;
 
-  for (const p in params) {
-    const pathname = {
-      base: ["blog", p],
-      slug: params[p]
-    }
-    breadcrumbs.push(pathname)
-  }
+let breadcrumbs: Pathname[] = [];
 
-  const { seoTitle, seoDescription, socialHeadline, socialDescription, socialImage } = Astro.props.headMeta as HeadMeta
+for (const p in params) {
+  const pathname = {
+    base: ["blog", p],
+    slug: params[p],
+  };
+  breadcrumbs.push(pathname);
+}
 
-  const {  
-    headerImage, 
-    altTag,
-    titleTag,
-    headline,
-    category,
-    tags,
-    author,
-  } = Astro.props.postPage as PostPage
+const {
+  seoTitle,
+  seoDescription,
+  socialHeadline,
+  socialDescription,
+  socialImage,
+} = Astro.props.headMeta as HeadMeta;
 
-  const blockContent = Astro.props.blockContent
+const { headerImage, altTag, titleTag, headline, category, tags, author } =
+  Astro.props.postPage as PostPage;
+
+const blockContent = Astro.props.blockContent;
 ---
 
-<BaseLayout title={seoTitle}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  socialTitle={socialHeadline}
+  socialDescription={socialDescription}
+  socialImage={socialImage}
+  author={author.name}
+>
   <div class="container">
-    <PostHeader 
+    <PostHeader
       imageUrl={headerImage}
       altTag={altTag}
       titleTag={titleTag}
@@ -143,14 +154,13 @@
       tags={tags}
       paths={breadcrumbs}
     />
-    <div class="galaxy" />
+    <div class="galaxy"></div>
     <div class="post-body">
       <BlockContent portableText={blockContent} />
     </div>
   </div>
   <Footer />
 </BaseLayout>
-
 
 <style lang="scss">
   @import "../../../styles/sizes.scss";

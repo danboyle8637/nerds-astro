@@ -29,12 +29,18 @@ const nowCardsData: BlogCardData[] = data.map((card) => {
     buttonLabel: buttonLabel,
     tags: tags,
     category: category,
-    slug: `now/${slug}`,
+    slug: `/now/${slug}`,
   };
 });
 ---
 
-<BaseLayout title="Now">
+<BaseLayout
+  title="Nerds Working On Now"
+  description="These are the personal projects we are working on now. See the projects that will lead our goals forward."
+  socialTitle="Nerds Working On Now"
+  socialDescription="These are the personal projects we are working on now. See the projects that will lead our goals forward."
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerds-now-social-1200x680_IQ_3RFiqD.jpg?ik-sdk-version=javascript-1.4.3"
+>
   <SmallHeader
     headline="Now"
     imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/now-header_hlcE9nGIs.png?ik-sdk-version=javascript-1.4.3"
