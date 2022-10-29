@@ -61,6 +61,7 @@ const {
   headline,
   seoTitle,
   seoDescription,
+  socialImageUrl,
   headerImageUrl,
   altTag,
   titleTag,
@@ -70,7 +71,13 @@ const {
 const { Content } = Astro.props.now;
 ---
 
-<BaseLayout title={seoTitle}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  socialTitle={seoTitle}
+  socialDescription={seoDescription}
+  socialImage={socialImageUrl}
+>
   <div class="container">
     <MdxPostHeader
       imageUrl={headerImageUrl}

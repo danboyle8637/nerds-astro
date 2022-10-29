@@ -53,12 +53,25 @@ for (const p in params) {
   breadcrumbs.push(pathname);
 }
 
-const { title, imageUrl, altTag, titleTag, formType } = Astro.props
-  .data as CopyServiceFrontmatter;
+const {
+  title,
+  description,
+  imageUrl,
+  altTag,
+  titleTag,
+  socialImage,
+  formType,
+} = Astro.props.data as CopyServiceFrontmatter;
 const { Content } = Astro.props.service;
 ---
 
-<BaseLayout title={`${title} Service Page`}>
+<BaseLayout
+  title={`${title} Service Page`}
+  description={description}
+  socialTitle={title}
+  socialDescription={description}
+  socialImage={socialImage}
+>
   <div class="container">
     <Breadcrumbs paths={breadcrumbs} />
     <ServicePricingWithHeadline

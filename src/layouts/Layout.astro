@@ -1,26 +1,46 @@
 ---
 import NavBar from "../components/navigation/NavBar.astro";
-import "../styles/global.scss"
+import "../styles/global.scss";
 
 export interface Props {
-	title: string;
+  title: string;
+  description: string;
+  author?: string;
+  socialImage: string;
+  socialTitle: string;
+  socialDescription: string;
 }
 
-const { title } = Astro.props as Props;
+const {
+  title,
+  description,
+  author = "Nerds Who Sell",
+  socialImage,
+  socialDescription,
+  socialTitle,
+} = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<NavBar />
-		<slot />
-	</body>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={socialDescription} />
+    <meta name="twitter:title" content={socialTitle} />
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+  </body>
 </html>
-

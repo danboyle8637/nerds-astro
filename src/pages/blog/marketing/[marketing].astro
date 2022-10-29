@@ -1,31 +1,40 @@
 ---
-import client from '@sanity/client'
-import BaseLayout from '../../../layouts/Layout.astro'
-import PostHeader from '../../../components/blog/BlogComponents/PostHeader.astro'
-import Footer from '../../../sections/Footer/index.astro'
-import BlockContent from '../../../components/blog/BlockContent.astro'
-import type { HeadMeta, PostPage, SanityBlogPost, Pathname } from '../../../types/blog'
-import "../../../styles/blog.scss"
+import client from "@sanity/client";
+import BaseLayout from "../../../layouts/Layout.astro";
+import PostHeader from "../../../components/blog/BlogComponents/PostHeader.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import BlockContent from "../../../components/blog/BlockContent.astro";
+import type {
+  HeadMeta,
+  PostPage,
+  SanityBlogPost,
+  Pathname,
+} from "../../../types/blog";
+import "../../../styles/blog.scss";
 
 interface Route {
   params: {
-    marketing: string
-  },
+    marketing: string;
+  };
   props: {
-    headMeta: HeadMeta,
-    postPage: PostPage,
-    blockContent: []
-  }
+    headMeta: HeadMeta;
+    postPage: PostPage;
+    blockContent: [];
+  };
+}
+
+interface Params {
+  [index: string]: string;
 }
 
 export async function getStaticPaths(): Promise<Route[]> {
   const sanity = client({
     projectId: import.meta.env.SANITY_PROJECT_ID,
     dataset: import.meta.env.SANITY_BASE,
-    apiVersion: '2021-03-25',
+    apiVersion: "2021-03-25",
     token: import.meta.env.SANITY_TOKEN,
     useCdn: true,
-  })
+  });
 
   const query = `
     {
@@ -65,15 +74,15 @@ export async function getStaticPaths(): Promise<Route[]> {
         }
       }
     }
-  `
+  `;
 
-  const data = await sanity.fetch(query)
-  const { blogPostData } = data
-  
+  const data = await sanity.fetch(query);
+  const { blogPostData } = data;
+
   const routes = blogPostData.map((post: SanityBlogPost): Route => {
-    const slug = post.slug
+    const slug = post.slug;
 
-    return ({
+    return {
       params: { marketing: slug },
       props: {
         headMeta: {
@@ -94,43 +103,49 @@ export async function getStaticPaths(): Promise<Route[]> {
           author: post.author,
         },
         blockContent: post.postBody,
-      }
-    })
-  })
+      },
+    };
+  });
 
-  return routes
+  return routes;
 }
 
-const params = Astro.params as Params
+const params = Astro.params as Params;
 
-let breadcrumbs: Pathname[] = []
+let breadcrumbs: Pathname[] = [];
 
 for (const p in params) {
   const pathname = {
     base: ["blog", p],
-    slug: params[p] as string
-  }
-  breadcrumbs.push(pathname)
+    slug: params[p] as string,
+  };
+  breadcrumbs.push(pathname);
 }
 
-const { seoTitle, seoDescription, socialHeadline, socialDescription, socialImage } = Astro.props.headMeta as HeadMeta
+const {
+  seoTitle,
+  seoDescription,
+  socialHeadline,
+  socialDescription,
+  socialImage,
+} = Astro.props.headMeta as HeadMeta;
 
-const {  
-  headerImage, 
-  altTag,
-  titleTag,
-  headline,
-  category,
-  tags,
-  author,
-} = Astro.props.postPage as PostPage
+const { headerImage, altTag, titleTag, headline, category, tags, author } =
+  Astro.props.postPage as PostPage;
 
-const blockContent = Astro.props.blockContent
+const blockContent = Astro.props.blockContent;
 ---
 
-<BaseLayout title="Post">
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  socialTitle={socialHeadline}
+  socialDescription={socialDescription}
+  socialImage={socialImage}
+  author={author.name}
+>
   <div class="container">
-    <PostHeader 
+    <PostHeader
       imageUrl={headerImage}
       altTag={altTag}
       titleTag={titleTag}
@@ -139,14 +154,13 @@ const blockContent = Astro.props.blockContent
       tags={tags}
       paths={breadcrumbs}
     />
-    <div class="galaxy" />
+    <div class="galaxy"></div>
     <div class="post-body">
       <BlockContent portableText={blockContent} />
     </div>
   </div>
   <Footer />
 </BaseLayout>
-
 
 <style lang="scss">
   @import "../../../styles/sizes.scss";
