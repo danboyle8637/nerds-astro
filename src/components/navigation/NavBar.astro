@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import HeaderNav from "./HeaderNav.astro";
+import { NetworkReqLoader } from "../solid/NetworkReqLoader";
 ---
 
 <div class="container">
@@ -11,10 +12,11 @@ import HeaderNav from "./HeaderNav.astro";
     <HeaderNav />
   </div>
 </div>
+<!-- <NetworkReqLoader client:visible /> -->
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
-  
+
   .container {
     position: fixed;
     top: 0;

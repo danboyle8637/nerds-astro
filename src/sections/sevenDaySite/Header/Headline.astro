@@ -2,7 +2,7 @@
 import PerspectiveGradient from "../../../components/typography/PerspectiveGradient.astro";
 ---
 
-<h1>
+<h1 class="headline">
   <span class="blazing-container">
     <span class="normal pull-left">Get a</span>
     <PerspectiveGradient>BLAZING</PerspectiveGradient>
@@ -16,28 +16,25 @@ import PerspectiveGradient from "../../../components/typography/PerspectiveGradi
 </h1>
 
 <style lang="scss">
-  h1 {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .headline {
+    @include baseColGrid;
     gap: 20px;
     justify-items: end;
     width: max-content;
   }
 
   .blazing-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 0px;
     justify-items: end;
   }
 
   .website-container {
     padding-right: 40px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: min-content;
+    @include baseColGrid;
     gap: 12px;
     justify-items: end;
   }
@@ -47,7 +44,7 @@ import PerspectiveGradient from "../../../components/typography/PerspectiveGradi
     font-weight: 800;
     color: var(--font-color-light);
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       font-size: 3.6rem;
     }
   }

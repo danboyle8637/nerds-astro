@@ -1,13 +1,24 @@
 ---
-import BaseLayout from '../../layouts/Layout.astro'
-import SmallHeader from '../../sections/headers/SmallHeader.astro';
-import Instructions from '../../sections/nerdChat/WebDevPreNerdChat/Instructions.astro';
-import { PreNerdChatForm } from '../../components/solid/forms/PreNerdChatForm'
-import Footer from '../../sections/Footer/index.astro'
+import BaseLayout from "../../layouts/Layout.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import Instructions from "../../sections/nerdChat/WebDevPreNerdChat/Instructions.astro";
+import { PreNerdChatForm } from "../../components/solid/forms/PreNerdChatForm";
+import Footer from "../../sections/Footer/index.astro";
 ---
 
-<BaseLayout title="Get Setup For Your Nerd Chat">
-  <SmallHeader headline="Pre Nerd Chat" />
+<BaseLayout
+  title="Get Setup For Your Nerd Chat"
+  description=""
+  socialTitle=""
+  socialDescription=""
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerd-chat-social-1200x630_L8BdfNJJG.jpg?ik-sdk-version=javascript-1.4.3"
+>
+  <SmallHeader
+    headline="Pre Nerd Chat"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-header_xyoRD8_Q6.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Nerd chat bubbles"
+    titleTag="Nerd Chat"
+  />
   <div class="view-container">
     <Instructions />
     <PreNerdChatForm client:load />

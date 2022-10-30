@@ -23,13 +23,97 @@ export const ProductCopyForm: Component = () => {
     if (productType().value === 1) {
       const price = 40 * products().value;
       setPrice(price);
-      setPaymentLink("#");
+
+      switch (products().value) {
+        case 1: {
+          setPaymentLink("https://buy.stripe.com/5kA4kc2mB1pBcIE9AX");
+          break;
+        }
+        case 2: {
+          setPaymentLink("https://buy.stripe.com/bIY3g8e5j3xJaAw14s");
+          break;
+        }
+        case 3: {
+          setPaymentLink("https://buy.stripe.com/eVadUM1ix7NZ8soeVj");
+          break;
+        }
+        case 4: {
+          setPaymentLink("https://buy.stripe.com/28o7woe5jb0b38414u");
+          break;
+        }
+        case 5: {
+          setPaymentLink("https://buy.stripe.com/3cs9Ew6CR7NZbEAbJ9");
+          break;
+        }
+        case 6: {
+          setPaymentLink("https://buy.stripe.com/28odUMaT74BNdMI4gI");
+          break;
+        }
+        case 7: {
+          setPaymentLink("https://buy.stripe.com/14k4kc1ix8S35gceVn");
+          break;
+        }
+        case 8: {
+          setPaymentLink("https://buy.stripe.com/eVa5oggdrgkv8socNg");
+          break;
+        }
+        case 9: {
+          setPaymentLink("https://buy.stripe.com/7sI2c41ix5FR384dRl");
+          break;
+        }
+        case 10: {
+          setPaymentLink("https://buy.stripe.com/8wM4kcd1f7NZ4c828E");
+          break;
+        }
+      }
     }
 
     if (productType().value === 2) {
       const price = 200 * products().value;
       setPrice(price);
-      setPaymentLink("#");
+
+      switch (products().value) {
+        case 1: {
+          setPaymentLink("https://buy.stripe.com/dR603WgdrfgrbEA9B7");
+          break;
+        }
+        case 2: {
+          setPaymentLink("https://buy.stripe.com/4gw7wo2mB0lxfUQaFc");
+          break;
+        }
+        case 3: {
+          setPaymentLink("https://buy.stripe.com/8wM03W7GV8S35gc28H");
+          break;
+        }
+        case 4: {
+          setPaymentLink("https://buy.stripe.com/cN2aIAf9nb0bgYU28I");
+          break;
+        }
+        case 5: {
+          setPaymentLink("https://buy.stripe.com/6oE1803qF1pB8sobJj");
+          break;
+        }
+        case 6: {
+          setPaymentLink("https://buy.stripe.com/3csbMEaT7b0b0ZW4gS");
+          break;
+        }
+        case 7: {
+          setPaymentLink("https://buy.stripe.com/6oE2c48KZfgr0ZW8x9");
+          break;
+        }
+        case 8: {
+          setPaymentLink("https://buy.stripe.com/9AQg2U5yN0lxfUQ6p2");
+          break;
+        }
+        case 9: {
+          setPaymentLink("https://buy.stripe.com/aEU2c42mBecn2405kZ");
+          break;
+        }
+        case 10: {
+          setPaymentLink("https://buy.stripe.com/9AQdUM4uJfgrdMIbJo");
+          break;
+        }
+      }
     }
   });
 

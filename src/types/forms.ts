@@ -62,3 +62,13 @@ export type CopyFormType =
   | "adCopy"
   | "webSalesPages"
   | "nerdCopyChat";
+
+export type FormType = "webDesign" | "sevenDaySite" | "preNerdChat";
+
+export interface ContactFormBody {
+  timestamp: number;
+  firstName: string;
+  emailAddress: string;
+  contactReason: string;
+  contactMessage: string;
+}

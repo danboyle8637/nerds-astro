@@ -1,3 +1,4 @@
+import { createResource } from "solid-js";
 import type { Component, JSX } from "solid-js";
 
 import { TextInput } from "../inputs/TextInput";
@@ -22,9 +23,20 @@ import {
   updateEmailAddressValue,
   updateEmailAddressOptions,
 } from "../../../../stores/leadFormStore";
+import type { ContactFormBody } from "../../../../types/forms";
 import styles from "./ContactForm.module.css";
 
 export const ContactForm: Component = () => {
+  const handleFormSubmit = async () => {
+    const reqBody: ContactFormBody = {
+      timestamp: Date.now(),
+      firstName: firstName().value,
+      emailAddress: emailAddress().value,
+      contactReason: contactFormReason().value,
+      contactMessage: contactMessage().value,
+    };
+  };
+
   const isFormValid = () => {
     return (
       firstName().valid &&

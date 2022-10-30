@@ -1,27 +1,33 @@
 ---
 import UseCaseCard from "../../../components/cards/UseCaseCard.astro";
 import InternalNavButton from "../../../components/buttons/InternalNavButton.astro";
-import { useCases } from '../../../data/sevenDaySite'
+import { useCases } from "../../../data/sevenDaySite";
 ---
 
 <div class="container">
   <div class="card-container">
-    {useCases.map(use => {
-      const { id, imageUrl, altTag, titleTag, useCase } = use
-  
-      return (
-        <UseCaseCard 
-          id={id}
-          imageUrl={imageUrl}
-          altTag={altTag}
-          titleTag={titleTag}
-          useCase={useCase}
-        />
-      )
-    })}
+    {
+      useCases.map((use) => {
+        const { id, imageUrl, altTag, titleTag, useCase } = use;
+
+        return (
+          <UseCaseCard
+            id={id}
+            imageUrl={imageUrl}
+            altTag={altTag}
+            titleTag={titleTag}
+            useCase={useCase}
+          />
+        );
+      })
+    }
   </div>
   <div class="button-container">
-    <InternalNavButton type="teal" title="Setup a Nerd Chat" slug="/">Setup a Nerd Chat</InternalNavButton>
+    <InternalNavButton
+      type="teal"
+      title="Setup a Nerd Chat"
+      slug="/nerd-chat/seven-day-site">Setup a Nerd Chat</InternalNavButton
+    >
   </div>
 </div>
 

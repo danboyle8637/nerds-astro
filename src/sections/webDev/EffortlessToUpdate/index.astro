@@ -13,12 +13,16 @@ import InternalNavButton from "../../../components/buttons/InternalNavButton.ast
   </div>
   <div class="paragraph-container">
     <p>
-      <span class="code-callout">Or, we can do it all for you.</span> 
+      <span class="code-callout">Or, we can do it all for you.</span>
     </p>
     <p>And you can focus on what you care most about... your business!</p>
   </div>
   <div class="button-container">
-    <InternalNavButton type="teal" slug="/" title="Schedule a Nerd Call">
+    <InternalNavButton
+      type="teal"
+      slug="/nerd-chat/web-design"
+      title="Schedule a Nerd Call"
+    >
       Schedule Nerd Call
     </InternalNavButton>
   </div>
@@ -27,7 +31,7 @@ import InternalNavButton from "../../../components/buttons/InternalNavButton.ast
 <style lang="scss">
   @import "../../../styles/sizes.scss";
   @import "../../../styles/layout.scss";
-  
+
   .container {
     @include baseColGrid;
     gap: 40px;

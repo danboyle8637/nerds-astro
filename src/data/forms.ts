@@ -76,6 +76,33 @@ export const leadFormOptions: RadioOption[] = [
   },
 ];
 
+export const webDesignOptions: RadioOption[] = [
+  {
+    id: 0,
+    value: "new_website",
+    label: "New Website",
+    isChecked: false,
+  },
+  {
+    id: 1,
+    value: "update_website",
+    label: "Update / Manage Current Website",
+    isChecked: false,
+  },
+  {
+    id: 2,
+    value: "custom_web_functionality",
+    label: "Custom Website Functionality",
+    isChecked: false,
+  },
+  {
+    id: 5,
+    value: "website_maintenance",
+    label: "Website Maintenance",
+    isChecked: false,
+  },
+];
+
 export const sevenDaySiteOptions: RadioOption[] = [
   {
     id: 0,

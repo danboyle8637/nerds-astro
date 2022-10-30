@@ -1,18 +1,22 @@
-<div>
+<div class="container">
   <p>
     <span class="code-callout">A website has one job... make money.</span>
   </p>
   <p>The design will be <strong>simple, clean and crisp</strong>.</p>
   <p>
-    The copy will be <strong>persuasive, tight, and tease</strong> at what makes your perfect customer want to take action.
+    The copy will be <strong>persuasive, tight, and tease</strong> at what makes
+    your perfect customer want to take action.
   </p>
   <p>
-    We'll <strong>increase the odds as high as possible</strong> so your website becomes a lead machine… a referral portal… daily sales driver.
+    We'll <strong>increase the odds as high as possible</strong> so your website
+    becomes a lead machine… a referral portal… daily sales driver.
   </p>
 </div>
 
 <style lang="scss">
-  div {
+  @import "../../../styles/sizes.scss";
+
+  .container {
     padding: 0 12px;
     display: grid;
     grid-template-columns: 1fr;
@@ -21,12 +25,12 @@
     justify-items: start;
     width: 100%;
 
-    @media (min-width: 600px) {
+    @include aboveMobile {
       padding: 0;
       width: 660px;
     }
 
-    @media (min-width: 960px) {
+    @include aboveTablet {
       width: 800px;
     }
   }
