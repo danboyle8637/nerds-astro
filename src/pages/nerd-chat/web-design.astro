@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/Layout.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import WebDesignForm from "../../sections/callToActionSections/WebDesignForm/index.astro";
+import Footer from "../../sections/Footer/index.astro";
+---
+
+<BaseLayout
+  title="Schedule Your Nerd Chat Session"
+  description="Schedule your Nerd Chat and let's talk about your website and your copy needs. Fill out the form and schedule your Nerd Chat."
+  socialTitle="Schedule Your Nerd Chat Session"
+  socialDescription="Schedule your Nerd Chat and let's talk about your website and your copy needs. Fill out the form and schedule your Nerd Chat."
+  socialImage="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/seo/nerd-chat-social-1200x630_L8BdfNJJG.jpg?ik-sdk-version=javascript-1.4.3"
+>
+  <SmallHeader
+    headline="Nerd Chat"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-header_xyoRD8_Q6.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Nerd chat bubbles"
+    titleTag="Nerd Chat"
+  />
+  <WebDesignForm />
+  <Footer />
+</BaseLayout>

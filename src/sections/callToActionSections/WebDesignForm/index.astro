@@ -1,0 +1,30 @@
+---
+import Content from "../FooterAndForm/ContentContainer.astro";
+import { LeadForm } from "../../../components/solid/forms/LeadForm";
+---
+
+<div class="container">
+  <Content />
+  <LeadForm client:load />
+</div>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+  @import "../../../styles/layout.scss";
+
+  .container {
+    padding: 80px 12px 120px 12px;
+    @include baseColGrid;
+    gap: 80px;
+    justify-items: center;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+  }
+</style>

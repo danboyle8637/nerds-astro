@@ -13,8 +13,8 @@ import {
   updateFirstNameOptions,
   emailAddress,
   emailAddressOptions,
-  biggestPriority,
-  updateBiggestPriority,
+  webDesignPriority,
+  updateWebDesignPriority,
   updateEmailAddressValue,
   updateEmailAddressOptions,
   currentSite,
@@ -38,7 +38,7 @@ export const LeadForm: Component = () => {
     return (
       firstName().valid &&
       emailAddress().valid &&
-      biggestPriority().value !== ""
+      webDesignPriority().value !== ""
     );
   });
 
@@ -81,10 +81,10 @@ export const LeadForm: Component = () => {
       <PhoneInput isLoading={false} optional={true} />
       <RadioInput
         name="biggestPriority"
-        questionLabel="What is your biggest priority now?"
-        value={biggestPriority().value}
-        options={biggestPriority().options}
-        updateInputValue={updateBiggestPriority}
+        questionLabel="What is your website priority now?"
+        value={webDesignPriority().value}
+        options={webDesignPriority().options}
+        updateInputValue={updateWebDesignPriority}
       />
       <TextInput
         inputType="text"

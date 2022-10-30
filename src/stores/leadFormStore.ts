@@ -7,6 +7,7 @@ import {
   leadFormOptions,
   sevenDaySiteOptions,
   copywritingTimelineOptions,
+  webDesignOptions,
 } from "../data/forms";
 import type { InputValue, InputOptions, RadioInput } from "../types/forms";
 
@@ -95,6 +96,12 @@ export const [biggestPriority, setBiggestPriority] = createSignal<RadioInput>({
   value: "",
   options: leadFormOptions,
 });
+
+export const [webDesignPriority, setWebDesignPriority] =
+  createSignal<RadioInput>({
+    value: "",
+    options: webDesignOptions,
+  });
 
 export const [sevenDaySiteUseCase, setSevenDaySiteUseCase] =
   createSignal<RadioInput>({
@@ -266,6 +273,21 @@ export const updateBiggestPriority = (event: InputEvent) => {
   const value = inputElement.value;
 
   setBiggestPriority((prevValue) => {
+    const optionsCopy = [...prevValue.options];
+    const updatedOptions = updateOptions(optionsCopy, value);
+
+    return {
+      value: value,
+      options: updatedOptions,
+    };
+  });
+};
+
+export const updateWebDesignPriority = (event: InputEvent) => {
+  const inputElement = event.currentTarget as HTMLInputElement;
+  const value = inputElement.value;
+
+  setWebDesignPriority((prevValue) => {
     const optionsCopy = [...prevValue.options];
     const updatedOptions = updateOptions(optionsCopy, value);
 
