@@ -13,6 +13,9 @@ import {
   updateFirstNameOptions,
   emailAddress,
   emailAddressOptions,
+  areaCode,
+  firstThree,
+  lastFour,
   webDesignPriority,
   updateWebDesignPriority,
   updateEmailAddressValue,
@@ -26,12 +29,40 @@ import {
   updateWhyNowValue,
   updateWhyNowptions,
 } from "../../../../stores/leadFormStore";
+import type { WebDesignFormBody } from "../../../../types/forms";
 import styles from "./LeadForm.module.css";
 
 export const LeadForm: Component = () => {
-  const handleFormSubmit = (event: SubmitEvent) => {
+  const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
-    console.log("Save data and then kick to schedule view");
+
+    const phoneNumber = `(${areaCode().value}) ${firstThree().value} - ${
+      lastFour().value
+    }`;
+
+    const reqBody: WebDesignFormBody = {
+      timestamp: Date.now(),
+      firstName: firstName().value,
+      emailAddress: emailAddress().value,
+      phoneNumber: phoneNumber,
+      websitePriority: webDesignPriority().value,
+      currentWebsite: currentSite().value,
+      whyImportant: whyNow().value,
+    };
+
+    const res = await fetch(`http://127.0.0.1:8787/handle-web-design-form`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reqBody),
+    });
+
+    if (res.status !== 200) {
+      throw new Error("Need to set up an error state");
+    }
+
+    // Redirect to thank you page or next step
   };
 
   const formValid = createMemo(() => {

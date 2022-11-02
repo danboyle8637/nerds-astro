@@ -22,12 +22,17 @@ import {
   emailAddressOptions,
   updateEmailAddressValue,
   updateEmailAddressOptions,
+  toggleIsFetchCallActive,
 } from "../../../../stores/leadFormStore";
 import type { ContactFormBody } from "../../../../types/forms";
 import styles from "./ContactForm.module.css";
 
 export const ContactForm: Component = () => {
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event: SubmitEvent) => {
+    event.preventDefault();
+
+    toggleIsFetchCallActive();
+
     const reqBody: ContactFormBody = {
       timestamp: Date.now(),
       firstName: firstName().value,
@@ -35,6 +40,24 @@ export const ContactForm: Component = () => {
       contactReason: contactFormReason().value,
       contactMessage: contactMessage().value,
     };
+
+    // const url = "http://127.0.0.1:8787/handle-contact-form";
+    // const res = await fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(reqBody),
+    // });
+
+    // if (res.status !== 200) {
+    //   throw new Error("Need an error oeverlay message");
+    // }
+
+    setTimeout(() => {
+      toggleIsFetchCallActive();
+      console.log("It worked!");
+    }, 5000);
   };
 
   const isFormValid = () => {
@@ -51,7 +74,7 @@ export const ContactForm: Component = () => {
   } as JSX.CSSProperties;
 
   return (
-    <form class={styles.contact_form}>
+    <form class={styles.contact_form} onSubmit={handleFormSubmit}>
       <div class={styles.input_container} style={formStyles}>
         <TextInput
           inputType="text"

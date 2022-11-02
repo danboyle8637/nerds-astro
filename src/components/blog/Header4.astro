@@ -1,19 +1,41 @@
 ---
-const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/pink-hash_fVzt1O9_m.png?ik-sdk-version=javascript-1.4.3"
+const hash =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/pink-hash_fVzt1O9_m.png?ik-sdk-version=javascript-1.4.3";
 ---
 
-<h4>
-  <span class="hash-container">
-    <img class="hash" src={hash} alt="Header 3" title="Headline">
-    <img class="hash right-hash-one" src={hash} alt="Header 3" title="Headline">
-    <img class="hash right-hash-two" src={hash} alt="Header 3" title="Headline">
-    <img class="hash right-hash-three" src={hash} alt="Header 3" title="Headline">
-  </span>
-  <slot />
-</h4>
+<div class="container">
+  <h4>
+    <span class="hash-container">
+      <img class="hash" src={hash} alt="Header 3" title="Headline" />
+      <img
+        class="hash right-hash-one"
+        src={hash}
+        alt="Header 3"
+        title="Headline"
+      />
+      <img
+        class="hash right-hash-two"
+        src={hash}
+        alt="Header 3"
+        title="Headline"
+      />
+      <img
+        class="hash right-hash-three"
+        src={hash}
+        alt="Header 3"
+        title="Headline"
+      />
+    </span>
+    <slot />
+  </h4>
+</div>
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
+
+  .container {
+    padding: 80px 0 40px 0;
+  }
 
   h4 {
     display: grid;

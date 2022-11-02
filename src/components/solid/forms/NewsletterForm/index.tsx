@@ -1,4 +1,4 @@
-import { createResource, createEffect } from "solid-js";
+import {} from "solid-js";
 import type { Component } from "solid-js";
 
 import { BaseInput } from "../inputs/BaseTextInput";
@@ -11,20 +11,33 @@ import {
   updateEmailAddressValue,
   updateEmailAddressOptions,
 } from "../../../../stores/leadFormStore";
+import type { FourLinksFormBody } from "../../../../types/forms";
 import styles from "./NewsletterForm.module.css";
 
 export const NewsletterForm: Component = () => {
   let inputRef: HTMLInputElement;
 
-  const handleFormSubmit = (event: SubmitEvent) => {
+  const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
 
-    console.log("Submit form and safe email address");
-  };
+    const reqBody: FourLinksFormBody = {
+      emailAddress: emailAddress().value,
+    };
 
-  createEffect(() => {
-    // console.log(emailAddress().valid ? "Email is good" : "Email is bad");
-  });
+    const res = await fetch("http://127.0.0.1:8787/handle-four-links-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reqBody),
+    });
+
+    if (res.status !== 200) {
+      throw new Error("Show an error overlay");
+    }
+
+    // Redirect to a thank you page or somesort
+  };
 
   return (
     <form class={styles.form_container} onSubmit={handleFormSubmit}>

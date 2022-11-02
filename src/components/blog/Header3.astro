@@ -1,25 +1,42 @@
 ---
-const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3"
+const hash =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/purple-hash_pNlVG1KAR.png?ik-sdk-version=javascript-1.4.3";
 ---
 
-<h3>
-  <span class="hash-container">
-    <img class="hash" src={hash} alt="Header 3" title="Headline">
-    <img class="hash right-hash-one" src={hash} alt="Header 3" title="Headline">
-    <img class="hash right-hash-two" src={hash} alt="Header 3" title="Headline">
-  </span>
-  <slot />
-</h3>
+<div class="container">
+  <h3>
+    <span class="hash-container">
+      <img class="hash" src={hash} alt="Header 3" title="Headline" />
+      <img
+        class="hash right-hash-one"
+        src={hash}
+        alt="Header 3"
+        title="Headline"
+      />
+      <img
+        class="hash right-hash-two"
+        src={hash}
+        alt="Header 3"
+        title="Headline"
+      />
+    </span>
+    <slot />
+  </h3>
+</div>
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
+
+  .container {
+    padding: 80px 0 40px 0;
+  }
 
   h3 {
     display: grid;
     grid-template-columns: 100px 1fr;
     justify-items: start;
     align-items: start;
-    font-size: 3.0rem;
+    font-size: 3rem;
     text-shadow: -8px 6px 2px hsla(0, 0%, 0%, 0.2);
     width: 100%;
 

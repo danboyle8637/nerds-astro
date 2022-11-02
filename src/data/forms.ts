@@ -1,8 +1,4 @@
-import type {
-  RadioInput,
-  RadioOption,
-  SliderInputOption,
-} from "../types/forms";
+import type { RadioOption, SliderInputOption } from "../types/forms";
 
 export const contactFormOptions: RadioOption[] = [
   {
@@ -31,7 +27,7 @@ export const contactFormOptions: RadioOption[] = [
   },
   {
     id: 4,
-    value: "other",
+    value: "something_else",
     label: "Something else",
     isChecked: false,
   },
@@ -106,13 +102,13 @@ export const webDesignOptions: RadioOption[] = [
 export const sevenDaySiteOptions: RadioOption[] = [
   {
     id: 0,
-    value: "new_mini_website",
+    value: "new_website",
     label: "New Mini Website",
     isChecked: false,
   },
   {
     id: 1,
-    value: "promote_one_service",
+    value: "promote_product",
     label: "Promote One Service / Product",
     isChecked: false,
   },
@@ -124,7 +120,7 @@ export const sevenDaySiteOptions: RadioOption[] = [
   },
   {
     id: 3,
-    value: "other",
+    value: "something_else",
     label: "Something Else",
     isChecked: false,
   },

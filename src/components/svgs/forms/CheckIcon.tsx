@@ -15,7 +15,6 @@ export const CheckIcon: Component<CheckIconProps> = (props) => {
 
   createEffect(() => {
     if (props.isActive && checkRef) {
-      console.log("Show the check");
       checkIconOn(checkRef, false);
     }
   });

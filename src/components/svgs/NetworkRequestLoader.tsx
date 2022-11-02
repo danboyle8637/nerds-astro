@@ -1,8 +1,51 @@
 import { createEffect } from "solid-js";
 import type { Component } from "solid-js";
+
+import { loadingAnimation } from "../../animations/components";
 import type { SVGProps } from "../../types/components";
 
-export const NetworkRequestLoader: Component<SVGProps> = (props) => {
+interface LoaderProps extends SVGProps {
+  isActive: boolean;
+}
+
+export const NetworkRequestLoader: Component<LoaderProps> = (props) => {
+  let codeLine1: SVGPathElement;
+  let codeLine2: SVGPathElement;
+  let codeLine3: SVGPathElement;
+  let codeLine4: SVGPathElement;
+  let codeLine5: SVGPathElement;
+  let codeLine6: SVGPathElement;
+  let dot1: SVGCircleElement;
+  let dot2: SVGCircleElement;
+  let dot3: SVGCircleElement;
+
+  createEffect(() => {
+    if (
+      codeLine1 &&
+      codeLine2 &&
+      codeLine3 &&
+      codeLine4 &&
+      codeLine5 &&
+      codeLine6 &&
+      dot1 &&
+      dot2 &&
+      dot3 &&
+      props.isActive
+    ) {
+      loadingAnimation(
+        codeLine1,
+        codeLine2,
+        codeLine3,
+        codeLine4,
+        codeLine5,
+        codeLine6,
+        dot1,
+        dot2,
+        dot3
+      );
+    }
+  });
+
   return (
     <svg
       viewBox="0 0 337 243"
@@ -35,40 +78,82 @@ export const NetworkRequestLoader: Component<SVGProps> = (props) => {
       </clipPath>
       <g clip-path="url(#b)">
         <path
+          ref={codeLine1!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m68.58 73.605 48.334-6.882"
           fill="none"
           stroke="#cf00ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
+          ref={codeLine2!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m90.279 86.626 41.866-5.962"
           fill="none"
           stroke="#00f4ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
+          ref={codeLine3!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m112.665 97.303 74.988-10.677M116.914 110.508l50.833-7.238"
           fill="none"
           stroke="#7f00ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
+          ref={codeLine4!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m102.518 129.233 27.877-3.97"
           fill="none"
           stroke="#00f4ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
+          ref={codeLine5!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m88.499 148.448 48.333-6.882"
           fill="none"
           stroke="#cf00ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
+          ref={codeLine6!}
+          style={{
+            visibility: "hidden",
+          }}
           d="m114.453 164.751 72.589-10.335"
           fill="none"
           stroke="#00f4ff"
           stroke-width="8.33px"
+          stroke-dashoffset="1"
+          stroke-dasharray="1"
+          pathLength="1"
         />
         <path
           d="M201.226 200.725 163.437 34.819l104.089-14.527 38.576 166.675-104.876 13.758Z"
@@ -104,9 +189,30 @@ export const NetworkRequestLoader: Component<SVGProps> = (props) => {
       >
         LOADING
       </text>
-      <circle cx="267.662" cy="81.894" r="1.229" fill="#00ff58" />
-      <circle cx="271.764" cy="81.405" r="1.229" fill="#00ff58" />
-      <circle cx="275.866" cy="80.664" r="1.229" fill="#00ff58" />
+      <circle
+        ref={dot1!}
+        cx="267.662"
+        cy="81.894"
+        r="1.229"
+        fill="#00ff58"
+        opacity="0"
+      />
+      <circle
+        ref={dot2!}
+        cx="271.764"
+        cy="81.405"
+        r="1.229"
+        fill="#00ff58"
+        opacity="0"
+      />
+      <circle
+        ref={dot3!}
+        cx="275.866"
+        cy="80.664"
+        r="1.229"
+        fill="#00ff58"
+        opacity="0"
+      />
       <defs>
         <linearGradient
           id="screen-gradient"

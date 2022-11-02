@@ -11,6 +11,8 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   z-index: 1000;
+  transform: scale(1.4);
+  opacity: 0;
 }
 
 .loader_icon {

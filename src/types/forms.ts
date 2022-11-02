@@ -72,3 +72,27 @@ export interface ContactFormBody {
   contactReason: string;
   contactMessage: string;
 }
+
+export interface WebDesignFormBody {
+  timestamp: number;
+  firstName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  websitePriority: string;
+  currentWebsite: string;
+  whyImportant: string;
+}
+
+export interface SevenDaySiteFormBody {
+  timestamp: number;
+  firstName: string;
+  emailAddress: string;
+  phoneNumber: string;
+  websiteGoal: string;
+  currentWebsite: string;
+  whyImportant: string;
+}
+
+export interface FourLinksFormBody {
+  emailAddress: string;
+}

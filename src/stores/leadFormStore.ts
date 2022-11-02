@@ -4,7 +4,6 @@ import { capitalizeName, updateOptions } from "../utils/utilityFunctions";
 import { formValidator } from "../utils/validators/formValidators";
 import { emailValidationRules } from "../utils/validators/rules";
 import {
-  leadFormOptions,
   sevenDaySiteOptions,
   copywritingTimelineOptions,
   webDesignOptions,
@@ -13,6 +12,9 @@ import type { InputValue, InputOptions, RadioInput } from "../types/forms";
 
 export const [isInitialLeadFormOverlayOpen, setIsInitialLeadFormOverlayOpen] =
   createSignal(false);
+
+export const [isFetchCallActive, setIsFetchCallActive] =
+  createSignal<boolean>(false);
 
 export const [firstName, setFirstName] = createSignal<InputValue>({
   value: "",
@@ -94,7 +96,7 @@ export const [whyNowOptions, setWhyNowOptions] = createSignal<InputOptions>({
 
 export const [biggestPriority, setBiggestPriority] = createSignal<RadioInput>({
   value: "",
-  options: leadFormOptions,
+  options: webDesignOptions,
 });
 
 export const [webDesignPriority, setWebDesignPriority] =
@@ -113,6 +115,14 @@ export const [copyTimeline, setCopyTimeline] = createSignal<RadioInput>({
   value: "",
   options: copywritingTimelineOptions,
 });
+
+export const toggleIsFetchCallActive = () => {
+  setIsFetchCallActive((prevValue) => !prevValue);
+};
+
+export const turnOffFetchCallActive = () => {
+  setIsFetchCallActive(false);
+};
 
 export const updateFirstNameValue = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
@@ -286,6 +296,8 @@ export const updateBiggestPriority = (event: InputEvent) => {
 export const updateWebDesignPriority = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
   const value = inputElement.value;
+
+  console.log(value);
 
   setWebDesignPriority((prevValue) => {
     const optionsCopy = [...prevValue.options];
