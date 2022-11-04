@@ -4,8 +4,8 @@ interface ImportMetaEnv {
   readonly SANITY_PROJECT_ID: string;
   readonly SANITY_BASE: string;
   readonly SANITY_TOKEN: string;
-  readonly DEV_ENDPOINT: string;
-  readonly ENDPOINT: string;
+  readonly VITE_DEV_ENDPOINT: string;
+  readonly VITE_ENDPOINT: string;
 }
 
 interface ImportMeta {

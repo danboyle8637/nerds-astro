@@ -354,3 +354,22 @@ export const resetForm = () => {
     touched: false,
   });
 };
+
+export const resetContactForm = () => {
+  setFirstName({
+    value: "",
+    valid: false,
+  });
+  setFirstNameOptions({
+    initial: true,
+    touched: false,
+  });
+  setEmailAddress({
+    value: "",
+    valid: false,
+  });
+  setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+};

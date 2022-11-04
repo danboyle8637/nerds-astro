@@ -9,19 +9,17 @@ interface TransitionProps {
   children: JSXElement;
 }
 
-export const LoadingTransition: Component<TransitionProps> = (props) => {
+export const StatusChipTransition: Component<TransitionProps> = (props) => {
   const child = children(() => props.children);
 
   const onEnter = (el: Element, done: () => void) => {
     animate(
       el,
       {
-        scale: 1,
         opacity: 1,
       },
       {
-        duration: 0.3,
-        easing: "ease-in-out",
+        duration: 0.2,
       }
     ).finished.then(() => done());
   };
@@ -30,12 +28,10 @@ export const LoadingTransition: Component<TransitionProps> = (props) => {
     animate(
       el,
       {
-        scale: 1.4,
         opacity: 0,
       },
       {
-        duration: 0.3,
-        easing: "ease-in-out",
+        duration: 0.2,
       }
     ).finished.then(() => {
       done();

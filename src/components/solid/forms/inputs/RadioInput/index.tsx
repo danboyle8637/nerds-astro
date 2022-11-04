@@ -44,23 +44,3 @@ export const RadioInput: Component<RadioInputProps> = (props) => {
     </div>
   );
 };
-
-/*
-<For each={props.options}>
-  {(option) => {
-    const { id, value, label, isChecked } = option;
-
-    return (
-      <Option
-        id={`priority-${id}`}
-        name={props.name}
-        value={value}
-        isChecked={isChecked}
-        updateInputValue={props.updateInputValue}
-      >
-        {label}
-      </Option>
-    );
-  }}
-</For>
-*/

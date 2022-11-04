@@ -1,10 +1,11 @@
-import { createResource } from "solid-js";
+import { createSignal } from "solid-js";
 import type { Component, JSX } from "solid-js";
 
 import { TextInput } from "../inputs/TextInput";
 import { TextArea } from "../inputs/TextArea";
 import { RadioInput } from "../inputs/RadioInput";
 import { FormButton } from "../../buttons/FormButton";
+import { ShortMessageOverlay } from "../../overlays/ShortMessageOverlay";
 import {
   contactMessage,
   updateContactMessageValue,
@@ -23,13 +24,24 @@ import {
   updateEmailAddressValue,
   updateEmailAddressOptions,
   toggleIsFetchCallActive,
+  isFetchCallActive,
 } from "../../../../stores/leadFormStore";
 import type { ContactFormBody } from "../../../../types/forms";
 import styles from "./ContactForm.module.css";
 
 export const ContactForm: Component = () => {
+  const [isFetchError, setIsFetchError] = createSignal<boolean>(false);
+
+  const updateIsFetchError = (status: boolean) => {
+    setIsFetchError(status);
+  };
+
   const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
+
+    updateIsFetchError(true);
+
+    return;
 
     toggleIsFetchCallActive();
 
@@ -41,23 +53,30 @@ export const ContactForm: Component = () => {
       contactMessage: contactMessage().value,
     };
 
-    // const url = "http://127.0.0.1:8787/handle-contact-form";
-    // const res = await fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(reqBody),
-    // });
+    const url = import.meta.env.DEV
+      ? "http://127.0.0.1:8787/handle-contact-form"
+      : `${import.meta.env.VITE_DEV_ENDPOINT}/handle-contact-form`;
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reqBody),
+    });
 
-    // if (res.status !== 200) {
-    //   throw new Error("Need an error oeverlay message");
-    // }
+    if (res.status !== 200) {
+      setIsFetchError(true);
+    }
 
-    setTimeout(() => {
-      toggleIsFetchCallActive();
-      console.log("It worked!");
-    }, 5000);
+    toggleIsFetchCallActive();
+
+    if (window) {
+      const url = import.meta.env.DEV
+        ? "http://localhost:3000/thank-you/contact"
+        : "https://nerdswhosell.com/thank-you/contact";
+
+      window.location.replace(url);
+    }
   };
 
   const isFormValid = () => {
@@ -74,71 +93,74 @@ export const ContactForm: Component = () => {
   } as JSX.CSSProperties;
 
   return (
-    <form class={styles.contact_form} onSubmit={handleFormSubmit}>
-      <div class={styles.input_container} style={formStyles}>
-        <TextInput
-          inputType="text"
-          name="firstName"
-          labelFor="firstName"
-          labelName="First Name"
-          labelInstructions="Enter your first name"
-          labelError="Can't be blank"
-          placeholder="Enter your first name..."
-          value={firstName().value}
-          valid={firstName().valid}
-          initial={firstNameOptions().initial}
-          touched={firstNameOptions().touched}
-          onInput={updateFirstNameValue}
-          onFocus={updateFirstNameOptions}
-          onBlur={updateFirstNameOptions}
-          isLoading={false}
-        />
-        <TextInput
-          inputType="text"
-          name="emailAddress"
-          labelFor="emailAddress"
-          labelName="Email Address"
-          labelInstructions="Enter your email address"
-          labelError="Enter valid email"
-          placeholder="Enter your email address..."
-          value={emailAddress().value}
-          valid={emailAddress().valid}
-          initial={emailAddressOptions().initial}
-          touched={emailAddressOptions().touched}
-          onInput={updateEmailAddressValue}
-          onFocus={updateEmailAddressOptions}
-          onBlur={updateEmailAddressOptions}
-          isLoading={false}
-        />
-        <RadioInput
-          name="contactReason"
-          questionLabel="How can a Nerd help you?"
-          value={contactFormReason().value}
-          options={contactFormReason().options}
-          updateInputValue={updateContactFormReason}
-        />
-        <TextArea
-          name="contactMessage"
-          labelFor="contactMessage"
-          labelName="Tell your Nerd more..."
-          labelInstructions="Be description"
-          labelError="Can't be blank"
-          placeholder="Give some more detail so we can help..."
-          maxLength={500}
-          rows={6}
-          value={contactMessage().value}
-          valid={contactMessage().valid}
-          initial={contactMessageOptions().initial}
-          touched={contactMessageOptions().touched}
-          onInput={updateContactMessageValue}
-          onFocus={updateContactMessageOptions}
-          onBlur={updateContactMessageOptions}
-          isLoading={false}
-        />
-      </div>
-      <FormButton theme="teal" disabled={!isFormValid}>
-        Send Message Now
-      </FormButton>
-    </form>
+    <>
+      <form class={styles.contact_form} onSubmit={handleFormSubmit}>
+        <div class={styles.input_container} style={formStyles}>
+          <TextInput
+            inputType="text"
+            name="firstName"
+            labelFor="firstName"
+            labelName="First Name"
+            labelInstructions="Enter your first name"
+            labelError="Can't be blank"
+            placeholder="Enter your first name..."
+            value={firstName().value}
+            valid={firstName().valid}
+            initial={firstNameOptions().initial}
+            touched={firstNameOptions().touched}
+            onInput={updateFirstNameValue}
+            onFocus={updateFirstNameOptions}
+            onBlur={updateFirstNameOptions}
+            isLoading={isFetchCallActive()}
+          />
+          <TextInput
+            inputType="text"
+            name="emailAddress"
+            labelFor="emailAddress"
+            labelName="Email Address"
+            labelInstructions="Enter your email address"
+            labelError="Enter valid email"
+            placeholder="Enter your email address..."
+            value={emailAddress().value}
+            valid={emailAddress().valid}
+            initial={emailAddressOptions().initial}
+            touched={emailAddressOptions().touched}
+            onInput={updateEmailAddressValue}
+            onFocus={updateEmailAddressOptions}
+            onBlur={updateEmailAddressOptions}
+            isLoading={isFetchCallActive()}
+          />
+          <RadioInput
+            name="contactReason"
+            questionLabel="How can a Nerd help you?"
+            value={contactFormReason().value}
+            options={contactFormReason().options}
+            updateInputValue={updateContactFormReason}
+          />
+          <TextArea
+            name="contactMessage"
+            labelFor="contactMessage"
+            labelName="Tell your Nerd more..."
+            labelInstructions="Be description"
+            labelError="Can't be blank"
+            placeholder="Give some more detail so we can help..."
+            maxLength={500}
+            rows={6}
+            value={contactMessage().value}
+            valid={contactMessage().valid}
+            initial={contactMessageOptions().initial}
+            touched={contactMessageOptions().touched}
+            onInput={updateContactMessageValue}
+            onFocus={updateContactMessageOptions}
+            onBlur={updateContactMessageOptions}
+            isLoading={isFetchCallActive()}
+          />
+        </div>
+        <FormButton theme="teal" disabled={!isFormValid}>
+          Send Message Now
+        </FormButton>
+      </form>
+      <ShortMessageOverlay type="success" isOpen={isFetchError()} />
+    </>
   );
 };

@@ -28,6 +28,8 @@ import {
   whyNowOptions,
   updateWhyNowValue,
   updateWhyNowptions,
+  isFetchCallActive,
+  toggleIsFetchCallActive,
 } from "../../../../stores/leadFormStore";
 import type { WebDesignFormBody } from "../../../../types/forms";
 import styles from "./LeadForm.module.css";
@@ -35,6 +37,8 @@ import styles from "./LeadForm.module.css";
 export const LeadForm: Component = () => {
   const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
+
+    toggleIsFetchCallActive();
 
     const phoneNumber = `(${areaCode().value}) ${firstThree().value} - ${
       lastFour().value
@@ -50,7 +54,11 @@ export const LeadForm: Component = () => {
       whyImportant: whyNow().value,
     };
 
-    const res = await fetch(`http://127.0.0.1:8787/handle-web-design-form`, {
+    const url = import.meta.env.DEV
+      ? "http://127.0.0.1:8787/handle-web-design-form"
+      : `${import.meta.env.VITE_DEV_ENDPOINT}/handle-web-design-form`;
+
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +70,15 @@ export const LeadForm: Component = () => {
       throw new Error("Need to set up an error state");
     }
 
-    // Redirect to thank you page or next step
+    toggleIsFetchCallActive();
+
+    if (window) {
+      const url = import.meta.env.DEV
+        ? "http://localhost:3000/nerd-chat/schedule"
+        : "https://nerdswhosell.com/nerd-chat/schedule";
+
+      window.location.replace(url);
+    }
   };
 
   const formValid = createMemo(() => {
@@ -90,7 +106,7 @@ export const LeadForm: Component = () => {
         onInput={updateFirstNameValue}
         onFocus={updateFirstNameOptions}
         onBlur={updateFirstNameOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <TextInput
         inputType="email"
@@ -107,7 +123,7 @@ export const LeadForm: Component = () => {
         onInput={updateEmailAddressValue}
         onFocus={updateEmailAddressOptions}
         onBlur={updateEmailAddressOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <PhoneInput isLoading={false} optional={true} />
       <RadioInput
@@ -133,7 +149,7 @@ export const LeadForm: Component = () => {
         onInput={updateCurrentSiteValue}
         onFocus={updateCurrentSiteOptions}
         onBlur={updateCurrentSiteOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <TextArea
         name="whyNow"
@@ -152,7 +168,7 @@ export const LeadForm: Component = () => {
         onInput={updateWhyNowValue}
         onFocus={updateWhyNowptions}
         onBlur={updateWhyNowptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <FormButton theme="teal" disabled={!formValid()}>
         Step 2 - Schecule Time

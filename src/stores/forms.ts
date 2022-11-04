@@ -530,3 +530,18 @@ export const updateAdditionalInfoOptions = (event: FocusEvent) => {
     touched: !prevValue.touched,
   }));
 };
+
+export const resetContactReason = () => {
+  setContactFormReason({
+    value: "",
+    options: contactFormOptions,
+  });
+  setContactMessage({
+    value: "",
+    valid: false,
+  });
+  setContactMessageOptions({
+    initial: true,
+    touched: false,
+  });
+};

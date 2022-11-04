@@ -28,6 +28,8 @@ import {
   whyNowOptions,
   updateWhyNowValue,
   updateWhyNowptions,
+  isFetchCallActive,
+  toggleIsFetchCallActive,
 } from "../../../../stores/leadFormStore";
 import type { SevenDaySiteFormBody } from "../../../../types/forms";
 import styles from "./SevenDaySiteForm.module.css";
@@ -35,6 +37,8 @@ import styles from "./SevenDaySiteForm.module.css";
 export const SevenDaySiteForm: Component = () => {
   const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
+
+    toggleIsFetchCallActive();
 
     const phoneNumber = `(${areaCode().value}) ${firstThree().value} - ${
       lastFour().value
@@ -50,22 +54,31 @@ export const SevenDaySiteForm: Component = () => {
       whyImportant: whyNow().value,
     };
 
-    const res = await fetch(
-      `http://127.0.0.1:8787/handle-seven-day-site-form`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reqBody),
-      }
-    );
+    const url = import.meta.env.DEV
+      ? "http://127.0.0.1:8787/handle-seven-day-site-form"
+      : `${import.meta.env.VITE_DEV_ENDPOINT}/handle-seven-day-site-form`;
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reqBody),
+    });
 
     if (res.status !== 200) {
       throw new Error("Need to create an error block");
     }
 
-    // show success and then redirect to step 2
+    toggleIsFetchCallActive();
+
+    if (window) {
+      const url = import.meta.env.DEV
+        ? "http://localhost:3000/nerd-chat/schedule"
+        : "https://nerdswhosell.com/nerd-chat/schedule";
+
+      window.location.replace(url);
+    }
   };
 
   const formValid = createMemo(() => {
@@ -93,7 +106,7 @@ export const SevenDaySiteForm: Component = () => {
         onInput={updateFirstNameValue}
         onFocus={updateFirstNameOptions}
         onBlur={updateFirstNameOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <TextInput
         inputType="email"
@@ -110,9 +123,9 @@ export const SevenDaySiteForm: Component = () => {
         onInput={updateEmailAddressValue}
         onFocus={updateEmailAddressOptions}
         onBlur={updateEmailAddressOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
-      <PhoneInput isLoading={false} optional={true} />
+      <PhoneInput isLoading={isFetchCallActive()} optional={true} />
       <RadioInput
         name="biggestPriority"
         questionLabel="What's your seven day site goal?"
@@ -136,7 +149,7 @@ export const SevenDaySiteForm: Component = () => {
         onInput={updateCurrentSiteValue}
         onFocus={updateCurrentSiteOptions}
         onBlur={updateCurrentSiteOptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <TextArea
         name="whyNow"
@@ -155,7 +168,7 @@ export const SevenDaySiteForm: Component = () => {
         onInput={updateWhyNowValue}
         onFocus={updateWhyNowptions}
         onBlur={updateWhyNowptions}
-        isLoading={false}
+        isLoading={isFetchCallActive()}
       />
       <FormButton theme="teal" disabled={!formValid()}>
         Step 2 - Schecule Time

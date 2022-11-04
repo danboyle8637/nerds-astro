@@ -10,6 +10,8 @@ import {
   emailAddressOptions,
   updateEmailAddressValue,
   updateEmailAddressOptions,
+  isFetchCallActive,
+  toggleIsFetchCallActive,
 } from "../../../../stores/leadFormStore";
 import type { FourLinksFormBody } from "../../../../types/forms";
 import styles from "./NewsletterForm.module.css";
@@ -20,9 +22,15 @@ export const NewsletterForm: Component = () => {
   const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
 
+    toggleIsFetchCallActive();
+
     const reqBody: FourLinksFormBody = {
       emailAddress: emailAddress().value,
     };
+
+    const url = import.meta.env.DEV
+      ? "http://127.0.0.1:8787/handle-four-links-form"
+      : `${import.meta.env.VITE_DEV_ENDPOINT}/handle-four-links-form`;
 
     const res = await fetch("http://127.0.0.1:8787/handle-four-links-form", {
       method: "POST",
@@ -35,8 +43,6 @@ export const NewsletterForm: Component = () => {
     if (res.status !== 200) {
       throw new Error("Show an error overlay");
     }
-
-    // Redirect to a thank you page or somesort
   };
 
   return (
