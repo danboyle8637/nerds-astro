@@ -1,21 +1,40 @@
-import type { Component } from "solid-js";
+import { createEffect } from "solid-js";
+import type { Component, Setter } from "solid-js";
 
 import { SuccessIcon } from "../../../svgs/SuccessIcon";
 import { ErrorIcon } from "../../../svgs/ErrorIcon";
+import { CloseIcon } from "../../../svgs/CloseIcon";
 import { StatusChipTransition } from "../../../../animations/StatusChipTransition";
+import {
+  openStatusChip,
+  closeStatusChip,
+} from "../../../../animations/components";
 import type { ShortMessageOverlayIcon } from "../../../../types/components";
 import styled from "./ShortMessageOverlay.module.css";
 
 interface OverlayProps {
   type: ShortMessageOverlayIcon;
   isOpen: boolean;
+  handleActiveClick: (status: boolean) => void;
 }
 
 export const ShortMessageOverlay: Component<OverlayProps> = (props) => {
   let statusChipRef: HTMLDivElement;
 
+  createEffect(() => {
+    if (props.isOpen) {
+      openStatusChip(statusChipRef);
+    }
+
+    if (!props.isOpen) {
+      closeStatusChip(statusChipRef);
+    }
+  });
+
   const handleCloseOverlay = () => {
-    console.log("Close overlay and take some action");
+    setTimeout(() => {
+      props.handleActiveClick(false);
+    }, 440);
   };
 
   const renderMessage = () => {
@@ -56,7 +75,15 @@ export const ShortMessageOverlay: Component<OverlayProps> = (props) => {
             >
               Reload Form
             </button>
-          ) : null}
+          ) : (
+            <button
+              type="button"
+              class={styled.close_icon_button}
+              onclick={handleCloseOverlay}
+            >
+              <CloseIcon />
+            </button>
+          )}
         </div>
       </div>
     </StatusChipTransition>

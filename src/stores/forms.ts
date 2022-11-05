@@ -22,6 +22,7 @@ import type {
   InputValue,
   InputOptions,
 } from "../types/forms";
+import { setEmailAddress } from "./leadFormStore";
 
 export const [isToggleOn, setIsToggleOn] = createSignal<boolean>(false);
 
@@ -531,7 +532,7 @@ export const updateAdditionalInfoOptions = (event: FocusEvent) => {
   }));
 };
 
-export const resetContactReason = () => {
+export const resetContactForm1 = () => {
   setContactFormReason({
     value: "",
     options: contactFormOptions,

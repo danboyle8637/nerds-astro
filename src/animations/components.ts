@@ -1,4 +1,4 @@
-import { animate, timeline, MotionKeyframesDefinition } from "motion";
+import { animate, timeline, MotionKeyframesDefinition, spring } from "motion";
 
 const draw = (progress: number): MotionKeyframesDefinition => {
   return {
@@ -70,4 +70,17 @@ export const loadingAnimation = (
     repeat: Infinity,
   });
   timeline(dotSequence, { duration: 1, repeat: Infinity });
+};
+
+// This is the status chip used for forms
+export const openStatusChip = (chip: HTMLDivElement) => {
+  animate(
+    chip,
+    { y: -80, opacity: 1 },
+    { duration: 0.4, easing: spring(), delay: 0.4 }
+  );
+};
+
+export const closeStatusChip = (chip: HTMLDivElement) => {
+  animate(chip, { y: 60, opacity: 0 }, { duration: 0.4, easing: spring() });
 };

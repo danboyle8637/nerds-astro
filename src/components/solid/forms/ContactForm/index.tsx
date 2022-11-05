@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createMemo, createSignal } from "solid-js";
 import type { Component, JSX } from "solid-js";
 
 import { TextInput } from "../inputs/TextInput";
@@ -13,6 +13,7 @@ import {
   updateContactMessageOptions,
   contactFormReason,
   updateContactFormReason,
+  resetContactForm1,
 } from "../../../../stores/forms";
 import {
   firstName,
@@ -25,6 +26,7 @@ import {
   updateEmailAddressOptions,
   toggleIsFetchCallActive,
   isFetchCallActive,
+  resetContactForm2,
 } from "../../../../stores/leadFormStore";
 import type { ContactFormBody } from "../../../../types/forms";
 import styles from "./ContactForm.module.css";
@@ -39,10 +41,6 @@ export const ContactForm: Component = () => {
   const handleFormSubmit = async (event: SubmitEvent) => {
     event.preventDefault();
 
-    updateIsFetchError(true);
-
-    return;
-
     toggleIsFetchCallActive();
 
     const reqBody: ContactFormBody = {
@@ -54,18 +52,23 @@ export const ContactForm: Component = () => {
     };
 
     const url = import.meta.env.DEV
-      ? "http://127.0.0.1:8787/handle-contact-form"
-      : `${import.meta.env.VITE_DEV_ENDPOINT}/handle-contact-form`;
+      ? `${import.meta.env.PUBLIC_DEV_ENDPOINT}/handle-contact-form`
+      : `${import.meta.env.PUBLIC_ENDPOINT}/handle-contact-form`;
+
     const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.PUBLIC_AUTH_TOKEN}`,
       },
       body: JSON.stringify(reqBody),
     });
 
     if (res.status !== 200) {
-      setIsFetchError(true);
+      updateIsFetchError(true);
+      resetContactForm1();
+      resetContactForm2();
+      return;
     }
 
     toggleIsFetchCallActive();
@@ -79,14 +82,13 @@ export const ContactForm: Component = () => {
     }
   };
 
-  const isFormValid = () => {
-    return (
+  const isFormValid = createMemo(
+    () =>
       firstName().valid &&
       emailAddress().valid &&
       contactFormReason().value !== "" &&
       contactMessage().valid
-    );
-  };
+  );
 
   const formStyles = {
     "--input-field-container-box-shadow": "0 0px 0px 6px hsla(219,34%,19%,1)",
@@ -156,11 +158,15 @@ export const ContactForm: Component = () => {
             isLoading={isFetchCallActive()}
           />
         </div>
-        <FormButton theme="teal" disabled={!isFormValid}>
+        <FormButton theme="teal" disabled={!isFormValid()}>
           Send Message Now
         </FormButton>
       </form>
-      <ShortMessageOverlay type="success" isOpen={isFetchError()} />
+      <ShortMessageOverlay
+        type="error"
+        isOpen={isFetchError()}
+        handleActiveClick={updateIsFetchError}
+      />
     </>
   );
 };

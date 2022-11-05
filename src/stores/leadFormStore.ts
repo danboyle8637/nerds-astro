@@ -344,18 +344,18 @@ export const toggleInitialLeadFormOverlayOpen = () => {
   setIsInitialLeadFormOverlayOpen((prevValue) => !prevValue);
 };
 
-export const resetForm = () => {
-  setFirstName({
+export const resetNewsletterForm = () => {
+  setEmailAddress({
     value: "",
     valid: false,
   });
-  setFirstNameOptions({
+  setEmailAddressOptions({
     initial: true,
     touched: false,
   });
 };
 
-export const resetContactForm = () => {
+export const resetContactForm2 = () => {
   setFirstName({
     value: "",
     valid: false,
@@ -369,6 +369,73 @@ export const resetContactForm = () => {
     valid: false,
   });
   setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+};
+
+export const resetWebDesignForm = () => {
+  setFirstName({
+    value: "",
+    valid: false,
+  });
+  setFirstNameOptions({
+    initial: true,
+    touched: false,
+  });
+  setEmailAddress({
+    value: "",
+    valid: false,
+  });
+  setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+  setAreaCode({
+    value: "",
+    valid: false,
+  });
+  setAreaCodeOptions({
+    initial: true,
+    touched: false,
+  });
+  setFirstThree({
+    value: "",
+    valid: false,
+  });
+  setFirstThreeOptions({
+    initial: true,
+    touched: false,
+  });
+  setLastFour({
+    value: "",
+    valid: false,
+  });
+  setLastFourOptions({
+    initial: true,
+    touched: false,
+  });
+  setBiggestPriority({
+    value: "",
+    options: webDesignOptions,
+  });
+  setSevenDaySiteUseCase({
+    value: "",
+    options: sevenDaySiteOptions,
+  });
+  setCurrentSite({
+    value: "",
+    valid: false,
+  });
+  setCurrentSiteOptions({
+    initial: true,
+    touched: false,
+  });
+  setWhyNow({
+    value: "",
+    valid: false,
+  });
+  setWhyNowOptions({
     initial: true,
     touched: false,
   });

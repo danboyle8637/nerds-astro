@@ -22,7 +22,8 @@
   border-radius: 16px;
   width: 351px;
   box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.8);
-  transform: translateY(-80px);
+  opacity: 0;
+  transform: translateY(60px);
 }
 
 .content_container {
@@ -55,4 +56,14 @@
   border: none;
   width: max-content;
   height: 40px;
+  cursor: pointer;
+}
+
+.close_icon_button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
