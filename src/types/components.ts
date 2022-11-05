@@ -64,3 +64,5 @@ export interface BlogCategoryCard {
   category: BlogCategory;
   slug: string;
 }
+
+export type ShortMessageOverlayIcon = "error" | "success";

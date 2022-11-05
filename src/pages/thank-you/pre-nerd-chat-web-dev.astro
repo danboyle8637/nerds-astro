@@ -1,12 +1,24 @@
 ---
-import BaseLayout from '../../layouts/Layout.astro'
-import SmallHeader from '../../sections/headers/SmallHeader.astro';
-import Footer from '../../sections/Footer/index.astro'
-import PreNerdChatWebDevChat from '../../sections/thankyou/PreNerdWebDevChat/index.astro'
+import BaseLayout from "../../layouts/Layout.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import Footer from "../../sections/Footer/index.astro";
+import PreNerdChatWebDevChat from "../../sections/thankyou/PreNerdWebDevChat/index.astro";
 ---
 
-<BaseLayout title="Thank You - Pre Nerd Chat Web Design And Development">
-  <SmallHeader headline="Thank You" />
+<BaseLayout
+  title="Thank You - Pre Nerd Chat Web Design And Development"
+  description="Not using the page yet"
+  socialTitle=""
+  socialDescription=""
+  socialImage=""
+  noindex={true}
+>
+  <SmallHeader
+    headline="Thank You"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-header_xyoRD8_Q6.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Nerd Chat"
+    titleTag="Nerd Chat"
+  />
   <PreNerdChatWebDevChat />
   <Footer />
 </BaseLayout>

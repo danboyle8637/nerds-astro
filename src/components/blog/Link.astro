@@ -1,16 +1,16 @@
 ---
-import InternalLinkIcon from '../svgs/InternalLinkIcon.astro'
-import ExternalLinkIcon from '../svgs/ExternalLinkIcon.astro'
+import InternalLinkIcon from "../svgs/InternalLinkIcon.astro";
+import ExternalLinkIcon from "../svgs/ExternalLinkIcon.astro";
 
 interface Props {
-  type: "internal" | "external"
-  url: string
+  type: "internal" | "external";
+  url: string;
 }
 
-const { type, url } = Astro.props
+const { type, url } = Astro.props;
 
-const linkRel = type === "external" ? "noopener noreferrer" : "prefetch"
-const linkTarget = type === "external" ? "_blank" : "_self"
+const linkRel = type === "external" ? "noopener noreferrer" : "prefetch";
+const linkTarget = type === "external" ? "_blank" : "_self";
 ---
 
 <span class="link-container">
@@ -21,7 +21,6 @@ const linkTarget = type === "external" ? "_blank" : "_self"
     {type === "external" ? <ExternalLinkIcon /> : <InternalLinkIcon />}
   </span>
 </span>
-
 
 <style lang="scss">
   @import "../../styles/sizes.scss";
@@ -35,7 +34,7 @@ const linkTarget = type === "external" ? "_blank" : "_self"
 
   a {
     font-size: 2.1rem;
-    
+
     @include aboveMobile {
       font-size: 2.4rem;
     }
@@ -43,6 +42,5 @@ const linkTarget = type === "external" ? "_blank" : "_self"
 
   .icon {
     width: 20px;
-    transform: translateY(4px);
   }
 </style>

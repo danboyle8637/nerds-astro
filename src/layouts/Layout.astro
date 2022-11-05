@@ -9,6 +9,7 @@ export interface Props {
   socialImage: string;
   socialTitle: string;
   socialDescription: string;
+  noindex?: boolean;
 }
 
 const {
@@ -18,7 +19,10 @@ const {
   socialImage,
   socialDescription,
   socialTitle,
+  noindex = false,
 } = Astro.props as Props;
+
+const index = noindex ? "noindex" : "all";
 ---
 
 <!DOCTYPE html>
@@ -31,6 +35,7 @@ const {
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content={index} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={author} />

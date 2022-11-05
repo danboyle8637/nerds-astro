@@ -13,6 +13,8 @@
 
 .nav_bar {
   width: 100%;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (min-width: 960px) {

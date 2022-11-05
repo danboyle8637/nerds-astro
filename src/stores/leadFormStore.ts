@@ -4,7 +4,6 @@ import { capitalizeName, updateOptions } from "../utils/utilityFunctions";
 import { formValidator } from "../utils/validators/formValidators";
 import { emailValidationRules } from "../utils/validators/rules";
 import {
-  leadFormOptions,
   sevenDaySiteOptions,
   copywritingTimelineOptions,
   webDesignOptions,
@@ -13,6 +12,9 @@ import type { InputValue, InputOptions, RadioInput } from "../types/forms";
 
 export const [isInitialLeadFormOverlayOpen, setIsInitialLeadFormOverlayOpen] =
   createSignal(false);
+
+export const [isFetchCallActive, setIsFetchCallActive] =
+  createSignal<boolean>(false);
 
 export const [firstName, setFirstName] = createSignal<InputValue>({
   value: "",
@@ -94,7 +96,7 @@ export const [whyNowOptions, setWhyNowOptions] = createSignal<InputOptions>({
 
 export const [biggestPriority, setBiggestPriority] = createSignal<RadioInput>({
   value: "",
-  options: leadFormOptions,
+  options: webDesignOptions,
 });
 
 export const [webDesignPriority, setWebDesignPriority] =
@@ -113,6 +115,14 @@ export const [copyTimeline, setCopyTimeline] = createSignal<RadioInput>({
   value: "",
   options: copywritingTimelineOptions,
 });
+
+export const toggleIsFetchCallActive = () => {
+  setIsFetchCallActive((prevValue) => !prevValue);
+};
+
+export const turnOffFetchCallActive = () => {
+  setIsFetchCallActive(false);
+};
 
 export const updateFirstNameValue = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
@@ -287,6 +297,8 @@ export const updateWebDesignPriority = (event: InputEvent) => {
   const inputElement = event.currentTarget as HTMLInputElement;
   const value = inputElement.value;
 
+  console.log(value);
+
   setWebDesignPriority((prevValue) => {
     const optionsCopy = [...prevValue.options];
     const updatedOptions = updateOptions(optionsCopy, value);
@@ -332,12 +344,98 @@ export const toggleInitialLeadFormOverlayOpen = () => {
   setIsInitialLeadFormOverlayOpen((prevValue) => !prevValue);
 };
 
-export const resetForm = () => {
+export const resetNewsletterForm = () => {
+  setEmailAddress({
+    value: "",
+    valid: false,
+  });
+  setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+};
+
+export const resetContactForm2 = () => {
   setFirstName({
     value: "",
     valid: false,
   });
   setFirstNameOptions({
+    initial: true,
+    touched: false,
+  });
+  setEmailAddress({
+    value: "",
+    valid: false,
+  });
+  setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+};
+
+export const resetWebDesignForm = () => {
+  setFirstName({
+    value: "",
+    valid: false,
+  });
+  setFirstNameOptions({
+    initial: true,
+    touched: false,
+  });
+  setEmailAddress({
+    value: "",
+    valid: false,
+  });
+  setEmailAddressOptions({
+    initial: true,
+    touched: false,
+  });
+  setAreaCode({
+    value: "",
+    valid: false,
+  });
+  setAreaCodeOptions({
+    initial: true,
+    touched: false,
+  });
+  setFirstThree({
+    value: "",
+    valid: false,
+  });
+  setFirstThreeOptions({
+    initial: true,
+    touched: false,
+  });
+  setLastFour({
+    value: "",
+    valid: false,
+  });
+  setLastFourOptions({
+    initial: true,
+    touched: false,
+  });
+  setBiggestPriority({
+    value: "",
+    options: webDesignOptions,
+  });
+  setSevenDaySiteUseCase({
+    value: "",
+    options: sevenDaySiteOptions,
+  });
+  setCurrentSite({
+    value: "",
+    valid: false,
+  });
+  setCurrentSiteOptions({
+    initial: true,
+    touched: false,
+  });
+  setWhyNow({
+    value: "",
+    valid: false,
+  });
+  setWhyNowOptions({
     initial: true,
     touched: false,
   });

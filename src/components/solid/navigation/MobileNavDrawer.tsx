@@ -20,7 +20,6 @@ export const MobileNavDrawer: Component = () => {
     if (isMobileNavOpen()) {
       showMobileNavMenu(clickLayerRef, menuDrawerRef);
     }
-
     if (!isMobileNavOpen()) {
       hideMobileNavMenu(clickLayerRef, menuDrawerRef);
     }

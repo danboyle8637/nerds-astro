@@ -2,6 +2,7 @@
 import Logo from "./Logo.astro";
 import HeaderNav from "./HeaderNav.astro";
 import { NetworkReqLoader } from "../solid/NetworkReqLoader";
+import { ShortMessageOverlay } from "../solid/overlays/ShortMessageOverlay";
 ---
 
 <div class="container">
@@ -12,7 +13,7 @@ import { NetworkReqLoader } from "../solid/NetworkReqLoader";
     <HeaderNav />
   </div>
 </div>
-<!-- <NetworkReqLoader client:visible /> -->
+<NetworkReqLoader client:idle />
 
 <style lang="scss">
   @import "../../styles/sizes.scss";

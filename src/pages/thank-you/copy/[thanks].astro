@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../../../layouts/Layout.astro";
+import Header from "../../../sections/CopyServices/Header/index.astro";
+import Footer from "../../../sections/Footer/index.astro";
+import type { MDXInstance } from "astro";
+import type { ThankYouPageFrontmatter, Pathname } from "../../../types/blog";
+
+import Header3 from "../../../components/blog/Header3.astro";
+import Paragraph from "../../../components/blog/Paragraph.astro";
+import Link from "../../../components/blog/Link.astro";
+import CodeCallout from "../../../components/blog/CodeCallout.astro";
+
+interface Route {
+  params: {
+    thanks: string;
+  };
+  props: {
+    data: ThankYouPageFrontmatter;
+    copy: MDXInstance<Record<string, any>>;
+  };
+}
+
+export async function getStaticPaths() {
+  const pages = await Astro.glob("../../../data/copy-services/thank-you/*.mdx");
+
+  const routes: Route[] = pages.map((page: any) => {
+    const frontmatter = page.frontmatter as ThankYouPageFrontmatter;
+
+    return {
+      params: { thanks: frontmatter.slug },
+      props: {
+        data: frontmatter,
+        copy: page,
+      },
+    };
+  });
+
+  return routes;
+}
+
+const { title, imageUrl, altTag, titleTag, slug } = Astro.props
+  .data as ThankYouPageFrontmatter;
+
+const { Content } = Astro.props.copy;
+---
+
+<BaseLayout
+  title={`Thank you for purchasing ${title}`}
+  description={`Thank you for purchasing ${title}`}
+  socialTitle=""
+  socialDescription=""
+  socialImage=""
+>
+  <Header />
+  <div class="post-body">
+    <Content
+      components={{
+        h3: Header3,
+        p: Paragraph,
+        em: CodeCallout,
+      }}
+    />
+  </div>
+  <Footer />
+</BaseLayout>
+
+<style lang="scss">
+  @import "../../../styles/sizes.scss";
+
+  .post-body {
+    padding: 80px 12px 120px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    @include aboveMobile {
+      width: 660px;
+    }
+
+    @include aboveTablet {
+      width: 800px;
+    }
+  }
+</style>

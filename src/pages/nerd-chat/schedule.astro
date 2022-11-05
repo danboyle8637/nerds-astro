@@ -1,12 +1,24 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import SmallHeader from '../../sections/headers/SmallHeader.astro';
-import { CalendlyEmbed } from '../../components/solid/Calendly'
+import Layout from "../../layouts/Layout.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import { CalendlyEmbed } from "../../components/solid/Calendly";
 ---
 
-<Layout title="Schedule Your FREE Nerd Chat">
-  <SmallHeader headline="Schedule Chat" />
-  <CalendlyEmbed client:visible  />
+<Layout
+  title="Schedule Your FREE Nerd Chat"
+  description="Schedule your free Nerd Chat"
+  socialTitle=""
+  socialDescription=""
+  socialImage=""
+  noindex={true}
+>
+  <SmallHeader
+    headline="Schedule Chat"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/nerd-chat-header_xyoRD8_Q6.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Nerd Chat"
+    titleTag="Nerd Chat"
+  />
+  <CalendlyEmbed client:visible />
 </Layout>
 
 <style lang="scss">
@@ -16,4 +28,7 @@ import { CalendlyEmbed } from '../../components/solid/Calendly'
   }
 </style>
 
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script
+  type="text/javascript"
+  src="https://assets.calendly.com/assets/external/widget.js"
+></script>

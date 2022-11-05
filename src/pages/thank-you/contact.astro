@@ -1,12 +1,23 @@
 ---
-import BaseLayout from '../../layouts/Layout.astro'
-import Footer from '../../sections/Footer/index.astro'
-import SmallHeader from '../../sections/headers/SmallHeader.astro';
-import ContactThankYou from '../../sections/thankyou/Contact/index.astro'
+import BaseLayout from "../../layouts/Layout.astro";
+import Footer from "../../sections/Footer/index.astro";
+import SmallHeader from "../../sections/headers/SmallHeader.astro";
+import ContactThankYou from "../../sections/thankyou/Contact/index.astro";
 ---
 
-<BaseLayout title="Thank You For Contacting Nerds Who Sell">
-  <SmallHeader headline="Thank You" />
+<BaseLayout
+  title="Thank You For Contacting Nerds Who Sell"
+  description="Thank you for contacting the nerds. We will get back to you asap to help with you online tech and marketing needs."
+  socialTitle=""
+  socialDescription=""
+  socialImage=""
+>
+  <SmallHeader
+    headline="Contact Us"
+    imageUrl="https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/contact-header_-JOMeWEFJ.png?ik-sdk-version=javascript-1.4.3"
+    altTag="Contact a Nerd"
+    titleTag="Contact a Nerd"
+  />
   <ContactThankYou />
   <Footer />
 </BaseLayout>

@@ -114,3 +114,14 @@ export interface Pathname {
   base: string[];
   slug: string;
 }
+
+export interface ThankYouPageFrontmatter {
+  id: number;
+  title: string;
+  slug: string;
+  imageUrl: string;
+  altTag: string;
+  titleTag: string;
+  headline: string;
+  description: string;
+}
