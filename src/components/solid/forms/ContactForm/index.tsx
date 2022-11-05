@@ -53,7 +53,7 @@ export const ContactForm: Component = () => {
 
     const url = import.meta.env.DEV
       ? `${import.meta.env.PUBLIC_DEV_ENDPOINT}/handle-contact-form`
-      : `${import.meta.env.PUBLIC_ENDPOINT}/handle-contact-form`;
+      : `${import.meta.env.PUBLIC_API_ENDPOINT}/handle-contact-form`;
 
     const res = await fetch(url, {
       method: "POST",

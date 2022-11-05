@@ -64,7 +64,7 @@ export const LeadForm: Component = () => {
 
     const url = import.meta.env.DEV
       ? `${import.meta.env.PUBLIC_DEV_ENDPOINT}/handle-web-design-form`
-      : `${import.meta.env.PUBLIC_ENDPOINT}/handle-web-design-form`;
+      : `${import.meta.env.PUBLIC_API_ENDPOINT}/handle-web-design-form`;
 
     const res = await fetch(url, {
       method: "POST",
