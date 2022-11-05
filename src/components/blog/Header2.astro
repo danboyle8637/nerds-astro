@@ -1,12 +1,13 @@
 ---
-const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/teal-hash_D9EMi-Ga2.png?ik-sdk-version=javascript-1.4.3"
+const hash =
+  "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/teal-hash_D9EMi-Ga2.png?ik-sdk-version=javascript-1.4.3";
 ---
 
 <div class="container">
-  <h2>
+  <h2 class="headline">
     <span class="hash-container">
-      <img class="hash" src={hash} alt="Header 2" title="Headline">
-      <img class="hash right-hash" src={hash} alt="Header 2" title="Headline">
+      <img class="hash" src={hash} alt="Header 2" title="Headline" />
+      <img class="hash right-hash" src={hash} alt="Header 2" title="Headline" />
     </span>
     <slot />
   </h2>
@@ -19,7 +20,7 @@ const hash = "https://ik.imagekit.io/csu76xuqqlwj/nerds-who-sell/site-assets/tea
     padding: 80px 0 40px 0;
   }
 
-  h2 {
+  .headline {
     position: relative;
     padding: 20px;
     display: grid;
