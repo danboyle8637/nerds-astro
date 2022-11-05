@@ -1,6 +1,6 @@
 <div class="location">
   <span class="slash"></span>
-  <p>
+  <p class="label">
     <slot />
   </p>
 </div>
@@ -10,16 +10,17 @@
 
   .location {
     position: relative;
-    padding: 4px 22px;
+    padding: 4px 18px;
     background-color: hsla(218, 32%, 10%, 0.4);
     border: 2px solid var(--background-color-dark);
     border-radius: 8px;
   }
 
-  p {
+  .label {
     font-size: 1.4rem;
     font-weight: 600;
-    width: 120px;
+    width: fit-content;
+    max-width: 90px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
