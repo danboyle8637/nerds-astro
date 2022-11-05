@@ -64,7 +64,7 @@ export const SevenDaySiteForm: Component = () => {
 
     const url = import.meta.env.DEV
       ? `${import.meta.env.PUBLIC_DEV_ENDPOINT}/handle-seven-day-site-form`
-      : `${import.meta.env.PUBLIC_ENDPOINT}/handle-seven-day-site-form`;
+      : `${import.meta.env.PUBLIC_API_ENDPOINT}/handle-seven-day-site-form`;
 
     const res = await fetch(url, {
       method: "POST",

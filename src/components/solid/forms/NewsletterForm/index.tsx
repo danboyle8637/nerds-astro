@@ -42,7 +42,7 @@ export const NewsletterForm: Component = () => {
 
     const url = import.meta.env.DEV
       ? `${import.meta.env.PUBLIC_DEV_ENDPOINT}/handle-four-links-form`
-      : `${import.meta.env.PUBLIC_ENDPOINT}/handle-four-links-form`;
+      : `${import.meta.env.PUBLIC_API_ENDPOINT}/handle-four-links-form`;
 
     const res = await fetch(url, {
       method: "POST",
